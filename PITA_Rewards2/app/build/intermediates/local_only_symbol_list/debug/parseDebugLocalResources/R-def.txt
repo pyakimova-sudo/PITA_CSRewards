@@ -2,7 +2,6 @@ R_DEF: Internal format may change without notice
 local
 color black
 color blue
-color gold
 color green
 color ic_launcher_background
 color maple_primary

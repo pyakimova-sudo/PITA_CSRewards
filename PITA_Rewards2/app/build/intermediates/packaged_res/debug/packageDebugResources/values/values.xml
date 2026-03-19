@@ -2,7 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="blue">#59b5df</color>
-    <color name="gold">#FFFFBF00</color>
     <color name="green">#4fa853</color>
     <color name="ic_launcher_background">#FFC400</color>
     <color name="maple_primary">#FF742805</color>
