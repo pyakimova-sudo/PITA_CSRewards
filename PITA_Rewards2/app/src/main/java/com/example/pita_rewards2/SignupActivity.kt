@@ -24,7 +24,7 @@ class SignupActivity : AppCompatActivity() {
         // Initialize Firebase Database
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
-        binding.signupButton.setOnClickListener {
+        binding.signUpButton.setOnClickListener {
             val signupUsername = binding.signupUsername.text.toString()
             val signupPassword = binding.signupPassword.text.toString()
 
