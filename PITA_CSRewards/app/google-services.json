@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "190479356683",
+    "firebase_url": "https://loginapp-7da79-default-rtdb.firebaseio.com",
+    "project_id": "loginapp-7da79",
+    "storage_bucket": "loginapp-7da79.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190479356683:android:de866d040b51965a08480e",
+        "android_client_info": {
+          "package_name": "com.example.loginapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmUB1PiPx1wl_LbhC6aD5t5tSpUGV_GtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

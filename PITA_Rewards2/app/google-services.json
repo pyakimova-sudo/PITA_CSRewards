@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "505306099146",
+    "project_id": "pitarewards2",
+    "storage_bucket": "pitarewards2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505306099146:android:5ee387ca00022fcf8bf333",
+        "android_client_info": {
+          "package_name": "com.example.pita_rewards2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM9X2sgRiu2e3F8tdEVnK961zrBZ0VR-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
