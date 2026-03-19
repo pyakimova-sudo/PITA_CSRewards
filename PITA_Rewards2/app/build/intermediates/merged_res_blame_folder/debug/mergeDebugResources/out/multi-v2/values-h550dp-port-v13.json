@@ -4,7 +4,7 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\ccd660995449e4066bb2edeae53ebabd\\transformed\\material-1.13.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/ccd660995449e4066bb2edeae53ebabd/transformed/material-1.13.0/res/values-h550dp-port-v13/values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

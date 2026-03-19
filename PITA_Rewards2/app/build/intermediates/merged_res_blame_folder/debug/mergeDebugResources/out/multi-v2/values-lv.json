@@ -4,7 +4,24 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-lv/values-lv.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\ccd660995449e4066bb2edeae53ebabd\\transformed\\material-1.13.0\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/5e7014f2b214b216aadb0c5f33e9788c/transformed/play-services-basement-18.3.0/res/values-lv/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "161",
+                        "endOffsets": "356"
+                    },
+                    "to": {
+                        "startLines": "59",
+                        "startColumns": "4",
+                        "startOffsets": "5927",
+                        "endColumns": "165",
+                        "endOffsets": "6088"
+                    }
+                },
+                {
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/ccd660995449e4066bb2edeae53ebabd/transformed/material-1.13.0/res/values-lv/values-lv.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,41 +40,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\6bc306e56f9caeadb2cc3aac5c5a4e55\\transformed\\core-1.18.0\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/170339d809c7329342ba29cea7371ba1/transformed/foundation-release/res/values-lv/values-lv.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,355,456,563,671,786",
-                        "endColumns": "97,101,99,100,106,107,114,100",
-                        "endOffsets": "148,250,350,451,558,666,781,882"
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,142,232",
+                        "endColumns": "86,89,89",
+                        "endOffsets": "137,227,317"
                     },
                     "to": {
-                        "startLines": "39,40,41,42,43,44,45,214",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3686,3784,3886,3986,4087,4194,4302,20669",
-                        "endColumns": "97,101,99,100,106,107,114,100",
-                        "endOffsets": "3779,3881,3981,4082,4189,4297,4412,20765"
+                        "startLines": "34,218,219",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3258,21038,21128",
+                        "endColumns": "86,89,89",
+                        "endOffsets": "3340,21123,21213"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\467f39f2a2598696ef79a7f694ff1f1e\\transformed\\ui-release\\res\\values-lv\\values-lv.xml",
-                    "from": {
-                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "193,291,380,476,579,669,755,843,936,1020,1105,1192,1265,1355,1431,1508,1584,1662,1730",
-                        "endColumns": "97,88,95,102,89,85,87,92,83,84,86,72,89,75,76,75,77,67,121",
-                        "endOffsets": "286,375,471,574,664,750,838,931,1015,1100,1187,1260,1350,1426,1503,1579,1657,1725,1847"
-                    },
-                    "to": {
-                        "startLines": "49,50,69,70,71,76,77,200,201,203,204,208,210,211,212,213,215,216,217",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "4735,4833,7226,7322,7425,7808,7894,19531,19624,19785,19870,20203,20350,20440,20516,20593,20770,20848,20916",
-                        "endColumns": "97,88,95,102,89,85,87,92,83,84,86,72,89,75,76,75,77,67,121",
-                        "endOffsets": "4828,4917,7317,7420,7510,7889,7977,19619,19703,19865,19952,20271,20435,20511,20588,20664,20843,20911,21033"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\c3c0debdc4d0c9ca5445d39c891bd029\\transformed\\appcompat-1.7.1\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/c3c0debdc4d0c9ca5445d39c891bd029/transformed/appcompat-1.7.1/res/values-lv/values-lv.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -74,7 +74,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\1b2be96108a07be92a14eccd15f55315\\transformed\\material3-release\\res\\values-lv\\values-lv.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/6bc306e56f9caeadb2cc3aac5c5a4e55/transformed/core-1.18.0/res/values-lv/values-lv.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,355,456,563,671,786",
+                        "endColumns": "97,101,99,100,106,107,114,100",
+                        "endOffsets": "148,250,350,451,558,666,781,882"
+                    },
+                    "to": {
+                        "startLines": "39,40,41,42,43,44,45,214",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3686,3784,3886,3986,4087,4194,4302,20669",
+                        "endColumns": "97,101,99,100,106,107,114,100",
+                        "endOffsets": "3779,3881,3981,4082,4189,4297,4412,20765"
+                    }
+                },
+                {
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/1b2be96108a07be92a14eccd15f55315/transformed/material3-release/res/values-lv/values-lv.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -91,7 +108,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\5007a16aabf4ae1d94cd8d1d57bd515a\\transformed\\play-services-base-18.1.0\\res\\values-lv\\values.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/5007a16aabf4ae1d94cd8d1d57bd515a/transformed/play-services-base-18.1.0/res/values-lv/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -108,37 +125,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\5e7014f2b214b216aadb0c5f33e9788c\\transformed\\play-services-basement-18.3.0\\res\\values-lv\\values.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/467f39f2a2598696ef79a7f694ff1f1e/transformed/ui-release/res/values-lv/values-lv.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "161",
-                        "endOffsets": "356"
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "193,291,380,476,579,669,755,843,936,1020,1105,1192,1265,1355,1431,1508,1584,1662,1730",
+                        "endColumns": "97,88,95,102,89,85,87,92,83,84,86,72,89,75,76,75,77,67,121",
+                        "endOffsets": "286,375,471,574,664,750,838,931,1015,1100,1187,1260,1350,1426,1503,1579,1657,1725,1847"
                     },
                     "to": {
-                        "startLines": "59",
-                        "startColumns": "4",
-                        "startOffsets": "5927",
-                        "endColumns": "165",
-                        "endOffsets": "6088"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\170339d809c7329342ba29cea7371ba1\\transformed\\foundation-release\\res\\values-lv\\values-lv.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,142,232",
-                        "endColumns": "86,89,89",
-                        "endOffsets": "137,227,317"
-                    },
-                    "to": {
-                        "startLines": "34,218,219",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "3258,21038,21128",
-                        "endColumns": "86,89,89",
-                        "endOffsets": "3340,21123,21213"
+                        "startLines": "49,50,69,70,71,76,77,200,201,203,204,208,210,211,212,213,215,216,217",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "4735,4833,7226,7322,7425,7808,7894,19531,19624,19785,19870,20203,20350,20440,20516,20593,20770,20848,20916",
+                        "endColumns": "97,88,95,102,89,85,87,92,83,84,86,72,89,75,76,75,77,67,121",
+                        "endOffsets": "4828,4917,7317,7420,7510,7889,7977,19619,19703,19865,19952,20271,20435,20511,20588,20664,20843,20911,21033"
                     }
                 }
             ]
