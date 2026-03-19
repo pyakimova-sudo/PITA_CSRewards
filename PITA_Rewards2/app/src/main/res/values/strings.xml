@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PITA_Rewards2</string>
+    <string name="login_title">Gustavus Coffee</string>
+    <string name="welcome">Welcome</string>
+    <string name="please_login">Please Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_up_prompt">New User? Sign Up Here</string>
+    <string name="login_button">Login</string>
 </resources>
