@@ -6,10 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.pita_rewards2.R;
@@ -19,7 +20,10 @@ import java.lang.String;
 
 public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
+
+  @NonNull
+  public final LinearLayout header;
 
   @NonNull
   public final Button loginButton;
@@ -31,15 +35,16 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final EditText loginUsername;
 
   @NonNull
-  public final ConstraintLayout main;
+  public final RelativeLayout main;
 
   @NonNull
   public final TextView signupRedirect;
 
-  private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull Button loginButton,
-      @NonNull EditText loginPassword, @NonNull EditText loginUsername,
-      @NonNull ConstraintLayout main, @NonNull TextView signupRedirect) {
+  private ActivityLoginBinding(@NonNull RelativeLayout rootView, @NonNull LinearLayout header,
+      @NonNull Button loginButton, @NonNull EditText loginPassword, @NonNull EditText loginUsername,
+      @NonNull RelativeLayout main, @NonNull TextView signupRedirect) {
     this.rootView = rootView;
+    this.header = header;
     this.loginButton = loginButton;
     this.loginPassword = loginPassword;
     this.loginUsername = loginUsername;
@@ -49,7 +54,7 @@ public final class ActivityLoginBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -74,6 +79,12 @@ public final class ActivityLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.header;
+      LinearLayout header = ViewBindings.findChildViewById(rootView, id);
+      if (header == null) {
+        break missingId;
+      }
+
       id = R.id.loginButton;
       Button loginButton = ViewBindings.findChildViewById(rootView, id);
       if (loginButton == null) {
@@ -92,7 +103,7 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      ConstraintLayout main = (ConstraintLayout) rootView;
+      RelativeLayout main = (RelativeLayout) rootView;
 
       id = R.id.signupRedirect;
       TextView signupRedirect = ViewBindings.findChildViewById(rootView, id);
@@ -100,7 +111,7 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((ConstraintLayout) rootView, loginButton, loginPassword,
+      return new ActivityLoginBinding((RelativeLayout) rootView, header, loginButton, loginPassword,
           loginUsername, main, signupRedirect);
     }
     String missingId = rootView.getResources().getResourceName(id);

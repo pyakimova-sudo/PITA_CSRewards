@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4fa853</color>
     <color name="blue">#59b5df</color>
+
+    <color name="maple_primary">#FF742805</color>
+    <color name="maple_secondary">#FFB65508</color>
+
 </resources>
