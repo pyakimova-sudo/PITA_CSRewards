@@ -20,16 +20,7 @@
         android:textSize="20pt"
         android:textColor="@color/white"
         android:layout_marginBottom="60dp"
-        android:layout_marginTop="5dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="20dp">
-
-    </LinearLayout>
+        android:layout_marginTop="150dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -40,7 +31,7 @@
 
         <EditText
             android:id="@+id/signupUsername"
-            android:layout_width="150dp"
+            android:layout_width="320dp"
             android:layout_height="50dp"
             android:hint="Username:"
             android:padding="10dp"
