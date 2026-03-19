@@ -1,0 +1,36 @@
+gitignore
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (SDK path, etc.) - IMPORTANT
+local.properties
+
+# Log/OS Files
+*.log
+.DS_Store
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.aab
+*.apk
+output-metadata.json
+
+# IntelliJ / Android Studio specific
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files (Keep your signing keys private!)
+*.jks
+*.keystore
+
+# Google Services (Uncomment if you want to keep Firebase config out of Git)
+# google-services.json
+
+# Android Profiling
+*.hprof
