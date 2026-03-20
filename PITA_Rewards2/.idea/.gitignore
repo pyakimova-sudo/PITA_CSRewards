@@ -25,6 +25,7 @@ output-metadata.json
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+workspace.xml
 
 # Keystore files (Keep your signing keys private!)
 *.jks
