@@ -1,6 +1,6 @@
 gitignore
 # Gradle files
-.gradle/
+../.gradle/
 build/
 
 # Local configuration file (SDK path, etc.) - IMPORTANT
