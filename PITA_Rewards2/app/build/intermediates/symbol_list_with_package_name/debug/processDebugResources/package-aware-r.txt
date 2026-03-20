@@ -1598,6 +1598,7 @@ color foreground_material_light
 color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color ic_launcher_background
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -3907,6 +3908,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstName
 id fitCenter
 id fitEnd
 id fitStart
@@ -3959,6 +3961,7 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
+id lastName
 id layout
 id left
 id leftToRight
@@ -4089,6 +4092,7 @@ id path
 id pathRelative
 id peekHeight
 id percent
+id phone
 id pin
 id pooling_container_listener_holder_tag
 id position
@@ -4171,6 +4175,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
+id studentID
 id submenuarrow
 id submit_area
 id supportScrollUp

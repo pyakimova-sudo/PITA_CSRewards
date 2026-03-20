@@ -3,6 +3,7 @@ local
 color black
 color blue
 color green
+color ic_launcher_background
 color maple_primary
 color maple_secondary
 color white
@@ -14,15 +15,19 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable password_icon
 font ngetic
+id firstName
 id header
+id lastName
 id loginButton
 id loginPassword
 id loginUsername
 id main
+id phone
 id signUpButton
 id signupPassword
 id signupRedirect
 id signupUsername
+id studentID
 layout activity_account
 layout activity_basket
 layout activity_login

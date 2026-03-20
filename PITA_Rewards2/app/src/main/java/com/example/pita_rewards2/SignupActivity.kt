@@ -25,11 +25,19 @@ class SignupActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
 
         binding.signUpButton.setOnClickListener {
+            //calls to UserData
             val signupUsername = binding.signupUsername.text.toString()
             val signupPassword = binding.signupPassword.text.toString()
+            val firstName = binding.firstName.text.toString()
+            val lastName = binding.lastName.text.toString()
+            val phone = binding.phone.text.toString()
+            val studentID = binding.studentID.text.toString().trim()//Removes extra spacing
 
-            if (signupUsername.isNotEmpty() && signupPassword.isNotEmpty()) {
-                signupUser(signupUsername, signupPassword)
+            //All fields must be filled(Can make any optional if desired)
+            if (signupUsername.isNotEmpty() && signupPassword.isNotEmpty() &&
+                firstName.isNotEmpty() && lastName.isNotEmpty() &&
+                phone.isNotEmpty() && studentID.isNotEmpty()) {
+                signupUser(signupUsername, signupPassword,firstName, lastName, phone, studentID)
             } else {
                 Toast.makeText(this, "All fields are mandatory!!", Toast.LENGTH_SHORT).show()
             }
@@ -41,14 +49,16 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    private fun signupUser(username: String, password: String) {
+    private fun signupUser(username: String, password: String, firstName:String, lastname:String,phone:String,studentID:String) {
+        //??
         databaseReference.orderByChild("username").equalTo(username)
             .addListenerForSingleValueEvent(object : ValueEventListener {
+                //??
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (!snapshot.exists()) {
                         val id = databaseReference.push().key
                         if (id != null) {
-                            val userData = UserData(id, username, password)
+                            val userData = UserData(id, username, password, phone, studentID)
                             databaseReference.child(id).setValue(userData)
                             Toast.makeText(this@SignupActivity, "Signup Successful", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@SignupActivity, LoginActivity::class.java))

@@ -4,7 +4,7 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\c3c0debdc4d0c9ca5445d39c891bd029\\transformed\\appcompat-1.7.1\\res\\values-v26\\values-v26.xml",
+                    "source": "/Users/tacocat/.gradle/caches/8.13/transforms/c3c0debdc4d0c9ca5445d39c891bd029/transformed/appcompat-1.7.1/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",
