@@ -2,6 +2,7 @@ gitignore
 # Gradle files
 ../.gradle/
 build/
+app/build/
 
 # Local configuration file (SDK path, etc.) - IMPORTANT
 local.properties
