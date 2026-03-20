@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
                 val testDrink = Drink_Menu(
                     name = "Test Drink",
                     Drink_Type = "Cold",
-                    price = 2,
                     ingredients = listOf("Ingredient1", "Ingredient2")
                 )
                 addItem(testDrink) // adds the drink to Firebase
@@ -101,7 +100,7 @@ class MainActivity : ComponentActivity() {
                             items(drinksList.value) { drink ->
                                 Text(
                                     //Update for better list UI??
-                                    text = "${drink.name} ${drink.Drink_Type}: ${drink.ingredients.joinToString(", ")}, it costs $${drink.price}",
+                                    text = "${drink.name} ${drink.Drink_Type}: ${drink.ingredients.joinToString(", ")}",
                                     modifier = Modifier.padding(vertical = 4.dp)
                                 )
                             }
@@ -116,15 +115,30 @@ class MainActivity : ComponentActivity() {
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 // Function to add or update a user
 fun addItem(drink: Drink_Menu) {
-    fun addItem(drink: Drink_Menu): String? {
-        val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return null
-        drink.id = drinkId
+    // Use a push() key for a new, unique entry, or a specific ID if known
+    val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return
+    drink.id = drinkId // Store the ID within the object
 
-        drinksRef.child(drinkId).setValue(drink)
-        return drinkId
+    drinksRef.child(drinkId).setValue(drink)
+    /*
+    //Toasts to indicate add
+    .addOnSuccessListener {
+        // Handle success (e.g., show a Toast)
     }
+    .addOnFailureListener {
+        // Handle failure
+    }
+    */
 }
 
 fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
+    /*
+    .addOnSuccessListener {
+        // Handle success
+    }
+    .addOnFailureListener {
+        // Handle failure
+    }
+    */
 }
