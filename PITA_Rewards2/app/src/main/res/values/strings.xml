@@ -13,4 +13,9 @@
     <string name="phone">Phone</string>
     <string name="studentID">Student ID</string>
     <string name="signup_button">Sign Up</string>
+    <string name="user">Hello User!</string>
+    <string-array name="locations">
+        <item>Courtyard Cafe</item>
+        <item>Steamery</item>
+    </string-array>
 </resources>

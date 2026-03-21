@@ -13,12 +13,17 @@ drawable coffee_logo
 drawable done_icon
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable menu_background
 drawable password_icon
 font ngetic
+id TestButton
+id account
 id background
+id basket
 id firstName
 id header
 id lastName
+id login
 id loginButton
 id loginPassword
 id loginRedirect

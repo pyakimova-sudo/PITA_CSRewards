@@ -17,12 +17,12 @@ public final class ActivityAccountBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ConstraintLayout main;
+  public final ConstraintLayout account;
 
   private ActivityAccountBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout main) {
+      @NonNull ConstraintLayout account) {
     this.rootView = rootView;
-    this.main = main;
+    this.account = account;
   }
 
   @Override
@@ -52,8 +52,8 @@ public final class ActivityAccountBinding implements ViewBinding {
       throw new NullPointerException("rootView");
     }
 
-    ConstraintLayout main = (ConstraintLayout) rootView;
+    ConstraintLayout account = (ConstraintLayout) rootView;
 
-    return new ActivityAccountBinding((ConstraintLayout) rootView, main);
+    return new ActivityAccountBinding((ConstraintLayout) rootView, account);
   }
 }

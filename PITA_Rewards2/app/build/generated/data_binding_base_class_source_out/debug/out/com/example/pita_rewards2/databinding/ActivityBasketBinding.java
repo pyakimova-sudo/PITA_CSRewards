@@ -17,12 +17,12 @@ public final class ActivityBasketBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ConstraintLayout main;
+  public final ConstraintLayout basket;
 
   private ActivityBasketBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout main) {
+      @NonNull ConstraintLayout basket) {
     this.rootView = rootView;
-    this.main = main;
+    this.basket = basket;
   }
 
   @Override
@@ -52,8 +52,8 @@ public final class ActivityBasketBinding implements ViewBinding {
       throw new NullPointerException("rootView");
     }
 
-    ConstraintLayout main = (ConstraintLayout) rootView;
+    ConstraintLayout basket = (ConstraintLayout) rootView;
 
-    return new ActivityBasketBinding((ConstraintLayout) rootView, main);
+    return new ActivityBasketBinding((ConstraintLayout) rootView, basket);
   }
 }
