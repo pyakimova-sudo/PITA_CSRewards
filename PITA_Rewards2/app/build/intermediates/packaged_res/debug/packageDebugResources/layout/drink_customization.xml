@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Drink Name -->
+    <EditText
+        android:id="@+id/drinkNameInput"
+        android:hint="Drink Name Placeholder???"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Size Selection (Using Spinner instead of RadioButton) -->
+    <TextView
+        android:text="Select Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/sizeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Milk Selection -->
+    <TextView
+        android:text="Milk Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/milkSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Sweetness Level -->
+    <TextView
+        android:text="Sweetness Level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/sweetnessLevelSpinner"
+        android:max="100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitDrink"
+        android:text="Add To Basket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
