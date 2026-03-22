@@ -8,18 +8,6 @@
     tools:context=".Basket"
     android:background="@drawable/menu_background">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Basket"
-            android:gravity="center"/>
-
-    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:background="#C2C5AA"
@@ -30,6 +18,7 @@
         android:layout_alignParentBottom="true"
         app:itemTextColor="#414833"
         app:itemIconTint="#414833"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        android:fitsSystemWindows="true"/>
 
 </RelativeLayout>

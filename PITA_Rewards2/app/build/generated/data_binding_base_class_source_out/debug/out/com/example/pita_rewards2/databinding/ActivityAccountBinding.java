@@ -4,7 +4,9 @@ package com.example.pita_rewards2.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -25,11 +27,20 @@ public final class ActivityAccountBinding implements ViewBinding {
   @NonNull
   public final BottomNavigationView bottomNavigation;
 
+  @NonNull
+  public final LinearLayout topbar;
+
+  @NonNull
+  public final TextView username;
+
   private ActivityAccountBinding(@NonNull RelativeLayout rootView, @NonNull RelativeLayout account,
-      @NonNull BottomNavigationView bottomNavigation) {
+      @NonNull BottomNavigationView bottomNavigation, @NonNull LinearLayout topbar,
+      @NonNull TextView username) {
     this.rootView = rootView;
     this.account = account;
     this.bottomNavigation = bottomNavigation;
+    this.topbar = topbar;
+    this.username = username;
   }
 
   @Override
@@ -67,7 +78,20 @@ public final class ActivityAccountBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAccountBinding((RelativeLayout) rootView, account, bottomNavigation);
+      id = R.id.topbar;
+      LinearLayout topbar = ViewBindings.findChildViewById(rootView, id);
+      if (topbar == null) {
+        break missingId;
+      }
+
+      id = R.id.username;
+      TextView username = ViewBindings.findChildViewById(rootView, id);
+      if (username == null) {
+        break missingId;
+      }
+
+      return new ActivityAccountBinding((RelativeLayout) rootView, account, bottomNavigation,
+          topbar, username);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

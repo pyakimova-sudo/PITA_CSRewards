@@ -4256,6 +4256,7 @@ id unlabeled
 id up
 id useLogo
 id user
+id username
 id vertical
 id vertical_only
 id view_offset_helper
@@ -4517,6 +4518,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string account
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4753,9 +4755,11 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string phone
 string please_login
+string points
 string project_id
 string range_end
 string range_start
+string rewardPointsText
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
@@ -5209,6 +5213,7 @@ style ShapeAppearance_MaterialComponents_MediumComponent
 style ShapeAppearance_MaterialComponents_SmallComponent
 style ShapeAppearance_MaterialComponents_Tooltip
 style ShapeAppearanceOverlay_Custom
+style ShapeAppearanceOverlay_Custom2
 style ShapeAppearanceOverlay_Material3_Button
 style ShapeAppearanceOverlay_Material3_Chip
 style ShapeAppearanceOverlay_Material3_Corner_Bottom

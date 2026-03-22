@@ -14,6 +14,9 @@
     <string name="studentID">Student ID</string>
     <string name="signup_button">Sign Up</string>
     <string name="user">Hello User!</string>
+    <string name="account">Profile</string>
+    <string name="rewardPointsText">Reward Points:</string>
+    <string name="points">0</string>
     <string-array name="locations">
         <item>Courtyard Cafe</item>
         <item>Steamery</item>

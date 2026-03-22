@@ -9,13 +9,57 @@
     android:background="@drawable/menu_background">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Custom"
+        app:cardBackgroundColor="#C2C5AA">
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/username"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account"/>
+            android:text="@string/account"
+            android:gravity="center"
+            android:fontFamily="@font/ngetic"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/maple_primary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rewardPointsText"
+                android:fontFamily="@font/ngetic"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textColor="#414833"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/points"
+                android:fontFamily="@font/ngetic"
+                android:gravity="center"
+                android:textColor="@color/maple_primary"
+                android:textStyle="bold"
+                android:textSize="100sp"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
@@ -26,9 +70,9 @@
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
         app:itemTextColor="#414833"
         app:itemIconTint="#414833"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        android:fitsSystemWindows="true"/>
 
 </RelativeLayout>
