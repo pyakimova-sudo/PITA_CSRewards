@@ -4,13 +4,16 @@ package com.example.pita_rewards2.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.pita_rewards2.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,16 +23,29 @@ public final class ActivityMainBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
-  public final Button TestButton;
+  public final BottomNavigationView bottomNavigation;
+
+  @NonNull
+  public final Spinner locationDropdown;
 
   @NonNull
   public final RelativeLayout main;
 
-  private ActivityMainBinding(@NonNull RelativeLayout rootView, @NonNull Button TestButton,
-      @NonNull RelativeLayout main) {
+  @NonNull
+  public final LinearLayout topbar;
+
+  @NonNull
+  public final TextView user;
+
+  private ActivityMainBinding(@NonNull RelativeLayout rootView,
+      @NonNull BottomNavigationView bottomNavigation, @NonNull Spinner locationDropdown,
+      @NonNull RelativeLayout main, @NonNull LinearLayout topbar, @NonNull TextView user) {
     this.rootView = rootView;
-    this.TestButton = TestButton;
+    this.bottomNavigation = bottomNavigation;
+    this.locationDropdown = locationDropdown;
     this.main = main;
+    this.topbar = topbar;
+    this.user = user;
   }
 
   @Override
@@ -59,15 +75,34 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.TestButton;
-      Button TestButton = ViewBindings.findChildViewById(rootView, id);
-      if (TestButton == null) {
+      id = R.id.bottom_navigation;
+      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavigation == null) {
+        break missingId;
+      }
+
+      id = R.id.location_dropdown;
+      Spinner locationDropdown = ViewBindings.findChildViewById(rootView, id);
+      if (locationDropdown == null) {
         break missingId;
       }
 
       RelativeLayout main = (RelativeLayout) rootView;
 
-      return new ActivityMainBinding((RelativeLayout) rootView, TestButton, main);
+      id = R.id.topbar;
+      LinearLayout topbar = ViewBindings.findChildViewById(rootView, id);
+      if (topbar == null) {
+        break missingId;
+      }
+
+      id = R.id.user;
+      TextView user = ViewBindings.findChildViewById(rootView, id);
+      if (user == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((RelativeLayout) rootView, bottomNavigation, locationDropdown,
+          main, topbar, user);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

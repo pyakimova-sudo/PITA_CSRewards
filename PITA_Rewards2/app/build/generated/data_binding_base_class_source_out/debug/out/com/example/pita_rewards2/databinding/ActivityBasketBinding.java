@@ -4,30 +4,37 @@ package com.example.pita_rewards2.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.pita_rewards2.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class ActivityBasketBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
-  public final ConstraintLayout basket;
+  public final RelativeLayout basket;
 
-  private ActivityBasketBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout basket) {
+  @NonNull
+  public final BottomNavigationView bottomNavigation;
+
+  private ActivityBasketBinding(@NonNull RelativeLayout rootView, @NonNull RelativeLayout basket,
+      @NonNull BottomNavigationView bottomNavigation) {
     this.rootView = rootView;
     this.basket = basket;
+    this.bottomNavigation = bottomNavigation;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -48,12 +55,21 @@ public final class ActivityBasketBinding implements ViewBinding {
 
   @NonNull
   public static ActivityBasketBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      RelativeLayout basket = (RelativeLayout) rootView;
+
+      id = R.id.bottom_navigation;
+      BottomNavigationView bottomNavigation = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavigation == null) {
+        break missingId;
+      }
+
+      return new ActivityBasketBinding((RelativeLayout) rootView, basket, bottomNavigation);
     }
-
-    ConstraintLayout basket = (ConstraintLayout) rootView;
-
-    return new ActivityBasketBinding((ConstraintLayout) rootView, basket);
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

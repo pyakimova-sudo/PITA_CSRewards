@@ -4,6 +4,10 @@
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/done_icon.xml"
     },
     {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_home_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_home_24.xml"
+    },
+    {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/mipmap-anydpi-v26/ic_launcher.xml"
     },
@@ -24,6 +28,14 @@
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/layout/activity_signup.xml"
     },
     {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_add_location_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_add_location_24.xml"
+    },
+    {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_home_pin_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_home_pin_24.xml"
+    },
+    {
         "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_account.xml.flat",
         "source": "com.example.pita_rewards2.app-main-63:/layout/activity_account.xml"
     },
@@ -36,12 +48,12 @@
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_password_icon.xml.flat",
-        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/password_icon.xml"
-    },
-    {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/xml_data_extraction_rules.xml.flat",
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_password_icon.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/password_icon.xml"
     },
     {
         "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_basket.xml.flat",
@@ -56,8 +68,16 @@
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_add_shopping_cart_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_add_shopping_cart_24.xml"
+    },
+    {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/menu_bottom_navigation_menu.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/menu/bottom_navigation_menu.xml"
     },
     {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/layout_activity_account.xml.flat",
@@ -84,8 +104,12 @@
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/layout/activity_startscreen.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_main.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_main.xml"
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_account_circle_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_account_circle_24.xml"
+    },
+    {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_outline_globe_location_pin_24.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/outline_globe_location_pin_24.xml"
     },
     {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
@@ -126,5 +150,9 @@
     {
         "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_background.png.flat",
         "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/background.png"
+    },
+    {
+        "merged": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-debug-61:/drawable_location.xml.flat",
+        "source": "/Users/pavlayakimova/.gradle/daemon/9.3.1/com.example.pita_rewards2.app-main-63:/drawable/location.xml"
     }
 ]

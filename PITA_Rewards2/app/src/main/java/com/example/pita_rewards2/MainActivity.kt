@@ -1,6 +1,8 @@
 package com.example.pita_rewards2
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,8 +18,13 @@ import androidx.compose.ui.unit.dp
 import com.example.pita_rewards2.databinding.ActivityLoginBinding
 import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
+import android.widget.Spinner
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var navigation : BottomNavigationView
 
     private lateinit var binding: ActivityMainBinding
 
@@ -29,6 +36,32 @@ class MainActivity : ComponentActivity() {
 
         val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 
+        val spinner: Spinner = findViewById(R.id.location_dropdown)
+        ArrayAdapter.createFromResource(this, R.array.locations, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        navigation =  findViewById(R.id.bottom_navigation)
+
+        navigation.selectedItemId = R.id.home
+
+        navigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.account -> {
+                    startActivity(Intent(this, Account::class.java))
+                    finish()
+                    true
+                }
+                R.id.basket -> {
+                    startActivity(Intent(this, Basket::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
         //setContent {
           //  val drinksList = remember { mutableStateOf<List<Drink_Menu>>(emptyList()) }
             //val isLoading = remember { mutableStateOf(true) }
