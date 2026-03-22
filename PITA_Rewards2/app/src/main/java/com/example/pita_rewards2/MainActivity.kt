@@ -18,13 +18,13 @@ import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
-    private lateinit var qrScan: Button
+    //private lateinit var qrScan: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
-        qrScan = findViewById(R.id.qr_scan)
+        //qrScan = findViewById(R.id.qr_scan)
 
         //qrScan.setOnClickListener {
         //    startActivity(Intent(this, qrscanner::class.java))
@@ -130,11 +130,11 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         Button(onClick = {
-                            val intent = Intent(context, qrscanner::class.java)
+                            val intent = Intent(context, Basket::class.java)
                             context.startActivity(intent)
                             finish()
                         }) {
-                            Text("QR Scanner")
+                            Text("View Basket")
                         }
                     }
                 }

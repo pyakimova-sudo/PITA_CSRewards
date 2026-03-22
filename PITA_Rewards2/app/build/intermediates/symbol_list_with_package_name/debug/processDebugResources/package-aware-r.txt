@@ -3822,6 +3822,7 @@ id availableSpace
 id axisRelative
 id barrier
 id baseline
+id basket
 id beginOnFirstDraw
 id beginning
 id below
@@ -4537,6 +4538,7 @@ string app_name
 string app_version
 string appbar_scrolling_view_behavior
 string autofill
+string basket
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
 string bottomsheet_action_expand

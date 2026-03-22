@@ -15,6 +15,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable password_icon
 font ngetic
+id basket
 id header
 id loginButton
 id loginPassword
@@ -36,6 +37,7 @@ layout activity_startscreen
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string basket
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

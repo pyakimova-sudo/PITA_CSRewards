@@ -9,4 +9,5 @@
     <string name="login_button">Login</string>
     <string name="qr_scan">Scan QR</string>
     <string name="scanned_value">Scanned Value</string>
+    <string name="basket">View Basket</string>
 </resources>

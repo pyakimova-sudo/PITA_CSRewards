@@ -20,11 +20,11 @@ public final class ActivityMainBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button qrScan;
+  public final Button basket;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button qrScan) {
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button basket) {
     this.rootView = rootView;
-    this.qrScan = qrScan;
+    this.basket = basket;
   }
 
   @Override
@@ -54,13 +54,13 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.qr_scan;
-      Button qrScan = ViewBindings.findChildViewById(rootView, id);
-      if (qrScan == null) {
+      id = R.id.basket;
+      Button basket = ViewBindings.findChildViewById(rootView, id);
+      if (basket == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, qrScan);
+      return new ActivityMainBinding((ConstraintLayout) rootView, basket);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
