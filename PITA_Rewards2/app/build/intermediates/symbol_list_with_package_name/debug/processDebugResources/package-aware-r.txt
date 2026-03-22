@@ -4745,6 +4745,7 @@ string nav_rail_collapsed_a11y_label
 string nav_rail_expanded_a11y_label
 string navigation_menu
 string not_selected
+string one
 string password
 string password_toggle_content_description
 string path_password_eye
@@ -4774,11 +4775,13 @@ string subTotal
 string switch_role
 string tab
 string template_percent
+string title
 string tooltip_description
 string tooltip_label
 string total
 string username
 string welcome
+string zero_dollars
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

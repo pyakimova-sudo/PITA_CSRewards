@@ -67,6 +67,7 @@ string google_storage_bucket
 string login_button
 string login_title
 string minus
+string one
 string password
 string please_login
 string plus
@@ -74,9 +75,11 @@ string points
 string project_id
 string sign_up_prompt
 string subTotal
+string title
 string total
 string username
 string welcome
+string zero_dollars
 style Base.Theme.PITA_Rewards2
 style Theme.PITA_Rewards2
 xml backup_rules

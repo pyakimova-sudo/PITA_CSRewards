@@ -29,83 +29,83 @@
 20-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:26:22-94
 21
 22    <application
-22-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-46:19
+22-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:4:5-45:19
 23        android:allowBackup="true"
-23-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:6:9-35
+23-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 24-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:28:18-86
 25        android:dataExtractionRules="@xml/data_extraction_rules"
-25-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:7:9-65
+25-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:6:9-65
 26        android:debuggable="true"
 27        android:extractNativeLibs="false"
 28        android:fullBackupContent="@xml/backup_rules"
-28-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:8:9-54
+28-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:7:9-54
 29        android:icon="@mipmap/ic_launcher"
-29-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:9:9-43
+29-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:8:9-43
 30        android:label="@string/app_name"
-30-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:10:9-41
+30-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:9:9-41
 31        android:roundIcon="@mipmap/ic_launcher_round"
-31-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:11:9-54
+31-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:10:9-54
 32        android:supportsRtl="true"
-32-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:12:9-35
+32-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:11:9-35
 33        android:theme="@style/Theme.PITA_Rewards2" >
-33-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:13:9-51
+33-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:12:9-51
 34        <activity
-34-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:14:9-16:40
+34-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:13:9-15:40
 35            android:name="com.example.pita_rewards2.Basket"
-35-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:15:13-35
+35-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:14:13-35
 36            android:exported="false" />
-36-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:16:13-37
+36-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:15:13-37
 37        <activity
-37-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:17:9-19:40
+37-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:16:9-18:40
 38            android:name="com.example.pita_rewards2.Startscreen"
-38-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:18:13-40
+38-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:17:13-40
 39            android:exported="false" />
-39-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:19:13-37
+39-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:18:13-37
 40        <activity
-40-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:20:9-22:40
+40-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:19:9-21:40
 41            android:name="com.example.pita_rewards2.Account"
-41-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:21:13-36
+41-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:20:13-36
 42            android:exported="false" />
-42-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:22:13-37
+42-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:21:13-37
 43        <activity
-43-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:23:9-31:20
+43-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:22:9-30:20
 44            android:name="com.example.pita_rewards2.LoginActivity"
-44-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:24:13-42
+44-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:23:13-42
 45            android:exported="true" >
-45-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:25:13-36
+45-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:24:13-36
 46            <intent-filter>
-46-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:13-30:29
+46-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:25:13-29:29
 47                <action android:name="android.intent.action.MAIN" />
-47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:17-69
-47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:25-66
+47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:17-69
+47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:25-66
 48
 49                <category android:name="android.intent.category.LAUNCHER" />
-49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:17-77
-49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:27-74
+49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:28:17-77
+49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:28:27-74
 50            </intent-filter>
 51        </activity>
 52        <activity
-52-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:33:9-35:40
+52-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:32:9-34:40
 53            android:name="com.example.pita_rewards2.SignupActivity"
-53-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:34:13-43
+53-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:33:13-43
 54            android:exported="false" />
-54-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:35:13-37
+54-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:34:13-37
 55        <activity
-55-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:36:9-44:20
+55-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:35:9-43:20
 56            android:name="com.example.pita_rewards2.MainActivity"
-56-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:37:13-41
+56-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:36:13-41
 57            android:exported="true" >
-57-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:38:13-36
+57-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:37:13-36
 58            <intent-filter>
-58-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:13-30:29
+58-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:25:13-29:29
 59                <action android:name="android.intent.action.MAIN" />
-59-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:17-69
-59-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:25-66
+59-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:17-69
+59-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:25-66
 60
 61                <category android:name="android.intent.category.LAUNCHER" />
-61-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:17-77
-61-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:27-74
+61-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:28:17-77
+61-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:28:27-74
 62            </intent-filter>
 63        </activity>
 64
