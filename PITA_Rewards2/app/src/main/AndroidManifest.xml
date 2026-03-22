@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
+            android:name=".qrscanner"
+            android:exported="false" />
+        <activity
             android:name=".Basket"
             android:exported="false" />
         <activity
@@ -29,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Login"
             android:exported="false" />
@@ -45,7 +47,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name = "com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
     </application>
 
 </manifest>

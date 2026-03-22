@@ -20,6 +20,8 @@ id loginButton
 id loginPassword
 id loginUsername
 id main
+id qr_scan
+id scanned_value
 id signUpButton
 id signupPassword
 id signupRedirect
@@ -28,6 +30,7 @@ layout activity_account
 layout activity_basket
 layout activity_login
 layout activity_main
+layout activity_qrscanner
 layout activity_signup
 layout activity_startscreen
 mipmap ic_launcher
@@ -43,6 +46,8 @@ string login_title
 string password
 string please_login
 string project_id
+string qr_scan
+string scanned_value
 string sign_up_prompt
 string username
 string welcome

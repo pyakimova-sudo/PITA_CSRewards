@@ -13,17 +13,41 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.firebase.database.*
+import android.widget.Button
+import android.content.Intent
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
+    private lateinit var qrScan: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
+        qrScan = findViewById(R.id.qr_scan)
+
+        //qrScan.setOnClickListener {
+        //    startActivity(Intent(this, qrscanner::class.java))
+        //    finish()
+        //}
+
+        //fun initiateQR() {
+        //    qrScan.setOnClickListener{
+        //        startActivity(Intent(this, qrscanner::class.java))
+        //        finish()
+        //    }
+        //}
 
         setContent {
             val drinksList = remember { mutableStateOf<List<Drink_Menu>>(emptyList()) }
             val isLoading = remember { mutableStateOf(true) }
+            val context = LocalContext.current
+
+            //initiateQR()
+            //qrScan.setOnClickListener {
+            //    startActivity(Intent(this, qrscanner::class.java))
+            //    finish()
+            //}
 
             // Load drinks from Firebase
             LaunchedEffect(Unit) {
@@ -105,11 +129,24 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         }
+                        Button(onClick = {
+                            val intent = Intent(context, qrscanner::class.java)
+                            context.startActivity(intent)
+                            finish()
+                        }) {
+                            Text("QR Scanner")
+                        }
                     }
                 }
             }
         }
     }
+    //private fun initiateQR() {
+    //    qrScan.setOnClickListener{
+    //        startActivity(Intent(this, qrscanner::class.java))
+    //        finish()
+    //    }
+    //}
 }
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")

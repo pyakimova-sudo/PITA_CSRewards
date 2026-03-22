@@ -1,114 +1,122 @@
 [
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/font_ngetic.otf.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/font/ngetic.otf"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_border.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/border.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_startscreen.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_startscreen.xml"
+        "merged": "com.example.pita_rewards2.app-debug-62:/layout_activity_main.xml.flat",
+        "source": "com.example.pita_rewards2.app-main-64:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/xml_backup_rules.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/xml/backup_rules.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/xml_backup_rules.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_done_icon.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/done_icon.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_account.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_account.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_basket.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_basket.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_done_icon.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/done_icon.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_password_icon.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/password_icon.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_background.png.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/background.png"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_login.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_login.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_basket.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_basket.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_account.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_account.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_main.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_signup.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_signup.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_coffee_logo.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/coffee_logo.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_password_icon.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/password_icon.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_border.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/border.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_startscreen.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_startscreen.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_background.png.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/background.png"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_login.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_login.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_signup.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_signup.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/xml/data_extraction_rules.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/layout_activity_main.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_main.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/font_ngetic.otf.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/font/ngetic.otf"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/drawable_coffee_logo.xml.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/drawable/coffee_logo.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-debug-61:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.pita_rewards2.app-main-63:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-debug-62:/layout_activity_qrscanner.xml.flat",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_qrscanner.xml"
     }
 ]

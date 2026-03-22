@@ -7,4 +7,6 @@
     <string name="password">Password</string>
     <string name="sign_up_prompt">New User? Sign Up Here</string>
     <string name="login_button">Login</string>
+    <string name="qr_scan">Scan QR</string>
+    <string name="scanned_value">Scanned Value</string>
 </resources>

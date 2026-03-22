@@ -1,26 +1,34 @@
 [
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_basket.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_basket.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_qrscanner.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_qrscanner.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_login.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_login.xml"
+        "merged": "com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_main.xml",
+        "source": "com.example.pita_rewards2.app-main-64:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_startscreen.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_startscreen.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_basket.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_basket.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_account.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_account.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_login.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_login.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_signup.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_signup.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_startscreen.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_startscreen.xml"
     },
     {
-        "merged": "com.example.pita_rewards2.app-mergeDebugResources-60:/layout/activity_main.xml",
-        "source": "com.example.pita_rewards2.app-main-63:/layout/activity_main.xml"
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_main.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_signup.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-mergeDebugResources-61:/layout/activity_account.xml",
+        "source": "/Users/tannhadl/.gradle/daemon/8.13/com.example.pita_rewards2.app-main-64:/layout/activity_account.xml"
     }
 ]

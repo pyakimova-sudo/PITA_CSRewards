@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-v28/values-v28.xml",
+            "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-60:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\c3c0debdc4d0c9ca5445d39c891bd029\\transformed\\appcompat-1.7.1\\res\\values-v28\\values-v28.xml",
+                    "source": "/Users/tannhadl/.gradle/caches/8.13/transforms/581da060a7cb8c4268e42f4d56342d5c/transformed/appcompat-1.7.1/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\ccd660995449e4066bb2edeae53ebabd\\transformed\\material-1.13.0\\res\\values-v28\\values-v28.xml",
+                    "source": "/Users/tannhadl/.gradle/caches/8.13/transforms/148a4dd0f5aa0b89505f455cff84b831/transformed/material-1.13.0/res/values-v28/values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",

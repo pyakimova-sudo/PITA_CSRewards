@@ -11,247 +11,308 @@
 11    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 12    <!-- <uses-sdk android:minSdkVersion="21"/> -->
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:22:5-79
-13-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:22:22-76
+13-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:22:5-79
+13-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:22:22-76
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:23:5-67
-14-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:23:22-64
+14-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:23:5-67
+14-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:23:22-64
 15
 16    <permission
-16-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:22:5-24:47
+16-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:22:5-24:47
 17        android:name="com.example.pita_rewards2.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-17-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:23:9-81
+17-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:23:9-81
 18        android:protectionLevel="signature" />
-18-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:24:9-44
+18-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:24:9-44
 19
 20    <uses-permission android:name="com.example.pita_rewards2.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-20-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:26:5-97
-20-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:26:22-94
-21
-22    <application
-22-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-49:19
-23        android:allowBackup="true"
-23-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:6:9-35
-24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-24-->[androidx.core:core:1.18.0] C:\Users\Lex\.gradle\caches\8.13\transforms\6bc306e56f9caeadb2cc3aac5c5a4e55\transformed\core-1.18.0\AndroidManifest.xml:28:18-86
-25        android:dataExtractionRules="@xml/data_extraction_rules"
-25-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:7:9-65
-26        android:debuggable="true"
-27        android:extractNativeLibs="false"
-28        android:fullBackupContent="@xml/backup_rules"
-28-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:8:9-54
-29        android:icon="@mipmap/ic_launcher"
-29-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:9:9-43
-30        android:label="@string/app_name"
-30-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:10:9-41
-31        android:roundIcon="@mipmap/ic_launcher_round"
-31-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:11:9-54
-32        android:supportsRtl="true"
-32-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:12:9-35
-33        android:theme="@style/Theme.PITA_Rewards2" >
-33-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:13:9-51
-34        <activity
-34-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:14:9-16:40
-35            android:name="com.example.pita_rewards2.Basket"
-35-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:15:13-35
-36            android:exported="false" />
-36-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:16:13-37
-37        <activity
-37-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:17:9-19:40
-38            android:name="com.example.pita_rewards2.Startscreen"
-38-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:18:13-40
-39            android:exported="false" />
-39-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:19:13-37
-40        <activity
-40-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:20:9-22:40
-41            android:name="com.example.pita_rewards2.Account"
-41-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:21:13-36
-42            android:exported="false" />
-42-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:22:13-37
-43        <activity
-43-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:23:9-31:20
-44            android:name="com.example.pita_rewards2.LoginActivity"
-44-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:24:13-42
-45            android:exported="true" >
-45-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:25:13-36
-46            <intent-filter>
-46-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:13-30:29
-47                <action android:name="android.intent.action.MAIN" />
-47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:17-69
-47-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:25-66
-48
-49                <category android:name="android.intent.category.LAUNCHER" />
-49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:17-77
-49-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:27-74
-50            </intent-filter>
-51        </activity>
-52        <activity
-52-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:33:9-35:40
-53            android:name="com.example.pita_rewards2.Login"
-53-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:34:13-34
-54            android:exported="false" />
-54-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:35:13-37
+20-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:26:5-97
+20-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:26:22-94
+21    <uses-permission android:name="android.permission.CAMERA" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+21-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:5-65
+21-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:22:22-62
+22    <uses-feature
+22-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:25:5-27:36
+23        android:name="android.hardware.camera"
+23-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:26:9-47
+24        android:required="false" />
+24-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:27:9-33
+25    <uses-feature
+25-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:28:5-30:36
+26        android:name="android.hardware.camera.front"
+26-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:29:9-53
+27        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+27-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:30:9-33
+28    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+29    <uses-feature
+29-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:33:5-35:36
+30        android:name="android.hardware.camera.autofocus"
+30-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:34:9-57
+31        android:required="false" />
+31-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:35:9-33
+32    <uses-feature
+32-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:36:5-38:36
+33        android:name="android.hardware.camera.flash"
+33-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:37:9-53
+34        android:required="false" />
+34-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:38:9-33
+35    <uses-feature
+35-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:39:5-41:36
+36        android:name="android.hardware.screen.landscape"
+36-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:40:9-57
+37        android:required="false" />
+37-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:41:9-33
+38    <uses-feature
+38-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:42:5-44:36
+39        android:name="android.hardware.wifi"
+39-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:43:9-45
+40        android:required="false" />
+40-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:44:9-33
+41
+42    <application
+42-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:5:5-53:19
+43        android:allowBackup="true"
+43-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:6:9-35
+44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+44-->[androidx.core:core:1.18.0] /Users/tannhadl/.gradle/caches/8.13/transforms/a92a7816625402fe4501389f21c951ea/transformed/core-1.18.0/AndroidManifest.xml:28:18-86
+45        android:dataExtractionRules="@xml/data_extraction_rules"
+45-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:7:9-65
+46        android:debuggable="true"
+47        android:extractNativeLibs="false"
+48        android:fullBackupContent="@xml/backup_rules"
+48-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:8:9-54
+49        android:icon="@mipmap/ic_launcher"
+49-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:9:9-43
+50        android:label="@string/app_name"
+50-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:10:9-41
+51        android:roundIcon="@mipmap/ic_launcher_round"
+51-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:11:9-54
+52        android:supportsRtl="true"
+52-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:12:9-35
+53        android:testOnly="true"
+54        android:theme="@style/Theme.PITA_Rewards2" >
+54-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:13:9-51
 55        <activity
-55-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:36:9-38:40
-56            android:name="com.example.pita_rewards2.SignupActivity"
-56-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:37:13-43
+55-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:14:9-16:40
+56            android:name="com.example.pita_rewards2.qrscanner"
+56-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:15:13-38
 57            android:exported="false" />
-57-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:38:13-37
+57-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:16:13-37
 58        <activity
-58-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:39:9-47:20
-59            android:name="com.example.pita_rewards2.MainActivity"
-59-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:40:13-41
-60            android:exported="true" >
-60-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:41:13-36
-61            <intent-filter>
-61-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:26:13-30:29
-62                <action android:name="android.intent.action.MAIN" />
-62-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:17-69
-62-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:27:25-66
-63
-64                <category android:name="android.intent.category.LAUNCHER" />
-64-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:17-77
-64-->C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:27-74
-65            </intent-filter>
-66        </activity>
-67
-68        <service
-68-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:26:9-35:19
-69            android:name="com.google.firebase.components.ComponentDiscoveryService"
-69-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:27:13-84
-70            android:directBootAware="true"
-70-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:32:13-43
-71            android:exported="false" >
-71-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:28:13-37
-72            <meta-data
-72-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:29:13-31:85
-73                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
-73-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:30:17-120
-74                android:value="com.google.firebase.components.ComponentRegistrar" />
-74-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:31:17-82
-75            <meta-data
-75-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:32:13-34:85
-76                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-76-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:33:17-109
-77                android:value="com.google.firebase.components.ComponentRegistrar" />
-77-->[com.google.firebase:firebase-database:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\efcdf60a05bd135febf89ded1270c37a\transformed\firebase-database-22.0.1\AndroidManifest.xml:34:17-82
-78            <meta-data
-78-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:35:13-37:85
-79                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-79-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:36:17-109
-80                android:value="com.google.firebase.components.ComponentRegistrar" />
-80-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:37:17-82
-81        </service>
-82
-83        <activity
-83-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5007a16aabf4ae1d94cd8d1d57bd515a\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
-84            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-84-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5007a16aabf4ae1d94cd8d1d57bd515a\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
-85            android:exported="false"
-85-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5007a16aabf4ae1d94cd8d1d57bd515a\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
-86            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-86-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5007a16aabf4ae1d94cd8d1d57bd515a\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+58-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:17:9-19:40
+59            android:name="com.example.pita_rewards2.Basket"
+59-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:18:13-35
+60            android:exported="false" />
+60-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:19:13-37
+61        <activity
+61-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:20:9-22:40
+62            android:name="com.example.pita_rewards2.Startscreen"
+62-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:21:13-40
+63            android:exported="false" />
+63-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:22:13-37
+64        <activity
+64-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:23:9-25:40
+65            android:name="com.example.pita_rewards2.Account"
+65-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:24:13-36
+66            android:exported="false" />
+66-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:25:13-37
+67        <activity
+67-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:26:9-34:20
+68            android:name="com.example.pita_rewards2.LoginActivity"
+68-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:27:13-42
+69            android:exported="true" >
+69-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:28:13-36
+70            <intent-filter>
+70-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:29:13-33:29
+71                <action android:name="android.intent.action.MAIN" />
+71-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:30:17-69
+71-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:30:25-66
+72
+73                <category android:name="android.intent.category.LAUNCHER" />
+73-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:32:17-77
+73-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:32:27-74
+74            </intent-filter>
+75        </activity>
+76        <activity
+76-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:35:9-37:40
+77            android:name="com.example.pita_rewards2.Login"
+77-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:36:13-34
+78            android:exported="false" />
+78-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:37:13-37
+79        <activity
+79-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:38:9-40:40
+80            android:name="com.example.pita_rewards2.SignupActivity"
+80-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:39:13-43
+81            android:exported="false" />
+81-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:40:13-37
+82        <activity
+82-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:41:9-49:20
+83            android:name="com.example.pita_rewards2.MainActivity"
+83-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:42:13-41
+84            android:exported="true" >
+84-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:43:13-36
+85            <intent-filter>
+85-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:29:13-33:29
+86                <action android:name="android.intent.action.MAIN" />
+86-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:30:17-69
+86-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:30:25-66
 87
-88        <provider
-88-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:23:9-28:39
-89            android:name="com.google.firebase.provider.FirebaseInitProvider"
-89-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:24:13-77
-90            android:authorities="com.example.pita_rewards2.firebaseinitprovider"
-90-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:25:13-72
-91            android:directBootAware="true"
-91-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:26:13-43
-92            android:exported="false"
-92-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:27:13-37
-93            android:initOrder="100" />
-93-->[com.google.firebase:firebase-common:22.0.1] C:\Users\Lex\.gradle\caches\8.13\transforms\44e34f46b070f0b27628a86b01ef2184\transformed\firebase-common-22.0.1\AndroidManifest.xml:28:13-36
-94
-95        <activity
-95-->[androidx.compose.ui:ui-test-manifest:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\1163fea6e1afb8b15509c85491713d50\transformed\ui-test-manifest-1.9.2\AndroidManifest.xml:23:9-26:79
-96            android:name="androidx.activity.ComponentActivity"
-96-->[androidx.compose.ui:ui-test-manifest:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\1163fea6e1afb8b15509c85491713d50\transformed\ui-test-manifest-1.9.2\AndroidManifest.xml:24:13-63
-97            android:exported="true"
-97-->[androidx.compose.ui:ui-test-manifest:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\1163fea6e1afb8b15509c85491713d50\transformed\ui-test-manifest-1.9.2\AndroidManifest.xml:25:13-36
-98            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
-98-->[androidx.compose.ui:ui-test-manifest:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\1163fea6e1afb8b15509c85491713d50\transformed\ui-test-manifest-1.9.2\AndroidManifest.xml:26:13-76
-99        <activity
-99-->[androidx.compose.ui:ui-tooling-android:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\0f8c6f96291e7e4a41d9a0ca7b5ec856\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
-100            android:name="androidx.compose.ui.tooling.PreviewActivity"
-100-->[androidx.compose.ui:ui-tooling-android:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\0f8c6f96291e7e4a41d9a0ca7b5ec856\transformed\ui-tooling\AndroidManifest.xml:24:13-71
-101            android:exported="true" />
-101-->[androidx.compose.ui:ui-tooling-android:1.9.2] C:\Users\Lex\.gradle\caches\8.13\transforms\0f8c6f96291e7e4a41d9a0ca7b5ec856\transformed\ui-tooling\AndroidManifest.xml:25:13-36
-102
-103        <provider
-103-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
-104            android:name="androidx.startup.InitializationProvider"
-104-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
-105            android:authorities="com.example.pita_rewards2.androidx-startup"
-105-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
-106            android:exported="false" >
-106-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
-107            <meta-data
-107-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
-108                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-108-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
-109                android:value="androidx.startup" />
-109-->[androidx.emoji2:emoji2:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\bc6025f15409c7dbb9a8d34c645cfa8a\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
-110            <meta-data
-110-->[androidx.lifecycle:lifecycle-process:2.10.0] C:\Users\Lex\.gradle\caches\8.13\transforms\914f8e1069e62309839484dc9a260688\transformed\lifecycle-process-2.10.0\AndroidManifest.xml:29:13-31:52
-111                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-111-->[androidx.lifecycle:lifecycle-process:2.10.0] C:\Users\Lex\.gradle\caches\8.13\transforms\914f8e1069e62309839484dc9a260688\transformed\lifecycle-process-2.10.0\AndroidManifest.xml:30:17-78
-112                android:value="androidx.startup" />
-112-->[androidx.lifecycle:lifecycle-process:2.10.0] C:\Users\Lex\.gradle\caches\8.13\transforms\914f8e1069e62309839484dc9a260688\transformed\lifecycle-process-2.10.0\AndroidManifest.xml:31:17-49
-113            <meta-data
-113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-114                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-115                android:value="androidx.startup" />
-115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-116        </provider>
-117
-118        <meta-data
-118-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5e7014f2b214b216aadb0c5f33e9788c\transformed\play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
-119            android:name="com.google.android.gms.version"
-119-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5e7014f2b214b216aadb0c5f33e9788c\transformed\play-services-basement-18.3.0\AndroidManifest.xml:22:13-58
-120            android:value="@integer/google_play_services_version" />
-120-->[com.google.android.gms:play-services-basement:18.3.0] C:\Users\Lex\.gradle\caches\8.13\transforms\5e7014f2b214b216aadb0c5f33e9788c\transformed\play-services-basement-18.3.0\AndroidManifest.xml:23:13-66
-121
-122        <receiver
-122-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-123            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-123-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-124            android:directBootAware="false"
-124-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-125            android:enabled="true"
-125-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-126            android:exported="true"
-126-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-127            android:permission="android.permission.DUMP" >
-127-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-128            <intent-filter>
-128-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-129                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-129-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-129-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-130            </intent-filter>
-131            <intent-filter>
-131-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-132                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-132-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-132-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-133            </intent-filter>
-134            <intent-filter>
-134-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-135                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-135-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-135-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-136            </intent-filter>
-137            <intent-filter>
-137-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-138                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-138-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-138-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Lex\.gradle\caches\8.13\transforms\4b8584cf941c623e49e811cecbfc7bb9\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-139            </intent-filter>
-140        </receiver>
-141    </application>
-142
-143</manifest>
+88                <category android:name="android.intent.category.LAUNCHER" />
+88-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:32:17-77
+88-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:32:27-74
+89            </intent-filter>
+90        </activity>
+91        <activity
+91-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:50:9-52:49
+92            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+92-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:50:19-82
+93            android:clearTaskOnLaunch="true"
+93-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+94            android:screenOrientation="portrait"
+94-->/Users/tannhadl/AndroidStudioProjects/PITA_CSRewards/PITA_Rewards2/app/src/main/AndroidManifest.xml:51:13-49
+95            android:stateNotNeeded="true"
+95-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+96            android:theme="@style/zxing_CaptureTheme"
+96-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+97            android:windowSoftInputMode="stateAlwaysHidden" />
+97-->[com.journeyapps:zxing-android-embedded:4.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/1be98647bccddbc37b02ed7c07acbad7/transformed/zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+98
+99        <service
+99-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:26:9-35:19
+100            android:name="com.google.firebase.components.ComponentDiscoveryService"
+100-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:27:13-84
+101            android:directBootAware="true"
+101-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:32:13-43
+102            android:exported="false" >
+102-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:28:13-37
+103            <meta-data
+103-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:29:13-31:85
+104                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+104-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:30:17-120
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:31:17-82
+106            <meta-data
+106-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:32:13-34:85
+107                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+107-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:33:17-109
+108                android:value="com.google.firebase.components.ComponentRegistrar" />
+108-->[com.google.firebase:firebase-database:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/57017739e0a8d219fab649860539a8ee/transformed/firebase-database-22.0.1/AndroidManifest.xml:34:17-82
+109            <meta-data
+109-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:35:13-37:85
+110                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+110-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:36:17-109
+111                android:value="com.google.firebase.components.ComponentRegistrar" />
+111-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:37:17-82
+112        </service>
+113
+114        <activity
+114-->[com.google.android.gms:play-services-base:18.1.0] /Users/tannhadl/.gradle/caches/8.13/transforms/16dfe7d9710254268a007ca28a0e943f/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+115            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+115-->[com.google.android.gms:play-services-base:18.1.0] /Users/tannhadl/.gradle/caches/8.13/transforms/16dfe7d9710254268a007ca28a0e943f/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+116            android:exported="false"
+116-->[com.google.android.gms:play-services-base:18.1.0] /Users/tannhadl/.gradle/caches/8.13/transforms/16dfe7d9710254268a007ca28a0e943f/transformed/play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+117            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+117-->[com.google.android.gms:play-services-base:18.1.0] /Users/tannhadl/.gradle/caches/8.13/transforms/16dfe7d9710254268a007ca28a0e943f/transformed/play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+118
+119        <provider
+119-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:23:9-28:39
+120            android:name="com.google.firebase.provider.FirebaseInitProvider"
+120-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:24:13-77
+121            android:authorities="com.example.pita_rewards2.firebaseinitprovider"
+121-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:25:13-72
+122            android:directBootAware="true"
+122-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:26:13-43
+123            android:exported="false"
+123-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:27:13-37
+124            android:initOrder="100" />
+124-->[com.google.firebase:firebase-common:22.0.1] /Users/tannhadl/.gradle/caches/8.13/transforms/18d35546845c0dcddea8b1496411654d/transformed/firebase-common-22.0.1/AndroidManifest.xml:28:13-36
+125
+126        <activity
+126-->[androidx.compose.ui:ui-test-manifest:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/b55bb21ef72b541b3870f6311ec3d829/transformed/ui-test-manifest-1.9.2/AndroidManifest.xml:23:9-26:79
+127            android:name="androidx.activity.ComponentActivity"
+127-->[androidx.compose.ui:ui-test-manifest:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/b55bb21ef72b541b3870f6311ec3d829/transformed/ui-test-manifest-1.9.2/AndroidManifest.xml:24:13-63
+128            android:exported="true"
+128-->[androidx.compose.ui:ui-test-manifest:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/b55bb21ef72b541b3870f6311ec3d829/transformed/ui-test-manifest-1.9.2/AndroidManifest.xml:25:13-36
+129            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+129-->[androidx.compose.ui:ui-test-manifest:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/b55bb21ef72b541b3870f6311ec3d829/transformed/ui-test-manifest-1.9.2/AndroidManifest.xml:26:13-76
+130        <activity
+130-->[androidx.compose.ui:ui-tooling-android:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/43d5edfef4a9730c50a7d9e6311ba0cf/transformed/ui-tooling/AndroidManifest.xml:23:9-25:39
+131            android:name="androidx.compose.ui.tooling.PreviewActivity"
+131-->[androidx.compose.ui:ui-tooling-android:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/43d5edfef4a9730c50a7d9e6311ba0cf/transformed/ui-tooling/AndroidManifest.xml:24:13-71
+132            android:exported="true" />
+132-->[androidx.compose.ui:ui-tooling-android:1.9.2] /Users/tannhadl/.gradle/caches/8.13/transforms/43d5edfef4a9730c50a7d9e6311ba0cf/transformed/ui-tooling/AndroidManifest.xml:25:13-36
+133
+134        <provider
+134-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+135            android:name="androidx.startup.InitializationProvider"
+135-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+136            android:authorities="com.example.pita_rewards2.androidx-startup"
+136-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+137            android:exported="false" >
+137-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+138            <meta-data
+138-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+139                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+139-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+140                android:value="androidx.startup" />
+140-->[androidx.emoji2:emoji2:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/625d62057f91575d2082a35606857c26/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+141            <meta-data
+141-->[androidx.lifecycle:lifecycle-process:2.10.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5a2f467ea224784b2650b95da70e4e0c/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:29:13-31:52
+142                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+142-->[androidx.lifecycle:lifecycle-process:2.10.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5a2f467ea224784b2650b95da70e4e0c/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:30:17-78
+143                android:value="androidx.startup" />
+143-->[androidx.lifecycle:lifecycle-process:2.10.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5a2f467ea224784b2650b95da70e4e0c/transformed/lifecycle-process-2.10.0/AndroidManifest.xml:31:17-49
+144            <meta-data
+144-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+145                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+145-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+146                android:value="androidx.startup" />
+146-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+147        </provider>
+148
+149        <meta-data
+149-->[com.google.android.gms:play-services-basement:18.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5e28b9c6cc6bbc79ffcf44504053e8eb/transformed/play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+150            android:name="com.google.android.gms.version"
+150-->[com.google.android.gms:play-services-basement:18.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5e28b9c6cc6bbc79ffcf44504053e8eb/transformed/play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+151            android:value="@integer/google_play_services_version" />
+151-->[com.google.android.gms:play-services-basement:18.3.0] /Users/tannhadl/.gradle/caches/8.13/transforms/5e28b9c6cc6bbc79ffcf44504053e8eb/transformed/play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+152
+153        <receiver
+153-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+154            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+154-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+155            android:directBootAware="false"
+155-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+156            android:enabled="true"
+156-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+157            android:exported="true"
+157-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+158            android:permission="android.permission.DUMP" >
+158-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+159            <intent-filter>
+159-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+160                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+160-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+160-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+161            </intent-filter>
+162            <intent-filter>
+162-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+163                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+163-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+163-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+164            </intent-filter>
+165            <intent-filter>
+165-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+166                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+166-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+166-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+167            </intent-filter>
+168            <intent-filter>
+168-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+169                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+169-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+169-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/tannhadl/.gradle/caches/8.13/transforms/3fa0a7eacfc0a3923e8687cc68d389d0/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+170            </intent-filter>
+171        </receiver>
+172    </application>
+173
+174</manifest>

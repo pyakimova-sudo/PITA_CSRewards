@@ -18,6 +18,8 @@
     <string name="password">Password</string>
     <string name="please_login">Please Login</string>
     <string name="project_id" translatable="false">pitarewards2</string>
+    <string name="qr_scan">Scan QR</string>
+    <string name="scanned_value">Scanned Value</string>
     <string name="sign_up_prompt">New User? Sign Up Here</string>
     <string name="username">Username</string>
     <string name="welcome">Welcome</string>

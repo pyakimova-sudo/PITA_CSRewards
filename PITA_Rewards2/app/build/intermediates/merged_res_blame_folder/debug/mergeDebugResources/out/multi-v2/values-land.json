@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-land/values-land.xml",
+            "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-60:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\c3c0debdc4d0c9ca5445d39c891bd029\\transformed\\appcompat-1.7.1\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\ccd660995449e4066bb2edeae53ebabd\\transformed\\material-1.13.0\\res\\values-land\\values-land.xml",
+                    "source": "/Users/tannhadl/.gradle/caches/8.13/transforms/148a4dd0f5aa0b89505f455cff84b831/transformed/material-1.13.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,22,31,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -30,6 +20,16 @@
                         "endLines": "5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,33,38,41",
                         "endColumns": "74,73,64,66,69,71,68,68,81,89,75,67,66,77,64,66,10,10,10,10",
                         "endOffsets": "334,408,473,540,610,682,751,820,902,992,1068,1136,1203,1281,1346,1413,1585,2154,2423,2651"
+                    }
+                },
+                {
+                    "source": "/Users/tannhadl/.gradle/caches/8.13/transforms/581da060a7cb8c4268e42f4d56342d5c/transformed/appcompat-1.7.1/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
                     }
                 }
             ]
