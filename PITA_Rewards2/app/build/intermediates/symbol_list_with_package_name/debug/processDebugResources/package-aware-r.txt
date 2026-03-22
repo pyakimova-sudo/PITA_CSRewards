@@ -3884,6 +3884,7 @@ id dragLeft
 id dragRight
 id dragStart
 id dragUp
+id drinkNameInput
 id dropdown_menu
 id easeIn
 id easeInOut
@@ -4004,6 +4005,7 @@ id material_value_index
 id matrix
 id message
 id middle
+id milkSpinner
 id mini
 id month_grid
 id month_navigation_bar
@@ -4146,6 +4148,7 @@ id signupPassword
 id signupRedirect
 id signupUsername
 id sin
+id sizeSpinner
 id skipCollapsed
 id skipped
 id slide
@@ -4177,8 +4180,10 @@ id stop
 id stretch
 id studentID
 id submenuarrow
+id submitDrink
 id submit_area
 id supportScrollUp
+id sweetnessLevelSpinner
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -4401,6 +4406,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout drink_customization
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout m3_alert_dialog
