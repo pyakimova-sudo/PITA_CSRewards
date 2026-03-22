@@ -110,7 +110,7 @@ tools:context=".LoginActivity">
 
         <!-- Password Box -->
         <EditText
-            android:id="@+id/loginPassword"
+            android:id="@+id/nameBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -141,7 +141,7 @@ tools:context=".LoginActivity">
 
         <!-- Login Button-->
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="@string/login_button"
