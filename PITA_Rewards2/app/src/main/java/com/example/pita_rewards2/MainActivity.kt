@@ -1,6 +1,9 @@
 package com.example.pita_rewards2
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,133 +15,157 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.pita_rewards2.databinding.ActivityLoginBinding
+import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
+import android.widget.Spinner
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var navigation : BottomNavigationView
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
+        setContentView(binding.root)
 
         val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 
-        setContent {
-            val drinksList = remember { mutableStateOf<List<Drink_Menu>>(emptyList()) }
-            val isLoading = remember { mutableStateOf(true) }
+        val spinner: Spinner = findViewById(R.id.location_dropdown)
+        ArrayAdapter.createFromResource(this, R.array.locations, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        navigation =  findViewById(R.id.bottom_navigation)
+
+        navigation.selectedItemId = R.id.home
+
+        navigation.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.account -> {
+                    startActivity(Intent(this, Account::class.java))
+                    finish()
+                    true
+                }
+                R.id.basket -> {
+                    startActivity(Intent(this, Basket::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+        //setContent {
+          //  val drinksList = remember { mutableStateOf<List<Drink_Menu>>(emptyList()) }
+            //val isLoading = remember { mutableStateOf(true) }
 
             // Load drinks from Firebase
-            LaunchedEffect(Unit) {
-                drinksRef.addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val tempList = mutableListOf<Drink_Menu>()
+           // LaunchedEffect(Unit) {
+            //    drinksRef.addValueEventListener(object : ValueEventListener {
+               //     override fun onDataChange(snapshot: DataSnapshot) {
+                    //    val tempList = mutableListOf<Drink_Menu>()
 
                         // If database is empty, add default drinks
-                        if (!snapshot.exists()) {
-                            Drink_Menu.defaultDrinks.forEach { drink ->
-                                val key = drinksRef.push().key
+                     //   if (!snapshot.exists()) {
+                       //     Drink_Menu.defaultDrinks.forEach { drink ->
+                       //        val key = drinksRef.push().key
                                 //Null will crash app
-                                if (key != null) drinksRef.child(key).setValue(drink)
-                            }
-                        }
+                         //       if (key != null) drinksRef.child(key).setValue(drink)
+                         //  }
+                       // }
 
                         // Populate tempList with drinks from Firebase
-                        for (child in snapshot.children) {
-                            val drink = child.getValue(Drink_Menu::class.java)
-                            if (drink != null) tempList.add(drink)
-                        }
+                      //  for (child in snapshot.children) {
+                      //     val drink = child.getValue(Drink_Menu::class.java)
+                      //      if (drink != null) tempList.add(drink)
+                       // }
 
-                        drinksList.value = tempList
-                        isLoading.value = false
-                    }
+                     //   drinksList.value = tempList
+                      //  isLoading.value = false
+                   // }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        isLoading.value = false
-                    }
-                })
+                  //  override fun onCancelled(error: DatabaseError) {
+                     //   isLoading.value = false
+                   // }
+               // })
                 //testing
-                val testDrink = Drink_Menu(
-                    name = "Test Drink",
-                    Drink_Type = "Cold",
-                    ingredients = listOf("Ingredient1", "Ingredient2")
-                )
-                addItem(testDrink) // adds the drink to Firebase
+               // val testDrink = Drink_Menu(
+                 //   name = "Test Drink",
+                   // Drink_Type = "Cold",
+                    //price = 2,
+                    //ingredients = listOf("Ingredient1", "Ingredient2")
+                //)
+               //addItem(testDrink) // adds the drink to Firebase
 
                 // --- Testing removeDrink ---
                 // Remove the test drink after 5 seconds (just for testing)
-                kotlinx.coroutines.delay(5000)
-                removeDrink(testDrink.id)
-            }
+                //kotlinx.coroutines.delay(5000)
+               // removeDrink(testDrink.id)
+            //}
 
             // Main page UI
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            //Column(
+              //  modifier = Modifier
+                //    .fillMaxSize()
+                  //  .padding(16.dp),
+               // horizontalAlignment = Alignment.CenterHorizontally
+            //) {
                 // Greeting at the top
-                Text(
-                    text = "Hello User!",
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
+              //  Text(
+                //    text = "Hello User!",
+                  //  style = MaterialTheme.typography.titleLarge,
+                   // modifier = Modifier.padding(bottom = 16.dp)
+                //)
 
                 // Show loading / empty / menu
-                when {
-                    isLoading.value -> Text("Loading menu...")
-                    drinksList.value.isEmpty() -> Text("No drinks available yet")
-                    else -> {
-                        Text(
-                            text = "Menu:",
-                            style = MaterialTheme.typography.titleMedium,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
+               // when {
+                 //   isLoading.value -> Text("Loading menu...")
+                   // drinksList.value.isEmpty() -> Text("No drinks available yet")
+                    //else -> {
+                      //  Text(
+                        //    text = "Menu:",
+                          //  style = MaterialTheme.typography.titleMedium,
+                           // modifier = Modifier.padding(bottom = 8.dp)
+                        //)
 
-                        LazyColumn(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            items(drinksList.value) { drink ->
-                                Text(
+                      //  LazyColumn(
+                        //    modifier = Modifier.fillMaxWidth(),
+                          //  verticalArrangement = Arrangement.spacedBy(8.dp)
+                        //) {
+                          //  items(drinksList.value) { drink ->
+                            //    Text(
                                     //Update for better list UI??
-                                    text = "${drink.name} ${drink.Drink_Type}: ${drink.ingredients.joinToString(", ")}",
-                                    modifier = Modifier.padding(vertical = 4.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-            }
+                              //      text = "${drink.name} ${drink.Drink_Type}: ${drink.ingredients.joinToString(", ")}, it costs $${drink.price}",
+                                //    modifier = Modifier.padding(vertical = 4.dp)
+                                //)
+                          //  }
+                       // }
+                    //}
+                //}
+            //}
         }
     }
-}
+//}
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 // Function to add or update a user
 fun addItem(drink: Drink_Menu) {
-    // Use a push() key for a new, unique entry, or a specific ID if known
-    val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return
-    drink.id = drinkId // Store the ID within the object
+    fun addItem(drink: Drink_Menu): String? {
+        val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return null
+        drink.id = drinkId
 
-    drinksRef.child(drinkId).setValue(drink)
-    /*
-    //Toasts to indicate add
-    .addOnSuccessListener {
-        // Handle success (e.g., show a Toast)
+        drinksRef.child(drinkId).setValue(drink)
+        return drinkId
     }
-    .addOnFailureListener {
-        // Handle failure
-    }
-    */
 }
 
 fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
-    /*
-    .addOnSuccessListener {
-        // Handle success
-    }
-    .addOnFailureListener {
-        // Handle failure
-    }
-    */
 }

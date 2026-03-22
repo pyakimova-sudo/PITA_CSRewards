@@ -26,6 +26,9 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final LinearLayout header;
 
   @NonNull
+  public final RelativeLayout login;
+
+  @NonNull
   public final Button loginButton;
 
   @NonNull
@@ -35,20 +38,17 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final EditText loginUsername;
 
   @NonNull
-  public final RelativeLayout main;
-
-  @NonNull
   public final TextView signupRedirect;
 
   private ActivityLoginBinding(@NonNull RelativeLayout rootView, @NonNull LinearLayout header,
-      @NonNull Button loginButton, @NonNull EditText loginPassword, @NonNull EditText loginUsername,
-      @NonNull RelativeLayout main, @NonNull TextView signupRedirect) {
+      @NonNull RelativeLayout login, @NonNull Button loginButton, @NonNull EditText loginPassword,
+      @NonNull EditText loginUsername, @NonNull TextView signupRedirect) {
     this.rootView = rootView;
     this.header = header;
+    this.login = login;
     this.loginButton = loginButton;
     this.loginPassword = loginPassword;
     this.loginUsername = loginUsername;
-    this.main = main;
     this.signupRedirect = signupRedirect;
   }
 
@@ -85,6 +85,8 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      RelativeLayout login = (RelativeLayout) rootView;
+
       id = R.id.loginButton;
       Button loginButton = ViewBindings.findChildViewById(rootView, id);
       if (loginButton == null) {
@@ -103,16 +105,14 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      RelativeLayout main = (RelativeLayout) rootView;
-
       id = R.id.signupRedirect;
       TextView signupRedirect = ViewBindings.findChildViewById(rootView, id);
       if (signupRedirect == null) {
         break missingId;
       }
 
-      return new ActivityLoginBinding((RelativeLayout) rootView, header, loginButton, loginPassword,
-          loginUsername, main, signupRedirect);
+      return new ActivityLoginBinding((RelativeLayout) rootView, header, login, loginButton,
+          loginPassword, loginUsername, signupRedirect);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

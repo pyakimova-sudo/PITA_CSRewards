@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
+android:id="@+id/login"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/background"
@@ -12,7 +12,7 @@ tools:context=".LoginActivity">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maple_primary"
+    android:background="#7F4F24"
     android:alpha="0.5"/>
 
 <LinearLayout
@@ -46,6 +46,8 @@ tools:context=".LoginActivity">
     android:layout_height="wrap_content"
     android:layout_below="@id/header"
     android:layout_marginTop="20dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     app:cardCornerRadius="28dp"
     app:cardBackgroundColor="@color/white"
     >
@@ -135,6 +137,7 @@ tools:context=".LoginActivity">
                 android:layout_centerVertical="true"/>
 
         </RelativeLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="10dp"/>

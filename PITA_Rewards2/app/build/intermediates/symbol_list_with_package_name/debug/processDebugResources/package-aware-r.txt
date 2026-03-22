@@ -83,6 +83,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array locations
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -3626,6 +3627,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable location
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
 drawable m3_bottom_sheet_drag_handle
@@ -3648,6 +3650,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable menu_background
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3699,6 +3702,12 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable outline_account_circle_24
+drawable outline_add_location_24
+drawable outline_add_shopping_cart_24
+drawable outline_globe_location_pin_24
+drawable outline_home_24
+drawable outline_home_pin_24
 drawable password_icon
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3753,6 +3762,7 @@ id accessibility_custom_action_6
 id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
+id account
 id actionDown
 id actionDownUp
 id actionUp
@@ -3800,14 +3810,17 @@ id autoHide
 id autoLimit
 id availableSpace
 id axisRelative
+id background
 id barrier
 id baseline
+id basket
 id beginOnFirstDraw
 id beginning
 id below
 id bestChoice
 id blocking
 id bottom
+id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3908,6 +3921,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstName
 id fitCenter
 id fitEnd
 id fitStart
@@ -3960,6 +3974,7 @@ id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
 id labeled
+id lastName
 id layout
 id left
 id leftToRight
@@ -3970,8 +3985,11 @@ id line3
 id linear
 id listMode
 id list_item
+id location_dropdown
+id login
 id loginButton
 id loginPassword
+id loginRedirect
 id loginUsername
 id m3_side_sheet
 id main
@@ -4090,6 +4108,7 @@ id path
 id pathRelative
 id peekHeight
 id percent
+id phone
 id pin
 id pooling_container_listener_holder_tag
 id position
@@ -4139,6 +4158,7 @@ id showCustom
 id showHome
 id showTitle
 id signUpButton
+id signup
 id signupPassword
 id signupRedirect
 id signupUsername
@@ -4172,6 +4192,7 @@ id staticLayout
 id staticPostLayout
 id stop
 id stretch
+id studentID
 id submenuarrow
 id submit_area
 id supportScrollUp
@@ -4216,6 +4237,7 @@ id toggle
 id top
 id topPanel
 id top_center
+id topbar
 id touch_outside
 id transitionToEnd
 id transitionToStart
@@ -4233,6 +4255,8 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id user
+id username
 id vertical
 id vertical_only
 id view_offset_helper
@@ -4462,6 +4486,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu bottom_navigation_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -4493,6 +4518,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string account
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4541,6 +4567,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string first_name
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -4551,6 +4578,7 @@ string icon_content_description
 string in_progress
 string indeterminate
 string item_view_role_description
+string last_name
 string login_button
 string login_title
 string m3_exceed_max_badge_text_suffix
@@ -4725,10 +4753,13 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string phone
 string please_login
+string points
 string project_id
 string range_end
 string range_start
+string rewardPointsText
 string search_menu_title
 string searchbar_scrolling_view_behavior
 string searchview_clear_text_content_description
@@ -4737,16 +4768,20 @@ string selected
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string sign_up_prompt
+string signupTitle
+string signup_button
 string snackbar_pane_title
 string state_empty
 string state_off
 string state_on
 string status_bar_notification_info_overflow
+string studentID
 string switch_role
 string tab
 string template_percent
 string tooltip_description
 string tooltip_label
+string user
 string username
 string welcome
 style AlertDialog_AppCompat
@@ -4760,6 +4795,7 @@ style Animation_Material3_SideSheetDialog
 style Animation_Material3_SideSheetDialog_Left
 style Animation_Material3_SideSheetDialog_Right
 style Animation_MaterialComponents_BottomSheetDialog
+style App_Custom_Indicator
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -5176,6 +5212,8 @@ style ShapeAppearance_MaterialComponents_LargeComponent
 style ShapeAppearance_MaterialComponents_MediumComponent
 style ShapeAppearance_MaterialComponents_SmallComponent
 style ShapeAppearance_MaterialComponents_Tooltip
+style ShapeAppearanceOverlay_Custom
+style ShapeAppearanceOverlay_Custom2
 style ShapeAppearanceOverlay_Material3_Button
 style ShapeAppearanceOverlay_Material3_Chip
 style ShapeAppearanceOverlay_Material3_Corner_Bottom

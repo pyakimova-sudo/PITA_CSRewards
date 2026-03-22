@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,33 +20,64 @@ import java.lang.String;
 
 public final class ActivitySignupBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final RelativeLayout rootView;
+
+  @NonNull
+  public final RelativeLayout background;
+
+  @NonNull
+  public final EditText firstName;
+
+  @NonNull
+  public final LinearLayout header;
+
+  @NonNull
+  public final EditText lastName;
+
+  @NonNull
+  public final TextView loginRedirect;
+
+  @NonNull
+  public final EditText phone;
 
   @NonNull
   public final Button signUpButton;
 
   @NonNull
-  public final EditText signupPassword;
+  public final RelativeLayout signup;
 
   @NonNull
-  public final TextView signupRedirect;
+  public final EditText signupPassword;
 
   @NonNull
   public final EditText signupUsername;
 
-  private ActivitySignupBinding(@NonNull LinearLayout rootView, @NonNull Button signUpButton,
-      @NonNull EditText signupPassword, @NonNull TextView signupRedirect,
-      @NonNull EditText signupUsername) {
+  @NonNull
+  public final EditText studentID;
+
+  private ActivitySignupBinding(@NonNull RelativeLayout rootView,
+      @NonNull RelativeLayout background, @NonNull EditText firstName, @NonNull LinearLayout header,
+      @NonNull EditText lastName, @NonNull TextView loginRedirect, @NonNull EditText phone,
+      @NonNull Button signUpButton, @NonNull RelativeLayout signup,
+      @NonNull EditText signupPassword, @NonNull EditText signupUsername,
+      @NonNull EditText studentID) {
     this.rootView = rootView;
+    this.background = background;
+    this.firstName = firstName;
+    this.header = header;
+    this.lastName = lastName;
+    this.loginRedirect = loginRedirect;
+    this.phone = phone;
     this.signUpButton = signUpButton;
+    this.signup = signup;
     this.signupPassword = signupPassword;
-    this.signupRedirect = signupRedirect;
     this.signupUsername = signupUsername;
+    this.studentID = studentID;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -70,21 +102,53 @@ public final class ActivitySignupBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.background;
+      RelativeLayout background = ViewBindings.findChildViewById(rootView, id);
+      if (background == null) {
+        break missingId;
+      }
+
+      id = R.id.firstName;
+      EditText firstName = ViewBindings.findChildViewById(rootView, id);
+      if (firstName == null) {
+        break missingId;
+      }
+
+      id = R.id.header;
+      LinearLayout header = ViewBindings.findChildViewById(rootView, id);
+      if (header == null) {
+        break missingId;
+      }
+
+      id = R.id.lastName;
+      EditText lastName = ViewBindings.findChildViewById(rootView, id);
+      if (lastName == null) {
+        break missingId;
+      }
+
+      id = R.id.loginRedirect;
+      TextView loginRedirect = ViewBindings.findChildViewById(rootView, id);
+      if (loginRedirect == null) {
+        break missingId;
+      }
+
+      id = R.id.phone;
+      EditText phone = ViewBindings.findChildViewById(rootView, id);
+      if (phone == null) {
+        break missingId;
+      }
+
       id = R.id.signUpButton;
       Button signUpButton = ViewBindings.findChildViewById(rootView, id);
       if (signUpButton == null) {
         break missingId;
       }
 
+      RelativeLayout signup = (RelativeLayout) rootView;
+
       id = R.id.signupPassword;
       EditText signupPassword = ViewBindings.findChildViewById(rootView, id);
       if (signupPassword == null) {
-        break missingId;
-      }
-
-      id = R.id.signupRedirect;
-      TextView signupRedirect = ViewBindings.findChildViewById(rootView, id);
-      if (signupRedirect == null) {
         break missingId;
       }
 
@@ -94,8 +158,15 @@ public final class ActivitySignupBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySignupBinding((LinearLayout) rootView, signUpButton, signupPassword,
-          signupRedirect, signupUsername);
+      id = R.id.studentID;
+      EditText studentID = ViewBindings.findChildViewById(rootView, id);
+      if (studentID == null) {
+        break missingId;
+      }
+
+      return new ActivitySignupBinding((RelativeLayout) rootView, background, firstName, header,
+          lastName, loginRedirect, phone, signUpButton, signup, signupPassword, signupUsername,
+          studentID);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="locations">
+        <item>Courtyard Cafe</item>
+        <item>Steamery</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="blue">#59b5df</color>
     <color name="green">#4fa853</color>
@@ -7,23 +11,50 @@
     <color name="maple_primary">#FF742805</color>
     <color name="maple_secondary">#FFB65508</color>
     <color name="white">#FFFFFFFF</color>
+    <string name="account">Profile</string>
     <string name="app_name">PITA_Rewards2</string>
+    <string name="first_name">First name</string>
     <string name="gcm_defaultSenderId" translatable="false">505306099146</string>
     <string name="google_api_key" translatable="false">AIzaSyBM9X2sgRiu2e3F8tdEVnK961zrBZ0VR-Y</string>
     <string name="google_app_id" translatable="false">1:505306099146:android:5ee387ca00022fcf8bf333</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBM9X2sgRiu2e3F8tdEVnK961zrBZ0VR-Y</string>
     <string name="google_storage_bucket" translatable="false">pitarewards2.firebasestorage.app</string>
+    <string name="last_name">Last name</string>
     <string name="login_button">Login</string>
     <string name="login_title">Gustavus Coffee</string>
     <string name="password">Password</string>
+    <string name="phone">Phone</string>
     <string name="please_login">Please Login</string>
+    <string name="points">0</string>
     <string name="project_id" translatable="false">pitarewards2</string>
+    <string name="rewardPointsText">Reward Points:</string>
     <string name="sign_up_prompt">New User? Sign Up Here</string>
+    <string name="signupTitle">Create an account:</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="studentID">Student ID</string>
+    <string name="user">Hello User!</string>
     <string name="username">Username</string>
     <string name="welcome">Welcome</string>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#A68A64</item>
+    </style>
     <style name="Base.Theme.PITA_Rewards2" parent="Theme.Material3.DayNight.NoActionBar">
         
         
+    </style>
+    <style name="ShapeAppearanceOverlay.Custom" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">28dp</item>
+        <item name="cornerSizeBottomLeft">28dp</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.Custom2" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">100dp</item>
+        <item name="cornerSizeBottomLeft">100dp</item>
     </style>
     <style name="Theme.PITA_Rewards2" parent="Base.Theme.PITA_Rewards2"/>
 </resources>

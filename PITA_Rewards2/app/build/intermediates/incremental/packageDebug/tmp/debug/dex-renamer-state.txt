@@ -1,18 +1,20 @@
-#Thu Mar 19 19:34:12 CDT 2026
-base.0=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.4=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.5=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.6=C\:\\Users\\Lex\\AndroidStudioProjects\\PITA_CSRewards\\PITA_Rewards2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+#Sun Mar 22 17:59:55 CDT 2026
+base.0=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex
+base.4=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+base.5=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/global_synthetics_dex/debug/mergeDebugGlobalSynthetics/classes.dex
+base.6=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.7=/Users/pavlayakimova/Documents/GitHub/PITA_CSRewards/PITA_Rewards2/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex
 path.3=3/classes.dex
 path.4=9/classes.dex
-path.5=classes2.dex
-path.6=classes3.dex
+path.5=classes.dex
+path.6=classes2.dex
+path.7=classes3.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
 renamed.2=classes3.dex
@@ -20,3 +22,4 @@ renamed.3=classes4.dex
 renamed.4=classes5.dex
 renamed.5=classes6.dex
 renamed.6=classes7.dex
+renamed.7=classes8.dex

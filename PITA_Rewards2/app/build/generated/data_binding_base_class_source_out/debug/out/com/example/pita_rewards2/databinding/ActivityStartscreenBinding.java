@@ -16,13 +16,8 @@ public final class ActivityStartscreenBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
 
-  @NonNull
-  public final ConstraintLayout main;
-
-  private ActivityStartscreenBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ConstraintLayout main) {
+  private ActivityStartscreenBinding(@NonNull ConstraintLayout rootView) {
     this.rootView = rootView;
-    this.main = main;
   }
 
   @Override
@@ -52,8 +47,6 @@ public final class ActivityStartscreenBinding implements ViewBinding {
       throw new NullPointerException("rootView");
     }
 
-    ConstraintLayout main = (ConstraintLayout) rootView;
-
-    return new ActivityStartscreenBinding((ConstraintLayout) rootView, main);
+    return new ActivityStartscreenBinding((ConstraintLayout) rootView);
   }
 }
