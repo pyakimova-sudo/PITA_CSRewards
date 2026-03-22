@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-51:12
-INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-51:12
+ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.databinding:databinding-adapters:8.13.2] C:\Users\Lex\.gradle\caches\8.13\transforms\429539a2dc650a85c4469ff200a844a6\transformed\databinding-adapters-8.13.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.13.2] C:\Users\Lex\.gradle\caches\8.13\transforms\17fb2ca5105dbe701f4e8d65ffde7f4f\transformed\databinding-ktx-8.13.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.13.2] C:\Users\Lex\.gradle\caches\8.13\transforms\a889572033fff747a9bf2a5a93f34166\transformed\databinding-runtime-8.13.2\AndroidManifest.xml:2:1-7:12
@@ -107,8 +107,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\Lex\.gr
 	xmlns:android
 		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-49:19
-INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-49:19
+ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-46:19
+INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:5:5-46:19
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Lex\.gradle\caches\8.13\transforms\ccd660995449e4066bb2edeae53ebabd\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\Lex\.gradle\caches\8.13\transforms\ccd660995449e4066bb2edeae53ebabd\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Lex\.gradle\caches\8.13\transforms\ebb39d2e681eabbf63c6e98fb75d6745\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -197,24 +197,18 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
 		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:29:27-74
-activity#com.example.pita_rewards2.Login
+activity#com.example.pita_rewards2.SignupActivity
 ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:33:9-35:40
 	android:exported
 		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:34:13-34
-activity#com.example.pita_rewards2.SignupActivity
-ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:36:9-38:40
-	android:exported
-		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:38:13-37
-	android:name
-		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:37:13-43
+		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:34:13-43
 activity#com.example.pita_rewards2.MainActivity
-ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:39:9-47:20
+ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:36:9-44:20
 	android:exported
-		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:41:13-36
+		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:38:13-36
 	android:name
-		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:40:13-41
+		ADDED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml:37:13-41
 uses-sdk
 INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Lex\AndroidStudioProjects\PITA_CSRewards\PITA_Rewards2\app\src\main\AndroidManifest.xml

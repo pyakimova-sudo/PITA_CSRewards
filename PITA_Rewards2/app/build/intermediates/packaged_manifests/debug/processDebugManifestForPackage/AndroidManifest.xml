@@ -50,9 +50,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.pita_rewards2.Login"
-            android:exported="false" />
-        <activity
             android:name="com.example.pita_rewards2.SignupActivity"
             android:exported="false" />
         <activity
