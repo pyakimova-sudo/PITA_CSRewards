@@ -4,7 +4,7 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "/Users/pavlayakimova/.gradle/caches/9.3.1/transforms/f921cbe2b343812e1fb720d0fb1ac0d0/transformed/appcompat-1.7.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Lex\\.gradle\\caches\\8.13\\transforms\\573030281380828ffb201969de7fe6c3\\transformed\\appcompat-1.7.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
