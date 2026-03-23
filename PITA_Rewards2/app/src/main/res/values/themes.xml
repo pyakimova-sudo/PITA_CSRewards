@@ -6,4 +6,25 @@
     </style>
 
     <style name="Theme.PITA_Rewards2" parent="Base.Theme.PITA_Rewards2" />
+
+    <style name="ShapeAppearanceOverlay.Custom" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">28dp</item>
+        <item name="cornerSizeBottomLeft">28dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Custom2" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">100dp</item>
+        <item name="cornerSizeBottomLeft">100dp</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#A68A64</item>
+    </style>
+
 </resources>
