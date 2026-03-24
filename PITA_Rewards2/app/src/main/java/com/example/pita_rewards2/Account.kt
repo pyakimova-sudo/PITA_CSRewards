@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
-
 class Account : AppCompatActivity() {
 
     lateinit var navigation : BottomNavigationView
@@ -19,7 +17,7 @@ class Account : AppCompatActivity() {
         setContentView(R.layout.activity_account)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, 0, systemBars.right, 0)
             insets
         }
 
@@ -29,12 +27,18 @@ class Account : AppCompatActivity() {
         navigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }
                 R.id.basket -> {
-                    startActivity(Intent(this, Basket::class.java))
+                    val intent = Intent(this, BasketActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }
