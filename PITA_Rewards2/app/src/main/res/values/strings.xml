@@ -35,6 +35,7 @@
     <string name="placeholder">Placeholder</string>
     <string name="enter_payment_method">Enter payment method</string>
     <string name="enter_name_for_pickup">Enter name for pickup</string>
+    <string name="already_registered_login">Already registered? Login</string>
 
 
 </resources>
