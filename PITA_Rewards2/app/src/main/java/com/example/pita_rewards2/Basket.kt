@@ -20,7 +20,7 @@ class Basket : AppCompatActivity() {
         setContentView(R.layout.activity_basket)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+            v.setPadding(systemBars.left, 0, systemBars.right, 0)
             insets
         }
 
@@ -30,12 +30,18 @@ class Basket : AppCompatActivity() {
         navigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }
                 R.id.account -> {
-                    startActivity(Intent(this, Account::class.java))
+                    val intent = Intent(this, Account::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }

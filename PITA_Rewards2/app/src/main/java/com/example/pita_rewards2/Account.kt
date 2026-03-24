@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 class Account : AppCompatActivity() {
 
     lateinit var navigation : BottomNavigationView
@@ -28,12 +27,18 @@ class Account : AppCompatActivity() {
         navigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }
                 R.id.basket -> {
-                    startActivity(Intent(this, Basket::class.java))
+                    val intent = Intent(this, Basket::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+
                     finish()
                     true
                 }
