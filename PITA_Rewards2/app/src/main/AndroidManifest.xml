@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
-            android:name=".Basket"
-            android:exported="false" />
-        <activity
-            android:name=".Startscreen"
+            android:name=".BasketActivity"
             android:exported="false" />
         <activity
             android:name=".Account"
@@ -28,7 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".CheckoutActivity"
+            android:theme="@style/Theme.PitaRewards.PopupActivity" />
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
