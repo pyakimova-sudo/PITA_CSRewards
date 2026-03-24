@@ -69,7 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#C2C5AA"
-        android:fitsSystemWindows="true"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
         app:itemIconTint="#414833"
         app:itemTextColor="#414833"
