@@ -35,7 +35,7 @@ class Account : AppCompatActivity() {
                     true
                 }
                 R.id.basket -> {
-                    val intent = Intent(this, Basket::class.java)
+                    val intent = Intent(this, BasketActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
 
