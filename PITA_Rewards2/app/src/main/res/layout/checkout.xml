@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/background"
+android:orientation="vertical"
     tools:context=".CheckoutActivity">
+
+
+<!-- Background -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:background="@color/maple_primary" />
+
+    <TextView
+        android:id="@+id/cartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/ngetic"
+        android:text="@string/checkout"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="28dp">
+        app:cardCornerRadius="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/cartTitle">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box_full_corner"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="28dp"
+            android:paddingTop="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,8 +65,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/enter_payment_method"
-                android:textColor="@color/light_brown"
+                android:alpha="0.7"
+                android:text="Enter payment method"
+                android:textColor="@color/maple_secondary"
                 android:textStyle="bold" />
 
             <!-- Username Box -->
@@ -44,7 +75,6 @@
                 android:id="@+id/imageView"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:contentDescription="Gustavus Logo"
                 app:srcCompat="@drawable/gustavus_icon" />
 
             <!-- Password Field-->
@@ -53,29 +83,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
 
-            <!-- Name Title-->
+            <!-- Password Title-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/enter_name_for_pickup"
-                android:textColor="@color/light_brown"
+                android:alpha="0.7"
+                android:text="Enter name for pickup"
+                android:textColor="@color/maple_secondary"
                 android:textStyle="bold" />
 
-            <!-- Name Box -->
+            <!-- Password Box -->
             <EditText
                 android:id="@+id/nameBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="@string/user"
-                android:autofillHints="username"
                 android:textColor="@color/black" />
+
+            <!-- Login Options -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
 
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp" />
 
-            <!-- Submit Button-->
+            <!-- Login Button-->
             <Button
                 android:id="@+id/submitButton"
                 android:layout_width="match_parent"
@@ -88,8 +123,13 @@
                 android:textStyle="bold"
                 app:cornerRadius="32dp" />
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

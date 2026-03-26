@@ -28,6 +28,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="Coffee Cup"
             android:src="@drawable/coffee_logo"/>
 
         <TextView
@@ -76,8 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/first_name"
-                    android:textColor="@color/maple_secondary"
-                    android:alpha="0.7"
+                    android:textColor="@color/light_brown"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -93,8 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/last_name"
-                    android:textColor="@color/maple_secondary"
-                    android:alpha="0.7"
+                    android:textColor="@color/light_brown"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -117,8 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phone"
-                    android:textColor="@color/maple_secondary"
-                    android:alpha="0.7"
+                    android:textColor="@color/light_brown"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -134,8 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/studentID"
-                    android:textColor="@color/maple_secondary"
-                    android:alpha="0.7"
+                    android:textColor="@color/light_brown"
                     android:textStyle="bold"/>
 
                 <EditText
@@ -152,8 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/username"
-                android:textColor="@color/maple_secondary"
-                android:alpha="0.7"
+                android:textColor="@color/light_brown"
                 android:textStyle="bold"/>
 
             <EditText
@@ -169,8 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/password"
-                android:textColor="@color/maple_secondary"
-                android:alpha="0.7"
+                android:textColor="@color/light_brown"
                 android:textStyle="bold"/>
 
             <EditText
@@ -185,7 +180,7 @@
                 android:id="@+id/loginRedirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already registered? Login"
+                android:text="@string/already_registered_login"
                 android:textColor="@color/maple_secondary"
                 android:textSize="20sp"
                 android:layout_gravity="center"
