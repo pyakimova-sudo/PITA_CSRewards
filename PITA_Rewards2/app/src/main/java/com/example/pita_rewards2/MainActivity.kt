@@ -21,7 +21,12 @@ class MainActivity : ComponentActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
-        val buttonContainer = binding.drinkButtonContainer // e.g., a LinearLayout in your XML
+
+        //Fluid button mapping for all Drink_Menu items
+        /*
+        TODO conditionally divide drinks by type
+         to better organize menu screen(aestetics)*/
+        val buttonContainer = binding.drinkButtonContainer
         Drink_Menu.defaultDrinks.forEach { drink ->
             val button = Button(this).apply {
                 text = drink.name
@@ -46,11 +51,11 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 */
-
         val userRef = FirebaseDatabase.getInstance().getReference("users")
+        //extract userID after login
         val userId = intent.getStringExtra("userId")
         val userText: TextView = findViewById(R.id.user)
-
+        //If valid user adds first name to welcome
         if (userId != null) {
             userRef.child(userId).get().addOnSuccessListener { snapshot ->
                 val user = snapshot.getValue(UserData::class.java)
