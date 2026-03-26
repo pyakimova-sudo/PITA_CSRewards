@@ -40,5 +40,11 @@
     <string name="save">Save</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="updatePhone">Phone Number</string>
+    <string name="enter_payment_method">Enter payment method</string>
+    <string name="enter_name_for_pickup">Enter name for pickup</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="already_registered_login">Already Registered</string>
+
+
 
 </resources>
