@@ -8,6 +8,19 @@
     tools:context=".Basket"
     android:background="@drawable/menu_background">
 
+    <Button
+        android:id="@+id/checkout_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/checkout_button"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ngetic"
+        android:backgroundTint="@color/maple_secondary"
+        android:textSize="18sp"
+        app:cornerRadius="32dp"
+        android:layout_above="@+id/bottom_navigation"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:background="#C2C5AA"

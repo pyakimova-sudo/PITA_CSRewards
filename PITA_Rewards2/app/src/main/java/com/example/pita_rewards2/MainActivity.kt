@@ -28,6 +28,13 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    //can be edited, stored for basket, ONLY basic drink name
+    val order : MutableList<String> = mutableListOf()
+    //for each drink in order, lists the customizations
+    val drinkCustomizations : MutableMap<String, List<String>> = mutableMapOf()
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -150,8 +157,14 @@ class MainActivity : ComponentActivity() {
                     //}
                 //}
             //}
-        }
     }
+    fun addtoOrder(item: String) {
+        order.add(item)
+    }
+
+}
+
+
 //}
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")

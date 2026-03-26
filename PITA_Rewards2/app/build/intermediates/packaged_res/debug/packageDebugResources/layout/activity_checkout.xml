@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Checkout">
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/submit_button"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:fontFamily="@font/ngetic"
+        android:backgroundTint="@color/maple_secondary"
+        android:textSize="18sp"
+        app:cornerRadius="32dp"/>
+
+</RelativeLayout>

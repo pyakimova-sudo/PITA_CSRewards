@@ -28,6 +28,7 @@ id account
 id background
 id basket
 id bottom_navigation
+id checkout_button
 id firstName
 id header
 id home
@@ -46,13 +47,17 @@ id signupPassword
 id signupRedirect
 id signupUsername
 id studentID
+id submit_button
 id topbar
 id user
 id username
 layout activity_account
 layout activity_basket
+layout activity_checkout
 layout activity_login
 layout activity_main
+layout activity_order_display
+layout activity_queue
 layout activity_signup
 layout activity_startscreen
 menu bottom_navigation_menu
@@ -60,6 +65,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 string account
 string app_name
+string checkout_button
 string first_name
 string gcm_defaultSenderId
 string google_api_key
@@ -79,6 +85,7 @@ string sign_up_prompt
 string signupTitle
 string signup_button
 string studentID
+string submit_button
 string user
 string username
 string welcome

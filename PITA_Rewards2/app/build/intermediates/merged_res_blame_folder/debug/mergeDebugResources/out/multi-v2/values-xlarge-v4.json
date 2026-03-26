@@ -4,7 +4,7 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "/Users/pavlayakimova/.gradle/caches/9.3.1/transforms/f921cbe2b343812e1fb720d0fb1ac0d0/transformed/appcompat-1.7.1/res/values-xlarge-v4/values-xlarge-v4.xml",
+                    "source": "/Users/tannhadl/.gradle/caches/9.3.1/transforms/e35e5a15e97f64c6d85532c34fe8207f/transformed/appcompat-1.7.1/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

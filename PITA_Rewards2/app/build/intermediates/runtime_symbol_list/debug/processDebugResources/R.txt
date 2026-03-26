@@ -3839,6 +3839,7 @@ int id chain2 0x7f0a007b
 int id chains 0x7f0a007c
 int id checkbox 0x7f0a007d
 int id checked 0x7f0a007e
+int id checkout_button 0x7f0a0237
 int id chronometer 0x7f0a007f
 int id circle_center 0x7f0a0080
 int id clear_text 0x7f0a0081
@@ -4194,6 +4195,7 @@ int id stretch 0x7f0a01de
 int id studentID 0x7f0a01df
 int id submenuarrow 0x7f0a01e0
 int id submit_area 0x7f0a01e1
+int id submit_button 0x7f0a0238
 int id supportScrollUp 0x7f0a01e2
 int id tabMode 0x7f0a01e3
 int id tag_accessibility_actions 0x7f0a01e4
@@ -4400,8 +4402,11 @@ int layout abc_select_dialog_material 0x7f0d001a
 int layout abc_tooltip 0x7f0d001b
 int layout activity_account 0x7f0d001c
 int layout activity_basket 0x7f0d001d
+int layout activity_checkout 0x7f0d0073
 int layout activity_login 0x7f0d001e
 int layout activity_main 0x7f0d001f
+int layout activity_order_display 0x7f0d0074
+int layout activity_queue 0x7f0d0075
 int layout activity_signup 0x7f0d0020
 int layout activity_startscreen 0x7f0d0021
 int layout custom_dialog 0x7f0d0022
@@ -4537,6 +4542,7 @@ int string call_notification_screening_text 0x7f13002b
 int string character_counter_content_description 0x7f13002c
 int string character_counter_overflowed_content_description 0x7f13002d
 int string character_counter_pattern 0x7f13002e
+int string checkout_button 0x7f130125
 int string clear_text_end_icon_content_description 0x7f13002f
 int string close_drawer 0x7f130030
 int string close_sheet 0x7f130031
@@ -4775,6 +4781,7 @@ int string state_off 0x7f130119
 int string state_on 0x7f13011a
 int string status_bar_notification_info_overflow 0x7f13011b
 int string studentID 0x7f13011c
+int string submit_button 0x7f130126
 int string switch_role 0x7f13011d
 int string tab 0x7f13011e
 int string template_percent 0x7f13011f

@@ -33,6 +33,15 @@
         android:testOnly="true"
         android:theme="@style/Theme.PITA_Rewards2" >
         <activity
+            android:name="com.example.pita_rewards2.OrderDisplay"
+            android:exported="false" />
+        <activity
+            android:name="com.example.pita_rewards2.Checkout"
+            android:exported="false" />
+        <activity
+            android:name="com.example.pita_rewards2.Queue"
+            android:exported="false" />
+        <activity
             android:name="com.example.pita_rewards2.Basket"
             android:exported="false" />
         <activity

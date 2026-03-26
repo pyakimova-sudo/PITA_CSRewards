@@ -13,6 +13,7 @@
     <color name="white">#FFFFFFFF</color>
     <string name="account">Profile</string>
     <string name="app_name">PITA_Rewards2</string>
+    <string name="checkout_button">Checkout</string>
     <string name="first_name">First name</string>
     <string name="gcm_defaultSenderId" translatable="false">505306099146</string>
     <string name="google_api_key" translatable="false">AIzaSyBM9X2sgRiu2e3F8tdEVnK961zrBZ0VR-Y</string>
@@ -32,6 +33,7 @@
     <string name="signupTitle">Create an account:</string>
     <string name="signup_button">Sign Up</string>
     <string name="studentID">Student ID</string>
+    <string name="submit_button">Submit Order</string>
     <string name="user">Hello User!</string>
     <string name="username">Username</string>
     <string name="welcome">Welcome</string>

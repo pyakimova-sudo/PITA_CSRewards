@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Button
 
 
 class Basket : AppCompatActivity() {
 
     lateinit var navigation : BottomNavigationView
+    lateinit var checkoutButton: Button
 
+
+    var orders: MutableList<String> = MainActivity().order
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,12 @@ class Basket : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        checkoutButton = findViewById(R.id.checkout_button)
+        checkoutButton.setOnClickListener {
+            startActivity(Intent(this, Checkout::class.java))
+            finish()
         }
 
         navigation =  findViewById(R.id.bottom_navigation)

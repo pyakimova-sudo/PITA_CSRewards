@@ -21,4 +21,6 @@
         <item>Courtyard Cafe</item>
         <item>Steamery</item>
     </string-array>
+    <string name="submit_button">Submit Order</string>
+    <string name="checkout_button">Checkout</string>
 </resources>

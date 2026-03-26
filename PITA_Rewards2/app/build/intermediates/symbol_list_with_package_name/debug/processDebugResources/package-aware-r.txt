@@ -3840,6 +3840,7 @@ id chain2
 id chains
 id checkbox
 id checked
+id checkout_button
 id chronometer
 id circle_center
 id clear_text
@@ -4195,6 +4196,7 @@ id stretch
 id studentID
 id submenuarrow
 id submit_area
+id submit_button
 id supportScrollUp
 id tabMode
 id tag_accessibility_actions
@@ -4401,8 +4403,11 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_account
 layout activity_basket
+layout activity_checkout
 layout activity_login
 layout activity_main
+layout activity_order_display
+layout activity_queue
 layout activity_signup
 layout activity_startscreen
 layout custom_dialog
@@ -4538,6 +4543,7 @@ string call_notification_screening_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
+string checkout_button
 string clear_text_end_icon_content_description
 string close_drawer
 string close_sheet
@@ -4776,6 +4782,7 @@ string state_off
 string state_on
 string status_bar_notification_info_overflow
 string studentID
+string submit_button
 string switch_role
 string tab
 string template_percent

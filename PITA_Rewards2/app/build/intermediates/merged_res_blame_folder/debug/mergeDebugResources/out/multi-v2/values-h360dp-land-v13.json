@@ -4,7 +4,7 @@
             "outputFile": "com.example.pita_rewards2.app-mergeDebugResources-59:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
             "map": [
                 {
-                    "source": "/Users/pavlayakimova/.gradle/caches/9.3.1/transforms/2899130e9f5222af454bbe4b0345a034/transformed/material-1.13.0/res/values-h360dp-land-v13/values-h360dp-land-v13.xml",
+                    "source": "/Users/tannhadl/.gradle/caches/9.3.1/transforms/aa3a4eae23248f07cc4a1ca45161369b/transformed/material-1.13.0/res/values-h360dp-land-v13/values-h360dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
