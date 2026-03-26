@@ -9,20 +9,54 @@ import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : ComponentActivity() {
-
-    lateinit var navigation : BottomNavigationView
-
     private lateinit var binding: ActivityMainBinding
+    lateinit var navigation : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        val buttonContainer = binding.drinkButtonContainer // e.g., a LinearLayout in your XML
+        Drink_Menu.defaultDrinks.forEach { drink ->
+            val button = Button(this).apply {
+                text = drink.name
+                textSize = 18f
+                setOnClickListener {
+                    val intent = Intent(this@MainActivity, Drink_Customization::class.java)
+                    intent.putExtra("selected_drink", drink)
+                    startActivity(intent)
+                }
+            }
+            buttonContainer.addView(button)
+        }
+/*
+        //Button for latte customization
+        val coffeeButton: Button? = findViewById(R.id.squareButton)
+        coffeeButton?.setOnClickListener {
+            val latte = Drink_Menu.defaultDrinks.first { it.name == "Latte" }
+            // Launch DrinkCustomization
+            val intent = Intent(this, Drink_Customization::class.java)
+            //Places data from latte into Drink_Customization
+            intent.putExtra("selected_drink", latte)
+            startActivity(intent)
+        }
+*/
 
-        val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
+        val userRef = FirebaseDatabase.getInstance().getReference("users")
+        val userId = intent.getStringExtra("userId")
+        val userText: TextView = findViewById(R.id.user)
+
+        if (userId != null) {
+            userRef.child(userId).get().addOnSuccessListener { snapshot ->
+                val user = snapshot.getValue(UserData::class.java)
+                userText.text = "Welcome ${user?.firstName}"
+            }
+        }
 
         val spinner: Spinner = findViewById(R.id.location_dropdown)
         ArrayAdapter.createFromResource(this, R.array.locations, android.R.layout.simple_spinner_item

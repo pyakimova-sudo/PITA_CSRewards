@@ -49,7 +49,11 @@ class LoginActivity : AppCompatActivity() {
                             val userData = userSnapshot.getValue(UserData::class.java)
                             if (userData != null && userData.password == password) {
                                 Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                                val id = userSnapshot.key
+                                //needed to actually put database into main
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                intent.putExtra("userId", id)
+                                startActivity(intent)
                                 finish()
                                 return
                             }
