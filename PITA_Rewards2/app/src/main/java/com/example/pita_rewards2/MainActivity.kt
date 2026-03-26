@@ -30,6 +30,9 @@ class MainActivity : ComponentActivity() {
         Drink_Menu.defaultDrinks.forEach { drink ->
             val button = Button(this).apply {
                 text = drink.name
+                //TODO:UI things here(picture of drink)
+                //Could maybe add picture to data class for
+                //repeated use??
                 textSize = 18f
                 setOnClickListener {
                     val intent = Intent(this@MainActivity, Drink_Customization::class.java)
