@@ -56,7 +56,7 @@ data class Drink_Menu(
             Drink_Menu(
                 name = "Hot Chocolate",
                 Drink_Type = "Chocolate",
-                price = 84,
+                price = 86,
                 ingredients = listOf("Chocolate", "Milk")
             ),
             Drink_Menu(name = "Milk", Drink_Type = "Base?", price = 1, ingredients = listOf("Milk", "ice"))

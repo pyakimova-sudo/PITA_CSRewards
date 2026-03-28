@@ -1,5 +1,6 @@
 package com.example.pita_rewards2
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -8,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 //TODO:Add conditional for drink types(smoothies don't get milk/sweet)
 //NEED to call drink type values and update menu accordingly
-//TODO:a add multiple button
+//TODO: send back to main after adding to basket
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
     private var selectedDrink: Drink_Menu? = null  // class-level variable
+
+    private var finalPrice: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +22,7 @@ class Drink_Customization : AppCompatActivity() {
 
         val resultText = findViewById<TextView>(R.id.resultText)
         val titleText = findViewById<TextView>(R.id.title)
+        val submitButton = findViewById<Button>(R.id.submitButton)
 
         //????
         selectedDrink = intent.getSerializableExtra("selected_drink") as? Drink_Menu
@@ -30,6 +34,7 @@ class Drink_Customization : AppCompatActivity() {
             /*TODO: should there be default values
             *  else force size choice before order*/
             resultText.text = it.name
+
         }
 
         //Drink sizes
@@ -67,6 +72,24 @@ class Drink_Customization : AppCompatActivity() {
                 updateSelection("Sweetness", value, resultText)
             }
         }
+        //Submit order
+        submitButton.setOnClickListener {
+            val intent = Intent(this@Drink_Customization, BasketActivity::class.java)
+
+            val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
+            val drink = selectedDrink?.name ?: ""
+            val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+            val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+
+            // Pass all 4–5 values
+            intent.putExtra("drink", drink)
+            intent.putExtra("size", size)
+            intent.putExtra("milk", milk)
+            intent.putExtra("sweetness", sweetness)
+            intent.putExtra("final_price", finalPrice)
+
+            startActivity(intent)
+        }
     }
 
     private fun updateSelection(category: String, value: String, resultText: TextView) {
@@ -83,8 +106,19 @@ class Drink_Customization : AppCompatActivity() {
         val drink = selectedDrink?.name.orEmpty()
         val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") .orEmpty()
         val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") .orEmpty()
-        val resultString = "$size $drink" +
-                (if (milk.isNotEmpty() && milk != "None") " with $milk milk" else "") +
+
+        //Adjusting price by drink size
+        //TODO update price for other
+        val basePrice = selectedDrink?.price ?: 0
+        var finalPrice = basePrice
+
+        when (size) {
+            "Medium" -> finalPrice += 1
+            "Large" -> finalPrice += 2
+        }
+
+        val resultString = "$$finalPrice $size $drink" +
+                (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
                 (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
         resultText.text = resultString
         Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
