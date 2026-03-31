@@ -44,7 +44,8 @@
     <string name="enter_name_for_pickup">Enter name for pickup</string>
     <string name="placeholder">Placeholder</string>
     <string name="already_registered_login">Already Registered</string>
-
+    <string name="basket_add">Add to basket</string>
+    <string name="test_button">TEST</string>
 
 
 </resources>

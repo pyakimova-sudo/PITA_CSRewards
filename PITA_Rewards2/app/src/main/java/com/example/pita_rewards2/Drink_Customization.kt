@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.io.Serializable
 
 //TODO:Add conditional for drink types(smoothies don't get milk/sweet)
 //NEED to call drink type values and update menu accordingly
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
     private var selectedDrink: Drink_Menu? = null  // class-level variable
+    private var nameOfDrink: String = ""//intent.getStringExtra("drink")
 
     private var finalPrice: Int = 0
 
@@ -72,14 +74,19 @@ class Drink_Customization : AppCompatActivity() {
                 updateSelection("Sweetness", value, resultText)
             }
         }
+
         //Submit order
         submitButton.setOnClickListener {
-            val intent = Intent(this@Drink_Customization, BasketActivity::class.java)
-
+            val intent = Intent(this@Drink_Customization, MainActivity::class.java)
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
             val drink = selectedDrink?.name ?: ""
+            nameOfDrink = selectedDrink?.name.orEmpty()
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+            MainActivity.order.add(nameOfDrink)
+            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness))
+            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
+
 
             // Pass all 4–5 values
             intent.putExtra("drink", drink)
@@ -124,3 +131,10 @@ class Drink_Customization : AppCompatActivity() {
         Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
     }
 }
+
+data class ItemCustomization(
+    val drink: String,
+    val size: String = "",
+    val milk: String = "",
+    val sweetness: String = ""
+) : Serializable
