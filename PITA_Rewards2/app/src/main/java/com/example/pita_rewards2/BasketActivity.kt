@@ -8,6 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.databinding.ActivityBasketBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
+import android.widget.LinearLayout
+import android.view.LayoutInflater
+import android.widget.TextView
 
 
 class BasketActivity : AppCompatActivity() {
@@ -15,12 +19,17 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBasketBinding
     lateinit var navigation : BottomNavigationView
 
+    private lateinit var orderContainer: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        orderContainer = findViewById(R.id.orderContainer)
+        displayOrders()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -56,6 +65,33 @@ class BasketActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+    }
+    private fun displayOrders() {
+        val drinkCustomizations = MainActivity.customizations
+
+        val inflater = LayoutInflater.from(this)
+
+        if (drinkCustomizations.isEmpty()) {
+            Toast.makeText(this, "empty", Toast.LENGTH_LONG).show()
+        }
+
+        for (order in drinkCustomizations) {
+            val itemView = inflater.inflate(R.layout.item_display, orderContainer, false)
+
+            val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
+            drinkNameText.text = order.drink
+
+            val sizeText = itemView.findViewById<TextView>(R.id.sizeText)
+            sizeText.text = order.size
+
+            val milkText = itemView.findViewById<TextView>(R.id.milkText)
+            milkText.text = order.milk
+
+            val sweetnessText = itemView.findViewById<TextView>(R.id.sweetnessText)
+            sweetnessText.text = order.sweetness
+
+            orderContainer.addView(itemView)
         }
     }
 }

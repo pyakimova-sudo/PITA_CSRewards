@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,11 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
-            android:name=".BasketActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".OrderDisplay"
             android:exported="false" />
-        <activity android:name=".Drink_Customization"
-            android:exported = "false"/>
+        <activity
+            android:name=".BasketActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Drink_Customization"
+            android:exported="false" />
         <activity
             android:name=".Account"
             android:exported="false" />
@@ -42,7 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
