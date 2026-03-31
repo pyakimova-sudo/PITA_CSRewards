@@ -38,6 +38,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, SignupActivity::class.java))
             finish()
         }
+
+        // Employee login
+        binding.employeeLogin.setOnClickListener {
+            startActivity(Intent(this, EmployeeActivity::class.java))
+            finish()
+        }
     }
 
     private fun loginUser(username: String, password: String) {

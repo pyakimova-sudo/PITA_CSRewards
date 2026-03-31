@@ -30,7 +30,7 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/titleTxt"
+            android:id="@+id/nameTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -49,17 +49,17 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/picCart"
-            app:layout_constraintStart_toStartOf="@+id/titleTxt" />
+            app:layout_constraintStart_toStartOf="@+id/nameTxt" />
 
         <TextView
-            android:id="@+id/individualFee"
+            android:id="@+id/orderItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zero_dollars"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/totalFee"
-            app:layout_constraintStart_toStartOf="@+id/titleTxt"
-            app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
+            app:layout_constraintStart_toStartOf="@+id/nameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
 
         <ImageView
             android:id="@+id/removeItemButton"
@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:id="@+id/quantity"
+                android:id="@+id/completeButton"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:gravity="center"

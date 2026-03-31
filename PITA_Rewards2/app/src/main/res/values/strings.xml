@@ -44,7 +44,10 @@
     <string name="enter_name_for_pickup">Enter name for pickup</string>
     <string name="placeholder">Placeholder</string>
     <string name="already_registered_login">Already Registered</string>
-
+    <string name="orders">Orders</string>
+    <string name="employee_login">Employee Login</string>
+    <string name="mark_complete">Mark Complete</string>
+    <string name="name" />
 
 
 </resources>
