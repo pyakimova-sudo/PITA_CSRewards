@@ -58,9 +58,9 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="227dp"
         android:layout_marginStart="31dp"
-        android:gravity="center">
+        android:layout_gravity="center">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/menus"
@@ -137,6 +137,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/updatePic"
+                    android:textSize="15sp"
+                    android:padding="10dp"
+                    android:background="@drawable/textview_border"
+                    app:drawableEndCompat="@drawable/arrow"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"/>
+
+                <TextView
+                    android:id="@+id/drink_timer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/drinkTimer"
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:background="@drawable/textview_border"

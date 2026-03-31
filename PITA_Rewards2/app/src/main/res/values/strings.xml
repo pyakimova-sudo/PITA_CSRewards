@@ -40,5 +40,12 @@
     <string name="save">Save</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="updatePhone">Phone Number</string>
+    <string name="enter_payment_method">Enter payment method</string>
+    <string name="enter_name_for_pickup">Enter name for pickup</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="popUpText">Drink Ready In:</string>
+    <string name="timer">00:00</string>
+    <string name="OK">OK</string>
+    <string name="drinkTimer">Drink ready in</string>
 
 </resources>
