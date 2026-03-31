@@ -7,13 +7,13 @@ data class Drink_Menu(
     val Drink_Type: String = "",
     val price: Int = 0,
     val ingredients: List<String> = emptyList()
-){
+) : java.io.Serializable{
     companion object {
         // Default drinks that will be added to Firebase if the database is empty
         val defaultDrinks = listOf(
             Drink_Menu(
                 name = "Latte",
-                Drink_Type = "Coffee",
+                Drink_Type = "Coffee", //Will be used to sort might need another button
                 price = 2,
                 ingredients = listOf("Coffee", "Milk", "Ice")
             ),

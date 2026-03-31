@@ -28,6 +28,7 @@ tools:context=".LoginActivity">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="Coffee Cup"
         android:src="@drawable/coffee_logo"/>
 
     <!-- Title -->
@@ -70,8 +71,7 @@ tools:context=".LoginActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/please_login"
-            android:textColor="@color/maple_secondary"
-            android:alpha="0.7"/>
+            android:textColor="@color/maple_secondary" />
 
         <!-- Username Field-->
         <View
@@ -83,8 +83,7 @@ tools:context=".LoginActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/username"
-            android:textColor="@color/maple_secondary"
-            android:alpha="0.7"
+            android:textColor="@color/light_brown"
             android:textStyle="bold"/>
 
         <!-- Username Box -->
@@ -94,6 +93,8 @@ tools:context=".LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:textColor="@color/black"
+            android:hint="@string/username"
+            android:autofillHints="username"
             android:drawableEnd="@drawable/done_icon"/>
 
         <!-- Password Field-->
@@ -106,8 +107,7 @@ tools:context=".LoginActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/password"
-            android:textColor="@color/maple_secondary"
-            android:alpha="0.7"
+            android:textColor="@color/light_brown"
             android:textStyle="bold"/>
 
         <!-- Password Box -->
@@ -117,6 +117,8 @@ tools:context=".LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/black"
+            android:hint="@string/password"
+            android:autofillHints="password"
             android:drawableEnd="@drawable/password_icon"/>
 
         <!-- Login Options -->
