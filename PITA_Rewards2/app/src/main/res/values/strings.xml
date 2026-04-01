@@ -45,6 +45,9 @@
     <string name="placeholder">Placeholder</string>
     <string name="already_registered_login">Already Registered</string>
     <string name="test">test</string>
+    <string name="drinkTimer">Drink ready in</string>
+    <string name="popUpText">Drink Ready In:</string>
+    <string name="timer">00:00</string>
 
 
 
