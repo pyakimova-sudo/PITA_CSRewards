@@ -18,14 +18,14 @@ data class Drink_Menu(
                 ingredients = listOf("Coffee", "Milk", "Ice")
             ),
             Drink_Menu(
-                name = "Strawberry Smoothie",
+                name = "Smoothie",
                 Drink_Type = "Smoothie",
                 price = 1,
-                ingredients = listOf("Strawberry", "Milk", "Banana")
+                ingredients = listOf("")
             ),
             Drink_Menu(
-                name = "Mocha",
-                Drink_Type = "Coffee",
+                name = "Matcha",
+                Drink_Type = "Matcha",
                 price = 1,
                 ingredients = listOf("Coffee", "Milk", "Ice")
             ),
@@ -37,7 +37,7 @@ data class Drink_Menu(
             ),
             Drink_Menu(
                 name = "Water",
-                Drink_Type = "Water",
+                Drink_Type = "Regular",
                 price = 0,
                 ingredients = listOf("Water")
             ),
@@ -56,7 +56,7 @@ data class Drink_Menu(
             Drink_Menu(
                 name = "Hot Chocolate",
                 Drink_Type = "Chocolate",
-                price = 84,
+                price = 86,
                 ingredients = listOf("Chocolate", "Milk")
             ),
             Drink_Menu(name = "Milk", Drink_Type = "Base?", price = 1, ingredients = listOf("Milk", "ice"))
