@@ -22,15 +22,15 @@ class OrderDisplay : AppCompatActivity() {
         val inflater = LayoutInflater.from(this)
 
         for (order in drinkCustomizations) {
-            val itemView = inflater.inflate(R.layout.viewholder_basket, employeeContainer, false)
+            val itemView = inflater.inflate(R.layout.viewholder_employee, employeeContainer, false)
 
-            val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
+            val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameEmployee)
             drinkNameText.text = order.drink
 
-            val nameLabel = itemView.findViewById<TextView>(R.id.totalFee)
+            val nameLabel = itemView.findViewById<TextView>(R.id.customerNameText)
             nameLabel.text = order.customerName
 
-            val orderItems = itemView.findViewById<TextView>(R.id.orderItems)
+            val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
             val detailsList = listOfNotNull(
                 order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
                 order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
