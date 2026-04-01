@@ -14,9 +14,6 @@ import android.widget.TextView
 class CheckoutActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityCheckoutBinding
-
-
-    //private lateinit var binding: ActivityCheckoutBinding
     var inQueue: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +30,12 @@ class CheckoutActivity : AppCompatActivity(){
 
         submitButton.setOnClickListener {
             val name = nameBox.text.toString().trim()
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            MainActivity.customizations.forEach { it.customerName = name }
+
             val add = QueueManager.submitOrder(name, MainActivity.order)
             inQueue += 1 //${add.customerName}
             Toast.makeText(this, "Thank you for your order, ${add.customerName}!", Toast.LENGTH_LONG).show()

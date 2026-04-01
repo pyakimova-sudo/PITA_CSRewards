@@ -366,5 +366,6 @@ data class ItemCustomization(
     val size: String = "",
     val milk: String = "",
     val sweetness: String = "",
-    val price: Int = 0
+    val price: Int = 0,
+    var customerName: String = ""
 ) : Serializable

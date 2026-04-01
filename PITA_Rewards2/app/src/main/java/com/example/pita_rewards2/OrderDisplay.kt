@@ -27,6 +27,9 @@ class OrderDisplay : AppCompatActivity() {
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
 
+            val nameLabel = itemView.findViewById<TextView>(R.id.totalFee)
+            nameLabel.text = order.customerName
+
             val orderItems = itemView.findViewById<TextView>(R.id.orderItems)
             val detailsList = listOfNotNull(
                 order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
