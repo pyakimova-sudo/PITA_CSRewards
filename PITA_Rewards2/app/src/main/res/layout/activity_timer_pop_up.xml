@@ -6,28 +6,27 @@
     android:id="@+id/timer"
     android:layout_width="300dp"
     android:layout_height="300dp"
-    android:background="@drawable/timer_background"
     android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow"
+    android:background="@drawable/timer_background"
     tools:context=".TimerPopUp"
     android:layout_gravity="center_horizontal"
     android:layout_alignParentBottom="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="293dp"
+        android:layout_height="294dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_marginTop="60dp">
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ngetic"
             android:text="@string/popUpText"
             android:textColor="@color/white"
             android:textSize="37sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/ngetic"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
