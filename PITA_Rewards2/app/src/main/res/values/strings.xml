@@ -48,5 +48,6 @@
     <string name="employee_login">Employee Login</string>
     <string name="mark_complete">Mark Complete</string>
     <string name="name" />
+    <string name="order_details">Order Details</string>
 
 </resources>

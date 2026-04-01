@@ -93,7 +93,7 @@ class Drink_Customization : AppCompatActivity() {
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
 
             MainActivity.order.add(nameOfDrink)
-            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness))
+            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
             if (selectedDrink?.Drink_Type == "Smoothie") {
@@ -165,7 +165,7 @@ class Drink_Customization : AppCompatActivity() {
         //Adjusting price by drink size
         //TODO update price for other
         val basePrice = selectedDrink?.price ?: 0
-        var finalPrice = basePrice
+        finalPrice = basePrice
 
         when (size) {
             "Medium" -> finalPrice += 1
@@ -176,7 +176,7 @@ class Drink_Customization : AppCompatActivity() {
                 (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
                 (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
         resultText.text = resultString
-        Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
     }
 
     private fun Smoothie() {
@@ -348,7 +348,7 @@ class Drink_Customization : AppCompatActivity() {
         if (liquid.isNotEmpty()) orderString.append(" and $liquid")
 
         findViewById<TextView>(R.id.resultText).text = orderString.toString()
-        Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun validateSmoothie(): Boolean {
@@ -365,5 +365,6 @@ data class ItemCustomization(
     val drink: String,
     val size: String = "",
     val milk: String = "",
-    val sweetness: String = ""
+    val sweetness: String = "",
+    val price: Int = 0
 ) : Serializable

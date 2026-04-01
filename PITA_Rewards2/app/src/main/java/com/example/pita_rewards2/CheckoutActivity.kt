@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import android.content.Intent
+import android.widget.TextView
 
 
 class CheckoutActivity : AppCompatActivity(){
@@ -24,6 +25,11 @@ class CheckoutActivity : AppCompatActivity(){
         setContentView(R.layout.activity_checkout)
         val submitButton = findViewById<Button>(R.id.submitButton)
         val nameBox = findViewById<EditText>(R.id.nameBox)
+
+        val totalText = findViewById<TextView>(R.id.checkoutTotal)
+        val total = MainActivity.customizations.sumOf { it.price }
+
+        totalText.text = "$$total"
 
         submitButton.setOnClickListener {
             val name = nameBox.text.toString().trim()

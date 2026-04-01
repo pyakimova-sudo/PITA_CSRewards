@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/nameTxt"
+            android:id="@+id/drinkNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -36,8 +36,8 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="@+id/nameTxt"
-            app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+            app:layout_constraintStart_toStartOf="@+id/drinkNameText"
+            app:layout_constraintTop_toBottomOf="@+id/drinkNameText" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"

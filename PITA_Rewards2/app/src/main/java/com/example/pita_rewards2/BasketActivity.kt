@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Toast
 import android.widget.LinearLayout
 import android.view.LayoutInflater
+import android.widget.ImageView
 import android.widget.TextView
 
 
@@ -21,6 +22,10 @@ class BasketActivity : AppCompatActivity() {
 
     private lateinit var orderContainer: LinearLayout
 
+    private lateinit var totalText: TextView
+    private lateinit var subtotalText: TextView
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,6 +34,9 @@ class BasketActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         orderContainer = findViewById(R.id.orderContainer)
+        totalText = findViewById(R.id.totalTxt)
+        subtotalText = findViewById(R.id.totalFeeTxt)
+
         displayOrders()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -44,6 +52,7 @@ class BasketActivity : AppCompatActivity() {
 
         navigation =  findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.basket
+
 
         navigation.setOnItemSelectedListener {
             when(it.itemId) {
@@ -67,6 +76,13 @@ class BasketActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun calculateTotal() {
+        val total = MainActivity.customizations.sumOf { it.price }
+        totalText.text = "$$total"
+        subtotalText.text = "$$total"
+
+    }
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
 
@@ -76,22 +92,35 @@ class BasketActivity : AppCompatActivity() {
             Toast.makeText(this, "empty", Toast.LENGTH_LONG).show()
         }
 
-        for (order in drinkCustomizations) {
-            val itemView = inflater.inflate(R.layout.item_display, orderContainer, false)
+        for ((index, order) in drinkCustomizations.withIndex()) {
+            val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
 
-            val sizeText = itemView.findViewById<TextView>(R.id.sizeText)
-            sizeText.text = order.size
+            val orderItems = itemView.findViewById<TextView>(R.id.orderItems)
+            val detailsList = listOfNotNull(
+                order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
+                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+            )
+            orderItems.text = detailsList.joinToString("\n")
 
-            val milkText = itemView.findViewById<TextView>(R.id.milkText)
-            milkText.text = order.milk
+            val totalFee = itemView.findViewById<TextView>(R.id.totalFee)
+            totalFee.text = "$${order.price}"
 
-            val sweetnessText = itemView.findViewById<TextView>(R.id.sweetnessText)
-            sweetnessText.text = order.sweetness
+            val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
 
+            // Remove an item when clicked
+            removeBtn.setOnClickListener {
+                MainActivity.customizations.remove(order)
+                orderContainer.removeView(itemView)
+                calculateTotal()
+
+            }
             orderContainer.addView(itemView)
+
         }
+        calculateTotal()
     }
 }
