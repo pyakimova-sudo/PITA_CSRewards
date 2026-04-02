@@ -49,5 +49,6 @@
     <string name="mark_complete">Done</string>
     <string name="name" />
     <string name="order_details">Order Details</string>
+    <string name="orderName">Name</string>
 
 </resources>
