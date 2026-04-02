@@ -70,7 +70,7 @@ class Account : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, ChangePhone::class.java)
+            val intent = Intent(this, UpdatePhone::class.java)
             intent.putExtra("userId", savedUserId)
             startActivity(intent)
         }
