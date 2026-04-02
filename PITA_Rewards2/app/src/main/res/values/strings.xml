@@ -72,5 +72,11 @@
     <string name="iced">Iced</string>
     <string name="cancel_button">Cancel</string>
     <string name="menu">Drinks Menu:</string>
+    <string name="orders">Orders</string>
+    <string name="employee_login">Employee Login</string>
+    <string name="mark_complete">Done</string>
+    <string name="name" />
+    <string name="order_details">Order Details</string>
+    <string name="orderName">Name</string>
 
 </resources>

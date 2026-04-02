@@ -6,10 +6,14 @@ import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import java.io.Serializable
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
     private var selectedDrink: Drink_Menu? = null
+    private var nameOfDrink: String = ""//intent.getStringExtra("drink")
+    //private var milkChosen: String = (intent.getStringExtra("milk")).toString()
+
     private var finalPrice: Int = 0
     private val selectedFruits = mutableListOf<String>()
     private val selectedAddons = mutableListOf<String>()
@@ -62,6 +66,41 @@ class Drink_Customization : AppCompatActivity() {
             }
         }
 
+        val sizeButtons = listOf(
+            findViewById<Button>(R.id.sizeSmall) to "Small",
+            findViewById<Button>(R.id.sizeMedium) to "Medium",
+            findViewById<Button>(R.id.sizeLarge) to "Large"
+        )
+        sizeButtons.forEach { (button, value) ->
+            button.setOnClickListener {
+                updateSelection("Size", value, resultText)
+            }
+        }
+
+        //Milk Options
+        val milkButtons = listOf(
+            findViewById<Button>(R.id.milkNone) to "None",
+            findViewById<Button>(R.id.milkRegular) to "Regular",
+            findViewById<Button>(R.id.milkSoy) to "Soy"
+        )
+        milkButtons.forEach { (button, value) ->
+            button.setOnClickListener {
+                updateSelection("Milk", value, resultText)
+            }
+        }
+
+        //Sweetness options
+        val sweetButtons = listOf(
+            findViewById<Button>(R.id.sweetLow) to "Low",
+            findViewById<Button>(R.id.sweetMedium) to "Medium",
+            findViewById<Button>(R.id.sweetHigh) to "High"
+        )
+        sweetButtons.forEach { (button, value) ->
+            button.setOnClickListener {
+                updateSelection("Sweetness", value, resultText)
+            }
+        }
+
         submitButton.setOnClickListener {
             if (selectedDrink?.Drink_Type == "Smoothie") {
                 if (!validateSmoothie() || !validateSmoothie()) {
@@ -70,12 +109,18 @@ class Drink_Customization : AppCompatActivity() {
                 }
             }
 
-            val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
+            val basketIntent = Intent(this@Drink_Customization, MainActivity::class.java)
 
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
             val drink = selectedDrink?.name ?: ""
+            nameOfDrink = selectedDrink?.name.orEmpty()
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+            //milkChosen = (drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: "").toString()
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+
+            MainActivity.order.add(nameOfDrink)
+            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
+            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
             if (selectedDrink?.Drink_Type == "Smoothie") {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
@@ -126,6 +171,38 @@ class Drink_Customization : AppCompatActivity() {
 
             finish()
         }
+
+    }
+    private fun updateSelection(category: String, value: String, resultText: TextView) {
+        val existingIndex = drinkData.indexOfFirst { it.startsWith("$category:") }
+        val entry = "$category: $value"
+        if (existingIndex >= 0) {
+            drinkData[existingIndex] = entry
+        } else {
+            drinkData.add(entry)
+        }
+//TODO:was made for testing will switch to intent for basket
+        //Custom toast to display customized drink info
+        val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") .orEmpty()
+        val drink = selectedDrink?.name.orEmpty()
+        val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") .orEmpty()
+        val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") .orEmpty()
+
+        //Adjusting price by drink size
+        //TODO update price for other
+        val basePrice = selectedDrink?.price ?: 0
+        finalPrice = basePrice
+
+        when (size) {
+            "Medium" -> finalPrice += 1
+            "Large" -> finalPrice += 2
+        }
+
+        val resultString = "$$finalPrice $size $drink" +
+                (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
+                (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
+        resultText.text = resultString
+        //Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
     }
 
     private fun Smoothie() {
@@ -297,7 +374,7 @@ class Drink_Customization : AppCompatActivity() {
         if (liquid.isNotEmpty()) orderString.append(" and $liquid")
 
         findViewById<TextView>(R.id.resultText).text = orderString.toString()
-        Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun validateSmoothie(): Boolean {
@@ -309,3 +386,12 @@ class Drink_Customization : AppCompatActivity() {
         return true
     }
 }
+
+data class ItemCustomization(
+    val drink: String,
+    val size: String = "",
+    val milk: String = "",
+    val sweetness: String = "",
+    val price: Int = 0,
+    var customerName: String = ""
+) : Serializable

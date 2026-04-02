@@ -36,7 +36,6 @@
 
     <!-- Cart Scroll -->
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -48,13 +47,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerCard">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/orderContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:orientation="vertical"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <!-- Total Box -->
@@ -109,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@string/points"
+                android:text="@string/rewardPointsText"
                 android:textColor="@color/maple_primary"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"

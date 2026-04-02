@@ -17,6 +17,11 @@ class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var navigation: BottomNavigationView
 
+    companion object {
+        val order: MutableList<String> = mutableListOf()
+        val customizations: MutableList<ItemCustomization> = mutableListOf()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -108,7 +113,6 @@ class MainActivity : ComponentActivity() {
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 // Function to add or update a user
-fun addItem(drink: Drink_Menu) {
     fun addItem(drink: Drink_Menu): String? {
         val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return null
         drink.id = drinkId
@@ -116,7 +120,6 @@ fun addItem(drink: Drink_Menu) {
         drinksRef.child(drinkId).setValue(drink)
         return drinkId
     }
-}
 
 fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
