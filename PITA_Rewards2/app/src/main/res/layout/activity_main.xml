@@ -61,13 +61,29 @@ android:background="@drawable/menu_background">
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
         <LinearLayout
             android:id="@+id/drinkButtonContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="16dp"/>
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/menu"
+                android:textSize="40sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

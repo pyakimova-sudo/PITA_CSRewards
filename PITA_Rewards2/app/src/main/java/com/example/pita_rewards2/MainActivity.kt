@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
 
+
 class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var navigation: BottomNavigationView
@@ -21,6 +22,7 @@ class MainActivity : ComponentActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
 
         //Fluid button mapping for all Drink_Menu items
         /*

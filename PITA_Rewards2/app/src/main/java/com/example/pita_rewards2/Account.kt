@@ -30,6 +30,12 @@ class Account : AppCompatActivity() {
             insets
         }
 
+        binding.logoutButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
         binding.drinkTimer.setOnClickListener {
             val intent = Intent(this, TimerPopUp::class.java)
             startActivity(intent)
