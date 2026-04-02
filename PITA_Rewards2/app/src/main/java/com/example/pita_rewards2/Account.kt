@@ -1,36 +1,108 @@
 package com.example.pita_rewards2
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.Button
-import com.example.pita_rewards2.databinding.ActivityAccountBinding
-import com.example.pita_rewards2.databinding.ActivityBasketBinding
 
 class Account : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAccountBinding
-    lateinit var navigation : BottomNavigationView
+    private lateinit var navigation: BottomNavigationView
+    private lateinit var passwordChange: TextView
+    private lateinit var phoneChange: TextView
+    private lateinit var userId: String  // store current user id
+    private lateinit var prefs: android.content.SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAccountBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(binding.root)
+        setContentView(R.layout.activity_account)
 
+        // Handle edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 0, systemBars.right, 0)
             insets
         }
 
-        binding.logoutButton.setOnClickListener {
+        // SharedPreferences to persist userId
+        prefs = getSharedPreferences("PitaPrefs", MODE_PRIVATE)
+
+        // Get userId from Intent, fallback to SharedPreferences
+        userId = intent.getStringExtra("userId") ?: prefs.getString("userId", "") ?: ""
+
+        // Save userId to SharedPreferences if it came from Intent
+        if (userId.isNotEmpty()) {
+            prefs.edit().putString("userId", userId).apply()
+        }
+
+        // No redirect to login — just show a toast if userId is empty
+        if (userId.isEmpty()) {
+            Toast.makeText(this, "User ID not found. Some features may not work.", Toast.LENGTH_LONG).show()
+        }
+
+        navigation = findViewById(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.account
+
+        passwordChange = findViewById(R.id.passwordChange)
+        passwordChange.setOnClickListener {
+            val savedUserId = prefs.getString("userId", "")
+            if (savedUserId.isNullOrEmpty()) {
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, ChangePassword::class.java)
+            intent.putExtra("userId", savedUserId)
+            startActivity(intent)
+        }
+
+        phoneChange = findViewById(R.id.phoneChange)
+        phoneChange.setOnClickListener {
+            val savedUserId = prefs.getString("userId", "")
+            if (savedUserId.isNullOrEmpty()) {
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, UpdatePhone::class.java)
+            intent.putExtra("userId", savedUserId)
+            startActivity(intent)
+        }
+
+        navigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.basket -> {
+                    val intent = Intent(this, BasketActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.account -> {
+                    // Already on account — do nothing
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+}
+
+/*
+binding.logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
@@ -40,32 +112,4 @@ class Account : AppCompatActivity() {
             val intent = Intent(this, TimerPopUp::class.java)
             startActivity(intent)
         }
-
-        navigation =  findViewById(R.id.bottom_navigation)
-        navigation.selectedItemId = R.id.account
-
-        navigation.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-
-                    finish()
-                    true
-                }
-                R.id.basket -> {
-                    val intent = Intent(this, BasketActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-
-                    finish()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
-
-
-}
+ */
