@@ -88,10 +88,6 @@ class BasketActivity : AppCompatActivity() {
 
         val inflater = LayoutInflater.from(this)
 
-        if (drinkCustomizations.isEmpty()) {
-            Toast.makeText(this, "empty", Toast.LENGTH_LONG).show()
-        }
-
         for ((index, order) in drinkCustomizations.withIndex()) {
             val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
