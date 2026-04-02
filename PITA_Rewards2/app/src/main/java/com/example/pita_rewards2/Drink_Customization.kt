@@ -26,7 +26,7 @@ class Drink_Customization : AppCompatActivity() {
         enableEdgeToEdge()
 
 
-        findViewById<Button>(R.id.cancel_order).setOnClickListener{
+        findViewById<Button>(R.id.cancel_order)?.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -38,7 +38,7 @@ class Drink_Customization : AppCompatActivity() {
 
         // Milk spinner
         val milk_spinner: Spinner = findViewById(R.id.choose_milk)
-        milk_spinner.let { spinner ->
+        milk_spinner?.let { spinner ->
             ArrayAdapter.createFromResource(
                 this, R.array.milks, android.R.layout.simple_spinner_item
             ).also { adapter ->
@@ -62,7 +62,7 @@ class Drink_Customization : AppCompatActivity() {
 
         // Sweetness Spinner
         val sweetness_spinner: Spinner = findViewById(R.id.choose_sweetness)
-        sweetness_spinner.let { spinner ->
+        sweetness_spinner?.let { spinner ->
             ArrayAdapter.createFromResource(
                 this, R.array.sweetness, android.R.layout.simple_spinner_item
             ).also { adapter ->
@@ -255,9 +255,9 @@ class Drink_Customization : AppCompatActivity() {
             liquidLayout.addView(btn)
         }
 
-        findViewById<LinearLayout>(R.id.milkOptions).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.matchaLayout).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.GONE
     }
 
     private fun Matcha() {
@@ -292,14 +292,14 @@ class Drink_Customization : AppCompatActivity() {
             sweetLayout.addView(btn)
         }
 
-        findViewById<CheckBox>(R.id.hotOption).visibility = View.VISIBLE
-        findViewById<CheckBox>(R.id.icedOption).visibility = View.VISIBLE
+        findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
+        findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
 
-        findViewById<LinearLayout>(R.id.fruitLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.additionLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.liquidLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.milkOptions).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
     }
 //Cold Brew
     private fun Cold_Brew() {
@@ -334,23 +334,23 @@ class Drink_Customization : AppCompatActivity() {
             sweetLayout.addView(btn)
         }
 
-        findViewById<CheckBox>(R.id.hotOption).visibility = View.VISIBLE
-        findViewById<CheckBox>(R.id.icedOption).visibility = View.VISIBLE
+        findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
+        findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
 
-        findViewById<LinearLayout>(R.id.fruitLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.additionLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.liquidLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.milkOptions).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
     }
 
     private fun Regular() {
-        findViewById<LinearLayout>(R.id.milkOptions).visibility = View.VISIBLE
-        findViewById<LinearLayout>(R.id.sweetOptions).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.fruitLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.additionLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.liquidLayout).visibility = View.GONE
-        findViewById<LinearLayout>(R.id.matchaLayout).visibility = View.GONE
+        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.VISIBLE
+        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.GONE
     }
 
     private fun updateDrinkData(category: String, value: String) {
