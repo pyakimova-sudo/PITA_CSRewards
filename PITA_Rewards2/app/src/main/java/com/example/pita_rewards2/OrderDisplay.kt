@@ -17,11 +17,12 @@ class OrderDisplay : AppCompatActivity() {
         displayOrders()
     }
     private fun displayOrders() {
-        val drinkCustomizations = MainActivity.customizations
+        employeeContainer.removeAllViews()
 
+        val drinkCustomizations = MainActivity.customizations
         val inflater = LayoutInflater.from(this)
 
-        for (order in drinkCustomizations) {
+        for ((index, order) in drinkCustomizations.withIndex()) {
             val itemView = inflater.inflate(R.layout.viewholder_employee, employeeContainer, false)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameEmployee)
@@ -38,8 +39,15 @@ class OrderDisplay : AppCompatActivity() {
             )
             orderItems.text = detailsList.joinToString("\n")
 
+            val removeBtn = itemView.findViewById<TextView>(R.id.doneButton)
+
+            // Remove an item when clicked
+            removeBtn.setOnClickListener {
+                MainActivity.customizations.remove(order)
+                employeeContainer.removeView(itemView)
+
+            }
             employeeContainer.addView(itemView)
         }
     }
-
 }

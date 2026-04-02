@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import java.io.Serializable
 
 class Drink_Customization : AppCompatActivity() {
@@ -28,31 +29,74 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<Button>(R.id.cancel_order).setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
-
 
         val resultText = findViewById<TextView>(R.id.resultText)
         val titleText = findViewById<TextView>(R.id.title)
         val submitButton = findViewById<Button>(R.id.submitButton)
 
+        // Milk spinner
         val milk_spinner: Spinner = findViewById(R.id.choose_milk)
-        ArrayAdapter.createFromResource(
-            this, R.array.milks, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            milk_spinner.adapter = adapter
+        milk_spinner.let { spinner ->
+            ArrayAdapter.createFromResource(
+                this, R.array.milks, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                milk_spinner.adapter = adapter
+            }
+            milk_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedMilk = parent?.getItemAtPosition(position).toString()
+                    updateSelection("Milk", selectedMilk, resultText)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
         }
 
+        // Sweetness Spinner
         val sweetness_spinner: Spinner = findViewById(R.id.choose_sweetness)
-        ArrayAdapter.createFromResource(
-            this, R.array.sweetness, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            sweetness_spinner.adapter = adapter
+        sweetness_spinner.let { spinner ->
+            ArrayAdapter.createFromResource(
+                this, R.array.sweetness, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                sweetness_spinner.adapter = adapter
+            }
+            sweetness_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedSweetness = parent?.getItemAtPosition(position).toString()
+                    updateSelection("Sweetness", selectedSweetness, resultText)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
         }
 
-        selectedDrink = intent.getSerializableExtra("selected_drink") as? Drink_Menu
+        // Size Buttons
+        val sizeButtons = listOf(
+            findViewById<ImageButton>(R.id.sizeSmall) to "Small",
+            findViewById<ImageButton>(R.id.sizeMedium) to "Medium",
+            findViewById<ImageButton>(R.id.sizeLarge) to "Large"
+        )
+        sizeButtons.forEach { (button, value) ->
+            button.setOnClickListener {
+                updateSelection("Size", value, resultText)
+            }
+        }
+
+        selectedDrink = IntentCompat.getSerializableExtra(intent, "selected_drink", Drink_Menu::class.java)
 
         selectedDrink?.let { drink ->
             titleText.text = "${drink.name}"
@@ -66,42 +110,7 @@ class Drink_Customization : AppCompatActivity() {
             }
         }
 
-        val sizeButtons = listOf(
-            findViewById<Button>(R.id.sizeSmall) to "Small",
-            findViewById<Button>(R.id.sizeMedium) to "Medium",
-            findViewById<Button>(R.id.sizeLarge) to "Large"
-        )
-        sizeButtons.forEach { (button, value) ->
-            button.setOnClickListener {
-                updateSelection("Size", value, resultText)
-            }
-        }
-
-        //Milk Options
-        val milkButtons = listOf(
-            findViewById<Button>(R.id.milkNone) to "None",
-            findViewById<Button>(R.id.milkRegular) to "Regular",
-            findViewById<Button>(R.id.milkSoy) to "Soy"
-        )
-        milkButtons.forEach { (button, value) ->
-            button.setOnClickListener {
-                updateSelection("Milk", value, resultText)
-            }
-        }
-
-        //Sweetness options
-        val sweetButtons = listOf(
-            findViewById<Button>(R.id.sweetLow) to "Low",
-            findViewById<Button>(R.id.sweetMedium) to "Medium",
-            findViewById<Button>(R.id.sweetHigh) to "High"
-        )
-        sweetButtons.forEach { (button, value) ->
-            button.setOnClickListener {
-                updateSelection("Sweetness", value, resultText)
-            }
-        }
-
-        submitButton.setOnClickListener {
+        submitButton?.setOnClickListener {
             if (selectedDrink?.Drink_Type == "Smoothie") {
                 if (!validateSmoothie() || !validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
