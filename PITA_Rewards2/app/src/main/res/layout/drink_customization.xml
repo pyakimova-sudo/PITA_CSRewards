@@ -26,6 +26,7 @@
 
         <!-- Size Selector -->
         <TextView
+            android:id="@+id/size_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/size"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/drink_small"
+                app:srcCompat="@drawable/small_new"
                 android:scaleType="centerCrop" />
 
             <Space
@@ -64,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/drink_medium"
+                app:srcCompat="@drawable/medium_new"
                 android:scaleType="centerCrop" />
             <Space
                 android:layout_width="10dp"
@@ -77,12 +78,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/drink_large"
+                app:srcCompat="@drawable/large_new"
                 android:scaleType="centerCrop" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/text_milk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/milk"
@@ -110,6 +112,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/text_sweet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sweetness"
@@ -140,6 +143,7 @@
 
         <!-- Smoothie Options -->
         <TextView
+            android:id="@+id/fruit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fruit_options"
@@ -164,6 +168,7 @@
 
         <!-- Additional Ingredients -->
         <TextView
+            android:id="@+id/text_additional"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/additional"
@@ -188,6 +193,7 @@
 
         <!-- Liquid Options -->
         <TextView
+            android:id="@+id/text_liquid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/select_liquid"
@@ -219,6 +225,7 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/text_hot_iced"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hot_or_iced"
