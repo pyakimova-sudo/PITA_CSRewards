@@ -14,6 +14,11 @@ import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.R
 
+//TODO make database for orders so multiple can go into
+//TODO same employee page
+
+//TODO notifications
+//TODO point values for varried drinks
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeBinding
     private lateinit var database: FirebaseDatabase
