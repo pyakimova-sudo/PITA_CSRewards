@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
+import com.example.pita_rewards2.R
 import java.io.Serializable
 
 class Drink_Customization : AppCompatActivity() {
@@ -127,8 +128,8 @@ class Drink_Customization : AppCompatActivity() {
             //milkChosen = (drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: "").toString()
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
 
-            MainActivity.order.add(nameOfDrink)
-            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
+            MainActivity.Companion.order.add(nameOfDrink)
+            MainActivity.Companion.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
             if (selectedDrink?.Drink_Type == "Smoothie") {

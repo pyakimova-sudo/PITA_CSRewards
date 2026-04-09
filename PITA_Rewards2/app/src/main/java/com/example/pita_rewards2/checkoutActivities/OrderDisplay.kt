@@ -1,10 +1,12 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.LinearLayout
 import android.view.LayoutInflater
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
 
 class OrderDisplay : AppCompatActivity() {
     private lateinit var employeeContainer: LinearLayout

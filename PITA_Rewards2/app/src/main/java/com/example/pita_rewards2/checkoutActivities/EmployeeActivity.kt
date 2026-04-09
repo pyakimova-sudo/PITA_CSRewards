@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

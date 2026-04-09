@@ -1,10 +1,11 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.userActivities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.pita_rewards2.R
 
 class UpdatePhone : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

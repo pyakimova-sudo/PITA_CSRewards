@@ -1,6 +1,7 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.userActivities
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -8,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Account : AppCompatActivity() {
@@ -16,7 +20,7 @@ class Account : AppCompatActivity() {
     private lateinit var passwordChange: TextView
     private lateinit var phoneChange: TextView
     private lateinit var userId: String  // store current user id
-    private lateinit var prefs: android.content.SharedPreferences
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

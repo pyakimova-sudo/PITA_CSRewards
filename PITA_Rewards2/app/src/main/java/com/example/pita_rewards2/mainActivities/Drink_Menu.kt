@@ -1,5 +1,5 @@
-package com.example.pita_rewards2
-import java.util.UUID
+package com.example.pita_rewards2.mainActivities
+import java.io.Serializable
 
 data class Drink_Menu(
     var id: String = "",
@@ -7,7 +7,7 @@ data class Drink_Menu(
     val Drink_Type: String = "",
     val price: Int = 0,
     val ingredients: List<String> = emptyList()
-) : java.io.Serializable{
+) : Serializable{
     companion object {
         // Default drinks that will be added to Firebase if the database is empty
         val defaultDrinks = listOf(

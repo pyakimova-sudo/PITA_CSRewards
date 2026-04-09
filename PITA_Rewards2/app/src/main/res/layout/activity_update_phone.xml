@@ -5,7 +5,7 @@
     android:id="@+id/account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChangePassword"
+    tools:context=".userActivities.ChangePassword"
     android:background="@drawable/menu_background"
     android:gravity="center"
     android:padding="5dp">

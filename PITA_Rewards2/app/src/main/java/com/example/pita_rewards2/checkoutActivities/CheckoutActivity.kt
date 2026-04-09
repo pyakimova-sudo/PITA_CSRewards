@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.os.Bundle
 
@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.Toast
 import android.content.Intent
 import android.widget.TextView
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
 
 
 class CheckoutActivity : AppCompatActivity(){

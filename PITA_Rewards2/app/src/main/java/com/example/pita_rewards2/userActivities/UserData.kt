@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.userActivities
 
 data class UserData(
     val id: String? = null,

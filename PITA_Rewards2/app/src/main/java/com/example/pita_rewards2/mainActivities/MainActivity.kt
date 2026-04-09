@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,10 @@ import com.google.firebase.database.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
+import com.example.pita_rewards2.userActivities.Account
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.userActivities.UserData
 
 
 class MainActivity : ComponentActivity() {

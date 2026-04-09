@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
+import com.example.pita_rewards2.userActivities.Account
 
 
 class BasketActivity : AppCompatActivity() {
