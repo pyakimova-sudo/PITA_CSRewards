@@ -171,7 +171,6 @@ class Drink_Customization : AppCompatActivity() {
             basketIntent.putExtra("size", size)
             basketIntent.putExtra("final_price", finalPrice)
 
-            startActivity(basketIntent)
 
             // Redirect back to MainActivity after submitting
             val mainIntent = Intent(this@Drink_Customization, MainActivity::class.java)
@@ -283,7 +282,7 @@ class Drink_Customization : AppCompatActivity() {
         }
 
         val sweetLevels = listOf("100%","75%","50%","25%","0%")
-        val sweetLayout = findViewById<LinearLayout>(R.id.matchaSweetLayout)
+        val sweetLayout = findViewById<LinearLayout>(R.id.sweetOptions)
         sweetLayout.removeAllViews()
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
@@ -294,12 +293,12 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
         findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
+        findViewById<CheckBox>(R.id.matchaLayout)?.visibility = View.VISIBLE
 
         findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
     }
 //Cold Brew
     private fun Cold_Brew() {
@@ -325,7 +324,7 @@ class Drink_Customization : AppCompatActivity() {
         }
 
         val sweetLevels = listOf("100%","75%","50%","25%","0%")
-        val sweetLayout = findViewById<LinearLayout>(R.id.matchaSweetLayout)
+        val sweetLayout = findViewById<LinearLayout>(R.id.sweetOptions)
         sweetLayout.removeAllViews()
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
@@ -402,5 +401,6 @@ data class ItemCustomization(
     val milk: String = "",
     val sweetness: String = "",
     val price: Int = 0,
-    var customerName: String = ""
+    var customerName: String = "",
+    var location: String = ""
 ) : Serializable

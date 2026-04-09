@@ -8,10 +8,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.databinding.ActivityBasketBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.Toast
 import android.widget.LinearLayout
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 
 
@@ -25,17 +26,27 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var totalText: TextView
     private lateinit var subtotalText: TextView
 
+    private lateinit var locationSpinner: Spinner
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
+
         orderContainer = findViewById(R.id.orderContainer)
         totalText = findViewById(R.id.totalTxt)
         subtotalText = findViewById(R.id.totalFeeTxt)
+        locationSpinner = findViewById(R.id.location_dropdown)
+
+        ArrayAdapter.createFromResource(
+            this, R.array.locations, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            locationSpinner.adapter = adapter
+        }
 
         displayOrders()
 
@@ -46,6 +57,10 @@ class BasketActivity : AppCompatActivity() {
         }
 
         binding.btnCheckout.setOnClickListener {
+            val selectedLocation = locationSpinner.selectedItem.toString()
+
+            MainActivity.customizations.forEach { it.location = selectedLocation }
+
             val intent = Intent(this, CheckoutActivity::class.java)
             startActivity(intent)
         }

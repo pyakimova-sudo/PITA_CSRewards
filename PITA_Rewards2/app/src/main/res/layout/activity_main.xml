@@ -38,26 +38,6 @@ android:background="@drawable/menu_background">
                 android:textStyle="bold"
                 android:textColor="@color/maple_primary"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/placeholder"
-                    android:src="@drawable/outline_home_pin_24" />
-
-                <Spinner
-                    android:id="@+id/location_dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"/>
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

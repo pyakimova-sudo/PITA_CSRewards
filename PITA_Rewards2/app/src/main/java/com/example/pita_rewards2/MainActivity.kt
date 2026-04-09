@@ -2,12 +2,10 @@ package com.example.pita_rewards2
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
-import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
@@ -73,13 +71,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        val spinner: Spinner = findViewById(R.id.location_dropdown)
-        ArrayAdapter.createFromResource(
-            this, R.array.locations, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
+
 
         navigation = findViewById(R.id.bottom_navigation)
 
