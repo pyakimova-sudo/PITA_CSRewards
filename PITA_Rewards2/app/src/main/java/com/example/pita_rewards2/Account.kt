@@ -58,7 +58,7 @@ class Account : AppCompatActivity() {
             }
 
             val intent = Intent(this, ChangePassword::class.java)
-            intent.putExtra("userId", savedUserId)
+            intent.putExtra("userId", userId)
             startActivity(intent)
         }
 
@@ -70,7 +70,7 @@ class Account : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, UpdatePhone::class.java)
+            val intent = Intent(this, ChangePhone::class.java)
             intent.putExtra("userId", savedUserId)
             startActivity(intent)
         }
@@ -80,6 +80,7 @@ class Account : AppCompatActivity() {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId",userId)
                     startActivity(intent)
                     finish()
                     true
@@ -87,6 +88,7 @@ class Account : AppCompatActivity() {
                 R.id.basket -> {
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId",userId)
                     startActivity(intent)
                     finish()
                     true

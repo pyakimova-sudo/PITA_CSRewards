@@ -111,6 +111,7 @@ class Drink_Customization : AppCompatActivity() {
         }
 
         submitButton?.setOnClickListener {
+            // Check if it's a Smoothie and validate selections
             if (selectedDrink?.Drink_Type == "Smoothie") {
                 if (!validateSmoothie() || !validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
@@ -118,19 +119,24 @@ class Drink_Customization : AppCompatActivity() {
                 }
             }
 
+            // Create an Intent to go back to MainActivity (basket intent)
             val basketIntent = Intent(this@Drink_Customization, MainActivity::class.java)
 
+            // Retrieve customization data
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
             val drink = selectedDrink?.name ?: ""
             nameOfDrink = selectedDrink?.name.orEmpty()
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
-            //milkChosen = (drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: "").toString()
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
 
+            // Add customization to the MainActivity order list
             MainActivity.order.add(nameOfDrink)
             MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
+
+            // Show a toast with the updated order
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
+            // If it's a Smoothie, add fruits, additions, and liquid data
             if (selectedDrink?.Drink_Type == "Smoothie") {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
@@ -150,7 +156,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
-            } else if(selectedDrink?.Drink_Type == "Cold Brew"){
+            } else if (selectedDrink?.Drink_Type == "Cold Brew") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
@@ -162,22 +168,34 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
-            } else {
-                //basketIntent.putExtra("milk", milk)
-                //basketIntent.putExtra("sweetness", sweetness)
             }
-            //All get drink name size and final price
+
+            // Add the basic drink info like name, size, and final price
             basketIntent.putExtra("drink", drink)
             basketIntent.putExtra("size", size)
             basketIntent.putExtra("final_price", finalPrice)
 
+            // Retrieve userId from the current Intent (if available)
+            val userId = intent.getStringExtra("userId")
+            if (userId != null) {
+                basketIntent.putExtra("userId", userId)  // Pass the userId to MainActivity
+            }
+
+            // Start the BasketActivity or MainActivity with userId passed along
             startActivity(basketIntent)
 
-            // Redirect back to MainActivity after submitting
+            // Redirect back to MainActivity after submitting the order
             val mainIntent = Intent(this@Drink_Customization, MainActivity::class.java)
             mainIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+            // Ensure userId is included when returning to MainActivity
+            if (userId != null) {
+                mainIntent.putExtra("userId", userId)
+            }
+
             startActivity(mainIntent)
 
+            // Finish the current activity
             finish()
         }
 

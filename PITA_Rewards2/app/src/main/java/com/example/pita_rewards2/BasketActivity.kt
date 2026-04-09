@@ -13,13 +13,14 @@ import android.widget.LinearLayout
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.database.FirebaseDatabase
 
-
+//TODO make phone notification for order completion
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
     lateinit var navigation : BottomNavigationView
-
+    private lateinit var database: FirebaseDatabase
     private lateinit var orderContainer: LinearLayout
 
     private lateinit var totalText: TextView
@@ -28,6 +29,8 @@ class BasketActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val userId = intent.getStringExtra("userId")
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
@@ -46,19 +49,25 @@ class BasketActivity : AppCompatActivity() {
         }
 
         binding.btnCheckout.setOnClickListener {
+            val userId = intent.getStringExtra("userId")
+            if (userId.isNullOrEmpty()) {
+                Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
         }
 
         navigation =  findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.basket
 
-
         navigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId",userId)
                     startActivity(intent)
 
                     finish()
@@ -67,6 +76,7 @@ class BasketActivity : AppCompatActivity() {
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId",userId)
                     startActivity(intent)
 
                     finish()

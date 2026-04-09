@@ -7,8 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pita_rewards2.databinding.ActivityLoginBinding
 import com.google.firebase.database.*
-import kotlin.jvm.java
-import kotlin.text.isNotEmpty
 
 class LoginActivity : AppCompatActivity() {
 
@@ -39,10 +37,18 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        // Employee login
+        //Employee login
         binding.employeeLogin.setOnClickListener {
-            startActivity(Intent(this, EmployeeActivity::class.java))
-            finish()
+            //Directly passing userId to EmployeeActivity
+            val userId = intent.getStringExtra("userId")
+            if (userId != null) {
+                val intent = Intent(this, EmployeeActivity::class.java)
+                intent.putExtra("userId", userId)  // Pass the userId to EmployeeActivity
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -56,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                             if (userData != null && userData.password == password) {
                                 Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
                                 val id = userSnapshot.key
-                                //needed to actually put database into main
+                                // Pass userId to MainActivity
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.putExtra("userId", id)
                                 startActivity(intent)

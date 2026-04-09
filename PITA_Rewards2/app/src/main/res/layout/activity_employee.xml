@@ -34,7 +34,19 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Cart Scroll -->
+    <!-- Subtract Points Button (Visible Over Orders Scroll) -->
+    <Button
+        android:id="@+id/subtractPointsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subtract 10 Points"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/headerCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/employeeContainer" />
+
+    <!-- Cart Scroll (Orders List) -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -44,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerCard">
+        app:layout_constraintTop_toBottomOf="@id/subtractPointsButton">
 
         <LinearLayout
             android:id="@+id/employeeContainer"
@@ -53,13 +65,15 @@
             android:layout_margin="16dp"
             android:orientation="vertical">
 
-
+            <!-- TextView for Points (Example usage of points) -->
+            <TextView
+                android:id="@+id/pointsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Points: 0"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp" />
         </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
