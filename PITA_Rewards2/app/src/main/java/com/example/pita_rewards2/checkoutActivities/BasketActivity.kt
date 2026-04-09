@@ -14,9 +14,11 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
+import com.google.firebase.database.FirebaseDatabase
 
 //TODO make phone notification for order completion
 class BasketActivity : AppCompatActivity() {

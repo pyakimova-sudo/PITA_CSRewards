@@ -5,14 +5,14 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pita_rewards2.databinding.ActivityEmployeeBinding
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import android.view.LayoutInflater
 import android.widget.Button
+import com.example.pita_rewards2.mainActivities.MainActivity
+import com.example.pita_rewards2.R
 
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeBinding
