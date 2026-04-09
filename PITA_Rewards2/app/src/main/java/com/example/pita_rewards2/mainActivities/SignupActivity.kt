@@ -1,10 +1,11 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pita_rewards2.userActivities.UserData
 import com.example.pita_rewards2.databinding.ActivitySignupBinding
 import com.google.firebase.database.*
 import kotlin.jvm.java
@@ -58,7 +59,15 @@ class SignupActivity : AppCompatActivity() {
                     if (!snapshot.exists()) {
                         val id = databaseReference.push().key
                         if (id != null) {
-                            val userData = UserData(id = id, username = username, password = password, phone = phone, studentID = studentID, firstName = firstName, lastName = lastname)
+                            val userData = UserData(
+                                id = id,
+                                username = username,
+                                password = password,
+                                phone = phone,
+                                studentID = studentID,
+                                firstName = firstName,
+                                lastName = lastname
+                            )
                             databaseReference.child(id).setValue(userData)
                             Toast.makeText(this@SignupActivity, "Signup Successful", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this@SignupActivity, LoginActivity::class.java))

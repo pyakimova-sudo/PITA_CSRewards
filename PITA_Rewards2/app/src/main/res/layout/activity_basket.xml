@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_background"
-    tools:context=".BasketActivity">
+    tools:context=".checkoutActivities.BasketActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
@@ -17,20 +17,54 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Cart Text -->
-        <TextView
-            android:id="@+id/tvCartTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/ngetic"
-            android:text="@string/cart"
-            android:textColor="@color/maple_primary"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCartTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/ngetic"
+                android:text="@string/cart"
+                android:textColor="@color/maple_primary"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvCartTitle">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/placeholder"
+                    android:src="@drawable/outline_home_pin_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/location_dropdown"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/location_dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="40dp"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -52,7 +86,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+
+        </LinearLayout>
 
     </ScrollView>
 
@@ -77,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dollar_minus"
+                android:textSize="16sp"
                 android:textColor="@color/maple_secondary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/total"
+                android:textSize="16sp"
                 android:textColor="@color/maple_primary"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,26 +137,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/subTotal"
                 android:textColor="@color/maple_primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/rewardPointsText"
+                android:layout_marginTop="24dp"
+                android:layoutDirection="rtl"
+                android:text="@string/apply_points"
                 android:textColor="@color/maple_primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/subTotal" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/totalFeeTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dollar_minus"
+                android:textSize="16sp"
                 android:textColor="@color/maple_secondary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -130,6 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/dollar_minus"
+                android:textSize="16sp"
                 android:textColor="@color/maple_secondary"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +182,6 @@
                 android:id="@+id/divider"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_marginTop="16dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

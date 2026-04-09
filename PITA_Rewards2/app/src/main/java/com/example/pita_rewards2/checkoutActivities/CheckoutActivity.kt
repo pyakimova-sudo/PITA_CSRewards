@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +7,9 @@ import android.widget.Toast
 import android.content.Intent
 import android.util.Log
 import android.widget.TextView
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
+
 import com.google.firebase.database.FirebaseDatabase
 import com.example.pita_rewards2.databinding.ActivityCheckoutBinding
 import androidx.appcompat.app.AppCompatActivity

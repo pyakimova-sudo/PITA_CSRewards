@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.userActivities
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.pita_rewards2.R
 import com.google.firebase.database.FirebaseDatabase
 
 class ChangePassword : AppCompatActivity() {

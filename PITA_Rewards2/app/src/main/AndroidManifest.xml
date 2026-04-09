@@ -11,24 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
-            android:name=".OrderDisplay"
+            android:name=".checkoutActivities.OrderDisplay"
             android:exported="false" />
         <activity
-            android:name=".BasketActivity"
+            android:name=".checkoutActivities.BasketActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".Drink_Customization"
+            android:name=".mainActivities.Drink_Customization"
             android:exported="false" />
         <activity
-            android:name=".Account"
+            android:name=".userActivities.Account"
             android:exported="false" />
         <activity
-            android:name=".TimerPopUp"
+            android:name=".userActivities.TimerPopUp"
             android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".mainActivities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,16 +37,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CheckoutActivity"
+            android:name=".checkoutActivities.CheckoutActivity"
             android:theme="@style/Theme.PitaRewards.PopupActivity" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".mainActivities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".EmployeeActivity"
+            android:name=".checkoutActivities.EmployeeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mainActivities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,9 +54,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChangePassword"
+        <activity android:name=".userActivities.ChangePassword"
             android:exported="false" />
-        <activity android:name=".ChangePhone"
+        <activity android:name=".userActivities.ChangePhone"
             android:exported = "false"/>
     </application>
 

@@ -1,15 +1,10 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.userActivities
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.app.Activity
-import android.util.DisplayMetrics
-import android.view.ViewGroup
-import androidx.core.view.WindowCompat.enableEdgeToEdge
-import android.widget.Button
+import com.example.pita_rewards2.R
 
 class TimerPopUp : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

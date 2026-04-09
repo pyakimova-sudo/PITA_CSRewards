@@ -1,16 +1,18 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
-import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
+import com.example.pita_rewards2.userActivities.Account
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.userActivities.UserData
 
 class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -62,14 +64,7 @@ class MainActivity : ComponentActivity() {
             buttonContainer.addView(button)
         }
 
-        // Spinner setup for locations
-        val spinner: Spinner = findViewById(R.id.location_dropdown)
-        ArrayAdapter.createFromResource(
-            this, R.array.locations, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
+
 
         // Bottom navigation setup
         navigation = findViewById(R.id.bottom_navigation)

@@ -1,4 +1,4 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.checkoutActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +8,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.databinding.ActivityBasketBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.Toast
 import android.widget.LinearLayout
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
-import com.google.firebase.database.FirebaseDatabase
+import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.MainActivity
+import com.example.pita_rewards2.userActivities.Account
 
 //TODO make phone notification for order completion
 class BasketActivity : AppCompatActivity() {
@@ -26,6 +29,8 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var totalText: TextView
     private lateinit var subtotalText: TextView
 
+    private lateinit var locationSpinner: Spinner
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +41,18 @@ class BasketActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+
         orderContainer = findViewById(R.id.orderContainer)
         totalText = findViewById(R.id.totalTxt)
         subtotalText = findViewById(R.id.totalFeeTxt)
+        locationSpinner = findViewById(R.id.location_dropdown)
+
+        ArrayAdapter.createFromResource(
+            this, R.array.locations, android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            locationSpinner.adapter = adapter
+        }
 
         displayOrders()
 
@@ -54,6 +68,10 @@ class BasketActivity : AppCompatActivity() {
                 Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            val selectedLocation = locationSpinner.selectedItem.toString()
+
+            MainActivity.customizations.forEach { it.location = selectedLocation }
+
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("userId", userId)
             startActivity(intent)

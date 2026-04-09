@@ -1,10 +1,12 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
+import com.example.pita_rewards2.userActivities.UserData
 import com.example.pita_rewards2.databinding.ActivityLoginBinding
 import com.google.firebase.database.*
 

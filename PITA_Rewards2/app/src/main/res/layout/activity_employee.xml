@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_background"
-    tools:context=".EmployeeActivity">
+    tools:context=".checkoutActivities.EmployeeActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
