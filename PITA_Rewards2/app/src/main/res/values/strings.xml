@@ -78,5 +78,7 @@
     <string name="name" />
     <string name="order_details">Order Details</string>
     <string name="orderName">Name</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="latte">Latte</string>
 
 </resources>

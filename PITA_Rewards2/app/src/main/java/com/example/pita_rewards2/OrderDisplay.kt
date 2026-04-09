@@ -1,13 +1,17 @@
 package com.example.pita_rewards2
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.LinearLayout
 import android.view.LayoutInflater
+import android.widget.Button
 
 class OrderDisplay : AppCompatActivity() {
     private lateinit var employeeContainer: LinearLayout
+
+    private lateinit var unavailableButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +19,12 @@ class OrderDisplay : AppCompatActivity() {
 
         employeeContainer = findViewById(R.id.employeeContainer)
         displayOrders()
+
+        unavailableButton = findViewById(R.id.unavailable)
+        unavailableButton.setOnClickListener {
+            val intent = Intent(this, Unavailable::class.java)
+            startActivity(intent)
+        }
     }
     private fun displayOrders() {
         employeeContainer.removeAllViews()
