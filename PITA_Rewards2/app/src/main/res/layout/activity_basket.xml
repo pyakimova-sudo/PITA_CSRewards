@@ -139,16 +139,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/rewardPointsText"
+                android:layout_marginTop="16dp"
+                android:text="@string/apply_points"
                 android:textColor="@color/maple_primary"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/subTotal" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/totalFeeTxt"
@@ -175,7 +175,6 @@
                 android:id="@+id/divider"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_marginTop="16dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

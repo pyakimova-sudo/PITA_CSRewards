@@ -79,5 +79,6 @@
     <string name="order_details">Order Details</string>
     <string name="orderName">Name</string>
     <string name="location_text">Location</string>
+    <string name="apply_points">Apply Points?</string>
 
 </resources>
