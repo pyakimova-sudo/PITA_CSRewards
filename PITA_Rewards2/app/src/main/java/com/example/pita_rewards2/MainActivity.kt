@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                 //repeated use??
                 textSize = 18f
                 tag = drink.name
-                //isEnabled = !DisabledButtons.isDisabled(drink.name)
+                isEnabled = !DisabledButtons.isDisabled(drink.name)
                 setOnClickListener {
                     val intent = Intent(this@MainActivity, Drink_Customization::class.java)
                     intent.putExtra("selected_drink", drink)
@@ -128,12 +128,12 @@ fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
 }
 
-//object DisabledButtons {
-    //private val disabledSet = mutableSetOf<String>()
+object DisabledButtons {
+    private val disabledSet = mutableSetOf<String>()
 
-    //fun setDisabled(tag: String, disabled: Boolean) {
-    //    if (disabled) disabledSet.add(tag)
-    //    else disabledSet.remove(tag)
-    //}
-    //fun isDisabled(tag: String) = disabledSet.contains(tag)
-//}
+    fun setDisabled(tag: String, disabled: Boolean) {
+        if (disabled) disabledSet.add(tag)
+        else disabledSet.remove(tag)
+    }
+    fun isDisabled(tag: String) = disabledSet.contains(tag)
+}

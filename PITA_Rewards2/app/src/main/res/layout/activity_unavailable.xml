@@ -16,7 +16,7 @@
             android:id="@+id/drinksHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Drinks"/>
+            android:text="@string/drinks"/>
 
         <!-- Drink Items -->
         <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity = "center_vertical"
-            android:padding = "8dp">
+            android:padding = "5dp">
             <TextView
                 android:id="@+id/latte"
                 android:layout_width="wrap_content"
@@ -34,8 +34,94 @@
                 android:id= "@+id/latteCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/smoothie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smoothie"/>
+            <CheckBox
+                android:id= "@+id/smoothieCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/matcha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/matcha"/>
+            <CheckBox
+                android:id= "@+id/matchaCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/coldBrew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/coldBrew"/>
+            <CheckBox
+                android:id= "@+id/coldBrewCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/lemonade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lemonade"/>
+            <CheckBox
+                android:id= "@+id/lemonadeCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tea"/>
+            <CheckBox
+                android:id= "@+id/teaCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/hotChocolate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hotChocolate"/>
+            <CheckBox
+                android:id= "@+id/hotChocolateCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/milk2"/>
+            <CheckBox
+                android:id= "@+id/milkCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
+        <Button
+            android:id="@+id/back"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:backgroundTint="#B6AD90"
+            app:cornerRadius="32dp"/>
+
+        <Button
+            android:id="@+id/menu"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:backgroundTint="#B6AD90"
+            app:cornerRadius="32dp"/>
+
     </LinearLayout>
+
 
 </ScrollView>
