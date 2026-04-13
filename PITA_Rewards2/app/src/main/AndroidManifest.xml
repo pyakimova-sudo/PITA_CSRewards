@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
+        <activity
+            android:name=".mainActivities.Unavailable"
+            android:exported="false" />
         <activity
             android:name=".QrScanner"
             android:exported="false" />
@@ -68,10 +70,9 @@
             android:name=".userActivities.ChangePhone"
             android:exported="false" />
         <activity
-            android:name = "com.journeyapps.barcodescanner.CaptureActivity"
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
-
     </application>
 
 </manifest>
