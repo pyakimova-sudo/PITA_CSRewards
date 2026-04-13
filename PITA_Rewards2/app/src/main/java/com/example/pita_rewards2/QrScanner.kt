@@ -4,6 +4,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.Toast
+import com.example.pita_rewards2.checkoutActivities.weeklyDeal
 import com.journeyapps.barcodescanner.CaptureActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
@@ -42,10 +43,18 @@ class QrScanner : AppCompatActivity() {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }
         else {
-            scannedValue.text = buildString {
-                append("Scanned Value: ")
-                append(result.contents)
+            val scannedText = result.contents.trim()
+            scannedValue.text = "Scanned Value: $scannedText"
+            if (scannedText == "weeklydeal") {
+                Toast.makeText(this, "Weekly deal has been applied!", Toast.LENGTH_SHORT).show()
+                weeklyDeal.activateWeeklyDeal()
+            } else {
+                Toast.makeText(this, "Unknown", Toast.LENGTH_SHORT).show()
             }
+            //scannedValue.text = buildString {
+            //    append("Scanned Value: ")
+             //   append(result.contents)
+            //}
         }
     }
 }
