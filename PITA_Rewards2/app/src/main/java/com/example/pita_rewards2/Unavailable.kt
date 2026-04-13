@@ -2,10 +2,7 @@ package com.example.pita_rewards2
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.widget.CheckBox
 import android.widget.Toast
 import android.widget.Button
@@ -13,7 +10,6 @@ import android.widget.Button
 class Unavailable : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContentView(R.layout.activity_unavailable)
 
         //Latte
@@ -113,8 +109,6 @@ class Unavailable : AppCompatActivity() {
         milkCheckbox.isChecked = DisabledButtons.isDisabled("Milk")
 
 
-
-
         val backButton = findViewById<Button>(R.id.back)
         backButton.setOnClickListener {
             startActivity(Intent(this, EmployeeActivity::class.java))
@@ -126,12 +120,5 @@ class Unavailable : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-
-
-        //ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-        //    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-        //    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-        //    insets
-        //}
     }
 }
