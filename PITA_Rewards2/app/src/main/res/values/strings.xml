@@ -80,5 +80,18 @@
     <string name="orderName">Name</string>
     <string name="location_text">Location</string>
     <string name="apply_points">Apply Points?</string>
+    <string name="qr_scan">Scan QR</string>
+    <string name="scanned_value">Scanned Value</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="latte">Latte</string>
+    <string name="smoothie">Smoothie</string>
+    <string name="matcha">Matcha</string>
+    <string name="coldBrew">Cold Brew</string>
+    <string name="lemonade">Lemonade</string>
+    <string name="tea">Tea</string>
+    <string name="hotChocolate">Hot Chocolate</string>
+    <string name="milk2">Milk</string>
+    <string name="back">Back</string>
+    <string name="drinks">Drinks</string>
 
 </resources>

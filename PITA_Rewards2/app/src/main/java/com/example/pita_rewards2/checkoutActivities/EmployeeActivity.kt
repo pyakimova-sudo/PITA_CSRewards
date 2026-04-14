@@ -13,6 +13,9 @@ import android.view.LayoutInflater
 import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.R
+import android.content.Intent
+import com.example.pita_rewards2.mainActivities.Unavailable
+
 
 //TODO make database for orders so multiple can go into
 //TODO same employee page
@@ -25,6 +28,7 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var employeeContainer: LinearLayout
     private lateinit var pointsTextView: TextView
     private lateinit var subtractPointsButton: Button
+    private lateinit var unavailableButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,12 @@ class EmployeeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance()
+
+        unavailableButton = findViewById(R.id.unavailable)
+        unavailableButton.setOnClickListener {
+            val intent = Intent(this, Unavailable::class.java)
+            startActivity(intent)
+        }
 
         // Initialize the container for the orders
         employeeContainer = findViewById(R.id.employeeContainer)

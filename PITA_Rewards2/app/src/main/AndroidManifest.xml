@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
+        <activity
+            android:name=".mainActivities.Unavailable"
+            android:exported="false" />
+        <activity
+            android:name=".QrScanner"
+            android:exported="false" />
         <activity
             android:name=".checkoutActivities.OrderDisplay"
             android:exported="false" />
@@ -25,8 +34,8 @@
             android:exported="false" />
         <activity
             android:name=".userActivities.TimerPopUp"
-            android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow" />
         <activity
             android:name=".mainActivities.LoginActivity"
             android:exported="true">
@@ -54,10 +63,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".userActivities.ChangePassword"
+        <activity
+            android:name=".userActivities.ChangePassword"
             android:exported="false" />
-        <activity android:name=".userActivities.ChangePhone"
-            android:exported = "false"/>
+        <activity
+            android:name=".userActivities.ChangePhone"
+            android:exported="false" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
     </application>
 
 </manifest>

@@ -75,5 +75,17 @@
                 android:layout_marginBottom="16dp" />
         </LinearLayout>
     </ScrollView>
+    <Button
+        android:id="@+id/unavailable"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/maple_secondary"
+        android:fontFamily="@font/ngetic"
+        android:text="@string/unavailable"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

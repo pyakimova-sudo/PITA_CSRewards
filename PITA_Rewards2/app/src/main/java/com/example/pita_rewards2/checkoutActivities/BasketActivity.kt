@@ -19,6 +19,8 @@ import com.example.pita_rewards2.R
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
 import com.google.firebase.database.FirebaseDatabase
+import android.widget.Button
+import com.example.pita_rewards2.QrScanner
 
 //TODO make phone notification for order completion
 class BasketActivity : AppCompatActivity() {
@@ -32,6 +34,7 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var subtotalText: TextView
 
     private lateinit var locationSpinner: Spinner
+    private lateinit var qrScan: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +51,7 @@ class BasketActivity : AppCompatActivity() {
         totalText = findViewById(R.id.totalTxt)
         subtotalText = findViewById(R.id.totalFeeTxt)
         locationSpinner = findViewById(R.id.location_dropdown)
+        qrScan = findViewById(R.id.qr_scan)
 
         ArrayAdapter.createFromResource(
             this, R.array.locations, android.R.layout.simple_spinner_item
@@ -62,6 +66,11 @@ class BasketActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, 0, systemBars.right, 0)
             insets
+        }
+
+        binding.qrScan.setOnClickListener {
+            startActivity(Intent(this, QrScanner::class.java))
+            finish()
         }
 
         binding.btnCheckout.setOnClickListener {
