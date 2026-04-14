@@ -76,4 +76,6 @@ dependencies {
     // Firebase BoM and SDKs
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-database")
+    //Firebase cloud messaging
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
 }
