@@ -1,10 +1,13 @@
 package com.example.pita_rewards2
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
@@ -31,10 +34,12 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.A
             p0.itemView.setLayoutParams(params)
         }
 
+
         val currentItem = drinkMenu[p1]
         p0.rvImage.setImageResource(currentItem.image)
         p0.rvDrink.text = currentItem.name
         p0.rvPrice.text = "$${currentItem.price}"
+        p0.imageBu.setImageResource(R.drawable.arrow2)
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +50,7 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.A
         val rvImage: ImageView = itemView.findViewById(R.id.image)
         val rvDrink: TextView = itemView.findViewById(R.id.drink_name)
         val rvPrice: TextView = itemView.findViewById(R.id.price_text)
+        val imageBu: ImageButton = itemView.findViewById(R.id.arrow_button)
 
 
     }

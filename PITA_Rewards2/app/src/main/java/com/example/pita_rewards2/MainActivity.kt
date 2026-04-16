@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -58,7 +59,6 @@ class MainActivity : ComponentActivity() {
 
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()
-
 
         //Fluid button mapping for all Drink_Menu items
         /*

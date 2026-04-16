@@ -77,14 +77,14 @@ android:background="@drawable/menu_background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="107dp"
         android:fitsSystemWindows="true">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/menu_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:listitem="@layout/recycler_view_row"
             android:paddingBottom="?attr/actionBarSize" />
 
