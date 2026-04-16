@@ -1,65 +1,61 @@
 package com.example.pita_rewards2
+import android.media.Image
 import java.util.UUID
 
 data class Drink_Menu(
-    var id: String = "",
-    val name: String = "",
-    val Drink_Type: String = "",
+    var name: String = "",
     val price: Int = 0,
-    val ingredients: List<String> = emptyList()
+    val image: Int
 ) : java.io.Serializable{
     companion object {
         // Default drinks that will be added to Firebase if the database is empty
         val defaultDrinks = listOf(
             Drink_Menu(
                 name = "Latte",
-                Drink_Type = "Coffee", //Will be used to sort might need another button
                 price = 5,
-                ingredients = listOf("Coffee", "Milk", "Ice")
+                image = R.drawable.latte
             ),
             Drink_Menu(
                 name = "Smoothie",
-                Drink_Type = "Smoothie",
                 price = 3,
-                ingredients = listOf("")
+                image = R.drawable.smoothie
             ),
             Drink_Menu(
                 name = "Matcha",
-                Drink_Type = "Matcha",
                 price = 5,
-                ingredients = listOf("Coffee", "Milk", "Ice")
+                image = R.drawable.matcha
             ),
             Drink_Menu(
                 name = "Cold Brew",
-                Drink_Type = "Coffee",
                 price = 5,
-                ingredients = listOf("Coffee", "Milk", "Ice")
+                image = R.drawable.cold_brew
             ),
             Drink_Menu(
                 name = "Water",
-                Drink_Type = "Regular",
                 price = 1,
-                ingredients = listOf("Water")
+                image = R.drawable.water
             ),
             Drink_Menu(
                 name = "Lemonade",
-                Drink_Type = "Lemonade",
                 price = 3,
-                ingredients = listOf("Ice")
+                image = R.drawable.lemonade
             ),
             Drink_Menu(
                 name = "Tea",
-                Drink_Type = "Tea",
                 price = 3,
-                ingredients = listOf("Milk", "Tea")
+                image = R.drawable.tea
             ),
             Drink_Menu(
                 name = "Hot Chocolate",
-                Drink_Type = "Chocolate",
                 price = 5,
-                ingredients = listOf("Chocolate", "Milk")
+                image = R.drawable.hot_chocolate
             ),
-            Drink_Menu(name = "Milk", Drink_Type = "Base?", price = 1, ingredients = listOf("Milk", "ice"))
+            Drink_Menu(name = "Milk", price = 1, image = R.drawable.milk),
+            Drink_Menu(
+                name = "Mocha",
+                price = 5,
+                image = R.drawable.mocha
+            )
         )
     }
 }

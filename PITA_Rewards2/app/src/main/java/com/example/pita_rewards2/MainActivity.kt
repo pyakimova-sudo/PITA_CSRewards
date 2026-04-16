@@ -1,5 +1,6 @@
 package com.example.pita_rewards2
 
+import android.R.attr.text
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -11,11 +12,21 @@ import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var drinkMenu: ArrayList<Drink_Menu>
+    lateinit var imageList:Array<Int>
+    lateinit var nameList:Array<String>
+    lateinit var priceList:Array<Int>
+
     private lateinit var binding: ActivityMainBinding
     lateinit var navigation: BottomNavigationView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,16 +34,60 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        imageList = arrayOf(
+            R.drawable.latte, R.drawable.smoothie,
+            R.drawable.matcha, R.drawable.cold_brew,
+            R.drawable.water, R.drawable.lemonade,
+            R.drawable.tea, R.drawable.hot_chocolate,
+            R.drawable.milk, R.drawable.mocha
+        )
+
+        nameList = arrayOf(
+            "Latte", "Smoothie", "Matcha", "Cold Brew",
+            "Water", "Lemonade", "Tea", "Hot Chocolate",
+            "Milk", "Mocha"
+        )
+
+        priceList = arrayOf(
+            5, 3, 5, 5, 1, 3, 3, 5, 3, 5
+        )
+
+        recyclerView = findViewById(R.id.menu_recycler)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+
+        drinkMenu = arrayListOf<Drink_Menu>()
+        getData()
+
 
         //Fluid button mapping for all Drink_Menu items
         /*
         TODO conditionally divide drinks by type
-         to better organize menu screen(aestetics)*/
+         to better organize menu screen(aestetics)
+        val recyclerView = binding.menuRecycler
+        Drink_Menu.defaultDrinks.forEach {drink ->
+            val current = RecyclerView(this).apply {
+                val drinkTextVew: TextView = findViewById(R.id.drink_name)
+                drinkTextVew.text = drink.name
+
+                val priceTextView: TextView = findViewById(R.id.price_text)
+                priceTextView.text = "$${drink.price}"
+
+                setOnClickListener {
+                    val intent = Intent(this@MainActivity, Drink_Customization::class.java)
+                    intent.putExtra("selected_drink", drink)
+                    startActivity(intent)
+                }
+
+            }
+            recyclerView.addView(current)
+        }
+        */
+        /*
         val buttonContainer = binding.drinkButtonContainer
         Drink_Menu.defaultDrinks.forEach { drink ->
             val button = Button(this).apply {
                 text = drink.name
-                //TODO:UI things here(picture of drink)
                 //Could maybe add picture to data class for
                 //repeated use??
                 textSize = 18f
@@ -44,6 +99,7 @@ class MainActivity : ComponentActivity() {
             }
             buttonContainer.addView(button)
         }
+        */
         /*
         //Button for latte customization
         val coffeeButton: Button? = findViewById(R.id.squareButton)
@@ -104,17 +160,26 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun getData(){
+        for (i in imageList.indices){
+            val menu = Drink_Menu(nameList[i],priceList[i],imageList[i])
+            drinkMenu.add(menu)
+        }
+        recyclerView.adapter = AdapterClass(drinkMenu)
+    }
+
 }
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
 // Function to add or update a user
 fun addItem(drink: Drink_Menu) {
     fun addItem(drink: Drink_Menu): String? {
-        val drinkId = drink.id.ifEmpty { drinksRef.push().key } ?: return null
-        drink.id = drinkId
+        val drinkName = drink.name.ifEmpty { drinksRef.push().key } ?: return null
+        drink.name = drinkName
 
-        drinksRef.child(drinkId).setValue(drink)
-        return drinkId
+        drinksRef.child(drinkName).setValue(drink)
+        return drinkName
     }
 }
 

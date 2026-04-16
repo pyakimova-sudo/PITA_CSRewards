@@ -72,5 +72,7 @@
     <string name="iced">Iced</string>
     <string name="cancel_button">Cancel</string>
     <string name="menu">Drinks Menu:</string>
-
+    <string name="is_employee">Tick if an employee:</string>
+    <string name="drink_name">Drink</string>
+    <string name="drink_price">$</string>
 </resources>

@@ -27,7 +27,6 @@ class Drink_Customization : AppCompatActivity() {
 
         }
 
-
         val resultText = findViewById<TextView>(R.id.resultText)
         val titleText = findViewById<TextView>(R.id.title)
         val submitButton = findViewById<Button>(R.id.submitButton)
@@ -54,7 +53,7 @@ class Drink_Customization : AppCompatActivity() {
             titleText.text = "${drink.name}"
             resultText.text = drink.name
 
-            when (drink.Drink_Type) {
+            when (drink.name) {
                 "Smoothie" -> Smoothie()
                 "Matcha" -> Matcha()
                 "Cold Brew" -> Cold_Brew()
@@ -63,7 +62,8 @@ class Drink_Customization : AppCompatActivity() {
         }
 
         submitButton.setOnClickListener {
-            if (selectedDrink?.Drink_Type == "Smoothie") {
+
+            if (selectedDrink?.name == "Smoothie") {
                 if (!validateSmoothie() || !validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
@@ -77,14 +77,14 @@ class Drink_Customization : AppCompatActivity() {
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
 
-            if (selectedDrink?.Drink_Type == "Smoothie") {
+            if (selectedDrink?.name == "Smoothie") {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
                 val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
                 basketIntent.putExtra("fruits", ArrayList(fruits))
                 basketIntent.putExtra("additions", ArrayList(additions))
                 basketIntent.putExtra("liquid", liquid)
-            } else if (selectedDrink?.Drink_Type == "Matcha") {
+            } else if (selectedDrink?.name == "Matcha") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
@@ -96,7 +96,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
-            } else if(selectedDrink?.Drink_Type == "Cold Brew"){
+            } else if(selectedDrink?.name == "Cold Brew"){
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""

@@ -16,6 +16,7 @@ android:background="@drawable/menu_background">
         android:gravity="center">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/top_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Custom"
@@ -97,6 +98,18 @@ android:background="@drawable/menu_background">
         app:itemTextColor="#414833"
         app:itemIconTint="#414833"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menu_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>
