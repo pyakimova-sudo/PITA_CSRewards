@@ -20,7 +20,9 @@ import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.Button
-import com.example.pita_rewards2.QrScanner
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
 
 //TODO make phone notification for order completion
 class BasketActivity : AppCompatActivity() {
@@ -36,6 +38,17 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var locationSpinner: Spinner
     private lateinit var qrScan: Button
 
+    private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
+        ScanContract()
+    ){result ->
+        if (result.contents == null) {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            val scannedValue = result.contents
+            Toast.makeText(this, "Scanned: $scannedValue", Toast.LENGTH_LONG).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,11 +81,6 @@ class BasketActivity : AppCompatActivity() {
             insets
         }
 
-        binding.qrScan.setOnClickListener {
-            startActivity(Intent(this, QrScanner::class.java))
-            finish()
-        }
-
         binding.btnCheckout.setOnClickListener {
             val userId = intent.getStringExtra("userId")
             if (userId.isNullOrEmpty()) {
@@ -85,7 +93,13 @@ class BasketActivity : AppCompatActivity() {
 
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("userId", userId)
+            intent.putExtra("location", userId)
             startActivity(intent)
+        }
+
+        // QR SCAN
+        binding.qrScan.setOnClickListener {
+            scannerLauncher.launch(ScanOptions().setPrompt("Scan QR code").setDesiredBarcodeFormats(ScanOptions.QR_CODE))
         }
 
         navigation =  findViewById(R.id.bottom_navigation)

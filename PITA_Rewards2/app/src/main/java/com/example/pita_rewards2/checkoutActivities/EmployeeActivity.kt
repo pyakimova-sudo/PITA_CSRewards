@@ -81,7 +81,7 @@ class EmployeeActivity : AppCompatActivity() {
     private fun displayOrders() {
         employeeContainer.removeAllViews()
 
-        val drinkCustomizations = MainActivity.customizations
+        val drinkCustomizations = MainActivity.customizations.toList()
         val inflater = LayoutInflater.from(this)
 
         for ((index, order) in drinkCustomizations.withIndex()) {
@@ -92,6 +92,10 @@ class EmployeeActivity : AppCompatActivity() {
 
             val nameLabel = itemView.findViewById<TextView>(R.id.customerNameText)
             nameLabel.text = order.customerName
+
+            val locationText = itemView.findViewById<TextView>(R.id.locationText)
+            locationText.text = "${order.location}"
+
 
             val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
             val detailsList = listOfNotNull(
