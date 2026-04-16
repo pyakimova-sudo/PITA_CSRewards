@@ -35,26 +35,26 @@ class MainActivity : ComponentActivity() {
         setContentView(binding.root)
 
         imageList = arrayOf(
-            R.drawable.latte, R.drawable.smoothie,
+            R.drawable.latte,R.drawable.mocha, R.drawable.smoothie,
             R.drawable.matcha, R.drawable.cold_brew,
             R.drawable.water, R.drawable.lemonade,
             R.drawable.tea, R.drawable.hot_chocolate,
-            R.drawable.milk, R.drawable.mocha
+            R.drawable.milk
         )
 
         nameList = arrayOf(
-            "Latte", "Smoothie", "Matcha", "Cold Brew",
+            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
             "Water", "Lemonade", "Tea", "Hot Chocolate",
-            "Milk", "Mocha"
+            "Milk"
         )
 
         priceList = arrayOf(
-            5, 3, 5, 5, 1, 3, 3, 5, 3, 5
+            5,5, 3, 5, 5, 1, 3, 3, 5, 3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.setHasFixedSize(true)
+        recyclerView.setHasFixedSize(false)
 
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()

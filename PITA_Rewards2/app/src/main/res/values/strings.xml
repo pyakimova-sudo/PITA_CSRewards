@@ -74,5 +74,5 @@
     <string name="menu">Drinks Menu:</string>
     <string name="is_employee">Tick if an employee:</string>
     <string name="drink_name">Drink</string>
-    <string name="drink_price">$</string>
+    <string name="drink_price">5</string>
 </resources>

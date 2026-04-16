@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
     override fun onCreateViewHolder(
@@ -21,10 +20,21 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.A
         p0: ViewHolderClass,
         p1: Int
     ) {
+
+        if (p1 == drinkMenu.size - 1) {
+            val params = p0.itemView.getLayoutParams() as RecyclerView.LayoutParams
+            params.bottomMargin = 100 // last item bottom margin
+            p0.itemView.setLayoutParams(params)
+        } else {
+            val params = p0.itemView.getLayoutParams() as RecyclerView.LayoutParams
+            params.bottomMargin = 10 // other items bottom margin
+            p0.itemView.setLayoutParams(params)
+        }
+
         val currentItem = drinkMenu[p1]
         p0.rvImage.setImageResource(currentItem.image)
         p0.rvDrink.text = currentItem.name
-        p0.rvPrice.text = currentItem.price.toString()
+        p0.rvPrice.text = "$${currentItem.price}"
     }
 
     override fun getItemCount(): Int {
