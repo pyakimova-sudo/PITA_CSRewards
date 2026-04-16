@@ -9,6 +9,7 @@ import com.google.firebase.database.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.pita_rewards2.userActivities.Account
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.R
@@ -42,10 +43,11 @@ class MainActivity : ComponentActivity() {
             }
         } else {
             // If userId is missing, redirect to login
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-            return
+            Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
+            //val intent = Intent(this, LoginActivity::class.java)
+            //startActivity(intent)
+            //finish()
+            //return
         }
 
         // Fluid button mapping for all Drink_Menu items

@@ -8,11 +8,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
 import com.example.pita_rewards2.R
+import com.example.pita_rewards2.userActivities.Account
 
 class Unavailable : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unavailable)
+
+        val userId = intent.getStringExtra("userId")
 
         //Latte
         val latteCheckbox = findViewById<CheckBox>(R.id.latteCheckbox)
@@ -113,13 +116,18 @@ class Unavailable : AppCompatActivity() {
 
         val backButton = findViewById<Button>(R.id.back)
         backButton.setOnClickListener {
-            startActivity(Intent(this, EmployeeActivity::class.java))
+            val intent = Intent(this, EmployeeActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
             finish()
         }
 
         val menuButton = findViewById<Button>(R.id.menu)
         menuButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            //val userId = intent.getStringExtra("userId")
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
             finish()
         }
     }
