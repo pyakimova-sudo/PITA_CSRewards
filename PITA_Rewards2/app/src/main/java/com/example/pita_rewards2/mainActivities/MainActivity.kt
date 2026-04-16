@@ -1,6 +1,5 @@
 package com.example.pita_rewards2
 
-import android.R.attr.text
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -10,24 +9,29 @@ import com.example.pita_rewards2.databinding.ActivityMainBinding
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pita_rewards2.userActivities.Account
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
+import com.example.pita_rewards2.mainActivities.ItemCustomization
+import com.example.pita_rewards2.userActivities.UserData
 
 
 class MainActivity : ComponentActivity() {
-
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
     lateinit var imageList:Array<Int>
     lateinit var nameList:Array<String>
     lateinit var priceList:Array<Int>
-
     private lateinit var binding: ActivityMainBinding
     lateinit var navigation: BottomNavigationView
 
+    companion object {
+
+        val order: MutableList<String> = mutableListOf()
+        val customizations: MutableList<ItemCustomization> = mutableListOf()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +66,6 @@ class MainActivity : ComponentActivity() {
 
         //Fluid button mapping for all Drink_Menu items
         /*
-        TODO conditionally divide drinks by type
-         to better organize menu screen(aestetics)
         val recyclerView = binding.menuRecycler
         Drink_Menu.defaultDrinks.forEach {drink ->
             val current = RecyclerView(this).apply {
@@ -185,4 +187,15 @@ fun addItem(drink: Drink_Menu) {
 
 fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
+}
+
+object DisabledButtons {
+    private val disabledSet = mutableSetOf<String>()
+
+    fun setDisabled(tag: String, disabled: Boolean) {
+        if (disabled) disabledSet.add(tag)
+        else disabledSet.remove(tag)
+    }
+
+    fun isDisabled(tag: String) = disabledSet.contains(tag)
 }

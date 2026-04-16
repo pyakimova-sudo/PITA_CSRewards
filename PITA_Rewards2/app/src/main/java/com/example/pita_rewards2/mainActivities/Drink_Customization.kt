@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
 import java.io.Serializable
+import com.example.pita_rewards2.Drink_Menu
+import com.example.pita_rewards2.MainActivity
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
@@ -103,7 +105,7 @@ class Drink_Customization : AppCompatActivity() {
             titleText.text = "${drink.name}"
             resultText.text = drink.name
 
-            when (drink.Drink_Type) {
+            when (drink.name) {
                 "Smoothie" -> Smoothie()
                 "Matcha" -> Matcha()
                 "Cold Brew" -> Cold_Brew()
@@ -113,7 +115,7 @@ class Drink_Customization : AppCompatActivity() {
 
         submitButton?.setOnClickListener {
             // Check if it's a Smoothie and validate selections
-            if (selectedDrink?.Drink_Type == "Smoothie") {
+            if (selectedDrink?.name == "Smoothie") {
                 if (!validateSmoothie() || !validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
@@ -138,14 +140,14 @@ class Drink_Customization : AppCompatActivity() {
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
             // If it's a Smoothie, add fruits, additions, and liquid data
-            if (selectedDrink?.Drink_Type == "Smoothie") {
+            if (selectedDrink?.name == "Smoothie") {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
                 val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
                 basketIntent.putExtra("fruits", ArrayList(fruits))
                 basketIntent.putExtra("additions", ArrayList(additions))
                 basketIntent.putExtra("liquid", liquid)
-            } else if (selectedDrink?.Drink_Type == "Matcha") {
+            } else if (selectedDrink?.name == "Matcha") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
@@ -157,7 +159,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
-            } else if (selectedDrink?.Drink_Type == "Cold Brew") {
+            } else if (selectedDrink?.name == "Cold Brew") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""

@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import android.view.LayoutInflater
 import android.widget.Button
-import com.example.pita_rewards2.mainActivities.MainActivity
+import com.example.pita_rewards2.MainActivity
 import com.example.pita_rewards2.R
 import android.content.Intent
 import com.example.pita_rewards2.mainActivities.Unavailable

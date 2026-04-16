@@ -93,5 +93,8 @@
     <string name="milk2">Milk</string>
     <string name="back">Back</string>
     <string name="drinks">Drinks</string>
+    <string name="is_employee">Tick if an employee:</string>
+    <string name="drink_name">Drink</string>
+    <string name="drink_price">5</string>
 
 </resources>

@@ -6,8 +6,10 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pita_rewards2.DisabledButtons
 import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
 import com.example.pita_rewards2.R
+import com.example.pita_rewards2.MainActivity
 
 class Unavailable : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
