@@ -32,13 +32,9 @@ class EmployeeActivity : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
 
-
-
         unavailableButton = findViewById(R.id.unavailable)
         unavailableButton.setOnClickListener {
-            val userId = intent.getStringExtra("userId")
             val intent = Intent(this, Unavailable::class.java)
-            intent.putExtra("userId", userId)
             startActivity(intent)
         }
 
