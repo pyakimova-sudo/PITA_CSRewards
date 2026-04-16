@@ -28,7 +28,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
-    lateinit var navigation : BottomNavigationView
+    lateinit var navigation: BottomNavigationView
     private lateinit var database: FirebaseDatabase
     private lateinit var orderContainer: LinearLayout
 
@@ -40,15 +40,14 @@ class BasketActivity : AppCompatActivity() {
 
     private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
         ScanContract()
-    ){result ->
+    ) { result ->
         if (result.contents == null) {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             val scannedValue = result.contents
             Toast.makeText(this, "Scanned: $scannedValue", Toast.LENGTH_LONG).show()
-            }
         }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,32 +98,37 @@ class BasketActivity : AppCompatActivity() {
 
         // QR SCAN
         binding.qrScan.setOnClickListener {
-            scannerLauncher.launch(ScanOptions().setPrompt("Scan QR code").setDesiredBarcodeFormats(ScanOptions.QR_CODE))
+            scannerLauncher.launch(
+                ScanOptions().setPrompt("Scan QR code")
+                    .setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            )
         }
 
-        navigation =  findViewById(R.id.bottom_navigation)
+        navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.basket
 
         navigation.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId",userId)
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
 
                     finish()
                     true
                 }
+
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId",userId)
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
 
                     finish()
                     true
                 }
+
                 else -> false
             }
         }
@@ -136,13 +140,23 @@ class BasketActivity : AppCompatActivity() {
         subtotalText.text = "$$total"
 
     }
+
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
-
         val inflater = LayoutInflater.from(this)
+        val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
-        for ((index, order) in drinkCustomizations.withIndex()) {
-            val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
+        orderContainer.removeAllViews()
+
+        if (MainActivity.isOrderSubmitted) {
+            binding.paymentLayout.visibility = android.view.View.INVISIBLE
+            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
+        } else {
+            binding.paymentLayout.visibility = android.view.View.VISIBLE
+            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
+        }
+
+        for (order in drinkCustomizations) {
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
@@ -158,18 +172,27 @@ class BasketActivity : AppCompatActivity() {
             val totalFee = itemView.findViewById<TextView>(R.id.totalFee)
             totalFee.text = "$${order.price}"
 
+            // Remove items when order is submitted
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
 
-            // Remove an item when clicked
-            removeBtn.setOnClickListener {
-                MainActivity.customizations.remove(order)
-                orderContainer.removeView(itemView)
-                calculateTotal()
-
+            if (MainActivity.isOrderSubmitted) {
+                removeBtn.visibility = android.view.View.GONE
+            } else {
+                removeBtn.visibility = android.view.View.VISIBLE
+                removeBtn.setOnClickListener {
+                    MainActivity.customizations.remove(order)
+                    //orderContainer.removeView(itemView)
+                    displayOrders()
             }
+        }
             orderContainer.addView(itemView)
-
         }
         calculateTotal()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        displayOrders()
     }
 }

@@ -76,6 +76,13 @@ class EmployeeActivity : AppCompatActivity() {
         }
         //Call the method to display orders after Firebase initialization
         displayOrders()
+
+        binding.homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun displayOrders() {

@@ -18,7 +18,7 @@
     <string name="rewardPointsText">Reward Points:</string>
     <string name="points">0</string>
     <string-array name="locations">
-        <item>Courtyard Cafe</item>
+        <item>Courtyard</item>
         <item>Steamery</item>
     </string-array>
     <string name="cart">Cart</string>
