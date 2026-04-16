@@ -8,7 +8,7 @@
     android:layout_height="300dp"
     android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow"
     android:background="@drawable/timer_background"
-    tools:context=".TimerPopUp"
+    tools:context=".userActivities.TimerPopUp"
     android:layout_gravity="center_horizontal"
     android:layout_alignParentBottom="true">
 

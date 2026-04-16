@@ -72,7 +72,26 @@
     <string name="iced">Iced</string>
     <string name="cancel_button">Cancel</string>
     <string name="menu">Drinks Menu:</string>
-    <string name="is_employee">Tick if an employee:</string>
-    <string name="drink_name">Drink</string>
-    <string name="drink_price">5</string>
+    <string name="orders">Orders</string>
+    <string name="employee_login">Employee Login</string>
+    <string name="mark_complete">Done</string>
+    <string name="name" />
+    <string name="order_details">Order Details</string>
+    <string name="orderName">Name</string>
+    <string name="location_text">Location</string>
+    <string name="apply_points">Apply Points?</string>
+    <string name="qr_scan">Scan QR</string>
+    <string name="scanned_value">Scanned Value</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="latte">Latte</string>
+    <string name="smoothie">Smoothie</string>
+    <string name="matcha">Matcha</string>
+    <string name="coldBrew">Cold Brew</string>
+    <string name="lemonade">Lemonade</string>
+    <string name="tea">Tea</string>
+    <string name="hotChocolate">Hot Chocolate</string>
+    <string name="milk2">Milk</string>
+    <string name="back">Back</string>
+    <string name="drinks">Drinks</string>
+
 </resources>

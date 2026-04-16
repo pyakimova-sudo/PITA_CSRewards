@@ -1,14 +1,14 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
+import com.example.pita_rewards2.userActivities.UserData
 import com.example.pita_rewards2.databinding.ActivityLoginBinding
 import com.google.firebase.database.*
-import kotlin.jvm.java
-import kotlin.text.isNotEmpty
 
 class LoginActivity : AppCompatActivity() {
 
@@ -38,6 +38,20 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, SignupActivity::class.java))
             finish()
         }
+
+        //Employee login
+        binding.employeeLogin.setOnClickListener {
+            //Directly passing userId to EmployeeActivity
+            val userId = intent.getStringExtra("userId")
+            if (userId != null) {
+                val intent = Intent(this, EmployeeActivity::class.java)
+                intent.putExtra("userId", userId)  // Pass the userId to EmployeeActivity
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun loginUser(username: String, password: String) {
@@ -50,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                             if (userData != null && userData.password == password) {
                                 Toast.makeText(this@LoginActivity, "Login successful", Toast.LENGTH_SHORT).show()
                                 val id = userSnapshot.key
-                                //needed to actually put database into main
+                                // Pass userId to MainActivity
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.putExtra("userId", id)
                                 startActivity(intent)
