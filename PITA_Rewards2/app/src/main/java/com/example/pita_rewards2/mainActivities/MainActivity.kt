@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
     companion object {
         val order: MutableList<String> = mutableListOf()
         val customizations: MutableList<ItemCustomization> = mutableListOf()
+        var isOrderSubmitted = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +80,7 @@ class MainActivity : ComponentActivity() {
                 R.id.account -> {
                     // Pass userId to AccountActivity
                     val intent = Intent(this, Account::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     intent.putExtra("userId", userId)
                     startActivity(intent)
                     finish()
@@ -88,6 +90,7 @@ class MainActivity : ComponentActivity() {
                 R.id.basket -> {
                     // Pass userId to BasketActivity
                     val intent = Intent(this, BasketActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     intent.putExtra("userId", userId)
                     startActivity(intent)
                     finish()
