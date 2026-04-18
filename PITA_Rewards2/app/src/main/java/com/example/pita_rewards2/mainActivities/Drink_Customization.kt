@@ -16,7 +16,7 @@ class Drink_Customization : AppCompatActivity() {
     private var nameOfDrink: String = ""//intent.getStringExtra("drink")
     //private var milkChosen: String = (intent.getStringExtra("milk")).toString()
 
-    private var finalPrice: Int = 0
+    private var finalPrice: Double = 0.0
     private val selectedFruits = mutableListOf<String>()
     private val selectedAddons = mutableListOf<String>()
 
@@ -130,10 +130,30 @@ class Drink_Customization : AppCompatActivity() {
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
 
+            //todo do i need fix for firebase
             // Add customization to the MainActivity order list
-            MainActivity.order.add(nameOfDrink)
-            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
-
+            val newOrder = ItemCustomization(
+                drink = nameOfDrink,
+                size = size,
+                milk = milk,
+                sweetness = sweetness,
+                price = finalPrice,
+                quantity = 1
+            )
+           //duplicate drink check
+            val existingOrder = MainActivity.customizations.find {
+                it.drink == newOrder.drink &&
+                        it.size == newOrder.size &&
+                        it.milk == newOrder.milk &&
+                        it.sweetness == newOrder.sweetness
+            }
+            if (existingOrder != null) {
+                //If already exists increase count
+                existingOrder.quantity += 1
+            } else {
+                //If new, add to the list
+                MainActivity.customizations.add(newOrder)
+            }
             // Show a toast with the updated order
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
@@ -209,7 +229,6 @@ class Drink_Customization : AppCompatActivity() {
         } else {
             drinkData.add(entry)
         }
-//TODO:was made for testing will switch to intent for basket
         //Custom toast to display customized drink info
         val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") .orEmpty()
         val drink = selectedDrink?.name.orEmpty()
@@ -218,12 +237,12 @@ class Drink_Customization : AppCompatActivity() {
 
         //Adjusting price by drink size
         //TODO update price for other
-        val basePrice = selectedDrink?.price ?: 0
+        val basePrice = selectedDrink?.price?.toDouble() ?: 0.0
         finalPrice = basePrice
 
         when (size) {
-            "Medium" -> finalPrice += 1
-            "Large" -> finalPrice += 2
+            "Medium" -> finalPrice += 1.0
+            "Large" -> finalPrice += 2.0
         }
 
         val resultString = "$$finalPrice $size $drink" +
@@ -255,6 +274,7 @@ class Drink_Customization : AppCompatActivity() {
         additions.forEach { addition ->
             val btn = Button(this)
             btn.text = addition
+            //up to 2 addons
             btn.setOnClickListener {
                 if (selectedAddons.contains(addition)) selectedAddons.remove(addition)
                 else if (selectedAddons.size < 2) selectedAddons.add(addition)
@@ -313,7 +333,7 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
         findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
-        findViewById<CheckBox>(R.id.matchaLayout)?.visibility = View.VISIBLE
+        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.VISIBLE
 
         findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
@@ -387,7 +407,7 @@ class Drink_Customization : AppCompatActivity() {
         val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
         val drinkName = selectedDrink?.name ?: ""
 
-        var price = selectedDrink?.price ?: 0
+        var price = selectedDrink?.price?.toDouble() ?: 0.0
         when(size) {
             "Medium" -> price += 1
             "Large" -> price += 2
@@ -420,7 +440,8 @@ data class ItemCustomization(
     val size: String = "",
     val milk: String = "",
     val sweetness: String = "",
-    val price: Int = 0,
+    val price: Double = 0.0,
     var customerName: String = "",
-    var location: String = ""
+    var location: String = "",
+    var quantity: Int = 1
 ) : Serializable

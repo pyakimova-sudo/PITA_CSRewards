@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase
 import android.widget.Button
 import com.example.pita_rewards2.QrScanner
 
-//TODO make phone notification for order completion
+//TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
@@ -41,6 +41,7 @@ class BasketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val userId = intent.getStringExtra("userId")
+        val points = intent.getStringExtra("points")
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
@@ -97,6 +98,7 @@ class BasketActivity : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     intent.putExtra("userId",userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
 
                     finish()
@@ -106,8 +108,8 @@ class BasketActivity : AppCompatActivity() {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     intent.putExtra("userId",userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
-
                     finish()
                     true
                 }
@@ -117,17 +119,18 @@ class BasketActivity : AppCompatActivity() {
     }
 
     private fun calculateTotal() {
-        val total = MainActivity.customizations.sumOf { it.price }
+        val total = MainActivity.customizations.sumOf { it.price * it.quantity }
         totalText.text = "$$total"
         subtotalText.text = "$$total"
 
     }
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
-
         val inflater = LayoutInflater.from(this)
 
-        for ((index, order) in drinkCustomizations.withIndex()) {
+        orderContainer.removeAllViews()
+
+        for (order in drinkCustomizations) {
             val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
@@ -141,21 +144,36 @@ class BasketActivity : AppCompatActivity() {
             )
             orderItems.text = detailsList.joinToString("\n")
 
+            //Quantity indicator
+            val quantityText = itemView.findViewById<TextView>(R.id.quantityText)
+            quantityText.text = "x${order.quantity}"
+
+            //Price by amount
             val totalFee = itemView.findViewById<TextView>(R.id.totalFee)
-            totalFee.text = "$${order.price}"
+            totalFee.text = "$${order.price * order.quantity}"
 
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
 
-            // Remove an item when clicked
+            //decrease quantity of order
             removeBtn.setOnClickListener {
-                MainActivity.customizations.remove(order)
-                orderContainer.removeView(itemView)
+                if (order.quantity > 1) {
+                    order.quantity -= 1
+                } else {
+                    MainActivity.customizations.remove(order)
+                }
+                displayOrders()
                 calculateTotal()
-
             }
-            orderContainer.addView(itemView)
 
+            orderContainer.addView(itemView)
         }
+
         calculateTotal()
     }
 }
+
+
+data class UserData(
+    //TODO how store what data
+    val orders: MutableList<String>
+)

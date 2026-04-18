@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
 
         // Retrieve userId from intent
         val userId = intent.getStringExtra("userId")
+        val points = intent.getStringExtra("points")
 
         if (userId != null) {
             // User is logged in, fetch and display user data
@@ -78,6 +79,7 @@ class MainActivity : ComponentActivity() {
                     // Pass userId to AccountActivity
                     val intent = Intent(this, Account::class.java)
                     intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
                     finish()
                     true
@@ -87,6 +89,7 @@ class MainActivity : ComponentActivity() {
                     // Pass userId to BasketActivity
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
                     finish()
                     true

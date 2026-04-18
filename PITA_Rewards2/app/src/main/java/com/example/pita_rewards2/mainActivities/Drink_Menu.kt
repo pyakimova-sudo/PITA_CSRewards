@@ -6,6 +6,7 @@ data class Drink_Menu(
     val name: String = "",
     val Drink_Type: String = "",
     val price: Int = 0,
+    var quantity: Int = 1,
     val ingredients: List<String> = emptyList()
 ) : Serializable{
     companion object {

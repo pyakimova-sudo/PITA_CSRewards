@@ -64,7 +64,7 @@ class CheckoutActivity : AppCompatActivity() {
             ).show()
 
             // Calculate the points based on the total price
-            val newPoints = total
+            val newPoints = total/10
 
             Log.d("FirebaseDebug", "User ID: $userId")
             Log.d("FirebaseDebug", "Points path: /users/$userId/points")
@@ -77,7 +77,7 @@ class CheckoutActivity : AppCompatActivity() {
                 .child("points")
 
             // Increment the points by the total price (no need to retrieve current value)
-            pointsRef.setValue(ServerValue.increment(newPoints.toDouble()))
+            pointsRef.setValue(ServerValue.increment(newPoints))
                 .addOnSuccessListener {
                     Log.d("FirebaseDebug", "Points incremented successfully!")
                     Toast.makeText(this, "Points updated successfully!", Toast.LENGTH_SHORT).show()
