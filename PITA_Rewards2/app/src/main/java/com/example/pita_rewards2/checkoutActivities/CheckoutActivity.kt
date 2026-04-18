@@ -10,8 +10,10 @@ import android.widget.TextView
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.MainActivity
 
+
 import com.google.firebase.database.FirebaseDatabase
 import com.example.pita_rewards2.databinding.ActivityCheckoutBinding
+
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.ServerValue
 
@@ -23,7 +25,7 @@ class CheckoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_checkout)
+        setContentView(binding.root)
 
         val submitButton = findViewById<Button>(R.id.submitButton)
         val nameBox = findViewById<EditText>(R.id.nameBox)
@@ -53,10 +55,12 @@ class CheckoutActivity : AppCompatActivity() {
 
             // Update customer name for each customization item
             MainActivity.customizations.forEach { it.customerName = name }
+            MainActivity.isOrderSubmitted = true
 
             // Submit the order to the queue manager
             val add = QueueManager.submitOrder(name, MainActivity.order)
             inQueue += 1
+
             Toast.makeText(
                 this,
                 "Thank you for your order, ${add.customerName}!",

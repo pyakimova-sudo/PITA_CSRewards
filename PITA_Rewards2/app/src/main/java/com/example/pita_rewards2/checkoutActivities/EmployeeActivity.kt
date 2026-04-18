@@ -32,9 +32,13 @@ class EmployeeActivity : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
 
+
+
         unavailableButton = findViewById(R.id.unavailable)
         unavailableButton.setOnClickListener {
+            val userId = intent.getStringExtra("userId")
             val intent = Intent(this, Unavailable::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
         }
 
@@ -76,12 +80,19 @@ class EmployeeActivity : AppCompatActivity() {
         }
         //Call the method to display orders after Firebase initialization
         displayOrders()
+
+        binding.homeButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun displayOrders() {
         employeeContainer.removeAllViews()
 
-        val drinkCustomizations = MainActivity.customizations
+        val drinkCustomizations = MainActivity.customizations.toList()
         val inflater = LayoutInflater.from(this)
 
         for ((index, order) in drinkCustomizations.withIndex()) {
@@ -92,6 +103,10 @@ class EmployeeActivity : AppCompatActivity() {
 
             val nameLabel = itemView.findViewById<TextView>(R.id.customerNameText)
             nameLabel.text = order.customerName
+
+            val locationText = itemView.findViewById<TextView>(R.id.locationText)
+            locationText.text = "${order.location}"
+
 
             val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
             val detailsList = listOfNotNull(

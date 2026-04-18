@@ -18,7 +18,7 @@
     <string name="rewardPointsText">Reward Points:</string>
     <string name="points">0</string>
     <string-array name="locations">
-        <item>Courtyard Cafe</item>
+        <item>Courtyard</item>
         <item>Steamery</item>
     </string-array>
     <string name="cart">Cart</string>
@@ -79,7 +79,7 @@
     <string name="order_details">Order Details</string>
     <string name="orderName">Name</string>
     <string name="location_text">Location</string>
-    <string name="apply_points">Apply Points?</string>
+    <string name="apply_points">Apply Points</string>
     <string name="qr_scan">Scan QR</string>
     <string name="scanned_value">Scanned Value</string>
     <string name="unavailable">Unavailable</string>
