@@ -1,5 +1,6 @@
 package com.example.pita_rewards2
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
