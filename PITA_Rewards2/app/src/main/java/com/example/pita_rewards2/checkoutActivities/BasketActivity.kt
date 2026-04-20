@@ -136,8 +136,12 @@ class BasketActivity : AppCompatActivity() {
 
     private fun calculateTotal() {
         val total = MainActivity.customizations.sumOf { it.price }
+        var subtotal = total
+        if (weeklyDeal.applied == true) {
+            subtotal -= 2
+        }
         totalText.text = "$$total"
-        subtotalText.text = "$$total"
+        subtotalText.text = "$$subtotal"
 
     }
 
@@ -197,5 +201,13 @@ class BasketActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         displayOrders()
+    }
+}
+
+object weeklyDeal {
+    var applied: Boolean = false
+
+    fun activateWeeklyDeal() {
+        applied = true
     }
 }
