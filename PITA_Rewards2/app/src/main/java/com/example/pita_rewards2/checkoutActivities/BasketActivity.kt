@@ -117,13 +117,13 @@ class BasketActivity : AppCompatActivity() {
     }
 
     private fun calculateTotal() {
-        var total = MainActivity.customizations.sumOf { it.price }
+        val total = MainActivity.customizations.sumOf { it.price }
+        var subtotal = total
         if (weeklyDeal.applied == true) {
-            total -= 2
+            subtotal -= 2
         }
         totalText.text = "$$total"
-        subtotalText.text = "$$total"
-
+        subtotalText.text = "$$subtotal"
     }
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
