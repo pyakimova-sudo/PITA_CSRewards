@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.R
-import com.example.pita_rewards2.MainActivity
+import com.example.pita_rewards2.mainActivities.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Account : AppCompatActivity() {

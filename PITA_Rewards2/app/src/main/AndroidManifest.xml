@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
-            android:name=".mainActivities.Unavailable"
+            android:name=".checkoutActivities.Unavailable"
             android:exported="false" />
         <activity
             android:name=".QrScanner"
@@ -55,7 +55,7 @@
             android:name=".checkoutActivities.EmployeeActivity"
             android:exported="false" />
         <activity
-            android:name="MainActivity"
+            android:name=".mainActivities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

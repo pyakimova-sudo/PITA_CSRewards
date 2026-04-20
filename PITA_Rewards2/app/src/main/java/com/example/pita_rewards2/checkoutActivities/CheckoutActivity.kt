@@ -8,7 +8,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.TextView
 import com.example.pita_rewards2.R
-import com.example.pita_rewards2.MainActivity
+import com.example.pita_rewards2.mainActivities.MainActivity
 
 
 import com.google.firebase.database.FirebaseDatabase

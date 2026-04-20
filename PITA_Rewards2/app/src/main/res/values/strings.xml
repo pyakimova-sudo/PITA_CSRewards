@@ -96,5 +96,6 @@
     <string name="is_employee">Tick if an employee:</string>
     <string name="drink_name">Drink</string>
     <string name="drink_price">5</string>
+    <string name="mark_unavailability">Mark Unavailability</string>
 
 </resources>

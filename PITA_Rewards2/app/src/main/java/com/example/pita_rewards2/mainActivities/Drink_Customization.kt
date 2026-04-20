@@ -9,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
 import java.io.Serializable
-import com.example.pita_rewards2.Drink_Menu
-import com.example.pita_rewards2.MainActivity
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
@@ -131,10 +129,11 @@ class Drink_Customization : AppCompatActivity() {
             nameOfDrink = selectedDrink?.name.orEmpty()
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+            val image = selectedDrink?.image ?: R.drawable.drink_medium
 
             // Add customization to the MainActivity order list
             MainActivity.order.add(nameOfDrink)
-            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice))
+            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice, imageResourceId = image))
 
             // Show a toast with the updated order
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
@@ -315,7 +314,7 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
         findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
-        findViewById<CheckBox>(R.id.matchaLayout)?.visibility = View.VISIBLE
+        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.VISIBLE
 
         findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
@@ -424,5 +423,6 @@ data class ItemCustomization(
     val sweetness: String = "",
     val price: Int = 0,
     var customerName: String = "",
-    var location: String = ""
-) : Serializable
+    var location: String = "",
+    val imageResourceId: Int
+    ) : Serializable

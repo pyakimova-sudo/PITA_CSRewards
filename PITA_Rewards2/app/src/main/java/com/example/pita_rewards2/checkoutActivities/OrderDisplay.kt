@@ -6,7 +6,7 @@ import android.widget.TextView
 import android.widget.LinearLayout
 import android.view.LayoutInflater
 import com.example.pita_rewards2.R
-import com.example.pita_rewards2.MainActivity
+import com.example.pita_rewards2.mainActivities.MainActivity
 
 class OrderDisplay : AppCompatActivity() {
     private lateinit var employeeContainer: LinearLayout
