@@ -66,9 +66,6 @@ class MainActivity : ComponentActivity() {
             }
             buttonContainer.addView(button)
         }
-
-
-
         // Bottom navigation setup
         navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.home

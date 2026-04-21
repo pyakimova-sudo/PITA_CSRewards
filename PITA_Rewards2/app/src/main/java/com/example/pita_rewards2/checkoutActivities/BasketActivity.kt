@@ -36,7 +36,6 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var locationSpinner: Spinner
     private lateinit var qrScan: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -80,6 +79,7 @@ class BasketActivity : AppCompatActivity() {
                 Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val selectedLocation = locationSpinner.selectedItem.toString()
 
             MainActivity.customizations.forEach { it.location = selectedLocation }
@@ -173,7 +173,7 @@ class BasketActivity : AppCompatActivity() {
 }
 
 
-data class UserData(
+data class user_orders(
     //TODO how store what data
     val orders: MutableList<String>
 )
