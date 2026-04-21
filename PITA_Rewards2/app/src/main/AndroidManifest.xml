@@ -56,12 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".mainActivities.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".userActivities.ChangePassword"
@@ -71,7 +66,9 @@
             android:exported="false" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            tools:replace="screenOrientation" />
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"
+            android:stateNotNeeded="true" />
     </application>
 
 </manifest>

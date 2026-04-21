@@ -65,8 +65,9 @@
         android:layout_marginTop="8dp"
         android:fillViewport="true"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subtractPointsButton">
 
@@ -82,11 +83,12 @@
                 android:id="@+id/pointsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="Points: 0"
-                android:textSize="18sp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

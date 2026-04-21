@@ -9,11 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.mainActivities.DisabledButtons
 import com.example.pita_rewards2.mainActivities.MainActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class Unavailable : AppCompatActivity() {
+    lateinit var navigation: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unavailable)
+
+        val userId = intent.getStringExtra("userId")
 
         //Latte
         val latteCheckbox = findViewById<CheckBox>(R.id.latteCheckbox)
@@ -115,6 +121,25 @@ class Unavailable : AppCompatActivity() {
         menuButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
+        }
+
+        navigation = findViewById(R.id.bottom_navigation)
+        navigation.selectedItemId = R.id.unavailability
+
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.orders -> {
+                    val intent = Intent(this, EmployeeActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    startActivity(intent)
+
+                    finish()
+                    true
+                }
+
+                else -> false
+            }
         }
     }
 }

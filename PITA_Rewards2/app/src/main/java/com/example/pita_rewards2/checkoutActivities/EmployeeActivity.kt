@@ -93,11 +93,9 @@ class EmployeeActivity : AppCompatActivity() {
                     finish()
                     true
                 }
-
                 else -> false
             }
         }
-
     }
 
     private fun displayOrders() {
