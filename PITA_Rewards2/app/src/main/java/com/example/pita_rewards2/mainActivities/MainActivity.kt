@@ -73,57 +73,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
         weeklyDeal.setImageResource(imageList[3])
 
-        //Fluid button mapping for all Drink_Menu items
-        /*
-        val recyclerView = binding.menuRecycler
-        Drink_Menu.defaultDrinks.forEach {drink ->
-            val current = RecyclerView(this).apply {
-                val drinkTextVew: TextView = findViewById(R.id.drink_name)
-                drinkTextVew.text = drink.name
-
-                val priceTextView: TextView = findViewById(R.id.price_text)
-                priceTextView.text = "$${drink.price}"
-
-                setOnClickListener {
-                    val intent = Intent(this@MainActivity, Drink_Customization::class.java)
-                    intent.putExtra("selected_drink", drink)
-                    startActivity(intent)
-                }
-
-            }
-            recyclerView.addView(current)
-        }
-        */
-        /*
-        val buttonContainer = binding.drinkButtonContainer
-        Drink_Menu.defaultDrinks.forEach { drink ->
-            val button = Button(this).apply {
-                text = drink.name
-                //Could maybe add picture to data class for
-                //repeated use??
-                textSize = 18f
-                setOnClickListener {
-                    val intent = Intent(this@MainActivity, Drink_Customization::class.java)
-                    intent.putExtra("selected_drink", drink)
-                    startActivity(intent)
-                }
-            }
-            buttonContainer.addView(button)
-        }
-        */
-        /*
-        //Button for latte customization
-        val coffeeButton: Button? = findViewById(R.id.squareButton)
-        coffeeButton?.setOnClickListener {
-            val latte = Drink_Menu.defaultDrinks.first { it.name == "Latte" }
-            // Launch DrinkCustomization
-            val intent = Intent(this, Drink_Customization::class.java)
-            //Places data from latte into Drink_Customization
-            intent.putExtra("selected_drink", latte)
-            startActivity(intent)
-        }
-*/
-
         val userRef = FirebaseDatabase.getInstance().getReference("users")
         //extract userID after login
         val userId = intent.getStringExtra("userId")
