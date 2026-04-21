@@ -24,7 +24,7 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 
-//TODO make phone notification for order completion
+//TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
@@ -53,6 +53,7 @@ class BasketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val userId = intent.getStringExtra("userId")
+        val points = intent.getStringExtra("points")
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
@@ -80,12 +81,18 @@ class BasketActivity : AppCompatActivity() {
             insets
         }
 
+        binding.qrScan.setOnClickListener {
+            startActivity(Intent(this, QrScanner::class.java))
+            finish()
+        }
+
         binding.btnCheckout.setOnClickListener {
             val userId = intent.getStringExtra("userId")
             if (userId.isNullOrEmpty()) {
                 Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val selectedLocation = locationSpinner.selectedItem.toString()
 
             MainActivity.customizations.forEach { it.location = selectedLocation }
@@ -108,34 +115,34 @@ class BasketActivity : AppCompatActivity() {
         navigation.selectedItemId = R.id.basket
 
         navigation.setOnItemSelectedListener {
-            when (it.itemId) {
+            when(it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId", userId)
+                    intent.putExtra("userId",userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
 
                     finish()
                     true
                 }
-
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId", userId)
+                    intent.putExtra("userId",userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
 
                     finish()
                     true
                 }
-
                 else -> false
             }
         }
     }
 
     private fun calculateTotal() {
-        val total = MainActivity.customizations.sumOf { it.price }
+        val total = MainActivity.customizations.sumOf { it.price * it.quantity }
         totalText.text = "$$total"
         subtotalText.text = "$$total"
 
@@ -169,26 +176,34 @@ class BasketActivity : AppCompatActivity() {
             )
             orderItems.text = detailsList.joinToString("\n")
 
+            //Quantity indicator
+            val quantityText = itemView.findViewById<TextView>(R.id.quantityText)
+            quantityText.text = "x${order.quantity}"
+
+            //Price by amount
             val totalFee = itemView.findViewById<TextView>(R.id.totalFee)
-            totalFee.text = "$${order.price}"
+            totalFee.text = "$${order.price * order.quantity}"
 
             // Remove items when order is submitted
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
 
+            //decrease quantity of order
             if (MainActivity.isOrderSubmitted) {
                 removeBtn.visibility = android.view.View.GONE
             } else {
                 removeBtn.visibility = android.view.View.VISIBLE
                 removeBtn.setOnClickListener {
-                    MainActivity.customizations.remove(order)
-                    //orderContainer.removeView(itemView)
+                    if (order.quantity > 1) {
+                        order.quantity -= 1
+                    } else {
+                        MainActivity.customizations.remove(order)
+                    }
                     displayOrders()
             }
         }
             orderContainer.addView(itemView)
         }
         calculateTotal()
-
     }
 
     override fun onResume() {
@@ -196,3 +211,9 @@ class BasketActivity : AppCompatActivity() {
         displayOrders()
     }
 }
+
+
+data class user_orders(
+    //TODO how store what data
+    val orders: MutableList<String>
+)

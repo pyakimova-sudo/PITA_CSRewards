@@ -20,7 +20,6 @@ import com.example.pita_rewards2.userActivities.Account
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.userActivities.UserData
 
-
 class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
@@ -31,7 +30,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     lateinit var navigation: BottomNavigationView
 
     companion object {
-
         val order: MutableList<String> = mutableListOf()
         val customizations: MutableList<ItemCustomization> = mutableListOf()
         var isOrderSubmitted = false
@@ -79,6 +77,12 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         val userText: TextView = findViewById(R.id.user)
         //If valid user adds first name to welcome
         if (userId != null) {
+        val points = intent.getStringExtra("points")
+
+        if (userId != null) {
+            // User is logged in, fetch and display user data
+            val userRef = FirebaseDatabase.getInstance().getReference("users")
+            val userText: TextView = findViewById(R.id.user)
             userRef.child(userId).get().addOnSuccessListener { snapshot ->
                 val user = snapshot.getValue(UserData::class.java)
                 userText.text = "Welcome ${user?.firstName}"
@@ -94,18 +98,19 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
-
+        // Bottom navigation setup
         navigation = findViewById(R.id.bottom_navigation)
-
         navigation.selectedItemId = R.id.home
 
         navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.account -> {
+                    // Pass userId to AccountActivity
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
-
                     finish()
                     true
                 }
@@ -113,8 +118,9 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 R.id.basket -> {
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
-
                     finish()
                     true
                 }
@@ -165,6 +171,5 @@ object DisabledButtons {
         if (disabled) disabledSet.add(tag)
         else disabledSet.remove(tag)
     }
-
     fun isDisabled(tag: String) = disabledSet.contains(tag)
 }
