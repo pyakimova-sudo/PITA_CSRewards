@@ -1,5 +1,6 @@
-package com.example.pita_rewards2.mainActivities
+package com.example.pita_rewards2
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pita_rewards2.R
 
-class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val userId: String?): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
+class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
     override fun onCreateViewHolder(
         p0: ViewGroup,
         p1: Int
@@ -40,15 +41,6 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val use
         p0.rvDrink.text = currentItem.name
         p0.rvPrice.text = "$${currentItem.price}"
         p0.imageBu.setImageResource(R.drawable.arrow2)
-
-        p0.itemView.setOnClickListener {
-            val context = p0.itemView.context
-            val intent = Intent(context, Drink_Customization::class.java)
-
-            intent.putExtra("selected_drink", currentItem)
-            intent.putExtra("userId", userId)
-            context.startActivity(intent)
-        }
     }
 
     override fun getItemCount(): Int {

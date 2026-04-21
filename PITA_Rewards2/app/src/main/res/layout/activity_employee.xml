@@ -87,18 +87,17 @@
                 android:layout_marginBottom="16dp" />
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <Button
+        android:id="@+id/unavailable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#C2C5AA"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
-        app:itemIconTint="#414833"
-        app:itemTextColor="#414833"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/employee_navigation_menu" />
-
+        android:layout_height="60dp"
+        android:backgroundTint="@color/maple_secondary"
+        android:fontFamily="@font/ngetic"
+        android:text="@string/unavailable"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

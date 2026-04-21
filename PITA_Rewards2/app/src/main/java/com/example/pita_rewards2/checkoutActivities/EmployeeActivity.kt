@@ -14,7 +14,7 @@ import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.R
 import android.content.Intent
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.pita_rewards2.mainActivities.Unavailable
 
 
 class EmployeeActivity : AppCompatActivity() {
@@ -23,8 +23,7 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var employeeContainer: LinearLayout
     private lateinit var pointsTextView: TextView
     private lateinit var subtractPointsButton: Button
-
-    lateinit var navigation: BottomNavigationView
+    private lateinit var unavailableButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +31,16 @@ class EmployeeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance()
+
+
+
+        unavailableButton = findViewById(R.id.unavailable)
+        unavailableButton.setOnClickListener {
+            val userId = intent.getStringExtra("userId")
+            val intent = Intent(this, Unavailable::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+        }
 
         // Initialize the container for the orders
         employeeContainer = findViewById(R.id.employeeContainer)
@@ -78,26 +87,6 @@ class EmployeeActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-        navigation = findViewById(R.id.bottom_navigation)
-        navigation.selectedItemId = R.id.orders
-
-        navigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.unavailability -> {
-                    val intent = Intent(this, Unavailable::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId", userId)
-                    startActivity(intent)
-
-                    finish()
-                    true
-                }
-
-                else -> false
-            }
-        }
-
     }
 
     private fun displayOrders() {
