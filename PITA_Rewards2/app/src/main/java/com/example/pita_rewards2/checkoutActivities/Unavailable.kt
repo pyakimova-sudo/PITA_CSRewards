@@ -24,9 +24,9 @@ class Unavailable : AppCompatActivity() {
         //Latte
         val latteCheckbox = findViewById<CheckBox>(R.id.latteCheckbox)
         latteCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Latte", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Latte has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Latte", isChecked)
             } else {
                 Toast.makeText(this, "Latte has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -36,9 +36,9 @@ class Unavailable : AppCompatActivity() {
         //Smoothie
         val smoothieCheckbox = findViewById<CheckBox>(R.id.smoothieCheckbox)
         smoothieCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Smoothie", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Smoothie has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Smoothie", isChecked)
             } else {
                 Toast.makeText(this, "Smoothie has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -48,9 +48,9 @@ class Unavailable : AppCompatActivity() {
         //Matcha
         val matchaCheckbox = findViewById<CheckBox>(R.id.matchaCheckbox)
         matchaCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Matcha", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Matcha has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Matcha", isChecked)
             } else {
                 Toast.makeText(this, "Matcha has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -60,9 +60,9 @@ class Unavailable : AppCompatActivity() {
         //Cold Brew
         val coldBrewCheckbox = findViewById<CheckBox>(R.id.coldBrewCheckbox)
         coldBrewCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Cold Brew", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Cold Brew has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Cold Brew", isChecked)
             } else {
                 Toast.makeText(this, "Cold Brew has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -72,9 +72,9 @@ class Unavailable : AppCompatActivity() {
         //Lemonade
         val lemonadeCheckbox = findViewById<CheckBox>(R.id.lemonadeCheckbox)
         lemonadeCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Lemonade", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Lemonade has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Lemonade", isChecked)
             } else {
                 Toast.makeText(this, "Lemonade has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -84,9 +84,9 @@ class Unavailable : AppCompatActivity() {
         //Tea
         val teaCheckbox = findViewById<CheckBox>(R.id.teaCheckbox)
         teaCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Tea", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Tea has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Tea", isChecked)
             } else {
                 Toast.makeText(this, "Tea has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -96,9 +96,9 @@ class Unavailable : AppCompatActivity() {
         //Hot Chocolate
         val hotChocolateCheckbox = findViewById<CheckBox>(R.id.hotChocolateCheckbox)
         hotChocolateCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Hot Chocolate", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Hot Chocolate has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Hot Chocolate", isChecked)
             } else {
                 Toast.makeText(this, "Hot Chocolate has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -108,9 +108,9 @@ class Unavailable : AppCompatActivity() {
         //Milk
         val milkCheckbox = findViewById<CheckBox>(R.id.milkCheckbox)
         milkCheckbox.setOnCheckedChangeListener { _, isChecked ->
+            DisabledButtons.setDisabled("Milk", isChecked)
             if (isChecked) {
                 Toast.makeText(this, "Milk has been disabled", Toast.LENGTH_SHORT).show()
-                DisabledButtons.setDisabled("Milk", isChecked)
             } else {
                 Toast.makeText(this, "Milk has been undisabled", Toast.LENGTH_SHORT).show()
             }
@@ -137,7 +137,6 @@ class Unavailable : AppCompatActivity() {
                     finish()
                     true
                 }
-
                 else -> false
             }
         }

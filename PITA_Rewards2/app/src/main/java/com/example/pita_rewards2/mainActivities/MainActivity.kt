@@ -18,10 +18,21 @@ import com.example.pita_rewards2.userActivities.Account
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.userActivities.UserData
 
+object DisabledButtons {
+    private val disabledSet = mutableSetOf<String>()
+
+    fun setDisabled(tag: String, disabled: Boolean) {
+        if (disabled) disabledSet.add(tag)
+        else disabledSet.remove(tag)
+    }
+
+    fun isDisabled(tag: String) = disabledSet.contains(tag)
+}
 
 class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
+    private lateinit var adapter: AdapterClass
     lateinit var imageList:Array<Int>
     lateinit var nameList:Array<String>
     lateinit var priceList:Array<Int>
@@ -125,15 +136,22 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
 
     private fun getData(){
+        drinkMenu.clear()
         for (i in imageList.indices){
             val menu = Drink_Menu(nameList[i], priceList[i], imageList[i])
             drinkMenu.add(menu)
         }
-        recyclerView.adapter = AdapterClass(drinkMenu, this)
+        adapter = AdapterClass(drinkMenu, this)
+        recyclerView.adapter = adapter
     }
 
     override fun onItemClick(position: Int) {
         val drink = drinkMenu[position]
+        if (DisabledButtons.isDisabled(drink.name)) {
+            Toast.makeText(this, "${drink.name} is currently unavailable", Toast.LENGTH_SHORT).show()
+            return // Stop here, don't start the activity
+        }
+
         val userId = intent.getStringExtra("userId")
 
         val intent = Intent(this, Drink_Customization::class.java)
@@ -142,6 +160,12 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         startActivity(intent)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (::adapter.isInitialized) {
+            adapter.notifyDataSetChanged()
+        }
+    }
 }
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
@@ -160,13 +184,4 @@ fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
 }
 
-object DisabledButtons {
-    private val disabledSet = mutableSetOf<String>()
 
-    fun setDisabled(tag: String, disabled: Boolean) {
-        if (disabled) disabledSet.add(tag)
-        else disabledSet.remove(tag)
-    }
-
-    fun isDisabled(tag: String) = disabledSet.contains(tag)
-}
