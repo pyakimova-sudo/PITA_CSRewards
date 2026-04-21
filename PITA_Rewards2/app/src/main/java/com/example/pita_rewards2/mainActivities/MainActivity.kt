@@ -149,7 +149,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         val drink = drinkMenu[position]
         if (DisabledButtons.isDisabled(drink.name)) {
             Toast.makeText(this, "${drink.name} is currently unavailable", Toast.LENGTH_SHORT).show()
-            return // Stop here, don't start the activity
+            return
         }
 
         val userId = intent.getStringExtra("userId")

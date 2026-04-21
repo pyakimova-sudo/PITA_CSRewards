@@ -196,8 +196,6 @@ class Drink_Customization : AppCompatActivity() {
             }
 
             startActivity(mainIntent)
-
-            // Finish the current activity
             finish()
         }
 
