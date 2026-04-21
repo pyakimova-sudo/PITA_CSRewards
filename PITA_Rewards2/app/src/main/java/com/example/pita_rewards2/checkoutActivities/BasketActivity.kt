@@ -136,27 +136,33 @@ class BasketActivity : AppCompatActivity() {
 
     private fun calculateTotal() {
         val total = MainActivity.customizations.sumOf { it.price }
+        var subtotal = total
+        if (weeklyDeal.applied == true) {
+            subtotal -= 2
+        }
         totalText.text = "$$total"
-        subtotalText.text = "$$total"
+        subtotalText.text = "$$subtotal"
 
     }
 
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
         val inflater = LayoutInflater.from(this)
-        val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
         orderContainer.removeAllViews()
 
         if (MainActivity.isOrderSubmitted) {
             binding.paymentLayout.visibility = android.view.View.INVISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
         } else {
             binding.paymentLayout.visibility = android.view.View.VISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
         }
 
         for (order in drinkCustomizations) {
+            val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
+            val statusText = itemView.findViewById<TextView>(R.id.statusText)
+
+            val picCart = itemView.findViewById<ImageView>(R.id.picCart)
+            picCart.setImageResource(order.imageResourceId)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
@@ -176,8 +182,10 @@ class BasketActivity : AppCompatActivity() {
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
 
             if (MainActivity.isOrderSubmitted) {
+                statusText.visibility = android.view.View.VISIBLE
                 removeBtn.visibility = android.view.View.GONE
             } else {
+                statusText.visibility = android.view.View.INVISIBLE
                 removeBtn.visibility = android.view.View.VISIBLE
                 removeBtn.setOnClickListener {
                     MainActivity.customizations.remove(order)
@@ -188,11 +196,18 @@ class BasketActivity : AppCompatActivity() {
             orderContainer.addView(itemView)
         }
         calculateTotal()
-
     }
 
     override fun onResume() {
         super.onResume()
         displayOrders()
+    }
+}
+
+object weeklyDeal {
+    var applied: Boolean = false
+
+    fun activateWeeklyDeal() {
+        applied = true
     }
 }

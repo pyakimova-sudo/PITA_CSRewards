@@ -1,6 +1,5 @@
-package com.example.pita_rewards2
-import android.media.Image
-import java.util.UUID
+package com.example.pita_rewards2.mainActivities
+import com.example.pita_rewards2.R
 
 data class Drink_Menu(
     var name: String = "",
