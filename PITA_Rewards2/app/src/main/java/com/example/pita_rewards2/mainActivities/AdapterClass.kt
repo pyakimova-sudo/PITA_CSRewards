@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pita_rewards2.Drink_Menu
 import com.example.pita_rewards2.R
 
-class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
+class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val listener: RecyclerViewEvent): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
+
     override fun onCreateViewHolder(
         p0: ViewGroup,
         p1: Int
@@ -40,18 +41,33 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.A
         p0.rvDrink.text = currentItem.name
         p0.rvPrice.text = "$${currentItem.price}"
         p0.imageBu.setImageResource(R.drawable.arrow2)
+
     }
 
     override fun getItemCount(): Int {
         return drinkMenu.size
     }
 
-    class ViewHolderClass(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolderClass(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val rvImage: ImageView = itemView.findViewById(R.id.image)
         val rvDrink: TextView = itemView.findViewById(R.id.drink_name)
         val rvPrice: TextView = itemView.findViewById(R.id.price_text)
         val imageBu: ImageButton = itemView.findViewById(R.id.arrow_button)
 
+        init {
+            itemView.setOnClickListener(this)
+        }
 
+        override fun onClick(p0: View?) {
+            val position = bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position)
+            }
+        }
+
+    }
+
+    interface RecyclerViewEvent{
+        fun onItemClick(position: Int)
     }
 }
