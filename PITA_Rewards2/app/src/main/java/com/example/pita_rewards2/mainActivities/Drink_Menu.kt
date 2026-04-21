@@ -1,8 +1,5 @@
 package com.example.pita_rewards2
-import android.media.Image
-import android.os.Parcel
-import android.os.Parcelable
-import java.util.UUID
+
 
 data class Drink_Menu(
     var name: String = "",
@@ -64,5 +61,4 @@ data class Drink_Menu(
             )
         )
     }
-
 }

@@ -41,7 +41,6 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val lis
         p0.rvDrink.text = currentItem.name
         p0.rvPrice.text = "$${currentItem.price}"
         p0.imageBu.setImageResource(R.drawable.arrow2)
-
     }
 
     override fun getItemCount(): Int {
@@ -64,7 +63,6 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val lis
                 listener.onItemClick(position)
             }
         }
-
     }
 
     interface RecyclerViewEvent{
