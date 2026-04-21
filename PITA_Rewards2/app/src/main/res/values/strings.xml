@@ -99,5 +99,6 @@
     <string name="discount_1">50%</string>
     <string name="discount_2">OFF</string>
     <string name="discount_code">Use code FINALS50</string>
+    <string name="mark_unavailability">Unavailable</string>
 
 </resources>

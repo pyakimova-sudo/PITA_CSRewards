@@ -1,15 +1,14 @@
-package com.example.pita_rewards2
+package com.example.pita_rewards2.mainActivities
 
-import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pita_rewards2.Drink_Menu
+import com.example.pita_rewards2.R
 
 class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
     override fun onCreateViewHolder(
