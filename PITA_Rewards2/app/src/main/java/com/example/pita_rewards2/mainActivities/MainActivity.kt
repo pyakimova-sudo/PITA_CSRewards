@@ -3,6 +3,7 @@ package com.example.pita_rewards2.mainActivities
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
@@ -68,6 +69,9 @@ class MainActivity : ComponentActivity() {
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()
 
+        val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
+        weeklyDeal.setImageResource(imageList[3])
+
         //Fluid button mapping for all Drink_Menu items
         /*
         val recyclerView = binding.menuRecycler
@@ -118,6 +122,7 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 */
+
         val userRef = FirebaseDatabase.getInstance().getReference("users")
         //extract userID after login
         val userId = intent.getStringExtra("userId")
@@ -168,6 +173,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 
     private fun getData(){
         for (i in imageList.indices){

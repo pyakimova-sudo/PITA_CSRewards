@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".mainActivities.MainActivity"
 android:background="@drawable/menu_background">
-
+    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/topbar"
         android:layout_width="match_parent"
@@ -39,18 +39,118 @@ android:background="@drawable/menu_background">
                 android:textStyle="bold"
                 android:textColor="@color/maple_primary"/>
 
-            <Spinner
-                android:id="@+id/location_dropdown"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"/>
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:src="@drawable/outline_home_pin_24"/>
+
+                <Spinner
+                    android:id="@+id/location_dropdown"
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:popupBackground="#C2C5AA"
+                    android:padding="5dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+        <!-- Weekly Deal -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/weekly_deal"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardBackgroundColor="#A68A64"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/discountNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/weekly_image"
+                        android:text="@string/discount_1"
+                        android:textColor="@color/maple_primary"
+                        android:layout_marginStart="45dp"
+                        android:textSize="70sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/discountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="45dp"
+                        android:fontFamily="@font/ngetic"
+                        android:text="@string/discount_2"
+                        android:textColor="@color/maple_primary"
+                        android:textSize="74sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/weekly_image"
+                        app:layout_constraintTop_toBottomOf="@+id/discountNum"
+                        app:layout_constraintBottom_toTopOf="@+id/discount_code"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/discount_code"
+                        android:text="@string/discount_code"
+                        android:backgroundTint="@color/maple_primary"
+                        android:fontFamily="@font/ngetic"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp"
+                        app:cornerRadius="20dp" />
+
+                    <ImageView
+                        android:id="@+id/weekly_image"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/latte"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@+id/discount_code"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        <!-- Recycler View -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menu_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="?attr/actionBarSize"
+                tools:listitem="@layout/recycler_view_row"
+                app:layout_constraintTop_toTopOf="@+id/weekly_deal"/>
+
     </LinearLayout>
 
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:background="#C2C5AA"
         android:id="@+id/bottom_navigation"
@@ -61,21 +161,5 @@ android:background="@drawable/menu_background">
         app:itemTextColor="#414833"
         app:itemIconTint="#414833"
         app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="107dp"
-        android:fitsSystemWindows="true">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menu_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/recycler_view_row"
-            android:paddingBottom="?attr/actionBarSize" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </RelativeLayout>

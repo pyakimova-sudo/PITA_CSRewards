@@ -93,7 +93,6 @@ tools:context=".mainActivities.LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:hint="@string/username"
             android:autofillHints="username"
             android:drawableEnd="@drawable/done_icon"/>
 
@@ -117,7 +116,6 @@ tools:context=".mainActivities.LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:hint="@string/password"
             android:autofillHints="password"
             android:drawableEnd="@drawable/password_icon"/>
 
