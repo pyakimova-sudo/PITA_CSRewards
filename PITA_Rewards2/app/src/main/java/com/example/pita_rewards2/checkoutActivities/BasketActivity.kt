@@ -38,7 +38,7 @@ class BasketActivity : AppCompatActivity() {
     private lateinit var locationSpinner: Spinner
     private lateinit var qrScan: Button
 
-    private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
+        private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
         ScanContract()
     ) { result ->
         if (result.contents == null) {
@@ -92,7 +92,7 @@ class BasketActivity : AppCompatActivity() {
 
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("userId", userId)
-            intent.putExtra("location", userId)
+            intent.putExtra("location", selectedLocation)
             startActivity(intent)
         }
 
@@ -136,8 +136,12 @@ class BasketActivity : AppCompatActivity() {
 
     private fun calculateTotal() {
         val total = MainActivity.customizations.sumOf { it.price }
+        var subtotal = total
+        if (weeklyDeal.applied == true) {
+            subtotal -= 2
+        }
         totalText.text = "$$total"
-        subtotalText.text = "$$total"
+        subtotalText.text = "$$subtotal"
 
     }
 
@@ -150,13 +154,16 @@ class BasketActivity : AppCompatActivity() {
 
         if (MainActivity.isOrderSubmitted) {
             binding.paymentLayout.visibility = android.view.View.INVISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
         } else {
             binding.paymentLayout.visibility = android.view.View.VISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
         }
 
         for (order in drinkCustomizations) {
+            val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
+            val statusText = itemView.findViewById<TextView>(R.id.statusText)
+
+            val picCart = itemView.findViewById<ImageView>(R.id.picCart)
+            picCart.setImageResource(order.imageResourceId)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
@@ -177,8 +184,10 @@ class BasketActivity : AppCompatActivity() {
 
             if (MainActivity.isOrderSubmitted) {
                 removeBtn.visibility = android.view.View.GONE
+                statusText.visibility = android.view.View.VISIBLE
             } else {
                 removeBtn.visibility = android.view.View.VISIBLE
+                statusText.visibility = android.view.View.INVISIBLE
                 removeBtn.setOnClickListener {
                     MainActivity.customizations.remove(order)
                     //orderContainer.removeView(itemView)
@@ -188,11 +197,18 @@ class BasketActivity : AppCompatActivity() {
             orderContainer.addView(itemView)
         }
         calculateTotal()
-
     }
 
     override fun onResume() {
         super.onResume()
         displayOrders()
+    }
+
+    object weeklyDeal {
+        var applied: Boolean = false
+
+        fun activateWeeklyDeal() {
+            applied = true
+        }
     }
 }

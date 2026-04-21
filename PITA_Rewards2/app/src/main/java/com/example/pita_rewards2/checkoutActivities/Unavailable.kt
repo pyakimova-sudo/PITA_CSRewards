@@ -1,4 +1,4 @@
-package com.example.pita_rewards2.mainActivities
+package com.example.pita_rewards2.checkoutActivities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,9 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
 import com.example.pita_rewards2.R
+import com.example.pita_rewards2.mainActivities.DisabledButtons
+import com.example.pita_rewards2.mainActivities.MainActivity
 
 class Unavailable : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,13 +110,6 @@ class Unavailable : AppCompatActivity() {
             }
         }
         milkCheckbox.isChecked = DisabledButtons.isDisabled("Milk")
-
-
-        val backButton = findViewById<Button>(R.id.back)
-        backButton.setOnClickListener {
-            startActivity(Intent(this, EmployeeActivity::class.java))
-            finish()
-        }
 
         val menuButton = findViewById<Button>(R.id.menu)
         menuButton.setOnClickListener {

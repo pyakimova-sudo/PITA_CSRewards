@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/orders"
+        android:enabled="true"
+        android:icon="@drawable/orders_24"
+        android:title="@string/orders"/>
+
+    <item
+        android:id="@+id/unavailability"
+        android:enabled="true"
+        android:icon="@drawable/unavailable_24"
+        android:title="@string/unavailability"/>
+
+</menu>

@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
-import com.example.pita_rewards2.Drink_Menu
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,7 +38,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
+
         setContentView(binding.root)
 
         imageList = arrayOf(
@@ -104,8 +102,8 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
-
                     finish()
                     true
                 }
@@ -113,6 +111,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 R.id.basket -> {
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
                     startActivity(intent)
 
                     finish()
@@ -135,8 +134,11 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
     override fun onItemClick(position: Int) {
         val drink = drinkMenu[position]
+        val userId = intent.getStringExtra("userId")
 
         val intent = Intent(this, Drink_Customization::class.java)
+        intent.putExtra("selected_drink", drink)
+        intent.putExtra("userId", userId)
         startActivity(intent)
     }
 

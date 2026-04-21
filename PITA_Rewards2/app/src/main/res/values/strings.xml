@@ -100,5 +100,8 @@
     <string name="discount_2">OFF</string>
     <string name="discount_code">Use code FINALS50</string>
     <string name="mark_unavailability">Unavailable</string>
+    <string name="unavailability">Unavailability</string>
+    <string name="subtract_10_points">Subtract 10 Points</string>
+    <string name="home">Home</string>
 
 </resources>
