@@ -61,7 +61,12 @@ data class Drink_Menu(
                 name = "Mocha",
                 price = 5,
                 image = R.drawable.mocha
-            )
+            ),
+            Drink_Menu(
+                name = "Americano",
+                price = 3,
+                image = R.drawable.americano
+            ),
         )
     }
 

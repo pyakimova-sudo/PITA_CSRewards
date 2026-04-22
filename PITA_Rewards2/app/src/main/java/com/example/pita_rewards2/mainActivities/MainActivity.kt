@@ -44,21 +44,19 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         setContentView(binding.root)
 
         imageList = arrayOf(
-            R.drawable.latte, R.drawable.mocha, R.drawable.smoothie,
-            R.drawable.matcha, R.drawable.cold_brew,
-            R.drawable.water, R.drawable.lemonade,
-            R.drawable.tea, R.drawable.hot_chocolate,
-            R.drawable.milk
+            R.drawable.latte, R.drawable.americano, R.drawable.mocha,
+            R.drawable.matcha, R.drawable.cold_brew, R.drawable.hot_chocolate,
+            R.drawable.lemonade, R.drawable.tea,
+            R.drawable.smoothie
         )
 
         nameList = arrayOf(
-            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
-            "Water", "Lemonade", "Tea", "Hot Chocolate",
-            "Milk"
+            "Latte", "Americano", "Mocha", "Matcha", "Cold Brew"
+            , "Hot Chocolate", "Lemonade", "Tea", "Smoothie"
         )
 
         priceList = arrayOf(
-            5,5, 3, 5, 5, 1, 3, 3, 5, 3
+            5, 3, 5, 5, 5,5, 3, 3, 3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)
@@ -85,14 +83,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
             }
         } else{
             Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
-        }
-
-        val spinner: Spinner = findViewById(R.id.location_dropdown)
-        ArrayAdapter.createFromResource(
-            this, R.array.locations, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
         }
 
         navigation = findViewById(R.id.bottom_navigation)
@@ -137,6 +127,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         val drink = drinkMenu[position]
 
         val intent = Intent(this, Drink_Customization::class.java)
+        intent.putExtra("selected_drink",drink)
         startActivity(intent)
     }
 
