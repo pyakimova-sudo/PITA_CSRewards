@@ -77,7 +77,23 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()
 
+        val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
+        drinksRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (drinkSnapshot in snapshot.children) {
+                    val name = drinkSnapshot.key
+                    val isAvailable = drinkSnapshot.child("isAvailable").getValue(Boolean::class.java) ?: true
 
+                    if (name != null) {
+                        DisabledButtons.setDisabled(name, !isAvailable)
+                    }
+                }
+                if (::adapter.isInitialized) {
+                    adapter.notifyDataSetChanged()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
 
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
         weeklyDeal.setImageResource(imageList[3])
@@ -133,7 +149,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
             }
         }
     }
-
 
     private fun getData(){
         drinkMenu.clear()

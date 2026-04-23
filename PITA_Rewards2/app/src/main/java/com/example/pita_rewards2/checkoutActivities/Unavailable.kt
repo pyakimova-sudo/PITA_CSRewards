@@ -9,10 +9,12 @@ import com.example.pita_rewards2.R
 import com.example.pita_rewards2.databinding.ActivityUnavailableBinding
 import com.example.pita_rewards2.mainActivities.Drink_Menu
 import com.example.pita_rewards2.mainActivities.MainActivity
+import com.example.pita_rewards2.mainActivities.UnavailableAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.FirebaseDatabase
 
 
-class Unavailable : AppCompatActivity() {
+class Unavailable : AppCompatActivity(), UnavailableAdapter.RecyclerViewEvent {
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
     private lateinit var adapter: UnavailableAdapter
     lateinit var navigation: BottomNavigationView
@@ -31,17 +33,6 @@ class Unavailable : AppCompatActivity() {
         drinkMenu = arrayListOf<Drink_Menu>()
 
         getData()
-
-        binding.menu.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-
-        val menuButton = findViewById<Button>(R.id.menu)
-        menuButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
 
         navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.unavailability
@@ -80,7 +71,25 @@ class Unavailable : AppCompatActivity() {
         for (i in imageList.indices){
             drinkMenu.add(Drink_Menu(name=nameList[i], image =  imageList[i]))
         }
+
+        val database =
+            FirebaseDatabase.getInstance().getReference("drinks")
+        database.addValueEventListener(object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                for (drink in drinkMenu) {
+                    val dbAvailable = snapshot.child(drink.name).child("isAvailable").getValue(Boolean::class.java)
+                    // If it exists in DB, update our local list; otherwise default to true
+                    drink.isAvailable = dbAvailable ?: true
+                }
+                adapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {}
+        })
+
         adapter = UnavailableAdapter(drinkMenu, this)
         binding.itemList.adapter = adapter
+    }
+    override fun onItemClick(position: Int) {
+        val selectedDrink = drinkMenu[position].name
     }
 }

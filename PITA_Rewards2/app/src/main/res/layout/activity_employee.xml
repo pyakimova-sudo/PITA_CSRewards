@@ -47,14 +47,20 @@
         app:layout_constraintTop_toBottomOf="@id/headerCard" />
 
     <!-- Cart Scroll (Orders List) -->
-
     <Button
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/home"
+        android:backgroundTint="#B6AD90"
+        android:fontFamily="@font/ngetic"
+        android:gravity="center_horizontal"
+        android:text="@string/menu"
+        android:textSize="20sp"
+        android:textColor="@color/maple_primary"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/employeeScroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCard" />
 

@@ -4,7 +4,8 @@ import com.example.pita_rewards2.R
 data class Drink_Menu(
     var name: String = "",
     val price: Int = 0,
-    val image: Int
+    val image: Int,
+    var isAvailable: Boolean = true
 ) : java.io.Serializable{
     companion object {
         // Default drinks that will be added to Firebase if the database is empty

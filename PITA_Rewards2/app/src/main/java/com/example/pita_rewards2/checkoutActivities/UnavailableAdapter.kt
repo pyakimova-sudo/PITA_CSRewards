@@ -1,48 +1,74 @@
-package com.example.pita_rewards2.checkoutActivities
+package com.example.pita_rewards2.mainActivities
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pita_rewards2.R
-import com.example.pita_rewards2.mainActivities.DisabledButtons
-import com.example.pita_rewards2.mainActivities.Drink_Menu
+import com.google.firebase.database.FirebaseDatabase
 
-class UnavailableAdapter(
-    private val drinkList: ArrayList<Drink_Menu>,
-    private val context: android.content.Context
-) : RecyclerView.Adapter<UnavailableAdapter.MyViewHolder>() {
+class UnavailableAdapter(private val drinkMenu: ArrayList<Drink_Menu>, private val listener: RecyclerViewEvent): RecyclerView.Adapter<UnavailableAdapter.ViewHolderClass>() {
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name: TextView = itemView.findViewById(R.id.drink_name)
-        val image: ImageView = itemView.findViewById(R.id.image)
-        val availableSwitch: SwitchCompat = itemView.findViewById(R.id.availableSwitch)
+    override fun onCreateViewHolder(
+        p0: ViewGroup,
+        p1: Int
+    ): ViewHolderClass {
+        val itemView = LayoutInflater.from(p0.context).inflate(R.layout.unavailable_view_row, p0, false)
+        return ViewHolderClass(itemView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.unavailable_view_row, parent, false)
-        return MyViewHolder(view)
-    }
+    override fun onBindViewHolder(
+        p0: ViewHolderClass,
+        p1: Int
+    ) {
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = drinkList[position]
-        holder.name.text = currentItem.name
-        holder.image.setImageResource(currentItem.image)
+        if (p1 == drinkMenu.size - 1) {
+            val params = p0.itemView.getLayoutParams() as RecyclerView.LayoutParams
+            params.bottomMargin = 100 // last item bottom margin
+            p0.itemView.setLayoutParams(params)
+        } else {
+            val params = p0.itemView.getLayoutParams() as RecyclerView.LayoutParams
+            params.bottomMargin = 10 // other items bottom margin
+            p0.itemView.setLayoutParams(params)
+        }
 
-        holder.availableSwitch.setOnCheckedChangeListener(null)
 
-        holder.availableSwitch.isChecked = DisabledButtons.isDisabled(currentItem.name)
-
-        holder.availableSwitch.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled(currentItem.name, isChecked)
-            val status = if (isChecked) "disabled" else "enabled"
-            Toast.makeText(context, "${currentItem.name} has been $status", Toast.LENGTH_SHORT).show()
+        val currentItem = drinkMenu[p1]
+        p0.rvImage.setImageResource(currentItem.image)
+        p0.rvDrink.text = currentItem.name
+        p0.switch.setOnCheckedChangeListener(null)
+        p0.switch.isChecked = currentItem.isAvailable
+        p0.switch.setOnCheckedChangeListener { _, isChecked ->
+            currentItem.isAvailable = isChecked
+            val database = FirebaseDatabase.getInstance().getReference("drinks")
+            database.child(currentItem.name).child("isAvailable").setValue(isChecked)
         }
     }
 
-    override fun getItemCount(): Int = drinkList.size
+    override fun getItemCount(): Int {
+        return drinkMenu.size
+    }
+
+    inner class ViewHolderClass(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        val rvImage: ImageView = itemView.findViewById(R.id.image)
+        val rvDrink: TextView = itemView.findViewById(R.id.drink_name)
+        val switch: SwitchCompat = itemView.findViewById(R.id.availableSwitch)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position)            }
+        }
+    }
+
+    interface RecyclerViewEvent{
+        fun onItemClick(position: Int)
+    }
 }

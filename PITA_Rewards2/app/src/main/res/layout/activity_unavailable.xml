@@ -41,21 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="?attr/actionBarSize"
-        tools:listitem="@layout/recycler_view_row"
+        tools:listitem="@layout/unavailable_view_row"
         app:layout_constraintTop_toBottomOf="@+id/headerCard"/>
-
-    <Button
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#B6AD90"
-        android:fontFamily="@font/ngetic"
-        android:gravity="center_horizontal"
-        android:text="@string/menu"
-        android:textSize="20sp"
-        app:cornerRadius="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
