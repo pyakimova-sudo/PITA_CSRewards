@@ -19,7 +19,10 @@ import com.example.pita_rewards2.R
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import android.widget.Button
+import android.widget.CheckBox
+import com.example.pita_rewards2.userActivities.UserData
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -37,6 +40,13 @@ class BasketActivity : AppCompatActivity() {
 
     private lateinit var locationSpinner: Spinner
     private lateinit var qrScan: Button
+    private lateinit var pointCheckbox: CheckBox
+    private var userId: String = ""
+    private var userPoints: Int = 0
+    //private var pointsRef = 150
+    //private var pointsRef = intent.getStringExtra("points").toInt()
+    //val pointsRef = database.getReference("users").child(userId).child("points")
+
 
     private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
         ScanContract()
@@ -51,19 +61,25 @@ class BasketActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        database = FirebaseDatabase.getInstance()
 
-        val userId = intent.getStringExtra("userId")
+        userId = intent.getStringExtra("userId") ?: ""
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        var pointsRef = database.getReference("users").child(userId).child("points")
+        pointsRef.get().addOnSuccessListener { snapshot ->
+            userPoints = snapshot.getValue(Int::class.java)?: 0
+        }
 
         orderContainer = findViewById(R.id.orderContainer)
         totalText = findViewById(R.id.totalTxt)
         subtotalText = findViewById(R.id.totalFeeTxt)
         locationSpinner = findViewById(R.id.location_dropdown)
         qrScan = findViewById(R.id.qr_scan)
+        pointCheckbox = findViewById(R.id.points)
 
         ArrayAdapter.createFromResource(
             this, R.array.locations, android.R.layout.simple_spinner_item
@@ -81,8 +97,7 @@ class BasketActivity : AppCompatActivity() {
         }
 
         binding.btnCheckout.setOnClickListener {
-            val userId = intent.getStringExtra("userId")
-            if (userId.isNullOrEmpty()) {
+            if (userId.isEmpty()) {
                 Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -102,6 +117,30 @@ class BasketActivity : AppCompatActivity() {
                 ScanOptions().setPrompt("Scan QR code")
                     .setDesiredBarcodeFormats(ScanOptions.QR_CODE)
             )
+        }
+
+        // POINT CHECKBOX
+        val pointCheckbox = findViewById<CheckBox>(R.id.points)
+        pointCheckbox.setOnCheckedChangeListener { _:Any, isChecked: Boolean ->
+            val currentTotal = MainActivity.customizations.sumOf { it.price }
+            if (isChecked) {
+                Toast.makeText(this, "Points have been applied!", Toast.LENGTH_LONG).show()
+                //pointsRef.setValue(0)
+                pointsActivated.status = true
+                if (pointsActivated.priceOff(userPoints) > currentTotal) {
+                    pointsActivated.pointsUsed = (200 * currentTotal).toInt()
+                    //pointsRef -= pointsActivated.pointsUsed
+                    pointsRef.setValue(userPoints - pointsActivated.pointsUsed)
+                } else {
+                    pointsActivated.pointsUsed = userPoints
+                    userPoints = 0
+                }
+                calculateTotal()
+            } else {
+                Toast.makeText(this, "Points have been unapplied", Toast.LENGTH_SHORT).show()
+                pointsActivated.status = false
+                calculateTotal()
+            }
         }
 
         navigation = findViewById(R.id.bottom_navigation)
@@ -135,9 +174,13 @@ class BasketActivity : AppCompatActivity() {
     }
 
     private fun calculateTotal() {
-        val total = MainActivity.customizations.sumOf { it.price }
-        totalText.text = "$$total"
-        subtotalText.text = "$$total"
+        val currentTotal = MainActivity.customizations.sumOf { it.price }
+        var subtotal = currentTotal.toDouble()
+        if (pointsActivated.status) {
+            subtotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
+        }
+        totalText.text = "$$currentTotal"
+        subtotalText.text = "$$subtotal"
 
     }
 
@@ -194,5 +237,13 @@ class BasketActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         displayOrders()
+    }
+}
+
+object pointsActivated {
+    var status: Boolean = false
+    var pointsUsed = 0
+    fun priceOff(points: Int): Double {
+        return points.toDouble() / 200.0
     }
 }
