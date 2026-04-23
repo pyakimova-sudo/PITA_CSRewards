@@ -30,7 +30,7 @@ class CheckoutActivity : AppCompatActivity() {
         val nameBox = findViewById<EditText>(R.id.nameBox)
 
         val totalText = findViewById<TextView>(R.id.checkoutTotal)
-        val total = MainActivity.customizations.sumOf { it.price }
+        val total = MainActivity.customizations.sumOf { it.price * it.quantity }
 
         //Display the total price
         totalText.text = "$$total"
@@ -88,7 +88,7 @@ class CheckoutActivity : AppCompatActivity() {
 
             //TODO custom points???
             //Calculate the points based on the total price
-            val newPoints = total / 10
+            val newPoints = total / 2
 
             Log.d("FirebaseDebug", "User ID: $userId")
             Log.d("FirebaseDebug", "Points path: /users/$userId/points")
