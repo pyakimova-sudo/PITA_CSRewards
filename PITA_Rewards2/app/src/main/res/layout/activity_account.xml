@@ -24,7 +24,7 @@
         android:layout_gravity="center_vertical">
 
         <LinearLayout
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -151,11 +151,11 @@
                     android:id="@+id/drink_timer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/textview_border"
+                    android:padding="10dp"
                     android:text="@string/drinkTimer"
                     android:textSize="15sp"
-                    android:padding="10dp"
-                    android:background="@drawable/textview_border"
-                    app:drawableEndCompat="@drawable/arrow"/>
+                    app:drawableEndCompat="@drawable/arrow" />
 
                 <View
                     android:layout_width="wrap_content"

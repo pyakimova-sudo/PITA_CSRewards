@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import java.io.Serializable
+import com.example.pita_rewards2.mainActivities.Drink_Menu
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
@@ -16,12 +18,13 @@ class Drink_Customization : AppCompatActivity() {
     private var nameOfDrink: String = ""//intent.getStringExtra("drink")
     //private var milkChosen: String = (intent.getStringExtra("milk")).toString()
 
-    private var finalPrice: Int = 0
+    private var finalPrice: Double = 0.0
     private val selectedFruits = mutableListOf<String>()
     private val selectedAddons = mutableListOf<String>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val userId = intent.getStringExtra("userId")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.drink_customization)
         enableEdgeToEdge()
@@ -29,6 +32,7 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<Button>(R.id.cancel_order)?.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
             finish()
         }
@@ -37,30 +41,18 @@ class Drink_Customization : AppCompatActivity() {
         val titleText = findViewById<TextView>(R.id.title)
         val submitButton = findViewById<Button>(R.id.submitButton)
 
-        // Milk spinner
-        val milk_spinner: Spinner = findViewById(R.id.choose_milk)
-        milk_spinner?.let { spinner ->
-            ArrayAdapter.createFromResource(
-                this, R.array.milks, android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                milk_spinner.adapter = adapter
-            }
-            milk_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    val selectedMilk = parent?.getItemAtPosition(position).toString()
-                    updateSelection("Milk", selectedMilk, resultText)
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
+        // Size Buttons
+        val sizeButtons = listOf(
+            findViewById<ImageButton>(R.id.sizeSmall) to "Small",
+            findViewById<ImageButton>(R.id.sizeMedium) to "Medium",
+            findViewById<ImageButton>(R.id.sizeLarge) to "Large"
+        )
+        sizeButtons.forEach { (button, value) ->
+            button.setOnClickListener {
+                updateSelection("Size", value, resultText)
             }
         }
-
+        /*
         // Sweetness Spinner
         val sweetness_spinner: Spinner = findViewById(R.id.choose_sweetness)
         sweetness_spinner?.let { spinner ->
@@ -85,18 +77,34 @@ class Drink_Customization : AppCompatActivity() {
             }
         }
 
-        // Size Buttons
-        val sizeButtons = listOf(
-            findViewById<ImageButton>(R.id.sizeSmall) to "Small",
-            findViewById<ImageButton>(R.id.sizeMedium) to "Medium",
-            findViewById<ImageButton>(R.id.sizeLarge) to "Large"
-        )
-        sizeButtons.forEach { (button, value) ->
-            button.setOnClickListener {
-                updateSelection("Size", value, resultText)
+         */
+
+/*
+        // Milk spinner
+        val milk_spinner: Spinner = findViewById(R.id.choose_milk)
+        milk_spinner?.let { spinner ->
+            ArrayAdapter.createFromResource(
+                this, R.array.milks, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                milk_spinner.adapter = adapter
+            }
+            milk_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedMilk = parent?.getItemAtPosition(position).toString()
+                    updateSelection("Milk", selectedMilk, resultText)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
 
+ */
         selectedDrink = IntentCompat.getSerializableExtra(intent, "selected_drink", Drink_Menu::class.java)
 
         selectedDrink?.let { drink ->
@@ -107,7 +115,12 @@ class Drink_Customization : AppCompatActivity() {
                 "Smoothie" -> Smoothie()
                 "Matcha" -> Matcha()
                 "Cold Brew" -> Cold_Brew()
-                "Regular" -> Regular()
+                "Latte" -> Latte()
+                "Mocha" -> Mocha()
+                "Americano" -> Americano()
+                "Lemonade" -> Lemonade()
+                "Hot Chocolate" -> Hot_Chocolate()
+                "Tea" -> Tea()
             }
         }
 
@@ -121,7 +134,12 @@ class Drink_Customization : AppCompatActivity() {
             }
 
             // Create an Intent to go back to MainActivity (basket intent)
-            val basketIntent = Intent(this@Drink_Customization, MainActivity::class.java)
+            val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
+
+            val currentUserId = intent.getStringExtra("userId")
+            if (currentUserId != null) {
+                basketIntent.putExtra("userId", currentUserId)
+            }
 
             // Retrieve customization data
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
@@ -137,6 +155,32 @@ class Drink_Customization : AppCompatActivity() {
                 icedChecked -> "Iced"
                 else -> ""
             }
+
+            // Add customization to the MainActivity order list
+            val newOrder = ItemCustomization(
+                drink = nameOfDrink,
+                size = size,
+                milk = milk,
+                sweetness = sweetness,
+                price = finalPrice,
+                quantity = 1
+            )
+           //duplicate drink check
+            val existingOrder = MainActivity.customizations.find {
+                it.drink == newOrder.drink &&
+                        it.size == newOrder.size &&
+                        it.milk == newOrder.milk &&
+                        it.sweetness == newOrder.sweetness
+            }
+            if (existingOrder != null) {
+                //If already exists increase count
+                existingOrder.quantity += 1
+            } else {
+                //If new, add to the list
+                MainActivity.customizations.add(newOrder)
+            }
+            // Show a toast with the updated order
+            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
             val detailsBuilder = StringBuilder()
 
@@ -228,12 +272,12 @@ class Drink_Customization : AppCompatActivity() {
 
         //Adjusting price by drink size
         //TODO update price for other
-        val basePrice = selectedDrink?.price ?: 0
+        val basePrice = selectedDrink?.price?.toDouble() ?: 0.0
         finalPrice = basePrice
 
         when (size) {
-            "Medium" -> finalPrice += 1
-            "Large" -> finalPrice += 2
+            "Medium" -> finalPrice += 1.0
+            "Large" -> finalPrice += 2.0
         }
 
         val resultString = "$$finalPrice $size $drink" +
@@ -283,32 +327,38 @@ class Drink_Customization : AppCompatActivity() {
             btn.setOnClickListener { updateDrinkData("Liquid", liquid) }
             liquidLayout.addView(btn)
         }
-
-        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
     }
 
     private fun Matcha() {
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
-        //val milkLayout = findViewById<LinearLayout>(R.id.matchaMilkLayout)
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-       // milkLayout.removeAllViews()
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
+
+        milkLayout.removeAllViews()
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
-           // milkLayout.addView(btn)
+            milkLayout.addView(btn)
         }
 
         val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
-       // val flavorLayout = findViewById<LinearLayout>(R.id.matchaFlavorLayout)
-       // flavorLayout.removeAllViews()
+        val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
+        flavorLayout.removeAllViews()
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
-          //  flavorLayout.addView(btn)
+            flavorLayout.addView(btn)
         }
 
         val sweetLevels = listOf("100%","75%","50%","25%","0%")
@@ -330,27 +380,69 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
     }
-//Cold Brew
     private fun Cold_Brew() {
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
-        //val milkLayout = findViewById<LinearLayout>(R.id.matchaMilkLayout)
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-       // milkLayout.removeAllViews()
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
+
+        milkLayout.removeAllViews()
         milkOptions.forEach { milk ->
-            val btn = Button(this)
-            btn.text = milk
-            btn.setOnClickListener { updateDrinkData("Milk", milk) }
-           // milkLayout.addView(btn)
+        val btn = Button(this)
+        btn.text = milk
+        btn.setOnClickListener { updateDrinkData("Milk", milk) }
+        milkLayout.addView(btn)
         }
 
         val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
-        //val flavorLayout = findViewById<LinearLayout>(R.id.matchaFlavorLayout)
-       // flavorLayout.removeAllViews()
+        val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
+        flavorLayout.removeAllViews()
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
-         //   flavorLayout.addView(btn)
+            flavorLayout.addView(btn)
+        }
+
+        val sweetLevels = listOf("100%","75%","50%","25%","0%")
+        val sweetLayout = findViewById<LinearLayout>(R.id.sweetOptions)
+        sweetLayout.removeAllViews()
+        sweetLevels.forEach { sweet ->
+            val btn = Button(this)
+            btn.text = sweet
+            btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
+            sweetLayout.addView(btn)
+        }
+    }
+
+    private fun Latte(){
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
+
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
+
+        milkLayout.removeAllViews()
+        milkOptions.forEach { milk ->
+            val btn = Button(this)
+            btn.text = milk
+            btn.setOnClickListener { updateDrinkData("Milk", milk) }
+            milkLayout.addView(btn)
+        }
+
+        val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
+        val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
+        flavorLayout.removeAllViews()
+        flavors.forEach { flavor ->
+            val btn = Button(this)
+            btn.text = flavor
+            btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
+            flavorLayout.addView(btn)
         }
 
         val sweetLevels = listOf("100%","75%","50%","25%","0%")
@@ -363,23 +455,157 @@ class Drink_Customization : AppCompatActivity() {
             sweetLayout.addView(btn)
         }
 
-        findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
-        findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
-
-        findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
     }
 
-    private fun Regular() {
-        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.VISIBLE
-        findViewById<LinearLayout>(R.id.sweetOptions)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.matchaLayout)?.visibility = View.GONE
+    private fun Mocha(){
+
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
+
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
+
+        milkLayout.removeAllViews()
+        milkOptions.forEach { milk ->
+            val btn = Button(this)
+            btn.text = milk
+            btn.setOnClickListener { updateDrinkData("Milk", milk) }
+            milkLayout.addView(btn)
+        }
+
+        val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
+        val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
+        flavorLayout.removeAllViews()
+        flavors.forEach { flavor ->
+            val btn = Button(this)
+            btn.text = flavor
+            btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
+            flavorLayout.addView(btn)
+        }
+
+        val sweetLevels = listOf("100%","75%","50%","25%","0%")
+        val sweetLayout = findViewById<LinearLayout>(R.id.sweetOptions)
+        sweetLayout.removeAllViews()
+        sweetLevels.forEach { sweet ->
+            val btn = Button(this)
+            btn.text = sweet
+            btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
+            sweetLayout.addView(btn)
+        }
+
+    }
+
+    private fun Americano(){
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.VISIBLE
+
+    }
+
+    private fun Lemonade(){
+
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
+
+        val flavorOptions = listOf("No Flavor", "Lavender", "Raspberry", "Honey", "Strawberry", "Blackberry", "Blueberry", "Pomegranate")
+        val flavorLayout = findViewById<LinearLayout>(R.id.lemonadeFlavors)
+        flavorLayout.removeAllViews()
+        flavorOptions.forEach { flavor ->
+            val btn = Button(this)
+            btn.text = flavor
+            btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
+            flavorLayout.addView(btn)
+        }
+
+    }
+
+    private fun Hot_Chocolate(){
+
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
+
+        val chocolateOptions = listOf("Milk", "White", "Dark")
+        val chocolateLayout = findViewById<LinearLayout>(R.id.choc_options)
+        chocolateLayout.removeAllViews()
+        chocolateOptions.forEach { flavor ->
+            val btn = Button(this)
+            btn.text = flavor
+            btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
+            chocolateLayout.addView(btn)
+        }
+
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
+
+        milkLayout.removeAllViews()
+        milkOptions.forEach { milk ->
+            val btn = Button(this)
+            btn.text = milk
+            btn.setOnClickListener { updateDrinkData("Milk", milk) }
+            milkLayout.addView(btn)
+        }
+
+        val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
+        val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
+        flavorLayout.removeAllViews()
+        flavors.forEach { flavor ->
+            val btn = Button(this)
+            btn.text = flavor
+            btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
+            flavorLayout.addView(btn)
+        }
+
+        val sweetLevels = listOf("100%","75%","50%","25%","0%")
+        val sweetLayout = findViewById<LinearLayout>(R.id.sweetOptions)
+        sweetLayout.removeAllViews()
+        sweetLevels.forEach { sweet ->
+            val btn = Button(this)
+            btn.text = sweet
+            btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
+            sweetLayout.addView(btn)
+        }
+    }
+
+    private fun Tea(){
+
+        findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
+
+
+        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkLayout = findViewById<LinearLayout>(R.id.milk_options2)
+
+        milkLayout.removeAllViews()
+        milkOptions.forEach { milk ->
+            val btn = Button(this)
+            btn.text = milk
+            btn.setOnClickListener { updateDrinkData("Milk", milk) }
+            milkLayout.addView(btn)
+        }
+
+        val teaOptions = listOf("Green Tea", "Earl Grey", "Peppermint Tea", "Ginger Tea", "Chamomile Tea", "Hibiscus Tea", "White Tea")
+        val teaLayout = findViewById<LinearLayout>(R.id.tea)
+        teaLayout.removeAllViews()
+        teaOptions.forEach { tea ->
+            val btn = Button(this)
+            btn.text = tea
+            btn.setOnClickListener { updateDrinkData("Tea", tea) }
+            teaLayout.addView(btn)
+        }
+
     }
 
     private fun updateDrinkData(category: String, value: String) {
@@ -397,7 +623,7 @@ class Drink_Customization : AppCompatActivity() {
         val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
         val drinkName = selectedDrink?.name ?: ""
 
-        var price = selectedDrink?.price ?: 0
+        var price = selectedDrink?.price?.toDouble() ?: 0.0
         when(size) {
             "Medium" -> price += 1
             "Large" -> price += 2
@@ -430,11 +656,12 @@ data class ItemCustomization(
     val size: String = "",
     val milk: String = "",
     val sweetness: String = "",
-    val price: Int = 0,
+    val flavor: String = "",
+    val price: Double = 0.0,
     var customerName: String = "",
     var location: String = "",
     val imageResourceId: Int,
     val temp: String = "",
-    val extraDetails: String = ""
-
+    val extraDetails: String = "",
+    var quantity: Int = 1
 ) : Serializable

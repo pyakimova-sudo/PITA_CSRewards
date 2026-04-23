@@ -1,5 +1,8 @@
 package com.example.pita_rewards2.checkoutActivities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -14,10 +17,17 @@ import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.R
 import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.example.pita_rewards2.databinding.ViewholderEmployeeBinding
+import com.example.pita_rewards2.mainActivities.Unavailable
+import android.Manifest
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-
+//TODO global drink timer(for estimate) STRETCH
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeBinding
     private lateinit var database: FirebaseDatabase
@@ -34,6 +44,8 @@ class EmployeeActivity : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
 
+        val totalQuantity = intent.getIntExtra("totalQuantity", 0)
+
         // Initialize the container for the orders
         employeeContainer = findViewById(R.id.employeeContainer)
         // Initialize TextView and Button
@@ -46,6 +58,25 @@ class EmployeeActivity : AppCompatActivity() {
         if (userId == null) {
             Toast.makeText(this, "User ID missing", Toast.LENGTH_SHORT).show()
             return
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
+            }
+        }
+
+        //Notifications
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                "order_channel",
+                "Order Notifications",
+                NotificationManager.IMPORTANCE_HIGH
+            )
+
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(channel)
         }
 
         //Reference to the user's points in the database
@@ -99,22 +130,35 @@ class EmployeeActivity : AppCompatActivity() {
     }
 
     private fun displayOrders() {
-        employeeContainer.removeAllViews()
+        // Reference to the root of ActiveOrders
+        val ordersRef = database.getReference("ActiveOrders")
 
-        val drinkCustomizations = MainActivity.customizations.toList()
-        val inflater = LayoutInflater.from(this)
+        ordersRef.addValueEventListener(object : com.google.firebase.database.ValueEventListener {
+            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+                // Clear container to prevent duplicates
+                employeeContainer.removeAllViews()
 
-        for ((index, order) in drinkCustomizations.withIndex()) {
-            val itemView = inflater.inflate(R.layout.viewholder_employee, employeeContainer, false)
+                if (!snapshot.exists()) {
+                    Log.d("DEBUG", "No active orders found.")
+                    return
+                }
 
-            val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameEmployee)
-            drinkNameText.text = order.drink
+                for (orderSnapshot in snapshot.children) {
+                    val orderKey = orderSnapshot.key ?: continue
 
-            val nameLabel = itemView.findViewById<TextView>(R.id.customerNameText)
-            nameLabel.text = order.customerName
+                    val itemBinding = ViewholderEmployeeBinding.inflate(
+                        LayoutInflater.from(this@EmployeeActivity),
+                        employeeContainer,
+                        false
+                    )
 
-            val locationText = itemView.findViewById<TextView>(R.id.locationText)
-            locationText.text = "${order.location}"
+                    val drink = orderSnapshot.child("drink").value?.toString() ?: ""
+                    val customerName = orderSnapshot.child("customerName").value?.toString() ?: "No Name"
+                    val targetUserId = orderSnapshot.child("userId").value?.toString() ?: ""
+
+                    val size = orderSnapshot.child("size").value?.toString() ?: ""
+                    val milk = orderSnapshot.child("milk").value?.toString() ?: ""
+                    val sweetness = orderSnapshot.child("sweetness").value?.toString() ?: ""
 
 
             val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
@@ -126,8 +170,60 @@ class EmployeeActivity : AppCompatActivity() {
                 order.extraDetails.takeIf { it.isNotEmpty() }
             )
             orderItems.text = detailsList.joinToString("\n")
+                    val detailsList = listOfNotNull(
+                        size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                        milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
+                        sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+                    )
 
-            val removeBtn = itemView.findViewById<TextView>(R.id.doneButton)
+                    itemBinding.drinkNameEmployee.text = drink
+                    itemBinding.customerNameText.text = customerName
+                    itemBinding.orderItemsEmployee.text = detailsList.joinToString("\n")
+
+                    itemBinding.doneButton.setOnClickListener {
+                        Log.d("DEBUG", "Clicked done for $customerName")
+
+                        if (targetUserId.isNotEmpty()) {
+                            sendNotification(targetUserId, customerName)
+                        }
+
+                        ordersRef.child(orderKey).removeValue()
+                            .addOnSuccessListener {
+                                Toast.makeText(this@EmployeeActivity, "Order Completed", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                    employeeContainer.addView(itemBinding.root)
+                }
+            }
+
+            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {
+                Log.e("FirebaseError", error.message)
+            }
+        })
+    }
+
+    //Notification setup
+    private fun sendNotification(userId: String, customerName: String) {
+
+        val channelId = "order_channel"
+
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("userId", userId)
+
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val builder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle("Order Ready")
+            .setContentText("$customerName, your drink is ready!")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
 
             // Remove an item when clicked
             removeBtn.setOnClickListener {
@@ -138,8 +234,34 @@ class EmployeeActivity : AppCompatActivity() {
                     MainActivity.order.clear()
                 }
             }
-
-            employeeContainer.addView(itemView)
+        val manager = NotificationManagerCompat.from(this)
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+            == PackageManager.PERMISSION_GRANTED) {
+            manager.notify(System.currentTimeMillis().toInt(), builder.build())
         }
     }
-}
+    }
+    /*
+    //New estimated time for when Order is manually marked done
+    private fun recalculateTimer() {
+
+        val ordersRef = FirebaseDatabase.getInstance().getReference("ActiveOrders")
+
+        ordersRef.get().addOnSuccessListener { snapshot ->
+            var totalQuantity = 0L
+
+            for (order in snapshot.children) {
+                totalQuantity += order.child("quantity")
+                    .getValue(Long::class.java) ?: 0L
+            }
+
+            val estimatedMinutes = totalQuantity * 2
+
+            val resultIntent = Intent().apply {
+                putExtra("estimatedMinutes", estimatedMinutes)
+            }
+
+            setResult(RESULT_OK, resultIntent)
+        }
+    }
+     */

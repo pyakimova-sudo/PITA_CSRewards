@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import kotlin.jvm.java
 import kotlin.text.isNotEmpty
 
+//TODO actual password criteria function
 class SignupActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignupBinding
