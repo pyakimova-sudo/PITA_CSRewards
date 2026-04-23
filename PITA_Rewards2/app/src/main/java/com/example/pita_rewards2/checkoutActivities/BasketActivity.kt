@@ -21,6 +21,8 @@ import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.Button
+import androidx.compose.ui.graphics.findFirstRoot
+import com.example.pita_rewards2.userActivities.UserData
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -64,6 +66,7 @@ class BasketActivity : AppCompatActivity() {
 
         val points = intent.getStringExtra("points")
         this.userId = intent.getStringExtra("userId") ?: ""
+
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()

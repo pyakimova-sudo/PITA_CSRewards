@@ -18,6 +18,7 @@ import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
 import com.example.pita_rewards2.mainActivities.LoginActivity
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.FirebaseDatabase
 
 //Needs to be global for use
 //TODO make total orders var in checkout using total items
@@ -34,11 +35,24 @@ class Account : AppCompatActivity() {
     private var totalQuantity: Int = 0
     private var timer: CountDownTimer? = null
     private lateinit var drink_timer: TextView
+    private var userPoints: Int = 0
+    private lateinit var database: FirebaseDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_account)
+
+        this.userId = intent.getStringExtra("userId") ?: ""
+
+        database = FirebaseDatabase.getInstance()
+        val pointsRef = database.getReference("users").child(userId).child("points")
+        pointsRef.get().addOnSuccessListener { snapshot ->
+            userPoints = snapshot.getValue(Int::class.java)?: 0
+            findViewById<TextView>(R.id.points).text = userPoints.toString()
+        }
+
 
         //Handle edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->

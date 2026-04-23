@@ -1,6 +1,7 @@
 package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,6 +15,8 @@ import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import java.io.Serializable
 import com.example.pita_rewards2.mainActivities.Drink_Menu
 import kotlin.String
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 
 class Drink_Customization : AppCompatActivity() {
     private var userId: String? = null
@@ -359,6 +362,7 @@ class Drink_Customization : AppCompatActivity() {
         fruits.forEach { fruit ->
             val btn = Button(this)
             btn.text = fruit
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener {
                 if (selectedFruits.contains(fruit)) selectedFruits.remove(fruit)
                 else if (selectedFruits.size < 4) selectedFruits.add(fruit)
@@ -374,6 +378,7 @@ class Drink_Customization : AppCompatActivity() {
         additions.forEach { addition ->
             val btn = Button(this)
             btn.text = addition
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener {
                 if (selectedAddons.contains(addition)) selectedAddons.remove(addition)
                 else if (selectedAddons.size < 2) selectedAddons.add(addition)
@@ -389,6 +394,7 @@ class Drink_Customization : AppCompatActivity() {
         liquids.forEach { liquid ->
             val btn = Button(this)
             btn.text = liquid
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Liquid", liquid) }
             liquidLayout.addView(btn)
         }
@@ -411,6 +417,7 @@ class Drink_Customization : AppCompatActivity() {
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
             milkLayout.addView(btn)
         }
@@ -421,6 +428,7 @@ class Drink_Customization : AppCompatActivity() {
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -431,6 +439,7 @@ class Drink_Customization : AppCompatActivity() {
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
             btn.text = sweet
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
             sweetLayout.addView(btn)
         }
@@ -455,10 +464,11 @@ class Drink_Customization : AppCompatActivity() {
 
         milkLayout.removeAllViews()
         milkOptions.forEach { milk ->
-        val btn = Button(this)
-        btn.text = milk
-        btn.setOnClickListener { updateDrinkData("Milk", milk) }
-        milkLayout.addView(btn)
+            val btn = Button(this)
+            btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
+            btn.setOnClickListener { updateDrinkData("Milk", milk) }
+            milkLayout.addView(btn)
         }
 
         val flavors = listOf("No Flavor","Lavender","Vanilla","Honey","Cinnamon","Caramel","Toasted Marshmallow","Raspberry")
@@ -467,6 +477,7 @@ class Drink_Customization : AppCompatActivity() {
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -477,6 +488,7 @@ class Drink_Customization : AppCompatActivity() {
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
             btn.text = sweet
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
             sweetLayout.addView(btn)
         }
@@ -495,6 +507,7 @@ class Drink_Customization : AppCompatActivity() {
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
             milkLayout.addView(btn)
         }
@@ -505,6 +518,7 @@ class Drink_Customization : AppCompatActivity() {
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -515,6 +529,7 @@ class Drink_Customization : AppCompatActivity() {
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
             btn.text = sweet
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
             sweetLayout.addView(btn)
         }
@@ -535,6 +550,7 @@ class Drink_Customization : AppCompatActivity() {
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
             milkLayout.addView(btn)
         }
@@ -545,6 +561,7 @@ class Drink_Customization : AppCompatActivity() {
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -555,6 +572,7 @@ class Drink_Customization : AppCompatActivity() {
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
             btn.text = sweet
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
             sweetLayout.addView(btn)
         }
@@ -585,6 +603,7 @@ class Drink_Customization : AppCompatActivity() {
         flavorOptions.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -604,6 +623,7 @@ class Drink_Customization : AppCompatActivity() {
         chocolateOptions.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             chocolateLayout.addView(btn)
         }
@@ -615,6 +635,7 @@ class Drink_Customization : AppCompatActivity() {
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
             milkLayout.addView(btn)
         }
@@ -625,6 +646,7 @@ class Drink_Customization : AppCompatActivity() {
         flavors.forEach { flavor ->
             val btn = Button(this)
             btn.text = flavor
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -635,6 +657,7 @@ class Drink_Customization : AppCompatActivity() {
         sweetLevels.forEach { sweet ->
             val btn = Button(this)
             btn.text = sweet
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Sweetness", sweet) }
             sweetLayout.addView(btn)
         }
@@ -656,6 +679,7 @@ class Drink_Customization : AppCompatActivity() {
         milkOptions.forEach { milk ->
             val btn = Button(this)
             btn.text = milk
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
             milkLayout.addView(btn)
         }
@@ -666,6 +690,7 @@ class Drink_Customization : AppCompatActivity() {
         teaOptions.forEach { tea ->
             val btn = Button(this)
             btn.text = tea
+            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
             btn.setOnClickListener { updateDrinkData("Tea", tea) }
             teaLayout.addView(btn)
         }

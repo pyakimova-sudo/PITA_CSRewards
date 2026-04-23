@@ -9,4 +9,6 @@
     <color name="maple_secondary">#FFB65508</color>
 
     <color name="light_brown">#FF936639</color>
+
+    <color name="my_button_color">#FFFFFFFF</color>
 </resources>
