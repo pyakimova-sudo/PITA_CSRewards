@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/picCart"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_margin="4dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +45,10 @@
             android:layout_height="wrap_content"
             android:text="@string/order_details"
             android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintBottom_toBottomOf="@+id/totalFee"
+            app:layout_constraintEnd_toStartOf="@+id/totalFee"
             app:layout_constraintStart_toStartOf="@+id/drinkNameText"
             app:layout_constraintTop_toBottomOf="@+id/drinkNameText" />
 
@@ -53,10 +56,13 @@
             android:id="@+id/quantityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="x1"
+            android:textColor="@color/maple_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/maple_primary"/>
+            app:layout_constraintBottom_toBottomOf="@+id/drinkNameText"
+            app:layout_constraintStart_toEndOf="@+id/drinkNameText" />
 
         <TextView
             android:id="@+id/totalFee"

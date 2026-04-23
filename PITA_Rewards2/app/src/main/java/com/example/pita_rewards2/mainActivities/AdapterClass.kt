@@ -41,6 +41,14 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val lis
         p0.rvPrice.text = "$${currentItem.price}"
         p0.imageBu.setImageResource(R.drawable.arrow2)
 
+        val isDisabled = DisabledButtons.isDisabled(currentItem.name)
+        if (isDisabled) {
+            p0.itemView.alpha = 0.4f  // Makes the row look faded/greyed out
+            p0.itemView.isClickable = false
+        } else {
+            p0.itemView.alpha = 1.0f  // Normal appearance
+            p0.itemView.isClickable = true
+        }
     }
 
     override fun getItemCount(): Int {
@@ -60,7 +68,10 @@ class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val lis
         override fun onClick(p0: View?) {
             val position = bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION){
-                listener.onItemClick(position)
+                val drinkName = drinkMenu[position].name
+                if (!DisabledButtons.isDisabled(drinkName)) {
+                    listener.onItemClick(position)
+                }
             }
         }
 
