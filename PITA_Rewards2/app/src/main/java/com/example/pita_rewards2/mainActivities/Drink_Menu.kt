@@ -12,11 +12,11 @@ data class Drink_Menu(
     val ingredients: List<String> = emptyList()
 ) : Serializable{
     companion object {
-        // Default drinks that will be added to Firebase if the database is empty
+        //Main drinks that don't leave menu
         val defaultDrinks = listOf(
             Drink_Menu(
                 name = "Latte",
-                Drink_Type = "Coffee", //Will be used to sort might need another button
+                Drink_Type = "Coffee",
                 price = 2,
                 ingredients = listOf("Coffee", "Milk", "Ice"),
                 image = R.drawable.latte

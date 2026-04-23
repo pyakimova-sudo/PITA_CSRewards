@@ -15,9 +15,7 @@ import com.example.pita_rewards2.mainActivities.Drink_Menu
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
     private var selectedDrink: Drink_Menu? = null
-    private var nameOfDrink: String = ""//intent.getStringExtra("drink")
-    //private var milkChosen: String = (intent.getStringExtra("milk")).toString()
-
+    private var nameOfDrink: String = ""
     private var finalPrice: Double = 0.0
     private val selectedFruits = mutableListOf<String>()
     private val selectedAddons = mutableListOf<String>()
@@ -41,7 +39,7 @@ class Drink_Customization : AppCompatActivity() {
         val titleText = findViewById<TextView>(R.id.title)
         val submitButton = findViewById<Button>(R.id.submitButton)
 
-        // Size Buttons
+        //Drink Size
         val sizeButtons = listOf(
             findViewById<ImageButton>(R.id.sizeSmall) to "Small",
             findViewById<ImageButton>(R.id.sizeMedium) to "Medium",
@@ -127,15 +125,15 @@ class Drink_Customization : AppCompatActivity() {
 
 
         submitButton?.setOnClickListener {
-            // Check if it's a Smoothie and validate selections
+            //Confirm if smoothie is a smoothie
             if (selectedDrink?.name == "Smoothie") {
-                if (!validateSmoothie() || !validateSmoothie()) {
+                if (!validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
             }
 
-            // Create an Intent to go back to MainActivity (basket intent)
+            //Pass drink information to Basket
             val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
 
             val currentUserId = intent.getStringExtra("userId")
@@ -143,7 +141,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("userId", currentUserId)
             }
 
-            // Retrieve customization data
+            //Retrieve customization data
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
             val drink = selectedDrink?.name ?: ""
             nameOfDrink = selectedDrink?.name.orEmpty()
@@ -151,7 +149,7 @@ class Drink_Customization : AppCompatActivity() {
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
             val flavor = drinkData.find{ it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
 
-            // Add customization to the MainActivity order list
+            //Add customization to the MainActivity order list
             val newOrder = ItemCustomization(
                 drink = nameOfDrink,
                 size = size,
@@ -160,7 +158,7 @@ class Drink_Customization : AppCompatActivity() {
                 price = finalPrice,
                 quantity = 1
             )
-           //duplicate drink check
+            //Duplicate drink marker
             val existingOrder = MainActivity.customizations.find {
                 it.drink == newOrder.drink &&
                         it.size == newOrder.size &&
@@ -168,16 +166,13 @@ class Drink_Customization : AppCompatActivity() {
                         it.sweetness == newOrder.sweetness
             }
             if (existingOrder != null) {
-                //If already exists increase count
                 existingOrder.quantity += 1
             } else {
-                //If new, add to the list
                 MainActivity.customizations.add(newOrder)
             }
-            // Show a toast with the updated order
             Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
 
-            // If it's a Smoothie, add fruits, additions, and liquid data
+            //If Smoothie, add fruits, additions, and liquid data
             if (selectedDrink?.name == "Smoothie") {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
@@ -213,32 +208,25 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("iced", iced)
             }
 
-            // Add the basic drink info like name, size, and final price
+            //Pass Basic drink info
             basketIntent.putExtra("drink", drink)
             basketIntent.putExtra("size", size)
             basketIntent.putExtra("final_price", finalPrice)
 
-            // Retrieve userId from the current Intent (if available)
+            //Retrieve userId
             val userId = intent.getStringExtra("userId")
             if (userId != null) {
-                basketIntent.putExtra("userId", userId)  // Pass the userId to MainActivity
+                basketIntent.putExtra("userId", userId)
             }
 
-            // Start the BasketActivity or MainActivity with userId passed along
+            //Start the BasketActivity then MainActivity with userId passed along
             startActivity(basketIntent)
-
-            // Redirect back to MainActivity after submitting the order
             val mainIntent = Intent(this@Drink_Customization, MainActivity::class.java)
             mainIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-
-            // Ensure userId is included when returning to MainActivity
             if (userId != null) {
                 mainIntent.putExtra("userId", userId)
             }
-
             startActivity(mainIntent)
-
-            // Finish the current activity
             finish()
         }
 
@@ -251,30 +239,28 @@ class Drink_Customization : AppCompatActivity() {
         } else {
             drinkData.add(entry)
         }
-//TODO:was made for testing will switch to intent for basket
-        //Custom toast to display customized drink info
+
         val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") .orEmpty()
         val drink = selectedDrink?.name.orEmpty()
         val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") .orEmpty()
         val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") .orEmpty()
 
         //Adjusting price by drink size
-        //TODO update price for other
         val basePrice = selectedDrink?.price?.toDouble() ?: 0.0
         finalPrice = basePrice
-
         when (size) {
             "Medium" -> finalPrice += 1.0
             "Large" -> finalPrice += 2.0
         }
 
+        //Display customized drink info
         val resultString = "$$finalPrice $size $drink" +
                 (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
                 (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
         resultText.text = resultString
-        //Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
     }
-
+//Functions for each drink type
     private fun Smoothie() {
         val fruits = listOf("Banana","Strawberry","Blueberry","Kiwi","Mango","Pineapple","Raspberry","Pear","Peach")
         val fruitLayout = findViewById<LinearLayout>(R.id.fruitLayout)
@@ -618,7 +604,6 @@ class Drink_Customization : AppCompatActivity() {
         if (liquid.isNotEmpty()) orderString.append(" and $liquid")
 
         findViewById<TextView>(R.id.resultText).text = orderString.toString()
-        //Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
     }
 
     private fun validateSmoothie(): Boolean {

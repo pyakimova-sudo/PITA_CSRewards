@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.R
 import com.google.firebase.database.FirebaseDatabase
 
-//TODO: dynamically reformat phone integer into actual phone number format
+//TODO: format to actual phone conventions
 class ChangePhone : AppCompatActivity() {
 
     private lateinit var database: FirebaseDatabase
@@ -22,7 +22,6 @@ class ChangePhone : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_update_phone)
 
-        // Optional: remove this if your root ID isn't "account"
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

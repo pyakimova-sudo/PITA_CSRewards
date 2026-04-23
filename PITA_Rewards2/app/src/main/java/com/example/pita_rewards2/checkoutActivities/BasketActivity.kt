@@ -26,7 +26,6 @@ import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import com.example.pita_rewards2.QrScanner
 
-//TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
@@ -267,12 +266,6 @@ class BasketActivity : AppCompatActivity() {
         displayOrders()
     }
 }
-
-
-data class user_orders(
-    //TODO how store what data
-    val orders: MutableList<String>
-)
 
 object pointsActivated {
     var status: Boolean = false
