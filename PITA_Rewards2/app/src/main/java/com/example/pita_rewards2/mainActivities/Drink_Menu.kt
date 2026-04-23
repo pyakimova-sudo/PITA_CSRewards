@@ -83,7 +83,12 @@ data class Drink_Menu(
                 price = 5,
                 ingredients = listOf("Milk", "ice"),
                 image = R.drawable.mocha
-            )
+            ),
+            Drink_Menu(
+                name = "Americano",
+                price = 3,
+                image = R.drawable.americano
+            ),
         )
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
+import com.example.pita_rewards2.mainActivities.Drink_Menu
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +20,7 @@ import com.example.pita_rewards2.userActivities.Account
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.userActivities.UserData
 
+
 class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
@@ -29,6 +31,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     lateinit var navigation: BottomNavigationView
 
     companion object {
+
         val order: MutableList<String> = mutableListOf()
         val customizations: MutableList<ItemCustomization> = mutableListOf()
         var isOrderSubmitted = false
@@ -49,13 +52,13 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         )
 
         nameList = arrayOf(
-            "Latte", "Mocha", "Smoothie", "Matcha", "Cold Brew",
+            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
             "Water", "Lemonade", "Tea", "Hot Chocolate",
             "Milk"
         )
 
         priceList = arrayOf(
-            5, 5, 3, 5, 5, 1, 3, 3, 5, 3
+            5,5, 3, 5, 5, 1, 3, 3, 5, 3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)
@@ -64,6 +67,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()
+
 
 
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
@@ -86,30 +90,22 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
         }
 
-        val spinner: Spinner = findViewById(R.id.location_dropdown)
-        ArrayAdapter.createFromResource(
-            this, R.array.locations, android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spinner.adapter = adapter
-            }
-            // Bottom navigation setup
-            navigation = findViewById(R.id.bottom_navigation)
-            navigation.selectedItemId = R.id.home
+        navigation = findViewById(R.id.bottom_navigation)
 
-            navigation.setOnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.account -> {
-                        // Pass userId to AccountActivity
-                        val intent = Intent(this, Account::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                        intent.putExtra("userId", userId)
-                        intent.putExtra("points", points)
-                        startActivity(intent)
-                        finish()
-                        true
-                    }
+        navigation.selectedItemId = R.id.home
 
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.account -> {
+                    val intent = Intent(this, Account::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
+                    startActivity(intent)
+
+                    finish()
+                    true
+                }
                     R.id.basket -> {
                         val intent = Intent(this, BasketActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -142,11 +138,13 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
     override fun onItemClick(position: Int) {
         val drink = drinkMenu[position]
+
         val intent = Intent(this, Drink_Customization::class.java)
-        intent.putExtra("selectedDrink", drink)
+        intent.putExtra("selected_drink",drink)
         intent.putExtra("userId", intent.getStringExtra("userId"))
         startActivity(intent)
     }
+
 }
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
@@ -172,5 +170,6 @@ object DisabledButtons {
         if (disabled) disabledSet.add(tag)
         else disabledSet.remove(tag)
     }
+
     fun isDisabled(tag: String) = disabledSet.contains(tag)
 }
