@@ -102,9 +102,7 @@ class Drink_Customization : AppCompatActivity() {
         }
 
  */
-
         selectedDrink = IntentCompat.getSerializableExtra(intent, "selected_drink", Drink_Menu::class.java)
-
 
         selectedDrink?.let { drink ->
             titleText.text = "${drink.name}"
@@ -157,6 +155,7 @@ class Drink_Customization : AppCompatActivity() {
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
                 val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
+
                 basketIntent.putExtra("fruits", ArrayList(fruits))
                 basketIntent.putExtra("additions", ArrayList(additions))
                 basketIntent.putExtra("liquid", liquid)
@@ -172,6 +171,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
+
             } else if (selectedDrink?.name == "Cold Brew") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
@@ -292,12 +292,14 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
     }
 
     private fun Matcha() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
@@ -335,6 +337,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
@@ -372,6 +375,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
@@ -411,6 +415,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
@@ -450,6 +455,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.VISIBLE
 
     }
@@ -460,6 +466,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val flavorOptions = listOf("No Flavor", "Lavender", "Raspberry", "Honey", "Strawberry", "Blackberry", "Blueberry", "Pomegranate")
         val flavorLayout = findViewById<LinearLayout>(R.id.lemonadeFlavors)
@@ -478,6 +485,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.HotIcedLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.lemonade_flavor)?.visibility = View.GONE
+        findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
         val chocolateOptions = listOf("Milk", "White", "Dark")
         val chocolateLayout = findViewById<LinearLayout>(R.id.choc_options)
@@ -550,8 +558,6 @@ class Drink_Customization : AppCompatActivity() {
             btn.setOnClickListener { updateDrinkData("Tea", tea) }
             teaLayout.addView(btn)
         }
-
-
 
     }
 
