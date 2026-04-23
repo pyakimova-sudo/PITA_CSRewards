@@ -10,7 +10,7 @@ import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import java.io.Serializable
-import com.example.pita_rewards2.Drink_Menu
+import com.example.pita_rewards2.mainActivities.Drink_Menu
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
