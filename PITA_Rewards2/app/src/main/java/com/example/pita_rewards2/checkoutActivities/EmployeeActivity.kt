@@ -158,7 +158,6 @@ class EmployeeActivity : AppCompatActivity() {
                     itemBinding.root.findViewById<TextView>(R.id.locationText)?.text = location
                     //val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
                     val detailsList = listOfNotNull(
-                        "$location",
                         size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
                         temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" },
                         milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
