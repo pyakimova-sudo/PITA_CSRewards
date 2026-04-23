@@ -7,7 +7,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pita_rewards2.Drink_Menu
 import com.example.pita_rewards2.R
 
 class AdapterClass(private val drinkMenu: ArrayList<Drink_Menu>, private val listener: RecyclerViewEvent): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {

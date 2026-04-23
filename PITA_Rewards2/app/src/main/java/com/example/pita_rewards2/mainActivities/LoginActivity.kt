@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
                                 // Pass userId to MainActivity
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 intent.putExtra("userId", id)
+                                intent.putExtra("points", id)
                                 startActivity(intent)
                                 finish()
                                 return

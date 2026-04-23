@@ -110,10 +110,12 @@ class Unavailable : AppCompatActivity() {
         }
         milkCheckbox.isChecked = DisabledButtons.isDisabled("Milk")
 
+        val userId = intent.getStringExtra("userId")
 
         val backButton = findViewById<Button>(R.id.back)
         backButton.setOnClickListener {
             startActivity(Intent(this, EmployeeActivity::class.java))
+            intent.putExtra("userId", userId)
             finish()
         }
 
