@@ -6,7 +6,7 @@ android:id="@+id/login"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/background"
-tools:context=".LoginActivity">
+tools:context=".mainActivities.LoginActivity">
 
 <!-- Background -->
 <RelativeLayout
@@ -93,7 +93,6 @@ tools:context=".LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:hint="@string/username"
             android:autofillHints="username"
             android:drawableEnd="@drawable/done_icon"/>
 
@@ -117,7 +116,6 @@ tools:context=".LoginActivity">
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/black"
-            android:hint="@string/password"
             android:autofillHints="password"
             android:drawableEnd="@drawable/password_icon"/>
 
@@ -156,6 +154,18 @@ tools:context=".LoginActivity">
             android:backgroundTint="@color/maple_secondary"
             android:textSize="18sp"
             app:cornerRadius="32dp"/>
+
+        <Button
+            android:id="@+id/employeeLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/light_brown"
+            android:fontFamily="@font/ngetic"
+            android:text="@string/employee_login"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="32dp" />
 
         <View
             android:layout_width="wrap_content"

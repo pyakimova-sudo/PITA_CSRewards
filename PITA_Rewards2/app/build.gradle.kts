@@ -63,6 +63,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
+
+    implementation(libs.qr.scanner)
 
     // Testing
     testImplementation(libs.junit)

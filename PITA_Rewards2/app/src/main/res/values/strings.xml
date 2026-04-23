@@ -18,7 +18,7 @@
     <string name="rewardPointsText">Reward Points:</string>
     <string name="points">0</string>
     <string-array name="locations">
-        <item>Courtyard Cafe</item>
+        <item>Courtyard</item>
         <item>Steamery</item>
     </string-array>
     <string name="cart">Cart</string>
@@ -43,8 +43,62 @@
     <string name="enter_payment_method">Enter payment method</string>
     <string name="enter_name_for_pickup">Enter name for pickup</string>
     <string name="placeholder">Placeholder</string>
-    <string name="already_registered_login">Already Registered</string>
-
-
+    <string name="already_registered_login">Already Registered?</string>
+    <string name="test">test</string>
+    <string name="drinkTimer">Drink ready in</string>
+    <string name="popUpText">Drink Ready In:</string>
+    <string name="timer">00:00</string>
+    <string name="size">Select size:</string>
+    <string name="milk">Select milk option:</string>
+    <string-array name="milks">
+        <item>None</item>
+        <item>Whole milk</item>
+        <item>Oat milk</item>
+    </string-array>
+    <string name="sweetness">Select sweetness level:</string>
+    <string-array name="sweetness">
+        <item>100%</item>
+        <item>75%</item>
+        <item>50%</item>
+        <item>25%</item>
+        <item>0%</item>
+    </string-array>
+    <string name="fruit_options">Select 4 fruits:</string>
+    <string name="additional">Select 2 additional ingredients:</string>
+    <string name="select_liquid">Select a liquid:</string>
+    <string name="add_to_order">Add To Order</string>
+    <string name="hot_or_iced">Select hot/iced:</string>
+    <string name="hot">Hot</string>
+    <string name="iced">Iced</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="menu">Drinks Menu:</string>
+    <string name="orders">Orders</string>
+    <string name="employee_login">Employee Login</string>
+    <string name="mark_complete">Done</string>
+    <string name="name" />
+    <string name="order_details">Order Details</string>
+    <string name="orderName">Name</string>
+    <string name="location_text">Location</string>
+    <string name="apply_points">Apply Points</string>
+    <string name="qr_scan">Scan QR</string>
+    <string name="scanned_value">Scanned Value</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="latte">Latte</string>
+    <string name="smoothie">Smoothie</string>
+    <string name="matcha">Matcha</string>
+    <string name="coldBrew">Cold Brew</string>
+    <string name="lemonade">Lemonade</string>
+    <string name="tea">Tea</string>
+    <string name="hotChocolate">Hot Chocolate</string>
+    <string name="milk2">Milk</string>
+    <string name="back">Back</string>
+    <string name="drinks">Drinks</string>
+    <string name="is_employee">Tick if an employee:</string>
+    <string name="drink_name">Drink</string>
+    <string name="drink_price">5</string>
+    <string name="discount_1">50%</string>
+    <string name="discount_2">OFF</string>
+    <string name="discount_code">Use code FINALS50</string>
+    <string name="mark_unavailability">Unavailable</string>
 
 </resources>

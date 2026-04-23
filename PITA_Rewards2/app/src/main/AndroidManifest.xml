@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -10,16 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PITA_Rewards2">
         <activity
-            android:name=".BasketActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
-        <activity android:name=".Drink_Customization"
-            android:exported = "false"/>
-        <activity
-            android:name=".Account"
+            android:name=".mainActivities.Unavailable"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".QrScanner"
+            android:exported="false" />
+        <activity
+            android:name=".checkoutActivities.OrderDisplay"
+            android:exported="false" />
+        <activity
+            android:name=".checkoutActivities.BasketActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".mainActivities.Drink_Customization"
+            android:exported="false" />
+        <activity
+            android:name=".userActivities.Account"
+            android:exported="false" />
+        <activity
+            android:name=".userActivities.TimerPopUp"
+            android:exported="false"
+            android:theme="@style/Theme.PitaRewards.TimerPopUp.PopupWindow" />
+        <activity
+            android:name=".mainActivities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +46,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CheckoutActivity"
+            android:name=".checkoutActivities.CheckoutActivity"
             android:theme="@style/Theme.PitaRewards.PopupActivity" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".mainActivities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".checkoutActivities.EmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mainActivities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +63,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".userActivities.ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".userActivities.ChangePhone"
+            android:exported="false" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
     </application>
 
 </manifest>

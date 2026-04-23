@@ -1,128 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/drink_background">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Customize Your Drink"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="24dp"/>
-
-    <!-- Size Selector -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Size"
-        android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
-        <Button
-            android:id="@+id/sizeSmall"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Small"/>
-        <Button
-            android:id="@+id/sizeMedium"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:text="Insert Drink Name"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/ngetic"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Size Selector -->
+        <TextView
+            android:id="@+id/size_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium"/>
-        <Button
-            android:id="@+id/sizeLarge"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:text="@string/size"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <ImageButton
+                android:id="@+id/sizeSmall"
+                android:clickable="true"
+                android:textColor="@color/black"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/image_button_corners"
+                app:srcCompat="@drawable/small_new"
+                android:scaleType="centerCrop" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/sizeMedium"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/image_button_corners"
+                app:srcCompat="@drawable/medium_new"
+                android:scaleType="centerCrop" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <ImageButton
+                android:id="@+id/sizeLarge"
+                android:clickable="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/image_button_corners"
+                app:srcCompat="@drawable/large_new"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_milk"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large"/>
+            android:text="@string/milk"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <!-- Milk Options -->
+        <LinearLayout
+            android:id="@+id/milkOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Spinner
+                android:id="@+id/choose_milk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/image_button_corners" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_sweet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sweetness"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <!-- Sweetness Options -->
+        <LinearLayout
+            android:id="@+id/sweetOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Spinner
+                android:id="@+id/choose_sweetness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/image_button_corners" />
+
+        </LinearLayout>
+
+
+        <!-- Smoothie Options -->
+        <TextView
+            android:id="@+id/fruit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fruit_options"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/fruitLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+        <!-- Additional Ingredients -->
+        <TextView
+            android:id="@+id/text_additional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/additional"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/additionLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+        <!-- Liquid Options -->
+        <TextView
+            android:id="@+id/text_liquid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_liquid"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/liquidLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+
+        </HorizontalScrollView>
+
+        <!-- Matcha Options -->
+        <LinearLayout
+            android:id="@+id/matchaLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/text_hot_iced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hot_or_iced"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/matchaSweetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/hotOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hot"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/ngetic"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:padding="5dp"/>
+
+                <CheckBox
+                    android:id="@+id/icedOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/iced"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/ngetic"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:padding="5dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Result -->
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your selections will appear here."
+            android:gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/ngetic"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_order"
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/ngetic"
+            android:backgroundTint="#B6AD90"
+            app:cornerRadius="32dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancel_order"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel_button"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:backgroundTint="#B6AD90"
+                app:cornerRadius="32dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
-
-    <!-- Milk Selector -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Milk"
-        android:textStyle="bold"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
-
-        <Button
-            android:id="@+id/milkNone"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="None"/>
-        <Button
-            android:id="@+id/milkRegular"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Regular"/>
-        <Button
-            android:id="@+id/milkSoy"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Soy"/>
-    </LinearLayout>
-
-    <!-- Sweetness Selector -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sweetness"
-        android:textStyle="bold"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
-
-        <Button
-            android:id="@+id/sweetLow"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Low"/>
-        <Button
-            android:id="@+id/sweetMedium"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Medium"/>
-        <Button
-            android:id="@+id/sweetHigh"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="High"/>
-    </LinearLayout>
-
-    <!-- Result -->
-    <TextView
-        android:id="@+id/resultText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Your selections will appear here"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp"/>
-
-</LinearLayout>
+</ScrollView>

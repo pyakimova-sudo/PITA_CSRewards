@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".SignupActivity">
+    tools:context=".mainActivities.SignupActivity">
 
     <RelativeLayout
         android:id="@+id/background"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="7dp"
         app:cardCornerRadius="28dp"
         app:cardBackgroundColor="@color/white">
 
@@ -175,6 +175,16 @@
                 android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:drawableEnd="@drawable/password_icon"/>
+
+            <CheckBox
+                android:id="@+id/employee_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/is_employee"
+                android:textColor="@color/light_brown"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layoutDirection="rtl"/>
 
             <TextView
                 android:id="@+id/loginRedirect"

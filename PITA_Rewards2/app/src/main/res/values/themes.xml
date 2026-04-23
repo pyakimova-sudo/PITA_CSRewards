@@ -36,7 +36,16 @@
     </style>
 
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
-        <item name="cornerSize">50%</item>
+        <item name="cornerSize">30%</item>
     </style>
+
+
+    <style name="Theme.PitaRewards.TimerPopUp.PopupWindow" parent="Theme.Material3.DayNight.Dialog">
+        <!-- Optional: set a custom background color, width, etc. -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+
 
 </resources>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/menu_background"
-    tools:context=".BasketActivity">
+    tools:context=".checkoutActivities.BasketActivity">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/headerCard"
@@ -17,50 +17,85 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Cart Text -->
-        <TextView
-            android:id="@+id/tvCartTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/ngetic"
-            android:text="@string/cart"
-            android:textColor="@color/maple_primary"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCartTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/ngetic"
+                android:text="@string/cart"
+                android:textColor="@color/maple_primary"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvCartTitle">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:contentDescription="@string/placeholder"
+                    android:src="@drawable/outline_home_pin_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/location_dropdown"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/location_dropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="40dp"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Cart Scroll -->
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:fillViewport="true"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/paymentLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerCard">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/orderContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:orientation="vertical">
 
+        </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <!-- Total Box -->
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/paymentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/box_corner"
@@ -71,7 +106,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 android:id="@+id/totalTxt"
@@ -79,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dollar_minus"
                 android:textColor="@color/maple_secondary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/total" />
@@ -90,6 +128,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/total"
                 android:textColor="@color/maple_primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -100,20 +139,42 @@
                 android:layout_height="wrap_content"
                 android:text="@string/subTotal"
                 android:textColor="@color/maple_primary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <CheckBox
                 android:id="@+id/points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@string/points"
-                android:textColor="@color/maple_primary"
+                android:background="@drawable/maple_bg"
+                android:layoutDirection="rtl"
+
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp"
+
+                android:text="@string/apply_points"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/subTotal" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/pointsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/dollar_minus"
+                android:textColor="@color/maple_secondary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/qr_scan" />
 
             <TextView
                 android:id="@+id/totalFeeTxt"
@@ -121,30 +182,34 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dollar_minus"
                 android:textColor="@color/maple_secondary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/subTotal" />
-
-            <TextView
-                android:id="@+id/pointsTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@string/dollar_minus"
-                android:textColor="@color/maple_secondary"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/totalFeeTxt" />
 
             <View
                 android:id="@+id/divider"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:background="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/points" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/qr_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/maple_bg"
+                android:text="@string/qr_scan"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/points"
+                app:layout_constraintTop_toTopOf="@+id/points" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -152,7 +217,10 @@
             android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_margin="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/maple_secondary"
             android:fontFamily="@font/ngetic"
             android:text="@string/checkout"
@@ -160,6 +228,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:cornerRadius="32dp" />
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
