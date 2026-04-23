@@ -24,8 +24,8 @@ import android.widget.Button
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
-import com.example.pita_rewards2.QrScanner
 
+//TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
@@ -62,16 +62,15 @@ class BasketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //val userId = intent.getStringExtra("userId")
         val points = intent.getStringExtra("points")
+        this.userId = intent.getStringExtra("userId") ?: ""
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
 
         database = FirebaseDatabase.getInstance()
-        userId = intent.getStringExtra("userId") ?: ""
-        var pointsRef = database.getReference("users").child(userId).child("points")
+        val pointsRef = database.getReference("users").child(userId).child("points")
         pointsRef.get().addOnSuccessListener { snapshot ->
             userPoints = snapshot.getValue(Int::class.java)?: 0
         }
@@ -83,6 +82,10 @@ class BasketActivity : AppCompatActivity() {
         locationSpinner = findViewById(R.id.location_dropdown)
         qrScan = findViewById(R.id.qr_scan)
         pointCheckbox = findViewById(R.id.points)
+
+        binding.codeBox.setOnClickListener {
+            showCodeInputDialog()
+        }
 
         ArrayAdapter.createFromResource(
             this, R.array.locations, android.R.layout.simple_spinner_item
@@ -118,12 +121,27 @@ class BasketActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val selectedLocation = locationSpinner.selectedItem.toString()
+            val selectedLocation = locationSpinner.selectedItem?.toString() ?: "Unknown"
+            if (selectedLocation == "Unknown") {
+                Toast.makeText(this, "Please select a location", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             validOrders.forEach { it.location = selectedLocation }
+
+            val baseTotal = MainActivity.customizations.sumOf { it.price * it.quantity }
+            var finalTotal = baseTotal
+            if (pointsActivated.status) {
+                finalTotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
+            }
+            if (weeklyDeal.applied) {
+                finalTotal /= 2
+            }
 
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("userId", userId)
             intent.putExtra("location", selectedLocation)
+            intent.putExtra("finalTotal", finalTotal)
             startActivity(intent)
         }
 
@@ -163,7 +181,7 @@ class BasketActivity : AppCompatActivity() {
         navigation.selectedItemId = R.id.basket
 
         navigation.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -174,6 +192,7 @@ class BasketActivity : AppCompatActivity() {
                     finish()
                     true
                 }
+
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -191,16 +210,17 @@ class BasketActivity : AppCompatActivity() {
 
     private fun calculateTotal() {
         val currentTotal = MainActivity.customizations.sumOf { it.price }
-        var subtotal = currentTotal.toDouble()
+        var finalTotal = currentTotal
+        val subtotal = currentTotal
+
         if (pointsActivated.status) {
-            subtotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
+            finalTotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
         }
         if (weeklyDeal.applied == true) {
-            subtotal -= 2
+            finalTotal = subtotal/2
         }
-        totalText.text = "$$currentTotal"
-        subtotalText.text = "$$subtotal"
-
+        subtotalText.text = String.format("$%.2f", currentTotal)
+        totalText.text = String.format("$%.2f", finalTotal)
     }
 
     private fun displayOrders() {
@@ -211,14 +231,18 @@ class BasketActivity : AppCompatActivity() {
 
         for (order in drinkCustomizations) {
             val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
+            val statusText = itemView.findViewById<TextView>(R.id.statusText)
 
             if (MainActivity.isOrderSubmitted) {
                 binding.paymentLayout.visibility = android.view.View.INVISIBLE
-                itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
+                statusText.visibility = android.view.View.VISIBLE
             } else {
                 binding.paymentLayout.visibility = android.view.View.VISIBLE
-                itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
+                statusText.visibility = android.view.View.INVISIBLE
             }
+
+            val picCart = itemView.findViewById<ImageView>(R.id.picCart)
+            picCart.setImageResource(order.imageResourceId)
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink
@@ -226,8 +250,10 @@ class BasketActivity : AppCompatActivity() {
             val orderItems = itemView.findViewById<TextView>(R.id.orderItems)
             val detailsList = listOfNotNull(
                 order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                order.temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" }, // Added Temp
                 order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
-                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" },
+                order.extraDetails.takeIf { it.isNotEmpty() }
             )
             orderItems.text = detailsList.joinToString("\n")
 
@@ -241,7 +267,6 @@ class BasketActivity : AppCompatActivity() {
 
             // Remove items when order is submitted
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
-
             //decrease quantity of order
             if (MainActivity.isOrderSubmitted) {
                 removeBtn.visibility = android.view.View.GONE
@@ -254,16 +279,45 @@ class BasketActivity : AppCompatActivity() {
                         MainActivity.customizations.remove(order)
                     }
                     displayOrders()
+                }
             }
-        }
             orderContainer.addView(itemView)
         }
         calculateTotal()
-    }
+}
 
-    override fun onResume() {
+override fun onResume() {
         super.onResume()
         displayOrders()
+    }
+
+    private fun showCodeInputDialog() {
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("Enter Discount Code")
+
+        val input = android.widget.EditText(this)
+        input.setPadding(50, 40, 50, 40)
+        builder.setView(input)
+
+        builder.setPositiveButton("Apply") { dialog, _ ->
+            val code = input.text.toString().trim()
+            if (code.equals("FINALS50", ignoreCase = true)) {
+                if (!weeklyDeal.applied) {
+                    weeklyDeal.activateWeeklyDeal()
+                    Toast.makeText(this, "Deal applied!", Toast.LENGTH_SHORT).show()
+                    calculateTotal()
+                }
+            } else {
+                Toast.makeText(this, "Invalid Code", Toast.LENGTH_SHORT).show()
+            }
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.cancel()
+        }
+
+        builder.show()
     }
 }
 

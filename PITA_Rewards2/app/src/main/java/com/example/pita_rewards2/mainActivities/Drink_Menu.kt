@@ -8,6 +8,7 @@ data class Drink_Menu(
     val Drink_Type: String = "",
     val price: Int = 0,
     val image: Int,
+    var isAvailable: Boolean = true,
     var quantity: Int = 1,
     val ingredients: List<String> = emptyList()
 ) : Serializable{

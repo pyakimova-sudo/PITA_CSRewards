@@ -30,7 +30,9 @@ class CheckoutActivity : AppCompatActivity() {
         val nameBox = findViewById<EditText>(R.id.nameBox)
 
         val totalText = findViewById<TextView>(R.id.checkoutTotal)
-        val total = MainActivity.customizations.sumOf { it.price * it.quantity }
+        val total = intent.getDoubleExtra("finalTotal", 0.0)
+        val location = intent.getStringExtra("location") ?: "Unknown"
+        totalText.text = String.format("$%.2f", total)
 
         //Display the total price
         totalText.text = "$$total"
@@ -54,8 +56,12 @@ class CheckoutActivity : AppCompatActivity() {
         }
             //Store drinks in Active orders(Employee page)
             val activeOrdersRef = database.getReference("ActiveOrders")
+
+            //Push each item to Firebase
             MainActivity.customizations.forEach { item ->
                 item.customerName = name
+
+                //Push ItemCustomization variables to Firebase
                 val orderId = activeOrdersRef.push().key ?: return@forEach
                 val orderData = mapOf(
                     "orderId" to orderId,
@@ -67,7 +73,7 @@ class CheckoutActivity : AppCompatActivity() {
                     "sweetness" to item.sweetness,
                     "price" to item.price,
                     "quantity" to item.quantity,
-                    "location" to item.location
+                    "location" to location
                 )
                 activeOrdersRef.child(orderId).setValue(orderData)
             }
