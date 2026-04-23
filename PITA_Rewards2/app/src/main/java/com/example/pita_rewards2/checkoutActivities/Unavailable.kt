@@ -3,119 +3,39 @@ package com.example.pita_rewards2.checkoutActivities
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pita_rewards2.R
-import com.example.pita_rewards2.mainActivities.DisabledButtons
+import com.example.pita_rewards2.databinding.ActivityUnavailableBinding
+import com.example.pita_rewards2.mainActivities.Drink_Menu
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class Unavailable : AppCompatActivity() {
+    private lateinit var drinkMenu: ArrayList<Drink_Menu>
+    private lateinit var adapter: UnavailableAdapter
     lateinit var navigation: BottomNavigationView
+    private lateinit var binding: ActivityUnavailableBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_unavailable)
+        binding = ActivityUnavailableBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val userId = intent.getStringExtra("userId")
 
-        //Latte
-        val latteCheckbox = findViewById<CheckBox>(R.id.latteCheckbox)
-        latteCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Latte", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Latte has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Latte has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        latteCheckbox.isChecked = DisabledButtons.isDisabled("Latte")
+        binding.itemList.layoutManager = LinearLayoutManager(this)
+        binding.itemList.setHasFixedSize(false)
 
-        //Smoothie
-        val smoothieCheckbox = findViewById<CheckBox>(R.id.smoothieCheckbox)
-        smoothieCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Smoothie", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Smoothie has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Smoothie has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        smoothieCheckbox.isChecked = DisabledButtons.isDisabled("Smoothie")
+        drinkMenu = arrayListOf<Drink_Menu>()
 
-        //Matcha
-        val matchaCheckbox = findViewById<CheckBox>(R.id.matchaCheckbox)
-        matchaCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Matcha", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Matcha has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Matcha has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        matchaCheckbox.isChecked = DisabledButtons.isDisabled("Matcha")
+        getData()
 
-        //Cold Brew
-        val coldBrewCheckbox = findViewById<CheckBox>(R.id.coldBrewCheckbox)
-        coldBrewCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Cold Brew", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Cold Brew has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Cold Brew has been undisabled", Toast.LENGTH_SHORT).show()
-            }
+        binding.menu.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
-        coldBrewCheckbox.isChecked = DisabledButtons.isDisabled("Cold Brew")
-
-        //Lemonade
-        val lemonadeCheckbox = findViewById<CheckBox>(R.id.lemonadeCheckbox)
-        lemonadeCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Lemonade", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Lemonade has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Lemonade has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        lemonadeCheckbox.isChecked = DisabledButtons.isDisabled("Lemonade")
-
-        //Tea
-        val teaCheckbox = findViewById<CheckBox>(R.id.teaCheckbox)
-        teaCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Tea", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Tea has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Tea has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        teaCheckbox.isChecked = DisabledButtons.isDisabled("Tea")
-
-        //Hot Chocolate
-        val hotChocolateCheckbox = findViewById<CheckBox>(R.id.hotChocolateCheckbox)
-        hotChocolateCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Hot Chocolate", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Hot Chocolate has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Hot Chocolate has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        hotChocolateCheckbox.isChecked = DisabledButtons.isDisabled("Hot Chocolate")
-
-        //Milk
-        val milkCheckbox = findViewById<CheckBox>(R.id.milkCheckbox)
-        milkCheckbox.setOnCheckedChangeListener { _, isChecked ->
-            DisabledButtons.setDisabled("Milk", isChecked)
-            if (isChecked) {
-                Toast.makeText(this, "Milk has been disabled", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Milk has been undisabled", Toast.LENGTH_SHORT).show()
-            }
-        }
-        milkCheckbox.isChecked = DisabledButtons.isDisabled("Milk")
 
         val menuButton = findViewById<Button>(R.id.menu)
         menuButton.setOnClickListener {
@@ -140,5 +60,27 @@ class Unavailable : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun getData(){
+        val imageList = arrayOf(
+            R.drawable.latte, R.drawable.mocha, R.drawable.smoothie,
+            R.drawable.matcha, R.drawable.cold_brew,
+            R.drawable.water, R.drawable.lemonade,
+            R.drawable.tea, R.drawable.hot_chocolate,
+            R.drawable.milk
+        )
+
+        val nameList = arrayOf(
+            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
+            "Water", "Lemonade", "Tea", "Hot Chocolate",
+            "Milk"
+        )
+        drinkMenu.clear()
+        for (i in imageList.indices){
+            drinkMenu.add(Drink_Menu(name=nameList[i], image =  imageList[i]))
+        }
+        adapter = UnavailableAdapter(drinkMenu, this)
+        binding.itemList.adapter = adapter
     }
 }

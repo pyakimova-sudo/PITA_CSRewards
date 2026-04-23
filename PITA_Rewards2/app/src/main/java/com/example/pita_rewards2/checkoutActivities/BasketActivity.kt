@@ -148,7 +148,6 @@ class BasketActivity : AppCompatActivity() {
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
         val inflater = LayoutInflater.from(this)
-        val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
         orderContainer.removeAllViews()
 
@@ -171,8 +170,10 @@ class BasketActivity : AppCompatActivity() {
             val orderItems = itemView.findViewById<TextView>(R.id.orderItems)
             val detailsList = listOfNotNull(
                 order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                order.temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" }, // Added Temp
                 order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
-                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" },
+                order.extraDetails.takeIf { it.isNotEmpty() }
             )
             orderItems.text = detailsList.joinToString("\n")
 
@@ -190,7 +191,6 @@ class BasketActivity : AppCompatActivity() {
                 statusText.visibility = android.view.View.INVISIBLE
                 removeBtn.setOnClickListener {
                     MainActivity.customizations.remove(order)
-                    //orderContainer.removeView(itemView)
                     displayOrders()
             }
         }

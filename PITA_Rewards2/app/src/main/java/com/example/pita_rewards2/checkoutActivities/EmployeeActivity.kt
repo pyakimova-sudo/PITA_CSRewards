@@ -120,8 +120,10 @@ class EmployeeActivity : AppCompatActivity() {
             val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
             val detailsList = listOfNotNull(
                 order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                order.temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" }, // Added Temperature
                 order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
-                order.sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+                order.sweetness.takeIf { it.isNotEmpty() && it != "100%" }?.let { "Sweetness: $it" },
+                order.extraDetails.takeIf { it.isNotEmpty() }
             )
             orderItems.text = detailsList.joinToString("\n")
 
@@ -129,9 +131,12 @@ class EmployeeActivity : AppCompatActivity() {
 
             // Remove an item when clicked
             removeBtn.setOnClickListener {
-                //TODO notification here
                 MainActivity.customizations.remove(order)
                 employeeContainer.removeView(itemView)
+                if (MainActivity.customizations.isEmpty()) {
+                    MainActivity.isOrderSubmitted = false
+                    MainActivity.order.clear()
+                }
             }
 
             employeeContainer.addView(itemView)

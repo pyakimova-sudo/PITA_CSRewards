@@ -114,7 +114,7 @@ class Drink_Customization : AppCompatActivity() {
         submitButton?.setOnClickListener {
             // Check if it's a Smoothie and validate selections
             if (selectedDrink?.name == "Smoothie") {
-                if (!validateSmoothie() || !validateSmoothie()) {
+                if (!validateSmoothie()) {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
@@ -130,40 +130,34 @@ class Drink_Customization : AppCompatActivity() {
             val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
             val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
             val image = selectedDrink?.image ?: R.drawable.drink_medium
+            val hotChecked = findViewById<CheckBox>(R.id.hotOption)?.isChecked ?: false
+            val icedChecked = findViewById<CheckBox>(R.id.icedOption)?.isChecked ?: false
+            val temp = when {
+                hotChecked -> "Hot"
+                icedChecked -> "Iced"
+                else -> ""
+            }
 
-            // Add customization to the MainActivity order list
-            MainActivity.order.add(nameOfDrink)
-            MainActivity.customizations.add(ItemCustomization(nameOfDrink, size, milk, sweetness, price = finalPrice, imageResourceId = image))
-
-            // Show a toast with the updated order
-            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
+            val detailsBuilder = StringBuilder()
 
             // If it's a Smoothie, add fruits, additions, and liquid data
             if (selectedDrink?.name == "Smoothie") {
+                detailsBuilder.append("Fruits: ").append(selectedFruits.joinToString(", "))
                 val fruits = drinkData.filter { it.startsWith("Fruit:") }.map { it.substringAfter(": ") }
                 val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
                 val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
+                if (additions.isNotEmpty()) detailsBuilder.append("\nAdditions: ").append(additions.joinToString(", "))
+                if (liquid.isNotEmpty()) detailsBuilder.append("\nLiquid: ").append(liquid)
                 basketIntent.putExtra("fruits", ArrayList(fruits))
                 basketIntent.putExtra("additions", ArrayList(additions))
                 basketIntent.putExtra("liquid", liquid)
-            } else if (selectedDrink?.name == "Matcha") {
+            } else if (selectedDrink?.name == "Matcha"|| selectedDrink?.name == "Cold Brew") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
                 val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
                 val hot = findViewById<CheckBox>(R.id.hotOption).isChecked
                 val iced = findViewById<CheckBox>(R.id.icedOption).isChecked
-
-                basketIntent.putExtra("milk", milkSelected)
-                basketIntent.putExtra("flavor", flavorSelected)
-                basketIntent.putExtra("sweetness", sweetSelected)
-                basketIntent.putExtra("hot", hot)
-                basketIntent.putExtra("iced", iced)
-            } else if (selectedDrink?.name == "Cold Brew") {
-                val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
-                val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
-                val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
-                val hot = findViewById<CheckBox>(R.id.hotOption).isChecked
-                val iced = findViewById<CheckBox>(R.id.icedOption).isChecked
+                if (flavorSelected.isNotEmpty()) detailsBuilder.append("Flavor: ").append(flavorSelected)
 
                 basketIntent.putExtra("milk", milkSelected)
                 basketIntent.putExtra("flavor", flavorSelected)
@@ -176,6 +170,23 @@ class Drink_Customization : AppCompatActivity() {
             basketIntent.putExtra("drink", drink)
             basketIntent.putExtra("size", size)
             basketIntent.putExtra("final_price", finalPrice)
+
+            // Show a toast with the updated order
+            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
+
+            val customization = ItemCustomization(
+                drink = nameOfDrink,
+                size = size,
+                milk = milk,
+                sweetness = sweetness,
+                price = finalPrice,
+                imageResourceId = image,
+                temp = temp,
+                extraDetails = detailsBuilder.toString()
+            )
+
+            MainActivity.order.add(nameOfDrink)
+            MainActivity.customizations.add(customization)
 
             // Retrieve userId from the current Intent (if available)
             val userId = intent.getStringExtra("userId")
@@ -227,7 +238,7 @@ class Drink_Customization : AppCompatActivity() {
 
         val resultString = "$$finalPrice $size $drink" +
                 (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
-                (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
+                (if (sweetness.isNotEmpty() && sweetness != "100%") " and $sweetness sweetness" else "")
         resultText.text = resultString
         //Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
     }
@@ -397,7 +408,7 @@ class Drink_Customization : AppCompatActivity() {
         if (fruits.isNotEmpty()) orderString.append(" with ${fruits.joinToString(", ")}")
         if (additions.isNotEmpty()) orderString.append(" + ${additions.joinToString(", ")}")
         if (milk.isNotEmpty()) orderString.append(" with $milk milk")
-        if (sweetness.isNotEmpty()) orderString.append(" sweetness")
+        if (sweetness.isNotEmpty() && sweetness != "100%") orderString.append(" sweetness")
         if (liquid.isNotEmpty()) orderString.append(" and $liquid")
 
         findViewById<TextView>(R.id.resultText).text = orderString.toString()
@@ -422,6 +433,8 @@ data class ItemCustomization(
     val price: Int = 0,
     var customerName: String = "",
     var location: String = "",
-    val imageResourceId: Int
+    val imageResourceId: Int,
+    val temp: String = "",
+    val extraDetails: String = ""
 
 ) : Serializable
