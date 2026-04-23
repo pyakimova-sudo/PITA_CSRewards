@@ -127,7 +127,8 @@
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:checked="false"
-                    android:layoutDirection="rtl"/>
+                    android:layoutDirection="rtl"
+                    android:buttonTint="@color/maple_secondary"/>
 
                 <View
                     android:layout_width="wrap_content"

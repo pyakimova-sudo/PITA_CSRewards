@@ -44,21 +44,19 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         setContentView(binding.root)
 
         imageList = arrayOf(
-            R.drawable.latte, R.drawable.mocha, R.drawable.smoothie,
-            R.drawable.matcha, R.drawable.cold_brew,
-            R.drawable.water, R.drawable.lemonade,
-            R.drawable.tea, R.drawable.hot_chocolate,
-            R.drawable.milk
+            R.drawable.latte, R.drawable.mocha, R.drawable.cold_brew,
+            R.drawable.matcha, R.drawable.hot_chocolate,
+            R.drawable.smoothie, R.drawable.lemonade,
+            R.drawable.tea
         )
 
         nameList = arrayOf(
-            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
-            "Water", "Lemonade", "Tea", "Hot Chocolate",
-            "Milk"
+            "Latte", "Mocha", "Cold Brew", "Matcha"
+            ,"Hot Chocolate", "Smoothie", "Lemonade", "Tea"
         )
 
         priceList = arrayOf(
-            5,5, 3, 5, 5, 1, 3, 3, 5, 3
+            5,5,5,5,5,3,3,3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)

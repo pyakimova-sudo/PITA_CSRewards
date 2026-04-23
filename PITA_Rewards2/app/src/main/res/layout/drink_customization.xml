@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/small_new"
+                app:srcCompat="@drawable/size_small"
                 android:scaleType="centerCrop" />
 
             <Space
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/medium_new"
+                app:srcCompat="@drawable/size_medium"
                 android:scaleType="centerCrop" />
             <Space
                 android:layout_width="10dp"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/large_new"
+                app:srcCompat="@drawable/size_large"
                 android:scaleType="centerCrop" />
 
         </LinearLayout>

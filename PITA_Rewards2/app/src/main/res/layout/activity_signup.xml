@@ -184,7 +184,8 @@
                 android:textColor="@color/light_brown"
                 android:textStyle="bold"
                 android:padding="5dp"
-                android:layoutDirection="rtl"/>
+                android:layoutDirection="rtl"
+                android:buttonTint="@color/maple_secondary"/>
 
             <TextView
                 android:id="@+id/loginRedirect"

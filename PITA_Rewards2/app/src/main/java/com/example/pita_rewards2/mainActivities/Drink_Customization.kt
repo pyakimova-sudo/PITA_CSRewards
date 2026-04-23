@@ -2,15 +2,18 @@ package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import java.io.Serializable
 import com.example.pita_rewards2.mainActivities.Drink_Menu
+import kotlin.String
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
@@ -29,6 +32,16 @@ class Drink_Customization : AppCompatActivity() {
         setContentView(R.layout.drink_customization)
         enableEdgeToEdge()
 
+        val hot = findViewById<CheckBox>(R.id.hotOption)
+        val iced = findViewById<CheckBox>(R.id.icedOption)
+
+        hot.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) iced.isChecked = false
+        }
+
+        iced.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) hot.isChecked = false
+        }
 
         findViewById<Button>(R.id.cancel_order)?.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
@@ -52,64 +65,12 @@ class Drink_Customization : AppCompatActivity() {
                 updateSelection("Size", value, resultText)
             }
         }
-        /*
-        // Sweetness Spinner
-        val sweetness_spinner: Spinner = findViewById(R.id.choose_sweetness)
-        sweetness_spinner?.let { spinner ->
-            ArrayAdapter.createFromResource(
-                this, R.array.sweetness, android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                sweetness_spinner.adapter = adapter
-            }
-            sweetness_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    val selectedSweetness = parent?.getItemAtPosition(position).toString()
-                    updateSelection("Sweetness", selectedSweetness, resultText)
-                }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
-        }
 
-         */
-
-/*
-        // Milk spinner
-        val milk_spinner: Spinner = findViewById(R.id.choose_milk)
-        milk_spinner?.let { spinner ->
-            ArrayAdapter.createFromResource(
-                this, R.array.milks, android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                milk_spinner.adapter = adapter
-            }
-            milk_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    val selectedMilk = parent?.getItemAtPosition(position).toString()
-                    updateSelection("Milk", selectedMilk, resultText)
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
-        }
-
- */
         selectedDrink = IntentCompat.getSerializableExtra(intent, "selected_drink", Drink_Menu::class.java)
 
         selectedDrink?.let { drink ->
             titleText.text = "${drink.name}"
-            resultText.text = drink.name
 
             when (drink.name) {
                 "Smoothie" -> Smoothie()
@@ -133,7 +94,36 @@ class Drink_Customization : AppCompatActivity() {
                     Toast.makeText(this, "Please complete all required smoothie selections", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-            }
+            } else if (selectedDrink?.name == "Matcha" || selectedDrink?.name == "Latte" || selectedDrink?.name == "Mocha" || selectedDrink?.name == "Cold Brew") {
+                if (!validateCoffee() || !validateCoffee()) {
+                    Toast.makeText(this, "Please complete all required matcha selections", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                if (!validateHotIced()){
+                    Toast.makeText(this, "Select a hot or iced option.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            } else if (selectedDrink?.name == "Americano") {
+                if (!validateAmericano() || !validateAmericano()) {
+                    Toast.makeText(this, "Please complete all required americano selections", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            } else if (selectedDrink?.name == "Lemonade") {
+                if (!validateLemon() || !validateLemon()) {
+                    Toast.makeText(this, "Please complete all required lemonade selections", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            } else if (selectedDrink?.name == "Hot Chocolate") {
+                if (!validateHotChoc() || !validateHotChoc()) {
+                Toast.makeText(this, "Please complete all required hot chocolate selections", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (selectedDrink?.name == "Tea") {
+                    if (!validateTea() || !validateTea()) {
+                        Toast.makeText(this, "Please complete all required tea selections", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+                }
+        }
 
             // Create an Intent to go back to MainActivity (basket intent)
             val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
@@ -157,15 +147,18 @@ class Drink_Customization : AppCompatActivity() {
                 size = size,
                 milk = milk,
                 sweetness = sweetness,
+                flavor = flavor,
                 price = finalPrice,
                 quantity = 1
             )
+
            //duplicate drink check
             val existingOrder = MainActivity.customizations.find {
                 it.drink == newOrder.drink &&
                         it.size == newOrder.size &&
                         it.milk == newOrder.milk &&
                         it.sweetness == newOrder.sweetness
+                        it.flavor == newOrder.flavor
             }
             if (existingOrder != null) {
                 //If already exists increase count
@@ -186,6 +179,7 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("fruits", ArrayList(fruits))
                 basketIntent.putExtra("additions", ArrayList(additions))
                 basketIntent.putExtra("liquid", liquid)
+
             } else if (selectedDrink?.name == "Matcha") {
                 val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
                 val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
@@ -211,6 +205,63 @@ class Drink_Customization : AppCompatActivity() {
                 basketIntent.putExtra("sweetness", sweetSelected)
                 basketIntent.putExtra("hot", hot)
                 basketIntent.putExtra("iced", iced)
+
+            } else if (selectedDrink?.name == "Latte") {
+                val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+                val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
+                val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+                val hot = findViewById<CheckBox>(R.id.hotOption).isChecked
+                val iced = findViewById<CheckBox>(R.id.icedOption).isChecked
+
+                basketIntent.putExtra("milk", milkSelected)
+                basketIntent.putExtra("flavor", flavorSelected)
+                basketIntent.putExtra("sweetness", sweetSelected)
+                basketIntent.putExtra("hot", hot)
+                basketIntent.putExtra("iced", iced)
+
+            } else if (selectedDrink?.name == "Mocha") {
+                val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+                val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
+                val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+                val hot = findViewById<CheckBox>(R.id.hotOption).isChecked
+                val iced = findViewById<CheckBox>(R.id.icedOption).isChecked
+
+                basketIntent.putExtra("milk", milkSelected)
+                basketIntent.putExtra("flavor", flavorSelected)
+                basketIntent.putExtra("sweetness", sweetSelected)
+                basketIntent.putExtra("hot", hot)
+                basketIntent.putExtra("iced", iced)
+
+            } else if (selectedDrink?.name == "Americano") {
+                val hot = findViewById<CheckBox>(R.id.hotOption).isChecked
+                val iced = findViewById<CheckBox>(R.id.icedOption).isChecked
+
+                basketIntent.putExtra("hot", hot)
+                basketIntent.putExtra("iced", iced)
+
+            } else if (selectedDrink?.name == "Lemonade") {
+                val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
+
+                basketIntent.putExtra("flavor", flavorSelected)
+
+            } else if (selectedDrink?.name == "Hot Chocolate") {
+                val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+                val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ") ?: ""
+                val sweetSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+                val chocolateSelected = drinkData.find {it.startsWith("Chocolate:")}?.substringAfter(": ")?: ""
+
+                basketIntent.putExtra("milk", milkSelected)
+                basketIntent.putExtra("flavor", flavorSelected)
+                basketIntent.putExtra("sweetness", sweetSelected)
+                basketIntent.putExtra("chocolate", chocolateSelected)
+
+            } else if (selectedDrink?.name == "Tea") {
+                val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
+                val teaSelected = drinkData.find { it.startsWith("Tea:") }?.substringAfter(": ") ?: ""
+
+                basketIntent.putExtra("milk", milkSelected)
+                basketIntent.putExtra("tea", teaSelected)
+
             }
 
             // Add the basic drink info like name, size, and final price
@@ -243,6 +294,7 @@ class Drink_Customization : AppCompatActivity() {
         }
 
     }
+
     private fun updateSelection(category: String, value: String, resultText: TextView) {
         val existingIndex = drinkData.indexOfFirst { it.startsWith("$category:") }
         val entry = "$category: $value"
@@ -251,15 +303,23 @@ class Drink_Customization : AppCompatActivity() {
         } else {
             drinkData.add(entry)
         }
-//TODO:was made for testing will switch to intent for basket
+
+
         //Custom toast to display customized drink info
         val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") .orEmpty()
         val drink = selectedDrink?.name.orEmpty()
         val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") .orEmpty()
         val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") .orEmpty()
+        val flavor = drinkData.find {it.startsWith("Flavor:")}?.substringAfter(": ") .orEmpty()
+        val lemonFlavor = drinkData.find{it.startsWith("Lemonade Flavor:")}?.substringAfter(": ")?: ""
+        val chocOption = drinkData.find{it.startsWith("Chocolate:")}?.substringAfter(": ")?: ""
+        val tea = drinkData.find{it.startsWith("Tea:")}?.substringAfter(": ")?: ""
+        val fruits = drinkData.find { it.startsWith("Fruit:") }?.substringAfter(": ")?.split(", ") ?: emptyList()
+        val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
+        val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
+
 
         //Adjusting price by drink size
-        //TODO update price for other
         val basePrice = selectedDrink?.price?.toDouble() ?: 0.0
         finalPrice = basePrice
 
@@ -268,11 +328,20 @@ class Drink_Customization : AppCompatActivity() {
             "Large" -> finalPrice += 2.0
         }
 
-        val resultString = "$$finalPrice $size $drink" +
-                (if (milk.isNotEmpty() && milk != "None") " with $milk milk " else "") +
-                (if (sweetness.isNotEmpty()) " and $sweetness sweetness" else "")
-        resultText.text = resultString
-        //Toast.makeText(this, resultString, Toast.LENGTH_SHORT).show()
+        val orderString = StringBuilder("$$finalPrice $size $drink")
+
+        if (fruits.isNotEmpty()) orderString.append(" (${fruits.joinToString(", ")}")
+        if (additions.isNotEmpty()) orderString.append(" ${additions.joinToString(", ")}")
+        if (liquid.isNotEmpty()) orderString.append(" $liquid)")
+        if (milk.isNotEmpty()) orderString.append(" $milk")
+        if (sweetness.isNotEmpty()) orderString.append(" $sweetness sweetness")
+        if (flavor.isNotEmpty()) orderString.append(" $flavor")
+        if (lemonFlavor.isNotEmpty()) orderString.append(" $lemonFlavor")
+        if (chocOption.isNotEmpty()) orderString.append(" $chocOption")
+        if (tea.isNotEmpty()) orderString.append(" $tea")
+
+        findViewById<TextView>(R.id.resultText).text = orderString.toString()
+
     }
 
     private fun Smoothie() {
@@ -366,7 +435,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("None","Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
 
         milkLayout.removeAllViews()
@@ -565,7 +634,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
 
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("None","Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milk_options2)
 
         milkLayout.removeAllViews()
@@ -594,10 +663,15 @@ class Drink_Customization : AppCompatActivity() {
         showResultOrder()
     }
 
+
     private fun showResultOrder() {
         val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""
         val milk = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ") ?: ""
         val sweetness = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ") ?: ""
+        val flavor = drinkData.find {it.startsWith("Flavor:")}?.substringAfter(": ") ?: ""
+        val lemonFlavor = drinkData.find{it.startsWith("Lemonade Flavor:")}?.substringAfter(": ")?: ""
+        val chocOption = drinkData.find{it.startsWith("Chocolate:")}?.substringAfter(": ")?: ""
+        val tea = drinkData.find{it.startsWith("Tea:")}?.substringAfter(": ")?: ""
         val fruits = drinkData.find { it.startsWith("Fruit:") }?.substringAfter(": ")?.split(", ") ?: emptyList()
         val additions = drinkData.filter { it.startsWith("Addition:") }.map { it.substringAfter(": ") }
         val liquid = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ") ?: ""
@@ -608,27 +682,114 @@ class Drink_Customization : AppCompatActivity() {
             "Medium" -> price += 1
             "Large" -> price += 2
         }
+
         finalPrice = price
 
-        val orderString = StringBuilder("$$price $size $drinkName")
-        if (fruits.isNotEmpty()) orderString.append(" with ${fruits.joinToString(", ")}")
-        if (additions.isNotEmpty()) orderString.append(" + ${additions.joinToString(", ")}")
-        if (milk.isNotEmpty()) orderString.append(" with $milk milk")
-        if (sweetness.isNotEmpty()) orderString.append(" sweetness")
-        if (liquid.isNotEmpty()) orderString.append(" and $liquid")
+        val orderString = StringBuilder("$$finalPrice $size $drinkName")
+        if (fruits.isNotEmpty()) orderString.append(" (${fruits.joinToString(", ")}")
+        if (additions.isNotEmpty()) orderString.append(" ${additions.joinToString(", ")}")
+        if (liquid.isNotEmpty()) orderString.append(" $liquid)")
+        if (milk.isNotEmpty()) orderString.append(" $milk")
+        if (sweetness.isNotEmpty()) orderString.append(" $sweetness sweetness")
+        if (flavor.isNotEmpty()) orderString.append(" $flavor")
+        if (lemonFlavor.isNotEmpty()) orderString.append(" $lemonFlavor")
+        if (chocOption.isNotEmpty()) orderString.append(" $chocOption")
+        if (tea.isNotEmpty()) orderString.append(" $tea")
 
         findViewById<TextView>(R.id.resultText).text = orderString.toString()
-        //Toast.makeText(this, orderString.toString(), Toast.LENGTH_SHORT).show()
+
     }
 
     private fun validateSmoothie(): Boolean {
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
         val liquidSelected = drinkData.find { it.startsWith("Liquid:") }?.substringAfter(": ")
-        if (selectedFruits.size < 2 ||liquidSelected.isNullOrEmpty()) {
-            Toast.makeText(this, "Please select at least 2 fruits and 1 liquid", Toast.LENGTH_SHORT).show()
+        if (sizeSelected.isNullOrEmpty() || selectedFruits.size < 2 ||liquidSelected.isNullOrEmpty()) {
+            Toast.makeText(this, "Please select a size, at least 2 fruits, and 1 liquid.", Toast.LENGTH_SHORT).show()
             return false
         }
         return true
     }
+
+    private fun validateCoffee(): Boolean {
+        val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ")
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
+        val sweetnessSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ")
+        val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ")
+
+        if (milkSelected.isNullOrEmpty() || sizeSelected.isNullOrEmpty() || sweetnessSelected.isNullOrEmpty() || flavorSelected.isNullOrEmpty()) {
+            Toast.makeText(this, "Please select a size, milk option, sweetness level, and flavor.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun validateHotIced():Boolean {
+        val hot = findViewById<CheckBox>(R.id.hotOption)
+        val iced = findViewById<CheckBox>(R.id.icedOption)
+
+        if (!iced.isChecked && !hot.isChecked){
+            Toast.makeText(this, "Please selected a hot or iced option", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun validateAmericano(): Boolean {
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
+        val hot = findViewById<CheckBox>(R.id.hotOption)
+        val iced = findViewById<CheckBox>(R.id.icedOption)
+
+        if (iced.isChecked){
+            hot.isEnabled = false
+        } else if (hot.isChecked){
+            iced.isEnabled = false
+        }
+
+        if (sizeSelected.isNullOrEmpty()) {
+            if (!iced.isChecked || !hot.isChecked){
+                Toast.makeText(this, "Please selected a hot or iced option", Toast.LENGTH_SHORT).show()
+            }
+            Toast.makeText(this, "Please select a size.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun validateLemon(): Boolean {
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
+        val flavorSelected = drinkData.find { it.startsWith("Lemonade Flavor:") }?.substringAfter(": ")
+
+        if (sizeSelected.isNullOrEmpty() || flavorSelected.isNullOrEmpty()) {
+            Toast.makeText(this, "Please select a size and a flavor.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun validateHotChoc(): Boolean {
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
+        val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ")
+        val milkSelected = drinkData.find { it.startsWith("Milk:") }?.substringAfter(": ")
+        val sweetnessSelected = drinkData.find { it.startsWith("Sweetness:") }?.substringAfter(": ")
+
+        if (sizeSelected.isNullOrEmpty() || flavorSelected.isNullOrEmpty() || milkSelected.isNullOrEmpty() || sweetnessSelected.isNullOrEmpty()) {
+            Toast.makeText(this, "Please select a size, milk, flavor, and choose sweetness level.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
+    private fun validateTea(): Boolean {
+        val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
+        val teaSelected = drinkData.find { it.startsWith("Tea:") }?.substringAfter(": ")
+
+        if (sizeSelected.isNullOrEmpty() || teaSelected.isNullOrEmpty()) {
+            Toast.makeText(this, "Please select a size and a tea.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
+
 }
 
 data class ItemCustomization(

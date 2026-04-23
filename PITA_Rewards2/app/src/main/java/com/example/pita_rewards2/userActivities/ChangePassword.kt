@@ -1,5 +1,6 @@
 package com.example.pita_rewards2.userActivities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -73,6 +74,11 @@ class ChangePassword : AppCompatActivity() {
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                     Log.e("FirebaseError", e.toString())
                 }
+
+            val intent = Intent(this, Account::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
         }
     }
 }
