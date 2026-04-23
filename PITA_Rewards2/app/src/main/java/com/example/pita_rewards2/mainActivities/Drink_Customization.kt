@@ -8,8 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import com.example.pita_rewards2.R
+import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import java.io.Serializable
-import com.example.pita_rewards2.Drink_Menu
 
 class Drink_Customization : AppCompatActivity() {
     private val drinkData = mutableListOf<String>()
@@ -23,6 +23,7 @@ class Drink_Customization : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val userId = intent.getStringExtra("userId")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.drink_customization)
         enableEdgeToEdge()
@@ -30,6 +31,7 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<Button>(R.id.cancel_order)?.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("userId", userId)
             startActivity(intent)
             finish()
         }
@@ -98,7 +100,7 @@ class Drink_Customization : AppCompatActivity() {
             }
         }
 
-        selectedDrink = IntentCompat.getSerializableExtra(intent, "selected_drink", Drink_Menu::class.java)
+        selectedDrink = IntentCompat.getSerializableExtra(intent, "selectedDrink", Drink_Menu::class.java)
 
         selectedDrink?.let { drink ->
             titleText.text = "${drink.name}"
@@ -122,7 +124,12 @@ class Drink_Customization : AppCompatActivity() {
             }
 
             // Create an Intent to go back to MainActivity (basket intent)
-            val basketIntent = Intent(this@Drink_Customization, MainActivity::class.java)
+            val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
+
+            val currentUserId = intent.getStringExtra("userId")
+            if (currentUserId != null) {
+                basketIntent.putExtra("userId", currentUserId)
+            }
 
             // Retrieve customization data
             val size = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ") ?: ""

@@ -23,6 +23,7 @@ import android.widget.Button
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
+import com.example.pita_rewards2.QrScanner
 
 //TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
@@ -88,18 +89,24 @@ class BasketActivity : AppCompatActivity() {
 
         binding.btnCheckout.setOnClickListener {
             val userId = intent.getStringExtra("userId")
+            val validOrders = MainActivity.customizations.filter { it.drink.isNotEmpty() }
+
+            if (validOrders.isEmpty()) {
+                Toast.makeText(this, "Basket is empty!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if (userId.isNullOrEmpty()) {
                 Toast.makeText(this, "User ID is missing!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val selectedLocation = locationSpinner.selectedItem.toString()
-
-            MainActivity.customizations.forEach { it.location = selectedLocation }
+            validOrders.forEach { it.location = selectedLocation }
 
             val intent = Intent(this, CheckoutActivity::class.java)
             intent.putExtra("userId", userId)
-            intent.putExtra("location", userId)
+            intent.putExtra("location", selectedLocation)
             startActivity(intent)
         }
 
@@ -151,19 +158,19 @@ class BasketActivity : AppCompatActivity() {
     private fun displayOrders() {
         val drinkCustomizations = MainActivity.customizations
         val inflater = LayoutInflater.from(this)
-        val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
 
         orderContainer.removeAllViews()
 
-        if (MainActivity.isOrderSubmitted) {
-            binding.paymentLayout.visibility = android.view.View.INVISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
-        } else {
-            binding.paymentLayout.visibility = android.view.View.VISIBLE
-            itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
-        }
-
         for (order in drinkCustomizations) {
+            val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
+
+            if (MainActivity.isOrderSubmitted) {
+                binding.paymentLayout.visibility = android.view.View.INVISIBLE
+                itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.VISIBLE
+            } else {
+                binding.paymentLayout.visibility = android.view.View.VISIBLE
+                itemView.findViewById<TextView>(R.id.statusText).visibility = android.view.View.INVISIBLE
+            }
 
             val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameText)
             drinkNameText.text = order.drink

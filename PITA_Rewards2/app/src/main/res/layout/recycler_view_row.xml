@@ -70,7 +70,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:backgroundTint="#00656d4a"
                 app:srcCompat="@drawable/arrow2"
-                tools:layout_editor_absoluteX="343dp" />
+                tools:layout_editor_absoluteX="343dp"
+                android:focusable="false"
+                android:clickable="false"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

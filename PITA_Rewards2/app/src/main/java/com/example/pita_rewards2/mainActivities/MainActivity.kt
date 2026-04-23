@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
-import com.example.pita_rewards2.Drink_Menu
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -50,13 +49,13 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         )
 
         nameList = arrayOf(
-            "Latte", "Mocha","Smoothie", "Matcha", "Cold Brew",
+            "Latte", "Mocha", "Smoothie", "Matcha", "Cold Brew",
             "Water", "Lemonade", "Tea", "Hot Chocolate",
             "Milk"
         )
 
         priceList = arrayOf(
-            5,5, 3, 5, 5, 1, 3, 3, 5, 3
+            5, 5, 3, 5, 5, 1, 3, 3, 5, 3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)
@@ -67,73 +66,75 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         getData()
 
 
-
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
         weeklyDeal.setImageResource(imageList[3])
 
         val userRef = FirebaseDatabase.getInstance().getReference("users")
         //extract userID after login
         val userId = intent.getStringExtra("userId")
+        val points = intent.getStringExtra("points")
         val userText: TextView = findViewById(R.id.user)
         //If valid user adds first name to welcome
         if (userId != null) {
-        val points = intent.getStringExtra("points")
-
-        if (userId != null) {
-            // User is logged in, fetch and display user data
+             // User is logged in, fetch and display user data
             val userRef = FirebaseDatabase.getInstance().getReference("users")
-            val userText: TextView = findViewById(R.id.user)
             userRef.child(userId).get().addOnSuccessListener { snapshot ->
                 val user = snapshot.getValue(UserData::class.java)
                 userText.text = "Welcome ${user?.firstName}"
             }
-        } else{
-            Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
+        } else {
+                Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
         }
 
         val spinner: Spinner = findViewById(R.id.location_dropdown)
         ArrayAdapter.createFromResource(
             this, R.array.locations, android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-        // Bottom navigation setup
-        navigation = findViewById(R.id.bottom_navigation)
-        navigation.selectedItemId = R.id.home
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+            }
+            // Bottom navigation setup
+            navigation = findViewById(R.id.bottom_navigation)
+            navigation.selectedItemId = R.id.home
 
-        navigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.account -> {
-                    // Pass userId to AccountActivity
-                    val intent = Intent(this, Account::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId", userId)
-                    intent.putExtra("points", points)
-                    startActivity(intent)
-                    finish()
-                    true
+            navigation.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.account -> {
+                        // Pass userId to AccountActivity
+                        val intent = Intent(this, Account::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        intent.putExtra("userId", userId)
+                        intent.putExtra("points", points)
+                        startActivity(intent)
+                        finish()
+                        true
+                    }
+
+                    R.id.basket -> {
+                        val intent = Intent(this, BasketActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        intent.putExtra("userId", userId)
+                        intent.putExtra("points", points)
+                        startActivity(intent)
+                        finish()
+                        true
+                    }
+
+                    else -> false
                 }
-
-                R.id.basket -> {
-                    val intent = Intent(this, BasketActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    intent.putExtra("userId", userId)
-                    intent.putExtra("points", points)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-
-                else -> false
             }
         }
-    }
+
 
 
     private fun getData(){
         for (i in imageList.indices){
-            val menu = Drink_Menu(nameList[i], priceList[i], imageList[i])
+            val menu = Drink_Menu(
+                name =nameList[i],
+                price = priceList[i],
+                image= imageList[i],
+                Drink_Type = nameList[i]
+            )
             drinkMenu.add(menu)
         }
         recyclerView.adapter = AdapterClass(drinkMenu, this)
@@ -141,11 +142,11 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
     override fun onItemClick(position: Int) {
         val drink = drinkMenu[position]
-
         val intent = Intent(this, Drink_Customization::class.java)
+        intent.putExtra("selectedDrink", drink)
+        intent.putExtra("userId", intent.getStringExtra("userId"))
         startActivity(intent)
     }
-
 }
 
 val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")

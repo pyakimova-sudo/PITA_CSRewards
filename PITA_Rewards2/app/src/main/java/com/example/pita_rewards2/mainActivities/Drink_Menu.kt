@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class Drink_Menu(
     var id: String = "",
-    val name: String = "",
+    var name: String = "",
     val Drink_Type: String = "",
     val price: Int = 0,
     val image: Int,

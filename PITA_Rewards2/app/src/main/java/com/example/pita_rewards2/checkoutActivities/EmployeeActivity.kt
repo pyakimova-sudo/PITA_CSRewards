@@ -17,14 +17,15 @@ import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.R
 import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.pita_rewards2.databinding.ViewholderEmployeeBinding
 import com.example.pita_rewards2.mainActivities.Unavailable
-
-//TODO point values for varried drinks
+import android.Manifest
 
 //TODO global drink timer(for estimate) STRETCH
-//How send back(button?)
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeBinding
     private lateinit var database: FirebaseDatabase
@@ -32,6 +33,7 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var pointsTextView: TextView
     private lateinit var subtractPointsButton: Button
     private lateinit var unavailableButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +64,13 @@ class EmployeeActivity : AppCompatActivity() {
         if (userId == null) {
             Toast.makeText(this, "User ID missing", Toast.LENGTH_SHORT).show()
             return
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
+            }
         }
 
         //Notifications
@@ -112,7 +121,6 @@ class EmployeeActivity : AppCompatActivity() {
     private fun displayOrders() {
         // Reference to the root of ActiveOrders
         val ordersRef = database.getReference("ActiveOrders")
-        val inflater = LayoutInflater.from(this)
 
         ordersRef.addValueEventListener(object : com.google.firebase.database.ValueEventListener {
             override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
@@ -124,26 +132,15 @@ class EmployeeActivity : AppCompatActivity() {
                     return
                 }
 
-                var totalQuant = 0L
-
-                // ONLY ONE LOOP is needed because your structure is flat
                 for (orderSnapshot in snapshot.children) {
                     val orderKey = orderSnapshot.key ?: continue
 
-                    val itemView = inflater.inflate(R.layout.viewholder_employee, employeeContainer, false)
+                    val itemBinding = ViewholderEmployeeBinding.inflate(
+                        LayoutInflater.from(this@EmployeeActivity),
+                        employeeContainer,
+                        false
+                    )
 
-                    val qty = orderSnapshot.child("quantity")
-                        .getValue(Long::class.java) ?: 0L
-
-                    totalQuant += qty
-
-                    // Find views
-                    val drinkNameText = itemView.findViewById<TextView>(R.id.drinkNameEmployee)
-                    val nameLabel = itemView.findViewById<TextView>(R.id.customerNameText)
-                    val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
-
-                    // Safely get data from the snapshot
-                    // Note: Your JSON shows 'userId' is INSIDE the order, not a parent folder
                     val drink = orderSnapshot.child("drink").value?.toString() ?: ""
                     val customerName = orderSnapshot.child("customerName").value?.toString() ?: "No Name"
                     val targetUserId = orderSnapshot.child("userId").value?.toString() ?: ""
@@ -152,43 +149,38 @@ class EmployeeActivity : AppCompatActivity() {
                     val milk = orderSnapshot.child("milk").value?.toString() ?: ""
                     val sweetness = orderSnapshot.child("sweetness").value?.toString() ?: ""
 
-                    // Update UI
-                    drinkNameText.text = drink
-                    nameLabel.text = customerName
-
                     val detailsList = listOfNotNull(
                         size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
                         milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
                         sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
                     )
-                    orderItems.text = detailsList.joinToString("\n")
 
-                    removeBtn.setOnClickListener {
+                    itemBinding.drinkNameEmployee.text = drink
+                    itemBinding.customerNameText.text = customerName
+                    itemBinding.orderItemsEmployee.text = detailsList.joinToString("\n")
+
+                    itemBinding.doneButton.setOnClickListener {
                         Log.d("DEBUG", "Clicked done for $customerName")
 
                         if (targetUserId.isNotEmpty()) {
                             sendNotification(targetUserId, customerName)
                         }
 
-                        //Delete the order
                         ordersRef.child(orderKey).removeValue()
                             .addOnSuccessListener {
-                                //Update time
-                                //recalculateTimer()
                                 Toast.makeText(this@EmployeeActivity, "Order Completed", Toast.LENGTH_SHORT).show()
                             }
                     }
-                    employeeContainer.addView(itemView)
+                    employeeContainer.addView(itemBinding.root)
                 }
-                val totalMinutes = totalQuant * 2
-                Log.d("ESTIMATE", "Total wait time: $totalMinutes minutes")
-                //recalculateTimer()
             }
+
             override fun onCancelled(error: com.google.firebase.database.DatabaseError) {
                 Log.e("FirebaseError", error.message)
             }
         })
     }
+
     //Notification setup
     private fun sendNotification(userId: String, customerName: String) {
 
@@ -213,7 +205,11 @@ class EmployeeActivity : AppCompatActivity() {
             .setAutoCancel(true)
 
         val manager = NotificationManagerCompat.from(this)
-        manager.notify(System.currentTimeMillis().toInt(), builder.build())
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+            == PackageManager.PERMISSION_GRANTED) {
+            manager.notify(System.currentTimeMillis().toInt(), builder.build())
+        }
+    }
     }
     /*
     //New estimated time for when Order is manually marked done
@@ -239,4 +235,3 @@ class EmployeeActivity : AppCompatActivity() {
         }
     }
      */
-}
