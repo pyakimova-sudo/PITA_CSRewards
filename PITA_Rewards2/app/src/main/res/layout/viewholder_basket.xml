@@ -56,10 +56,13 @@
             android:id="@+id/quantityText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="x1"
+            android:textColor="@color/maple_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/maple_primary"/>
+            app:layout_constraintBottom_toBottomOf="@+id/drinkNameText"
+            app:layout_constraintStart_toEndOf="@+id/drinkNameText" />
 
         <TextView
             android:id="@+id/totalFee"

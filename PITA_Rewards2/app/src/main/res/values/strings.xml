@@ -68,7 +68,7 @@
     <string name="order_details">Order Details</string>
     <string name="orderName">Name</string>
     <string name="location_text">Location</string>
-    <string name="apply_points">Apply Points</string>
+    <string name="apply_points">Use Points</string>
     <string name="qr_scan">Scan QR</string>
     <string name="scanned_value">Scanned Value</string>
     <string name="unavailable">Unavailable</string>
@@ -88,7 +88,6 @@
     <string name="discount_1">50%</string>
     <string name="discount_2">OFF</string>
     <string name="discount_code">Use code FINALS50</string>
-    <string name="mark_unavailability">Unavailable</string>
     <string name="hotChoc">Select chocolate:</string>
     <string name="text_tea">Select tea:</string>
     <string name="mark_unavailability">Mark Unavailable</string>

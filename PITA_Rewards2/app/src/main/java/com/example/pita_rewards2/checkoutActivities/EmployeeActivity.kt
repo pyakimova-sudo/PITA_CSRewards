@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pita_rewards2.databinding.ActivityEmployeeBinding
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ServerValue
 import android.view.LayoutInflater
 import android.widget.Button
 import com.example.pita_rewards2.mainActivities.MainActivity
@@ -22,7 +21,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.pita_rewards2.databinding.ViewholderEmployeeBinding
-import com.example.pita_rewards2.mainActivities.Unavailable
 import android.Manifest
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -33,7 +31,7 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var employeeContainer: LinearLayout
     private lateinit var pointsTextView: TextView
-    private lateinit var subtractPointsButton: Button
+    //private lateinit var subtractPointsButton: Button
 
     lateinit var navigation: BottomNavigationView
 
@@ -50,7 +48,7 @@ class EmployeeActivity : AppCompatActivity() {
         employeeContainer = findViewById(R.id.employeeContainer)
         // Initialize TextView and Button
         pointsTextView = findViewById(R.id.pointsTextView)
-        subtractPointsButton = findViewById(R.id.subtractPointsButton)
+        //subtractPointsButton = findViewById(R.id.subtractPointsButton)
 
         // Retrieve the userId from the Intent
         val userId = intent.getStringExtra("userId")
@@ -83,7 +81,7 @@ class EmployeeActivity : AppCompatActivity() {
         val pointsRef = database.getReference("users").child(userId).child("points")
 
         //TODO set delta to point value of deal !!!!
-        subtractPointsButton.setOnClickListener {
+        /*subtractPointsButton.setOnClickListener {
             //Decrease points by 406 using ServerValue.increment()
             pointsRef.setValue(ServerValue.increment(-2))
                 .addOnSuccessListener {
@@ -100,7 +98,7 @@ class EmployeeActivity : AppCompatActivity() {
                     Log.e("FirebaseError", "Failed to update points: ${e.message}", e)
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
-        }
+        } */
         //Call the method to display orders after Firebase initialization
         displayOrders()
 
@@ -139,7 +137,6 @@ class EmployeeActivity : AppCompatActivity() {
                 employeeContainer.removeAllViews()
 
                 if (!snapshot.exists()) {
-                    Log.d("DEBUG", "No active orders found.")
                     return
                 }
 
@@ -155,25 +152,22 @@ class EmployeeActivity : AppCompatActivity() {
                     val drink = orderSnapshot.child("drink").value?.toString() ?: ""
                     val customerName = orderSnapshot.child("customerName").value?.toString() ?: "No Name"
                     val targetUserId = orderSnapshot.child("userId").value?.toString() ?: ""
-
+                    val location = orderSnapshot.child("location").value?.toString() ?: "Unknown"
                     val size = orderSnapshot.child("size").value?.toString() ?: ""
+                    val temp = orderSnapshot.child("temp").value?.toString() ?: ""
                     val milk = orderSnapshot.child("milk").value?.toString() ?: ""
                     val sweetness = orderSnapshot.child("sweetness").value?.toString() ?: ""
+                    val extra = orderSnapshot.child("extraDetails").value?.toString() ?: ""
 
-
-            val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
-            val detailsList = listOfNotNull(
-                order.size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
-                order.temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" }, // Added Temperature
-                order.milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
-                order.sweetness.takeIf { it.isNotEmpty() && it != "100%" }?.let { "Sweetness: $it" },
-                order.extraDetails.takeIf { it.isNotEmpty() }
-            )
-            orderItems.text = detailsList.joinToString("\n")
+                    itemBinding.root.findViewById<TextView>(R.id.locationText)?.text = location
+                    //val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
                     val detailsList = listOfNotNull(
+                        "$location",
                         size.takeIf { it.isNotEmpty() }?.let { "Size: $it" },
+                        temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" },
                         milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
-                        sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" }
+                        sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" },
+                        extra.takeIf { it.isNotEmpty() }?.let { "Note: $it" }
                     )
 
                     itemBinding.drinkNameEmployee.text = drink
@@ -181,16 +175,10 @@ class EmployeeActivity : AppCompatActivity() {
                     itemBinding.orderItemsEmployee.text = detailsList.joinToString("\n")
 
                     itemBinding.doneButton.setOnClickListener {
-                        Log.d("DEBUG", "Clicked done for $customerName")
-
                         if (targetUserId.isNotEmpty()) {
                             sendNotification(targetUserId, customerName)
                         }
-
                         ordersRef.child(orderKey).removeValue()
-                            .addOnSuccessListener {
-                                Toast.makeText(this@EmployeeActivity, "Order Completed", Toast.LENGTH_SHORT).show()
-                            }
                     }
                     employeeContainer.addView(itemBinding.root)
                 }
@@ -225,15 +213,6 @@ class EmployeeActivity : AppCompatActivity() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
-            // Remove an item when clicked
-            removeBtn.setOnClickListener {
-                MainActivity.customizations.remove(order)
-                employeeContainer.removeView(itemView)
-                if (MainActivity.customizations.isEmpty()) {
-                    MainActivity.isOrderSubmitted = false
-                    MainActivity.order.clear()
-                }
-            }
         val manager = NotificationManagerCompat.from(this)
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
             == PackageManager.PERMISSION_GRANTED) {

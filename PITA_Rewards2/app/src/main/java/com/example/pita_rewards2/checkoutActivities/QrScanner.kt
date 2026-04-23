@@ -9,7 +9,6 @@ import com.example.pita_rewards2.R
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
-import com.example.pita_rewards2.checkoutActivities.BasketActivity.weeklyDeal
 
 class QrScanner : AppCompatActivity() {
     private lateinit var qrScan: Button

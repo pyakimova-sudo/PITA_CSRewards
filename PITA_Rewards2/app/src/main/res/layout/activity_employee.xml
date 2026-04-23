@@ -35,16 +35,6 @@
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Subtract Points Button (Visible Over Orders Scroll) -->
-    <Button
-        android:id="@+id/subtractPointsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/subtract_10_points"
-        app:layout_constraintBottom_toTopOf="@id/employeeScroll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerCard" />
 
     <!-- Cart Scroll (Orders List) -->
     <Button
@@ -52,16 +42,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
         android:backgroundTint="#B6AD90"
         android:fontFamily="@font/ngetic"
         android:gravity="center_horizontal"
         android:text="@string/menu"
-        android:textSize="20sp"
         android:textColor="@color/maple_primary"
+        android:textSize="20sp"
         app:cornerRadius="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/employeeScroll"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCard" />
 
     <ScrollView
@@ -75,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtractPointsButton">
+        app:layout_constraintTop_toBottomOf="@+id/homeButton">
 
         <LinearLayout
             android:id="@+id/employeeContainer"

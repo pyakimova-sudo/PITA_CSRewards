@@ -2,13 +2,10 @@ package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import com.example.pita_rewards2.databinding.ActivityMainBinding
-import com.example.pita_rewards2.mainActivities.Drink_Menu
 import com.google.firebase.database.*
-import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.TextView
 import android.widget.Toast
@@ -31,6 +28,7 @@ object DisabledButtons {
 }
 
 class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
+    private var currentUserId: String? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
     private lateinit var adapter: AdapterClass
@@ -52,6 +50,11 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        //extract userID after login
+        val userId = intent.getStringExtra("userId")
+        this.currentUserId = userId
+        val points = intent.getStringExtra("points")
 
         imageList = arrayOf(
             R.drawable.latte, R.drawable.mocha, R.drawable.smoothie,
@@ -99,10 +102,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
         weeklyDeal.setImageResource(imageList[3])
 
-        val userRef = FirebaseDatabase.getInstance().getReference("users")
-        //extract userID after login
-        val userId = intent.getStringExtra("userId")
-        val points = intent.getStringExtra("points")
         val userText: TextView = findViewById(R.id.user)
         //If valid user adds first name to welcome
         if (userId != null) {
@@ -128,7 +127,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                     intent.putExtra("userId", userId)
                     intent.putExtra("points", points)
                     startActivity(intent)
-                    finish()
                     true
                 }
                     R.id.basket -> {
@@ -137,7 +135,6 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                         intent.putExtra("userId", userId)
                         intent.putExtra("points", points)
                         startActivity(intent)
-                        finish()
                         true
                     }
 
@@ -171,7 +168,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
 
         val intent = Intent(this, Drink_Customization::class.java)
         intent.putExtra("selected_drink",drink)
-        intent.putExtra("userId", intent.getStringExtra("userId"))
+        intent.putExtra("userId", currentUserId)
         startActivity(intent)
     }
 
@@ -199,13 +196,3 @@ fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
 }
 
-object DisabledButtons {
-    private val disabledSet = mutableSetOf<String>()
-
-    fun setDisabled(tag: String, disabled: Boolean) {
-        if (disabled) disabledSet.add(tag)
-        else disabledSet.remove(tag)
-    }
-
-    fun isDisabled(tag: String) = disabledSet.contains(tag)
-}
