@@ -94,6 +94,8 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 R.id.account -> {
                     val intent = Intent(this, Account::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
 
                     finish()
@@ -103,6 +105,8 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 R.id.basket -> {
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
                     startActivity(intent)
 
                     finish()
