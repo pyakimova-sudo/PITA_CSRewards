@@ -25,7 +25,7 @@ import com.example.pita_rewards2.databinding.ViewholderEmployeeBinding
 import com.example.pita_rewards2.mainActivities.Unavailable
 import android.Manifest
 
-//TODO global drink timer(for estimate) STRETCH
+//TODO global updating drink timer(for estimate) STRETCH
 class EmployeeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeBinding
     private lateinit var database: FirebaseDatabase
@@ -51,21 +51,16 @@ class EmployeeActivity : AppCompatActivity() {
             intent.putExtra("userId", userId)
             startActivity(intent)
         }
-
-        // Initialize the container for the orders
         employeeContainer = findViewById(R.id.employeeContainer)
-        // Initialize TextView and Button
         pointsTextView = findViewById(R.id.pointsTextView)
         subtractPointsButton = findViewById(R.id.subtractPointsButton)
 
-        // Retrieve the userId from the Intent
+        //UserId check
         val userId = intent.getStringExtra("userId")
-
         if (userId == null) {
             Toast.makeText(this, "User ID missing", Toast.LENGTH_SHORT).show()
             return
         }
-
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -80,21 +75,20 @@ class EmployeeActivity : AppCompatActivity() {
                 "Order Notifications",
                 NotificationManager.IMPORTANCE_HIGH
             )
-
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel)
         }
 
-        //Reference to the user's points in the database
+        //User points in database
         val pointsRef = database.getReference("users").child(userId).child("points")
 
-        //TODO set delta to point value of deal !!!!
+        //Test button for others use
         subtractPointsButton.setOnClickListener {
-            //Decrease points by 406 using ServerValue.increment()
+            //Decrease points by 2 using ServerValue.increment()
             pointsRef.setValue(ServerValue.increment(-2))
                 .addOnSuccessListener {
                     Log.d("FirebaseDebug", "Points decremented successfully!")
-                    Toast.makeText(this, "Points decreased by 406!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Points decreased by 2!", Toast.LENGTH_SHORT).show()
 
                     //Update the points text in the UI
                     pointsRef.get().addOnSuccessListener { snapshot ->
@@ -107,7 +101,6 @@ class EmployeeActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         }
-        //Call the method to display orders after Firebase initialization
         displayOrders()
 
         binding.homeButton.setOnClickListener {
@@ -118,13 +111,13 @@ class EmployeeActivity : AppCompatActivity() {
         }
     }
 
+    //Display Active orders after Firebase initialization
     private fun displayOrders() {
-        // Reference to the root of ActiveOrders
         val ordersRef = database.getReference("ActiveOrders")
 
         ordersRef.addValueEventListener(object : com.google.firebase.database.ValueEventListener {
             override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
-                // Clear container to prevent duplicates
+                //Clear container to prevent duplicates
                 employeeContainer.removeAllViews()
 
                 if (!snapshot.exists()) {

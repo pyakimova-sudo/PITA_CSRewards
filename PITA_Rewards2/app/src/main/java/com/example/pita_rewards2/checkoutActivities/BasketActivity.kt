@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.CheckBox
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
@@ -25,7 +26,6 @@ import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import com.example.pita_rewards2.QrScanner
 
-//TODO drink increment for quantity
 class BasketActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBasketBinding
@@ -38,27 +38,43 @@ class BasketActivity : AppCompatActivity() {
 
     private lateinit var locationSpinner: Spinner
     private lateinit var qrScan: Button
+    private lateinit var pointCheckbox: CheckBox
+    private var userId: String = ""
+    private var userPoints: Int = 0
 
     private val scannerLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
         ScanContract()
-    ) { result ->
+    ){result ->
         if (result.contents == null) {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        } else {
-            val scannedValue = result.contents
-            Toast.makeText(this, "Scanned: $scannedValue", Toast.LENGTH_LONG).show()
+        }
+        else {
+            val scannedText = result.contents.trim()
+            if (scannedText == "weeklydeal") {
+                Toast.makeText(this, "Weekly deal has been applied!", Toast.LENGTH_SHORT).show()
+                weeklyDeal.activateWeeklyDeal()
+            } else {
+                Toast.makeText(this, "Unknown", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val userId = intent.getStringExtra("userId")
+        //val userId = intent.getStringExtra("userId")
         val points = intent.getStringExtra("points")
 
         binding = ActivityBasketBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        database = FirebaseDatabase.getInstance()
+        userId = intent.getStringExtra("userId") ?: ""
+        var pointsRef = database.getReference("users").child(userId).child("points")
+        pointsRef.get().addOnSuccessListener { snapshot ->
+            userPoints = snapshot.getValue(Int::class.java)?: 0
+        }
 
 
         orderContainer = findViewById(R.id.orderContainer)
@@ -66,6 +82,7 @@ class BasketActivity : AppCompatActivity() {
         subtotalText = findViewById(R.id.totalFeeTxt)
         locationSpinner = findViewById(R.id.location_dropdown)
         qrScan = findViewById(R.id.qr_scan)
+        pointCheckbox = findViewById(R.id.points)
 
         ArrayAdapter.createFromResource(
             this, R.array.locations, android.R.layout.simple_spinner_item
@@ -118,6 +135,30 @@ class BasketActivity : AppCompatActivity() {
             )
         }
 
+        // POINT CHECKBOX
+        val pointCheckbox = findViewById<CheckBox>(R.id.points)
+        pointCheckbox.setOnCheckedChangeListener { _:Any, isChecked: Boolean ->
+            val currentTotal = MainActivity.customizations.sumOf { it.price }
+            if (isChecked) {
+                Toast.makeText(this, "Points have been applied!", Toast.LENGTH_LONG).show()
+                //pointsRef.setValue(0)
+                pointsActivated.status = true
+                if (pointsActivated.priceOff(userPoints) > currentTotal) {
+                    pointsActivated.pointsUsed = (200 * currentTotal).toInt()
+                    //pointsRef -= pointsActivated.pointsUsed
+                    pointsRef.setValue(userPoints - pointsActivated.pointsUsed)
+                } else {
+                    pointsActivated.pointsUsed = userPoints
+                    userPoints = 0
+                }
+                calculateTotal()
+            } else {
+                Toast.makeText(this, "Points have been unapplied", Toast.LENGTH_SHORT).show()
+                pointsActivated.status = false
+                calculateTotal()
+            }
+        }
+
         navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.basket
 
@@ -149,9 +190,16 @@ class BasketActivity : AppCompatActivity() {
     }
 
     private fun calculateTotal() {
-        val total = MainActivity.customizations.sumOf { it.price * it.quantity }
-        totalText.text = "$$total"
-        subtotalText.text = "$$total"
+        val currentTotal = MainActivity.customizations.sumOf { it.price }
+        var subtotal = currentTotal.toDouble()
+        if (pointsActivated.status) {
+            subtotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
+        }
+        if (weeklyDeal.applied == true) {
+            subtotal -= 2
+        }
+        totalText.text = "$$currentTotal"
+        subtotalText.text = "$$subtotal"
 
     }
 
@@ -219,8 +267,18 @@ class BasketActivity : AppCompatActivity() {
     }
 }
 
+object pointsActivated {
+    var status: Boolean = false
+    var pointsUsed = 0
+    fun priceOff(points: Int): Double {
+        return points.toDouble() / 200.0
+    }
+}
 
-data class user_orders(
-    //TODO how store what data
-    val orders: MutableList<String>
-)
+object weeklyDeal {
+    var applied: Boolean = false
+
+    fun activateWeeklyDeal() {
+        applied = true
+    }
+}
