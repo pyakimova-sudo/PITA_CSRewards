@@ -26,6 +26,7 @@ class Drink_Customization : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val userId = intent.getStringExtra("userId")
+        val points = intent.getStringExtra("points")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.drink_customization)
         enableEdgeToEdge()
@@ -43,7 +44,9 @@ class Drink_Customization : AppCompatActivity() {
 
         findViewById<Button>(R.id.cancel_order)?.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             intent.putExtra("userId", userId)
+            intent.putExtra("points", points)
             startActivity(intent)
             finish()
         }
