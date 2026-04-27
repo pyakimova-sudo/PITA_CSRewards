@@ -76,25 +76,6 @@ class EmployeeActivity : AppCompatActivity() {
         //User points in database
         val pointsRef = database.getReference("users").child(userId).child("points")
 
-        //Test button for others use
-        /*subtractPointsButton.setOnClickListener {
-            //Decrease points by 406 using ServerValue.increment()
-            pointsRef.setValue(ServerValue.increment(-2))
-                .addOnSuccessListener {
-                    Log.d("FirebaseDebug", "Points decremented successfully!")
-                    Toast.makeText(this, "Points decreased by 2!", Toast.LENGTH_SHORT).show()
-
-                    //Update the points text in the UI
-                    pointsRef.get().addOnSuccessListener { snapshot ->
-                        val updatedPoints = snapshot.value as? Long ?: 0L
-                        pointsTextView.text = "Points: $updatedPoints"
-                    }
-                }
-                .addOnFailureListener { e ->
-                    Log.e("FirebaseError", "Failed to update points: ${e.message}", e)
-                    Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
-        } */
         //Call the method to display orders after Firebase initialization
         displayOrders()
 
@@ -154,6 +135,8 @@ class EmployeeActivity : AppCompatActivity() {
                     val milk = orderSnapshot.child("milk").value?.toString() ?: ""
                     val sweetness = orderSnapshot.child("sweetness").value?.toString() ?: ""
                     val extra = orderSnapshot.child("extraDetails").value?.toString() ?: ""
+                    val quantity = orderSnapshot.child("quantity").value?.toString() ?: ""
+
 
                     itemBinding.root.findViewById<TextView>(R.id.locationText)?.text = location
                     //val orderItems = itemView.findViewById<TextView>(R.id.orderItemsEmployee)
@@ -162,7 +145,8 @@ class EmployeeActivity : AppCompatActivity() {
                         temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" },
                         milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
                         sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" },
-                        extra.takeIf { it.isNotEmpty() }?.let { "Extra: $it" }
+                        extra.takeIf { it.isNotEmpty() }?.let { "Extra: $it" },
+                        quantity.takeIf { it.isNotEmpty() }?.let { "Quantity: $it" }
                     )
 
                     itemBinding.drinkNameEmployee.text = drink
@@ -238,4 +222,4 @@ class EmployeeActivity : AppCompatActivity() {
             setResult(RESULT_OK, resultIntent)
         }
     }
-     */
+*/

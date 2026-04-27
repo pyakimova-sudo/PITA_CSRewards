@@ -181,7 +181,7 @@ class Drink_Customization : AppCompatActivity() {
             } else {
                 MainActivity.customizations.add(newOrder)
             }
-            Toast.makeText(this, "$nameOfDrink has been added to cart", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "$displayName has been added to cart", Toast.LENGTH_SHORT).show()
 
             val basketIntent = Intent(this@Drink_Customization, BasketActivity::class.java)
             basketIntent.putExtra("userId", userId)
@@ -407,7 +407,7 @@ class Drink_Customization : AppCompatActivity() {
 
         val milkOptions = listOf("Whole","Skimmed","Almond","Oat")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
-        milkLayout?.removeAllViews()
+        milkLayout.removeAllViews()
         milkOptions.forEach { milk ->
             val btn = createCustomButton(milk)
             btn.setOnClickListener { updateDrinkData("Milk", milk) }
@@ -418,9 +418,7 @@ class Drink_Customization : AppCompatActivity() {
         val flavorLayout = findViewById<LinearLayout>(R.id.flavorOptions)
         flavorLayout.removeAllViews()
         flavors.forEach { flavor ->
-            val btn = Button(this)
-            btn.text = flavor
-            btn.setBackgroundColor(ContextCompat.getColor(this, R.color.my_button_color))
+            val btn = createCustomButton(flavor)
             btn.setOnClickListener { updateDrinkData("Flavor", flavor) }
             flavorLayout.addView(btn)
         }
@@ -434,6 +432,7 @@ class Drink_Customization : AppCompatActivity() {
             sweetLayout.addView(btn)
         }
 
+        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.VISIBLE
         findViewById<CheckBox>(R.id.hotOption)?.visibility = View.VISIBLE
         findViewById<CheckBox>(R.id.icedOption)?.visibility = View.VISIBLE
         findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.VISIBLE
@@ -441,7 +440,6 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
     }
     private fun Cold_Brew() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
