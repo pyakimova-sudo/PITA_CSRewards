@@ -757,7 +757,7 @@ class Drink_Customization : AppCompatActivity() {
 
     private fun validateLemon(): Boolean {
         val sizeSelected = drinkData.find { it.startsWith("Size:") }?.substringAfter(": ")
-        val flavorSelected = drinkData.find { it.startsWith("Select Flavor:") }?.substringAfter(": ")
+        val flavorSelected = drinkData.find { it.startsWith("Flavor:") }?.substringAfter(": ")
 
         if (sizeSelected.isNullOrEmpty() || flavorSelected.isNullOrEmpty()) {
             Toast.makeText(this, "Please select a size and a flavor.", Toast.LENGTH_SHORT).show()
