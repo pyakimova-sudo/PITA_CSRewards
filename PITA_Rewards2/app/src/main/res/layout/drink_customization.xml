@@ -17,7 +17,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insert Drink Name"
+            android:text="@string/insert_drink_name"
             android:textSize="40sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -46,7 +46,9 @@
 
             <ImageButton
                 android:id="@+id/sizeSmall"
+                android:contentDescription="Small Size"
                 android:clickable="true"
+                android:focusable="true"
                 android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -61,11 +63,13 @@
 
             <ImageButton
                 android:id="@+id/sizeMedium"
+                android:contentDescription="Medium Size"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
+                android:focusable="true"
                 app:srcCompat="@drawable/size_medium"
                 android:scaleType="centerCrop" />
             <Space
@@ -74,12 +78,13 @@
 
             <ImageButton
                 android:id="@+id/sizeLarge"
+                android:contentDescription="Large Size"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/size_large"
+                android:focusable="true" app:srcCompat="@drawable/size_large"
                 android:scaleType="centerCrop" />
 
         </LinearLayout>
@@ -364,7 +369,7 @@
 
             </HorizontalScrollView>
 
-        </LinearLayout>w
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/tea_layout"
@@ -429,7 +434,7 @@
             android:id="@+id/resultText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your selections will appear here."
+            android:text="@string/your_selections_will_appear_here"
             android:gravity="center"
             android:textSize="20sp"
             android:fontFamily="@font/ngetic"

@@ -162,7 +162,7 @@ class EmployeeActivity : AppCompatActivity() {
                         temp.takeIf { it.isNotEmpty() }?.let { "Temp: $it" },
                         milk.takeIf { it.isNotEmpty() && it != "None" }?.let { "Milk: $it" },
                         sweetness.takeIf { it.isNotEmpty() }?.let { "Sweetness: $it" },
-                        extra.takeIf { it.isNotEmpty() }?.let { "Note: $it" }
+                        extra.takeIf { it.isNotEmpty() }?.let { "Extra: $it" }
                     )
 
                     itemBinding.drinkNameEmployee.text = drink
