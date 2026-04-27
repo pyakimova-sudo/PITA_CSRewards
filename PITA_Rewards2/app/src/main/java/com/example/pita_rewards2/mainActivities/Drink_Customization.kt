@@ -388,7 +388,7 @@ class Drink_Customization : AppCompatActivity() {
             additionLayout.addView(btn)
         }
 
-        val liquids = listOf("Whole Milk","Skimmed Milk","Soy Milk","Coconut Milk","Oat Milk","Water","Apple Juice","Orange Juice")
+        val liquids = listOf("Whole Milk","Skim Milk","Soy Milk","Coconut Milk","Oat Milk","Water","Apple Juice","Orange Juice")
         val liquidLayout = findViewById<LinearLayout>(R.id.liquidLayout)
         liquidLayout.removeAllViews()
         liquids.forEach { liquid ->
@@ -411,7 +411,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
         milkLayout?.removeAllViews()
         milkOptions.forEach { milk ->
@@ -459,7 +459,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-        val milkOptions = listOf("None","Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("None","Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
 
         milkLayout.removeAllViews()
@@ -500,7 +500,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
 
         milkLayout.removeAllViews()
@@ -543,7 +543,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.hotChoc)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.tea_layout)?.visibility = View.GONE
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
 
         milkLayout.removeAllViews()
@@ -628,7 +628,7 @@ class Drink_Customization : AppCompatActivity() {
             chocolateLayout.addView(btn)
         }
 
-        val milkOptions = listOf("Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milkOptions)
 
         milkLayout.removeAllViews()
@@ -672,7 +672,7 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.coffee_options)?.visibility = View.GONE
 
 
-        val milkOptions = listOf("None","Whole Milk","Skimmed Milk","Almond Milk","Oat Milk")
+        val milkOptions = listOf("None","Whole Milk","Skim Milk","Almond Milk","Oat Milk")
         val milkLayout = findViewById<LinearLayout>(R.id.milk_options2)
 
         milkLayout.removeAllViews()
