@@ -40,6 +40,7 @@
                 android:textColor="@color/maple_primary"/>
 
             <TextView
+                android:id="@+id/points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/points"
@@ -59,7 +60,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="227dp"
+        android:layout_marginTop="250dp"
         android:layout_marginStart="31dp"
         android:layout_gravity="center">
 
@@ -95,6 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/changePass"
+                    android:color="@color/black"
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:background="@drawable/textview_border"
@@ -109,6 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/changePhone"
+                    android:color="@color/black"
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:background="@drawable/textview_border"
@@ -123,6 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/notifications"
+                    android:color="@color/black"
                     android:background="@drawable/textview_border"
                     android:textSize="15sp"
                     android:padding="10dp"
@@ -139,6 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/updatePic"
+                    android:color="@color/black"
                     android:textSize="15sp"
                     android:padding="10dp"
                     android:background="@drawable/textview_border"
@@ -155,6 +160,7 @@
                     android:background="@drawable/textview_border"
                     android:padding="10dp"
                     android:text="@string/drinkTimer"
+                    android:color="@color/black"
                     android:textSize="15sp"
                     app:drawableEndCompat="@drawable/arrow" />
 
