@@ -440,7 +440,6 @@ class Drink_Customization : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.fruitLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.additionLayout)?.visibility = View.GONE
         findViewById<LinearLayout>(R.id.liquidLayout)?.visibility = View.GONE
-        findViewById<LinearLayout>(R.id.milkOptions)?.visibility = View.GONE
     }
     private fun Cold_Brew() {
         findViewById<LinearLayout>(R.id.smoothie_options)?.visibility = View.GONE
