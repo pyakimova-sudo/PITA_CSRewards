@@ -2,9 +2,12 @@ package com.example.pita_rewards2.mainActivities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pita_rewards2.R
 import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
 import com.example.pita_rewards2.userActivities.UserData
 import com.example.pita_rewards2.databinding.ActivityLoginBinding
@@ -22,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users")
+        binding.employeeLogin?.visibility = View.GONE
 
         binding.loginButton.setOnClickListener {
             val loginUsername = binding.loginUsername.text.toString()

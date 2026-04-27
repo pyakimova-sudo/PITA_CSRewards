@@ -21,8 +21,6 @@ import com.example.pita_rewards2.mainActivities.MainActivity
 import com.example.pita_rewards2.userActivities.Account
 import com.google.firebase.database.FirebaseDatabase
 import android.widget.Button
-import androidx.compose.ui.graphics.findFirstRoot
-import com.example.pita_rewards2.userActivities.UserData
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -214,13 +212,12 @@ class BasketActivity : AppCompatActivity() {
     private fun calculateTotal() {
         val currentTotal = MainActivity.customizations.sumOf { it.price }
         var finalTotal = currentTotal
-        val subtotal = currentTotal
 
         if (pointsActivated.status) {
             finalTotal -= pointsActivated.priceOff(pointsActivated.pointsUsed)
         }
-        if (weeklyDeal.applied == true) {
-            finalTotal = subtotal/2
+        if (weeklyDeal.applied) {
+            finalTotal = currentTotal / 2
         }
         subtotalText.text = String.format("$%.2f", currentTotal)
         totalText.text = String.format("$%.2f", finalTotal)
@@ -234,15 +231,6 @@ class BasketActivity : AppCompatActivity() {
 
         for (order in drinkCustomizations) {
             val itemView = inflater.inflate(R.layout.viewholder_basket, orderContainer, false)
-            val statusText = itemView.findViewById<TextView>(R.id.statusText)
-
-            if (MainActivity.isOrderSubmitted) {
-                binding.paymentLayout.visibility = android.view.View.INVISIBLE
-                statusText.visibility = android.view.View.VISIBLE
-            } else {
-                binding.paymentLayout.visibility = android.view.View.VISIBLE
-                statusText.visibility = android.view.View.INVISIBLE
-            }
 
             val picCart = itemView.findViewById<ImageView>(R.id.picCart)
             picCart.setImageResource(order.imageResourceId)
@@ -271,20 +259,15 @@ class BasketActivity : AppCompatActivity() {
             // Remove items when order is submitted
             val removeBtn = itemView.findViewById<ImageView>(R.id.removeItemButton)
             //decrease quantity of order
-            if (MainActivity.isOrderSubmitted) {
-                removeBtn.visibility = android.view.View.GONE
-            } else {
-                removeBtn.visibility = android.view.View.VISIBLE
-                removeBtn.setOnClickListener {
-                    if (order.quantity > 1) {
-                        order.quantity -= 1
-                    } else {
-                        MainActivity.customizations.remove(order)
-                    }
-                    displayOrders()
+            removeBtn.setOnClickListener {
+                if (order.quantity > 1) {
+                    order.quantity -= 1
+                } else {
+                    MainActivity.customizations.remove(order)
                 }
+                displayOrders()
             }
-            orderContainer.addView(itemView)
+        orderContainer.addView(itemView)
         }
         calculateTotal()
 }

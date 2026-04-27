@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.example.pita_rewards2.databinding.ActivityCheckoutBinding
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.ServerValue
-import com.example.pita_rewards2.userActivities.Account
 
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
@@ -69,10 +68,12 @@ class CheckoutActivity : AppCompatActivity() {
                     "customerName" to name,
                     "drink" to item.drink,
                     "size" to item.size,
+                    "temp" to item.temp,
                     "milk" to item.milk,
                     "sweetness" to item.sweetness,
                     "price" to item.price,
                     "quantity" to item.quantity,
+                    "extraDetails" to item.extraDetails,
                     "location" to location
                 )
                 activeOrdersRef.child(orderId).setValue(orderData)

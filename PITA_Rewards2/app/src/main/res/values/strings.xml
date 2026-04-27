@@ -94,5 +94,11 @@
     <string name="unavailability">Unavailability</string>
     <string name="subtract_10_points">Subtract 10 Points</string>
     <string name="home">Home</string>
+    <string name="x1">x1</string>
+    <string name="remove_button">Remove Button</string>
+    <string name="image_of_drink">Image of drink</string>
+    <string name="insert_drink_name">Insert Drink Name</string>
+    <string name="your_selections_will_appear_here">Your selections will appear here.</string>
+    <string name="coffee_cup">Coffee Cup</string>
 
 </resources>
