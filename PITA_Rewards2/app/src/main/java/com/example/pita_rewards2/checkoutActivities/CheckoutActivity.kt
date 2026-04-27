@@ -73,6 +73,7 @@ class CheckoutActivity : AppCompatActivity() {
                     "sweetness" to item.sweetness,
                     "price" to item.price,
                     "quantity" to item.quantity,
+                    "extraDetails" to item.extraDetails,
                     "location" to location
                 )
                 activeOrdersRef.child(orderId).setValue(orderData)
