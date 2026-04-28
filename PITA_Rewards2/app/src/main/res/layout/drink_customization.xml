@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="30dp">
 
         <!-- Title -->
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insert Drink Name"
+            android:text="@string/insert_drink_name"
             android:textSize="40sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -45,13 +46,15 @@
 
             <ImageButton
                 android:id="@+id/sizeSmall"
+                android:contentDescription="Small Size"
                 android:clickable="true"
+                android:focusable="true"
                 android:textColor="@color/black"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/small_new"
+                app:srcCompat="@drawable/size_small"
                 android:scaleType="centerCrop" />
 
             <Space
@@ -60,12 +63,14 @@
 
             <ImageButton
                 android:id="@+id/sizeMedium"
+                android:contentDescription="Medium Size"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/medium_new"
+                android:focusable="true"
+                app:srcCompat="@drawable/size_medium"
                 android:scaleType="centerCrop" />
             <Space
                 android:layout_width="10dp"
@@ -73,16 +78,24 @@
 
             <ImageButton
                 android:id="@+id/sizeLarge"
+                android:contentDescription="Large Size"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/image_button_corners"
-                app:srcCompat="@drawable/large_new"
+                android:focusable="true" app:srcCompat="@drawable/size_large"
                 android:scaleType="centerCrop" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coffee_options"
+            android:orientation="vertical">
+
+        <!-- Milk Options -->
         <TextView
             android:id="@+id/text_milk"
             android:layout_width="wrap_content"
@@ -94,23 +107,45 @@
             android:textStyle="bold"
             android:padding="5dp"/>
 
-        <!-- Milk Options -->
-        <LinearLayout
-            android:id="@+id/milkOptions"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <Spinner
-                android:id="@+id/choose_milk"
+            <LinearLayout
+                android:id="@+id/milkOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+        </HorizontalScrollView>
+
+            <!-- Flavors Options -->
+            <TextView
+                android:id="@+id/text_flavor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flavors"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:background="@drawable/image_button_corners" />
+                android:layout_marginBottom="16dp">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/flavorOptions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
 
+            </HorizontalScrollView>
+
+        <!-- Sweetness Options -->
         <TextView
             android:id="@+id/text_sweet"
             android:layout_width="wrap_content"
@@ -122,24 +157,25 @@
             android:textStyle="bold"
             android:padding="5dp"/>
 
-        <!-- Sweetness Options -->
-        <LinearLayout
-            android:id="@+id/sweetOptions"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_marginBottom="16dp">
 
-            <Spinner
-                android:id="@+id/choose_sweetness"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/sweetOptions"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:background="@drawable/image_button_corners" />
+                android:orientation="horizontal" />
 
+        </HorizontalScrollView>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/smoothie_options"
+            android:orientation="vertical">
 
         <!-- Smoothie Options -->
         <TextView
@@ -216,9 +252,11 @@
 
         </HorizontalScrollView>
 
-        <!-- Matcha Options -->
+        </LinearLayout>
+
+        <!-- Hot or Iced Options -->
         <LinearLayout
-            android:id="@+id/matchaLayout"
+            android:id="@+id/HotIcedLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -236,7 +274,7 @@
                 android:padding="5dp"/>
 
             <LinearLayout
-                android:id="@+id/matchaSweetLayout"
+                android:id="@+id/HotIcedCheck"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -250,7 +288,8 @@
                     android:fontFamily="@font/ngetic"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    app:buttonTint="#B6AD90" />
 
                 <CheckBox
                     android:id="@+id/icedOption"
@@ -261,18 +300,141 @@
                     android:fontFamily="@font/ngetic"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    app:buttonTint="#B6AD90"/>
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lemonade_flavor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_lemonade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flavors"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/lemonadeFlavors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hotChoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_hotChoch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hotChoc"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/choc_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tea_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tea"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/tea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/text_milk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/milk"
+                android:textSize="20sp"
+                android:fontFamily="@font/ngetic"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/milk_options2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+
 
         <!-- Result -->
         <TextView
             android:id="@+id/resultText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your selections will appear here."
+            android:text="@string/your_selections_will_appear_here"
             android:gravity="center"
             android:textSize="20sp"
             android:fontFamily="@font/ngetic"

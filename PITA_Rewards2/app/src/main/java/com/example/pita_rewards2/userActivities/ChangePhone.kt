@@ -1,5 +1,6 @@
 package com.example.pita_rewards2.userActivities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -12,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.R
 import com.google.firebase.database.FirebaseDatabase
 
-//TODO: dynamically reformat phone integer into actual phone number format
+//TODO: format to actual phone conventions
 class ChangePhone : AppCompatActivity() {
 
     private lateinit var database: FirebaseDatabase
@@ -22,7 +23,6 @@ class ChangePhone : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_update_phone)
 
-        // Optional: remove this if your root ID isn't "account"
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -74,6 +74,12 @@ class ChangePhone : AppCompatActivity() {
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                     Log.e("FirebaseError", e.toString())
                 }
+
+            val intent = Intent(this, Account::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+
         }
     }
 }

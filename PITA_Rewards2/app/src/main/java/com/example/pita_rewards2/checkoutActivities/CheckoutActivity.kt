@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.example.pita_rewards2.databinding.ActivityCheckoutBinding
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.ServerValue
-import com.example.pita_rewards2.userActivities.Account
 
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
@@ -30,7 +29,9 @@ class CheckoutActivity : AppCompatActivity() {
         val nameBox = findViewById<EditText>(R.id.nameBox)
 
         val totalText = findViewById<TextView>(R.id.checkoutTotal)
-        val total = MainActivity.customizations.sumOf { it.price }
+        val total = intent.getDoubleExtra("finalTotal", 0.0)
+        val location = intent.getStringExtra("location") ?: "Unknown"
+        totalText.text = String.format("$%.2f", total)
 
         //Display the total price
         totalText.text = "$$total"
@@ -46,12 +47,13 @@ class CheckoutActivity : AppCompatActivity() {
 
         //Submit button
         submitButton.setOnClickListener {
+            //Get name for order
             val name = nameBox.text.toString().trim()
             if (name.isEmpty()) {
                 Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show()
             return@setOnClickListener
         }
-
+            //Store drinks in Active orders(Employee page)
             val activeOrdersRef = database.getReference("ActiveOrders")
 
             //Push each item to Firebase
@@ -66,11 +68,13 @@ class CheckoutActivity : AppCompatActivity() {
                     "customerName" to name,
                     "drink" to item.drink,
                     "size" to item.size,
+                    "temp" to item.temp,
                     "milk" to item.milk,
                     "sweetness" to item.sweetness,
                     "price" to item.price,
                     "quantity" to item.quantity,
-                    "location" to item.location
+                    "extraDetails" to item.extraDetails,
+                    "location" to location
                 )
                 activeOrdersRef.child(orderId).setValue(orderData)
             }
@@ -79,16 +83,14 @@ class CheckoutActivity : AppCompatActivity() {
             //Submit the order to the queue manager
             val add = QueueManager.submitOrder(name, MainActivity.order)
             inQueue += 1
-
             Toast.makeText(
                 this,
                 "Thank you for your order, ${add.customerName}!",
                 Toast.LENGTH_LONG
             ).show()
 
-            //TODO custom points???
-            //Calculate the points based on the total price
-            val newPoints = total / 10
+            //Calculates points based on price
+            val newPoints = total
 
             Log.d("FirebaseDebug", "User ID: $userId")
             Log.d("FirebaseDebug", "Points path: /users/$userId/points")
@@ -100,8 +102,8 @@ class CheckoutActivity : AppCompatActivity() {
                 .child(userId)
                 .child("points")
 
-            //Increment the points by the total price
-            pointsRef.setValue(ServerValue.increment(newPoints.toLong())) // Added .toLong() for safety
+            //Increment the points in database
+            pointsRef.setValue(ServerValue.increment(newPoints.toLong()))
                 .addOnSuccessListener {
                     Log.d("FirebaseDebug", "Points incremented successfully!")
                     Toast.makeText(this, "Points updated successfully!", Toast.LENGTH_SHORT).show()
@@ -118,16 +120,15 @@ class CheckoutActivity : AppCompatActivity() {
 
             if (totalQuantity > 0) {
                 val prefs = getSharedPreferences("PitaPrefs", MODE_PRIVATE)
-                //TODO adjusted for testing make time longer
                 val duration = 120000L * totalQuantity
                 val endTime = System.currentTimeMillis() + duration
                 prefs.edit().putLong("drink_timer_end", endTime)
-                    .putBoolean("is_order_active", true)//Only lock after order
+                    .putBoolean("is_order_active", true)
                     .apply()
             }
 
-// Go to Account
-            val intent = Intent(this, Account::class.java)
+//Go to employee activity after order to see list
+            val intent = Intent(this, EmployeeActivity::class.java)
             intent.putExtra("userId", userId)
             intent.putExtra("customerName", name)
             startActivity(intent)

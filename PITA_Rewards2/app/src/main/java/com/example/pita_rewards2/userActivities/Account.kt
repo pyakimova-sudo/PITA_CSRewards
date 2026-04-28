@@ -15,8 +15,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.R
 import com.example.pita_rewards2.checkoutActivities.EmployeeActivity
+import com.example.pita_rewards2.mainActivities.LoginActivity
 import com.example.pita_rewards2.mainActivities.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.FirebaseDatabase
 
 //Needs to be global for use
 //TODO make total orders var in checkout using total items
@@ -27,17 +29,30 @@ class Account : AppCompatActivity() {
     private lateinit var navigation: BottomNavigationView
     private lateinit var passwordChange: TextView
     private lateinit var phoneChange: TextView
-    private lateinit var userId: String  // store current user id
+    private lateinit var userId: String
     private lateinit var customerName: String
     private lateinit var prefs: SharedPreferences
     private var totalQuantity: Int = 0
     private var timer: CountDownTimer? = null
     private lateinit var drink_timer: TextView
+    private var userPoints: Int = 0
+    private lateinit var database: FirebaseDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_account)
+
+        this.userId = intent.getStringExtra("userId") ?: ""
+
+        database = FirebaseDatabase.getInstance()
+        val pointsRef = database.getReference("users").child(userId).child("points")
+        pointsRef.get().addOnSuccessListener { snapshot ->
+            userPoints = snapshot.getValue(Int::class.java)?: 0
+            findViewById<TextView>(R.id.points).text = userPoints.toString()
+        }
+
 
         //Handle edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
@@ -52,12 +67,10 @@ class Account : AppCompatActivity() {
         val logoutButton = findViewById<TextView>(R.id.logout_button)
         logoutButton.setOnClickListener {
             prefs.edit().clear().apply()
-            //Button to go to EmployeeActivity
-            val intent = Intent(this, EmployeeActivity::class.java)
+            //Button to logout
+            val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.putExtra("userId", userId)
-            //TODO:If drinks have unique times make new time var using
-            //TODO quantity and time instead
             intent.putExtra("totalQuantity", totalQuantity)
             startActivity(intent)
             finish()
@@ -80,8 +93,7 @@ class Account : AppCompatActivity() {
         navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.account
 
-        //TODO add global time to local
-        //Timer
+        //Countdown Timer
         val endTime = prefs.getLong("drink_timer_end", 0L)
         val isOrderActive = prefs.getBoolean("is_order_active", false)
         //Start countdown only after order
@@ -91,14 +103,13 @@ class Account : AppCompatActivity() {
             drink_timer.text = "No active drinks"
         }
 
-
-//Get quantity
+        //Quantity of order(unfinished)
         totalQuantity = intent.getIntExtra("totalQuantity", 0)
-
 
         navigation = findViewById(R.id.bottom_navigation)
         navigation.selectedItemId = R.id.account
 
+        //Change password
         passwordChange = findViewById(R.id.passwordChange)
         passwordChange.setOnClickListener {
             val savedUserId = prefs.getString("userId", "")
@@ -112,6 +123,7 @@ class Account : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Edit phone number
         phoneChange = findViewById(R.id.phoneChange)
         phoneChange.setOnClickListener {
             val savedUserId = prefs.getString("userId", "")
@@ -119,17 +131,18 @@ class Account : AppCompatActivity() {
                 Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             val intent = Intent(this, ChangePhone::class.java)
             intent.putExtra("userId", savedUserId)
             startActivity(intent)
         }
 
+        //Activity navigation
         navigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("userId", userId)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
                     true
@@ -137,6 +150,7 @@ class Account : AppCompatActivity() {
                 R.id.basket -> {
                     val intent = Intent(this, BasketActivity::class.java)
                     intent.putExtra("userId", userId)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                     startActivity(intent)
                     finish()
                     true
@@ -147,6 +161,7 @@ class Account : AppCompatActivity() {
         }
     }
 
+    //Local timer(only tracks current order(fills space))
     private fun startCountdown(endTime: Long) {
         timer?.cancel()
 
@@ -180,6 +195,7 @@ class Account : AppCompatActivity() {
         super.onDestroy()
         timer?.cancel()
     }
+    //For use after timer countdown
     private fun sendNotification(userId: String, customerName: String) {
 
         val channelId = "order_channel"

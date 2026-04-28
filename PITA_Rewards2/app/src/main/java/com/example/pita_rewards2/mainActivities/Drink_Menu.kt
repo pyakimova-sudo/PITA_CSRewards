@@ -8,15 +8,16 @@ data class Drink_Menu(
     val Drink_Type: String = "",
     val price: Int = 0,
     val image: Int,
+    var isAvailable: Boolean = true,
     var quantity: Int = 1,
     val ingredients: List<String> = emptyList()
 ) : Serializable{
     companion object {
-        // Default drinks that will be added to Firebase if the database is empty
+        //Main drinks that don't leave menu
         val defaultDrinks = listOf(
             Drink_Menu(
                 name = "Latte",
-                Drink_Type = "Coffee", //Will be used to sort might need another button
+                Drink_Type = "Coffee",
                 price = 2,
                 ingredients = listOf("Coffee", "Milk", "Ice"),
                 image = R.drawable.latte
@@ -83,7 +84,12 @@ data class Drink_Menu(
                 price = 5,
                 ingredients = listOf("Milk", "ice"),
                 image = R.drawable.mocha
-            )
+            ),
+            Drink_Menu(
+                name = "Americano",
+                price = 3,
+                image = R.drawable.americano
+            ),
         )
     }
 }

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.pita_rewards2.databinding.ActivityMainBinding
+import com.example.pita_rewards2.mainActivities.Drink_Menu
 import com.google.firebase.database.*
 import android.widget.Spinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,9 +20,22 @@ import com.example.pita_rewards2.userActivities.Account
 import com.example.pita_rewards2.checkoutActivities.BasketActivity
 import com.example.pita_rewards2.userActivities.UserData
 
+object DisabledButtons {
+    private val disabledSet = mutableSetOf<String>()
+
+    fun setDisabled(tag: String, disabled: Boolean) {
+        if (disabled) disabledSet.add(tag)
+        else disabledSet.remove(tag)
+    }
+
+    fun isDisabled(tag: String) = disabledSet.contains(tag)
+}
+
 class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
+    private var currentUserId: String? = null
     private lateinit var recyclerView: RecyclerView
     private lateinit var drinkMenu: ArrayList<Drink_Menu>
+    private lateinit var adapter: AdapterClass
     lateinit var imageList:Array<Int>
     lateinit var nameList:Array<String>
     lateinit var priceList:Array<Int>
@@ -29,6 +43,7 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
     lateinit var navigation: BottomNavigationView
 
     companion object {
+
         val order: MutableList<String> = mutableListOf()
         val customizations: MutableList<ItemCustomization> = mutableListOf()
         var isOrderSubmitted = false
@@ -40,22 +55,25 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        //extract userID after login
+        val userId = intent.getStringExtra("userId")
+        this.currentUserId = userId
+        val points = intent.getStringExtra("points")
+
         imageList = arrayOf(
-            R.drawable.latte, R.drawable.mocha, R.drawable.smoothie,
-            R.drawable.matcha, R.drawable.cold_brew,
-            R.drawable.water, R.drawable.lemonade,
-            R.drawable.tea, R.drawable.hot_chocolate,
-            R.drawable.milk
+            R.drawable.latte, R.drawable.mocha, R.drawable.cold_brew,
+            R.drawable.matcha, R.drawable.hot_chocolate,
+            R.drawable.smoothie, R.drawable.lemonade,
+            R.drawable.tea
         )
 
         nameList = arrayOf(
-            "Latte", "Mocha", "Smoothie", "Matcha", "Cold Brew",
-            "Water", "Lemonade", "Tea", "Hot Chocolate",
-            "Milk"
+            "Latte", "Mocha", "Cold Brew", "Matcha"
+            ,"Hot Chocolate", "Smoothie", "Lemonade", "Tea"
         )
 
         priceList = arrayOf(
-            5, 5, 3, 5, 5, 1, 3, 3, 5, 3
+            5,5,5,5,5,3,3,3
         )
 
         recyclerView = findViewById(R.id.menu_recycler)
@@ -65,14 +83,27 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         drinkMenu = arrayListOf<Drink_Menu>()
         getData()
 
+        val drinksRef = FirebaseDatabase.getInstance().getReference("drinks")
+        drinksRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (drinkSnapshot in snapshot.children) {
+                    val name = drinkSnapshot.key
+                    val isAvailable = drinkSnapshot.child("isAvailable").getValue(Boolean::class.java) ?: true
+
+                    if (name != null) {
+                        DisabledButtons.setDisabled(name, !isAvailable)
+                    }
+                }
+                if (::adapter.isInitialized) {
+                    adapter.notifyDataSetChanged()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
 
         val weeklyDeal = findViewById<ImageView>(R.id.weekly_image)
         weeklyDeal.setImageResource(imageList[3])
 
-        val userRef = FirebaseDatabase.getInstance().getReference("users")
-        //extract userID after login
-        val userId = intent.getStringExtra("userId")
-        val points = intent.getStringExtra("points")
         val userText: TextView = findViewById(R.id.user)
         //If valid user adds first name to welcome
         if (userId != null) {
@@ -86,37 +117,26 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
                 Toast.makeText(this, "No User Id", Toast.LENGTH_SHORT).show()
         }
 
-        val spinner: Spinner = findViewById(R.id.location_dropdown)
-        ArrayAdapter.createFromResource(
-            this, R.array.locations, android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spinner.adapter = adapter
-            }
-            // Bottom navigation setup
-            navigation = findViewById(R.id.bottom_navigation)
-            navigation.selectedItemId = R.id.home
+        navigation = findViewById(R.id.bottom_navigation)
 
-            navigation.setOnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.account -> {
-                        // Pass userId to AccountActivity
-                        val intent = Intent(this, Account::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                        intent.putExtra("userId", userId)
-                        intent.putExtra("points", points)
-                        startActivity(intent)
-                        finish()
-                        true
-                    }
+        navigation.selectedItemId = R.id.home
 
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.account -> {
+                    val intent = Intent(this, Account::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    intent.putExtra("userId", userId)
+                    intent.putExtra("points", points)
+                    startActivity(intent)
+                    true
+                }
                     R.id.basket -> {
                         val intent = Intent(this, BasketActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         intent.putExtra("userId", userId)
                         intent.putExtra("points", points)
                         startActivity(intent)
-                        finish()
                         true
                     }
 
@@ -126,8 +146,8 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
         }
 
 
-
     private fun getData(){
+        drinkMenu.clear()
         for (i in imageList.indices){
             val menu = Drink_Menu(
                 name =nameList[i],
@@ -137,15 +157,28 @@ class MainActivity : ComponentActivity(), AdapterClass.RecyclerViewEvent {
             )
             drinkMenu.add(menu)
         }
-        recyclerView.adapter = AdapterClass(drinkMenu, this)
+        adapter = AdapterClass(drinkMenu, this)
+        recyclerView.adapter = adapter
     }
 
     override fun onItemClick(position: Int) {
         val drink = drinkMenu[position]
+        if (DisabledButtons.isDisabled(drink.name)) {
+            Toast.makeText(this, "${drink.name} is currently unavailable", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val intent = Intent(this, Drink_Customization::class.java)
-        intent.putExtra("selectedDrink", drink)
-        intent.putExtra("userId", intent.getStringExtra("userId"))
+        intent.putExtra("selected_drink",drink)
+        intent.putExtra("userId", currentUserId)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::adapter.isInitialized) {
+            adapter.notifyDataSetChanged()
+        }
     }
 }
 
@@ -165,12 +198,5 @@ fun removeDrink(userId: String) {
     drinksRef.child(userId).removeValue()
 }
 
-object DisabledButtons {
-    private val disabledSet = mutableSetOf<String>()
 
-    fun setDisabled(tag: String, disabled: Boolean) {
-        if (disabled) disabledSet.add(tag)
-        else disabledSet.remove(tag)
-    }
-    fun isDisabled(tag: String) = disabledSet.contains(tag)
-}
+

@@ -1,5 +1,6 @@
 package com.example.pita_rewards2.userActivities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -21,22 +22,21 @@ class ChangePassword : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_change_password)
 
-        // Handle edge-to-edge padding
+        //Handle edge-to-edge padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.account)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Initialize Firebase
+        //Initialize Firebase
         database = FirebaseDatabase.getInstance()
 
-        // Correct EditText IDs from layout
         val passwordEditText = findViewById<EditText>(R.id.password)
         val confirmEditText = findViewById<EditText>(R.id.pass1)
         val saveButton = findViewById<Button>(R.id.save_button)
 
-        // Get userId from Intent
+        //Get userId from Intent
         val userId = intent.getStringExtra("userId")
         if (userId.isNullOrEmpty()) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
@@ -44,6 +44,7 @@ class ChangePassword : AppCompatActivity() {
             return
         }
 
+        //Confirm new password
         saveButton.setOnClickListener {
             val newPassword = passwordEditText.text.toString().trim()
             val confirmPassword = confirmEditText.text.toString().trim()
@@ -57,8 +58,6 @@ class ChangePassword : AppCompatActivity() {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            // Reference to the password field only
             val passwordRef = database.getReference("users").child(userId).child("password")
 
             Log.d("FirebaseDebug", "Updating /users/$userId/password to $newPassword")
@@ -73,6 +72,11 @@ class ChangePassword : AppCompatActivity() {
                     Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                     Log.e("FirebaseError", e.toString())
                 }
+
+            val intent = Intent(this, Account::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
         }
     }
 }

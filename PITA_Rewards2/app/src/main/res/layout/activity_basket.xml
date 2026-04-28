@@ -93,7 +93,6 @@
     </ScrollView>
 
     <!-- Total Box -->
-
     <LinearLayout
         android:id="@+id/paymentLayout"
         android:layout_width="match_parent"
@@ -109,6 +108,20 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/code_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/maple_bg"
+                android:text="Enter Code"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/points" />
 
             <TextView
                 android:id="@+id/totalTxt"
@@ -148,33 +161,24 @@
                 android:id="@+id/points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/maple_bg"
-                android:layoutDirection="rtl"
 
+                android:layoutDirection="rtl"
                 android:paddingStart="4dp"
                 android:paddingTop="8dp"
                 android:paddingEnd="12dp"
-                android:paddingBottom="8dp"
 
+                android:paddingBottom="8dp"
                 android:text="@string/apply_points"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:buttonTint="@color/maple_primary"
 
-            <TextView
-                android:id="@+id/pointsTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/dollar_minus"
-                android:textColor="@color/maple_secondary"
-                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/qr_scan" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subTotal" />
 
             <TextView
                 android:id="@+id/totalFeeTxt"
@@ -201,14 +205,14 @@
                 android:id="@+id/qr_scan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginEnd="28dp"
                 android:background="@drawable/maple_bg"
                 android:text="@string/qr_scan"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/points"
+                app:layout_constraintEnd_toStartOf="@+id/code_box"
                 app:layout_constraintTop_toTopOf="@+id/points" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
